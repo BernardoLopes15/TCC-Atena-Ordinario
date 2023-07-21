@@ -5,7 +5,11 @@ import {
     NavLink,
     Div,
     Main,
-    Footer
+    Footer,
+    Button,
+    CardEntrar,
+    Logo,
+    Subtitle
 } from './style';
 
 const Home = () => {
@@ -27,8 +31,12 @@ const Home = () => {
      </Nav>
 
      <Div>
-        *Entrar
+      <CardEntrar>
 
+      <Logo src="../imgs/Logo.png"/>
+      <Subtitle className="subtitle">Você é forte e será capaz de <br/> lutar e conquistar o seu espaço.</Subtitle>
+        <Button>Entrar</Button> 
+      </CardEntrar>
      </Div>
 
      <Main id="project">
