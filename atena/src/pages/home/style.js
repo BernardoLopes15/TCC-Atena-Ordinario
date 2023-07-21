@@ -40,7 +40,12 @@ export const Div = styled.div`
 `;
 
 export const Main = styled.div`
-  height: 650px;
+  height: 700px;
+  background-color: white;
+`;
+
+export const Section = styled.div`
+  height: 700px;
   background-color: white;
 `;
 
@@ -84,4 +89,31 @@ export const Subtitle = styled.p`
   text-align: center;
   margin-top: -30px;
 `;
+
+export const Title = styled.h1`
+ font-size: 30px;
+ font-weight: bold;
+`;
+
+export const CardAbout = styled.div`
+  heigth: 300px;
+  width: 580px;
+  position: absolute;
+  margin-left: 700px;
+  margin-top: 100px;
+`;
+
+export const CardProject = styled.div`
+  heigth: 300px;
+  width: 580px;
+  position: absolute;
+  margin-left: 100px;
+  margin-top: 100px;
+`;
+
+export const TextContent = styled.p`
+  margin-top: 40px;
+  font-size: 20px;
+`;
+
 
