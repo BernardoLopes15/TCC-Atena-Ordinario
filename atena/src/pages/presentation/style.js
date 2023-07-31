@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import './styles.css';
 
 export const Nav = styled.nav`
-  background: rgb(3,1,9);
-  background: linear-gradient(190deg, rgba(3,1,9,0.5) 12%, rgba(3,1,9,0.5) 86%); 
+  background: #8151A6;
   height: 80px;
   display: flex;
   justify-content: flex-end;
