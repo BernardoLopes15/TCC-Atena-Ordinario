@@ -13,7 +13,7 @@ const BuscarPsicologo = () =>{
                         <div class="pt-24 flex justify-center">
                             <div class="flex items-center">
                                 <img class="absolute w-8 pl-2" src={imglupa} alt="busca" />
-                                <input class="px-2 pl-10 py-2 rounded-lg" type="text" placeholder="Buscar" />
+                                <input class="px-2 pl-10 py-2 w-96 rounded-lg" type="text" placeholder="Buscar" />
                             </div>
                         </div>
                         <div class="px-8 flex justify-center">

@@ -12,12 +12,17 @@ const BoxPsicologo = ( { nome }) =>{
                         <h3 class="ml-8 md:ml-16">Psicologo</h3>
                         <h3 class="ml-8 md:ml-16">Tiradentes</h3>
                     </div>
-                    <div class="flex">
-                        <img class="w-6 h-6 ml-8" src={imgstar} alt="star" />
-                        <img class="w-6 h-6 ml-2" src={imgstar} alt="star" />
-                        <img class="w-6 h-6 ml-2" src={imgstar} alt="star" />
-                        <img class="w-6 h-6 ml-2" src={imgstar} alt="star" />
-                        <img class="w-6 h-6 ml-2" src={imgstar} alt="star" />
+                    <div class="flex justify-between flex-col md:flex-row">
+                        <div class="flex">
+                            <img class="w-6 h-6 ml-8" src={imgstar} alt="star" />
+                            <img class="w-6 h-6 ml-2" src={imgstar} alt="star" />
+                            <img class="w-6 h-6 ml-2" src={imgstar} alt="star" />
+                            <img class="w-6 h-6 ml-2" src={imgstar} alt="star" />
+                            <img class="w-6 h-6 ml-2" src={imgstar} alt="star" />
+                        </div>
+                        <div>
+                            <sub class="ml-8">Ativo desde 00/00/0000</sub>
+                        </div>
                     </div>
                 </div>
             </div>
