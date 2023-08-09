@@ -6,6 +6,7 @@ import Home from "./pages/home/index";
 import BuscarPsicologo from "./pages/search_psychologist/index";
 import Perfil from "./pages/profile";
 import CadastroCliente from "./pages/cadastro/cliente";
+import CadastroPsicologo from "./pages/cadastro/psicologo"
 
 const App = () =>{
   return (
@@ -17,6 +18,7 @@ const App = () =>{
       <Route path="/buscaPsicologo" element={<BuscarPsicologo />}/>
       <Route path="/perfil" element={<Perfil />}/>
       <Route path="/cadastro" element={<CadastroCliente />}/>
+      <Route path="/cadastroPsicologo" element={<CadastroPsicologo />}/>
     </Routes>
   </BrowserRouter>
   );

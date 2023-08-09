@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import imgpreview from "../../../assets/image-review.svg";
 
-const CadastroCliente = () =>{
+const CadastroPsicologo = () => {
     return(
         <main>
             <article class="md:bg-purple-400">
                 <div class="min-h-screen flex items-center justify-center">
-                    <div class="lg:w-1/2 md:p-12 rounded-xl bg-white">
-                        <h2 class="text-center text-xl">Cadastro Cliente</h2>
+                    <div class="lg:w-1/2 p-12 rounded-xl bg-white">
+                        <h2 class="text-center text-xl">Cadastro Psicologo</h2>
                         <div class="flex justify-between">
                             <div class="w-1/2 flex flex-col justify-end">
                                 <h2 class="mt-8 mb-4">Nome</h2>
@@ -17,6 +17,8 @@ const CadastroCliente = () =>{
                                 <h2 class="mt-8 mb-4">Telefone</h2>
                                 <input class="w-full px-2 py-1 border-2 border-black" type="text" />
                                 <h2 class="mt-8 mb-4">E-mail</h2>
+                                <input class="w-full px-2 py-1 border-2 border-black" type="text" />
+                                <h2 class="mt-8 mb-4">CRP</h2>
                                 <input class="w-full px-2 py-1 border-2 border-black" type="text" />
                             </div>
                             <div class="w-1/2 ml-8">
@@ -33,6 +35,8 @@ const CadastroCliente = () =>{
                                 <input class="w-full px-2 py-1 border-2 border-black" type="password" />
                                 <h2 class="mt-8 mb-4">Confirmar Senha</h2>
                                 <input class="w-full px-2 py-1 border-2 border-black" type="password" />
+                                <h2 class="mt-8 mb-4">E-Psi</h2>
+                                <input class="w-full px-2 py-1 border-2 border-black" type="text" />
                             </div>
                         </div>
                         <div class="flex justify-center mt-16">
@@ -45,4 +49,4 @@ const CadastroCliente = () =>{
     )
 }
 
-export default CadastroCliente;
+export default CadastroPsicologo;
