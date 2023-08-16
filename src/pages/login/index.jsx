@@ -42,7 +42,7 @@ const Login = () =>{
                         </div>
                     </div>
                     {
-                        menucadastro && <div class="fixed inset-0 flex items-center justify-center">
+                        menucadastro && <div class="fixed inset-0 flex items-center justify-center" onClick={()=>setMenuCadastro(false)}>
                             <div class="p-4 rounded-lg md:border border-black md:bg-white">
                                 <h2 class="text-xl font-bold text-purple-500">Cadastro</h2>
                                 <h2 class="text-xl">Aperte em sua respectiva função</h2>
