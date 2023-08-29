@@ -22,7 +22,7 @@ const Login = () =>{
                         <div class="w-96 sm:border-2 sm:border-black rounded-xl bg-white">
                             <h2 class="text-xl text-center mt-8">Seja Bem Vindo a</h2>
                             <div class="flex justify-center">
-                                <img class="w-72" src={logotipo} alt="atena" />
+                                <img class="w-72 h-72" src={logotipo} alt="atena" />
                             </div>
                             <div class="flex justify-center">
                                 <div class="w-64">

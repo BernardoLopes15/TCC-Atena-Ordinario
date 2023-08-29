@@ -20,7 +20,7 @@ const NavBar = () =>{
                             <div class="hidden md:flex ml-8">
                                 <h2 class="ml-8"><Link to="/home">Inicio</Link></h2>
                                 <h2 class="ml-8"><Link to="/buscaPsicologo">Psicologos</Link></h2>
-                                <h2 class="ml-8">Consulta</h2>
+                                <h2 class="ml-8"><Link to="/consultas">Consulta</Link></h2>
                                 <h2 class="ml-8"><Link to="/perfil">Perfil</Link></h2>
                             </div>
                         </div>
@@ -33,7 +33,7 @@ const NavBar = () =>{
                         <ul class="py-4">
                             <li class="py-2"><Link to="/home">Inicio</Link></li>
                             <li class="py-2"><Link to="/buscaPsicologo">Psicologos</Link></li>
-                            <li class="py-2"><Link>Consulta</Link></li>
+                            <li class="py-2"><Link to="/consultas">Consulta</Link></li>
                             <li class="py-2"><Link to="/perfil">Perfil</Link></li>
                             <li class="py-2"><Link>opções</Link></li>
                         </ul>
