@@ -1,18 +1,81 @@
 
- @import url('https://fonts.googleapis.com/css2?family=Lugrasimo&family=Roboto&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
 
  body{
-    font-family: 'Roboto', sans-serif;
+   font-family: 'Maven Pro', sans-serif;
  }
 
- .subtitle{
-   font-family: 'Kumbh Sans', sans-serif;
+ .navbar{
+  background-color: #442980;
+  font-family: 'Kumbh Sans', sans-serif;
  }
 
- .title{
-   font-family: 'Kumbh Sans', sans-serif;
+ .navbar .enter{
+  margin-left: 200px;
+ }
+
+ .start{
+  background: rgb(164,132,232);
+  background: linear-gradient(20deg, rgba(164,132,232,1) 47%, rgba(189,158,255,1) 86%);
+}
+
+.start p{
+font-family: 'Maven Pro', sans-serif;
+}
+
+.start button{
+  font-size: 22px;
+  color: #442980;
+  font-family: 'Kumbh Sans', sans-serif;
+
+  margin-left: 0.4rem;
+}
+
+
+ .start img{
+  margin-left: -7rem;
+  margin-bottom: -5rem;
+  width: 600px;
+ }
+
+ .content_project {
+
+ }
+
+ .content_project .title{
+  font-family: 'Playfair Display', serif;
+  font-size: 45px;
+  font-weight: 600;
+
+  margin-left: 2.8rem;
+  margin-bottom:2.5rem;
+ }
+
+ .content_project p {
+  font-size: 20px;
+  margin-left: 3.5rem;
+  width: 450px;
+ }
+
+ .content_project2 .title{
+  font-family: 'Playfair Display', serif;
+  font-size: 45px;
+  font-weight: 600;
+
+  margin-left: 1rem;
+  margin-bottom:2.5rem;
+ }
+
+ .content_project2 .p {
+  font-size: 20px;
+  margin-right: 3.5rem;
+  width: 480px;
+ }
+
+ .content_project2{
+  margin-top: -5rem;
  }
 
  .main{

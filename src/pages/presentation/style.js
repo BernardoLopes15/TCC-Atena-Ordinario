@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import './styles.css';
 
-export const Nav = styled.nav`
-  background: #8151A6;
-  height: 80px;
-  display: flex;
-  justify-content: flex-end;
-  padding: 0.2rem calc((100vw - 1000px) / 2);
-  z-index: 12;
-`;
+// export const Nav = styled.nav`
+//   background: #44298;
+//   height: 80px;
+//   display: flex;
+//   justify-content: flex-end;
+//   padding: 0.2rem calc((100vw - 1000px) / 2);
+//   z-index: 12;
+// `;
 
 export const NavLink = styled.a`
   color: #fff;
@@ -25,10 +25,10 @@ export const NavLink = styled.a`
   }
 `;
 
-export const NavMenu = styled.div`
-  display: flex;
-  align-items: center;
-`;
+// export const NavMenu = styled.div`
+//   display: flex;
+//   align-items: center;
+// `;
 
 export const Div = styled.div`
   width: 100%;
