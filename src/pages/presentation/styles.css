@@ -7,6 +7,7 @@
    font-family: 'Maven Pro', sans-serif;
  }
 
+
  .navbar{
   background-color: #442980;
   font-family: 'Kumbh Sans', sans-serif;
@@ -40,8 +41,8 @@ font-family: 'Maven Pro', sans-serif;
   width: 600px;
  }
 
- .content_project {
-
+ .content_project, .content_project2, .team {
+ background-color: white;
  }
 
  .content_project .title{
@@ -59,26 +60,96 @@ font-family: 'Maven Pro', sans-serif;
   width: 450px;
  }
 
+
  .content_project2 .title{
   font-family: 'Playfair Display', serif;
   font-size: 45px;
   font-weight: 600;
 
-  margin-left: 1rem;
   margin-bottom:2.5rem;
  }
 
  .content_project2 .p {
   font-size: 20px;
   margin-right: 3.5rem;
-  width: 480px;
+  margin-left: 0.5rem;
+  width: 472px;
  }
 
  .content_project2{
   margin-top: -5rem;
  }
 
- .main{
-  background: rgb(188,158,255);
-  background: linear-gradient(200deg, rgba(188,158,255,1) 13%, rgba(185,151,253,1) 45%, rgba(171,116,243,1) 81%);
+ .container{
+  background: rgb(164,132,232);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+ }
+
+ .content_aboutUs .content{
+  display: flex;
+  justify-content: space-around;
+ }
+
+ .content_aboutUs .text_aboutUs{
+   width: 50vw;
+
+   margin-top: 8rem;
+   
+ }
+
+
+ .content_aboutUs .title {
+  font-family: 'Playfair Display', serif;
+  font-size: 55px;
+  text-align: center;
+  color: white;
+ }
+
+ .content_aboutUs img{
+  width: 25vw;
+
+  margin-top: 5rem;
+  margin-left: 2rem;
+ }
+
+
+ .text_content{
+  display: flex;
+  justify-content: space-around;
+ }
+
+ .text_content .values{
+  margin-left: 5rem;
+  margin-right: 2rem;
+ }
+
+
+
+ .content_aboutUs p{
+  font-size: 20px;
+ }
+
+ .content_aboutUs h3{
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: white;
+  font-weight: bold;
+ }
+
+ .content_aboutUs h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+ }
+
+ .team .name{
+  font-weight: bold;
+  font-size: 20px;
+ }
+
+ #project{
+  background-color: white;
  }
