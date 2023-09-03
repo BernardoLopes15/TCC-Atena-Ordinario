@@ -1,7 +1,16 @@
 //import { Nav, NavMenu, NavLink, Div, Main, Footer, CardEntrar, Logo, Subtitle, Title, CardProject, CardAbout, TextContent, Section } from './style';
 import { Link } from 'react-router-dom';
+
 import logonNavbar from "../../assets/imgs/logo_navbar.png";
-import logoAtena from "../../assets/imgs/logo_atena.png"
+import logoAtena from "../../assets/imgs/logo_atena.png";
+import logoEmpresa from "../../assets/imgs/logo_empresa.png";
+import perfilRian from "../../assets/imgs/perfil_rian.png";
+import perfilAna from "../../assets/imgs/perfil_ana.png";
+import perfilBernardo from "../../assets/imgs/perfil_bernardo.png";
+import perfilBea from "../../assets/imgs/perfil_bia.png";
+import perfilWelly from "../../assets/imgs/perfil_welly.png";
+
+
 import '../presentation/styles.css'
 import { NavLink } from './style';
 
@@ -43,7 +52,7 @@ const Apresentacao = () => {
               <div className="md:w-2/3 md:flex justify-between py-6">
                 <div className="w-full md:w-96 h-64 flex items-center justify-center text-white bg-black">video aqui</div>
                 <div className="md:max-w-2xl">
-                  <h3 className=" title my-4 text-xl">Nosso objetivo</h3>
+                  <h3 className=" title my-4 text-purple-400 text-xl">Nosso objetivo</h3>
                   <p className=" text-lg">  A plataforma ATENA foi criada visando zelar <br/>a saúde mental de mulheres vítimas da violência, através de orientações feitas por profissionais da psicologia em consultas onlines e totalmente gratuitas.</p>
                 </div>
               </div>
@@ -52,74 +61,102 @@ const Apresentacao = () => {
             <section className="px-4 py-8 md:py-32 flex items-center justify-center content_project2">
               <div className="md:w-2/3 flex flex-col-reverse md:flex-row justify-between py-6">
                 <div className="md:max-w-2xl">
-                  <h3 className="title font-bold text-purple-400 my-4 text-xl">Saúde mental</h3>
+                  <h3 className="title  text-purple-400 my-4 text-xl">Saúde mental</h3>
                   <p className=" p text-lg">
-                   Zelar pelo seu bem-estar mental deve ser uma entre <br/> suas prioridades de vida, o seu estado mental é refletido em todas as áreas da sua vida, desde seu comportamento no trabalho até seu relacionamento familiar, por tanto não deixe o de lado.
+                   Zelar pelo seu bem-estar mental deve ser uma entre  suas prioridades de vida, o seu estado mental é refletido em todas as áreas da sua vida, desde seu comportamento no trabalho e até mesmo no seu relacionamento familiar, por tanto não deixe o de lado.
                   </p>
                 </div>
                 <div className="w-full md:w-96 h-64 flex items-center justify-center text-white bg-black">video aqui</div>
               </div>
             </section>
-            <section className="px-4 py-8 md:py-32 flex items-center justify-center bg-purple-400" id='aboutUs'>
-              <div className="md:w-2/3 flex flex-col-reverse md:flex-row justify-between py-6">
-                <div className="md:max-w-2xl">
-                  <h2 className="text-xl">Texto sobre o TCC</h2>
-                  <p className="text-lg">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor odio, consequatur illum alias sed sapiente est tempore. Illo exercitationem provident ex reprehenderit architecto voluptatum debitis doloribus eaque, amet aliquid earum.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur libero dolorum ut atque quas rerum ducimus voluptates vitae impedit maiores nemo laborum tempore, magnam debitis quis aliquam maxime reprehenderit animi!
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor odio, consequatur illum alias sed sapiente est tempore. Illo exercitationem provident ex reprehenderit architecto voluptatum debitis doloribus eaque, amet aliquid earum.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur libero dolorum ut atque quas rerum ducimus voluptates vitae impedit maiores nemo laborum tempore, magnam debitis quis aliquam maxime reprehenderit animi!
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor odio, consequatur illum alias sed sapiente est tempore. Illo exercitationem provident ex reprehenderit architecto voluptatum debitis doloribus eaque, amet aliquid earum.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur libero dolorum ut atque quas rerum ducimus voluptates vitae impedit maiores nemo laborum tempore, magnam debitis quis aliquam maxime reprehenderit animi!
-                  </p>
+
+            <section id='aboutUs'>
+              <div className='container' >
+                <div className="content_aboutUs">
+                  
+                   <h2 className="text-xl title">The Golden Developers</h2>
+                   <div className='content'>
+                     <img src={logoEmpresa}/>
+
+                     <p className='text_aboutUs'>
+                       A The Golden Developers é uma empresa com uma equipe de 5 integrantes, que mira em um projeto de importância social, a fim de construir uma sociedade mais acolhedora e segura, principalmente para o público feminino.
+                        Dessa forma, visamos disponibilizar para mulheres vítimas de situações traumáticas a oportunidade de voltar a se sentirem confortáveis em qualquer tipo de relacionamento.
+                     </p>
+                    </div>
+
+                  <h3>Nossos valores:</h3>
+
+                  <div className='text_content'>
+                   <div className='values'>
+                     <h4>Prosperidade</h4>
+                     <p>Se esta é a nossa vontade, então também devemos aplicá-la.</p>
+                   </div>
+
+                   <div className='values'>
+                    <h4>Respeito</h4> 
+                    <p>O mundo se tornará melhor apenas se um acordo de respeito for estabelecido entre todas as pessoas.</p>
+                   </div>
+
+                   <div className='values'>
+                    <h4>Altruísmo</h4>
+                    <p> Não devemos esperar nada em troca ao fazer o que é necessário para o mundo.</p> 
+                  </div>
+
+                   <div className='values'>
+                    <h4>Beneficiência</h4>
+                    <p>Não podemos deixar as pessoas mais vulneráveis na mão.</p> 
+                  </div>
                 </div>
               </div>
-            </section>
-            <section className="min-h-screen px-4 flex items-center justify-center" id='team'>
+             </div>
+           </section>
+
+            <section className="min-h-screen px-4 flex items-center justify-center team" id='team'>
               <div className="w-full md:w-2/3 flex justify-between py-6">
                 <div className="w-full">
                   <div className="flex flex-col lg:flex-row md:justify-between">
                     <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                      <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center bg-purple-500">Foto Aqui</div>
+                    <img src={perfilAna} className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "></img>
                       <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
-                        <div className="text-lg">Bernardo lopez da Cruz</div>
-                        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
+                        <div className="text-lg name">Ana Beatriz</div>
+                        <div>Designer e Marketing</div>
                       </div>
                     </div>
                     <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                      <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center bg-blue-500">Foto Aqui</div>
+                      <img src={perfilRian} className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "></img>
                       <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
-                        <div className="text-lg">Bernardo lopez da Cruz</div>
-                        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
+                        <div className="text-lg name">Rian Vieria</div>
+                        <div>Desenvolvedor Full-Stack</div>
                       </div>
                     </div>
                     <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                      <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center bg-red-500">Foto Aqui</div>
+                     <img src={perfilBernardo} className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "></img>
                       <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
-                        <div className="text-lg">Bernardo lopez da Cruz</div>
-                        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
+                        <div className="text-lg name">Bernardo lopez</div>
+                        <div>Desenvolvedor Back-End</div>
                       </div>
                     </div>
                   </div>
                   <div className="flex flex-col lg:flex-row lg:justify-around lg:mt-16">
                     <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                      <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center bg-purple-500">Foto Aqui</div>
+                     <img src={perfilBea} className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "></img>
                       <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
-                        <div className="text-lg">Bernardo lopez da Cruz</div>
-                        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
+                        <div className="text-lg name">Beatriz Bialtas</div>
+                        <div>Designer</div>
                       </div>
                     </div>
                     <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                      <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center bg-purple-500">Foto Aqui</div>
+                     <img src={perfilWelly} className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "></img>
                       <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
-                        <div className="text-lg">Bernardo lopez da Cruz</div>
-                        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
+                        <div className="text-lg name">Wellyngton de Souza</div>
+                        <div>Desenvolvedor Front-End</div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
+            
           </article>
         </main>
         <footer>
