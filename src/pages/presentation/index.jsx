@@ -69,8 +69,10 @@ const Apresentacao = () => {
                 <div className="w-full md:w-96 h-64 flex items-center justify-center text-white bg-black">video aqui</div>
               </div>
             </section>
-
-            <section id='aboutUs'>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffff" fill-opacity="1" d="M0,160L80,149.3C160,139,320,117,480,133.3C640,149,800,203,960,213.3C1120,224,1280,192,1360,176L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
+           
+            <section id='aboutUs' className='aboutUs'>
               <div className='container' >
                 <div className="content_aboutUs">
                   
@@ -110,6 +112,11 @@ const Apresentacao = () => {
               </div>
              </div>
            </section>
+
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" id='project'>
+              <path fill='rgb(164,132,232)' fill-opacity="1" d="M0,160L48,154.7C96,149,192,139,288,138.7C384,139,480,149,576,154.7C672,160,768,160,864,154.7C960,149,1056,139,1152,154.7C1248,171,1344,213,1392,234.7L1440,256L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+            </svg>
+
 
             <section className="min-h-screen px-4 flex items-center justify-center team" id='team'>
               <div className="w-full md:w-2/3 flex justify-between py-6">
