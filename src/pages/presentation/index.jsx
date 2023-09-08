@@ -26,7 +26,7 @@ const Apresentacao = () => {
                <NavLink href="#project"> Projeto </NavLink>
                <NavLink href="#aboutUs"> Quem Somos</NavLink>
                <NavLink href="#team"> Equipe </NavLink>
-               <li className=" text-xl text-white enter">Entrar</li>
+               <Link to="/login"><li className=" text-xl text-white enter">Entrar</li></Link>
               </ul>
             </div>
           </nav>
@@ -39,7 +39,7 @@ const Apresentacao = () => {
                 <div className='content_start'>
                   <img src={logoAtena} alt="logo" />
                   <p className="text-white text-xl">Você é forte e será capaz de <br/> lutar e passar por essa fase.</p>
-                  <Link to="/login"><button className="w-full md:w-60 py-2 my-4 text-purple-600 text-lg font-bold rounded-lg bg-white">Entrar</button></Link>
+                  <Link to="/login"><button className="w-full md:w-60 py-2 my-4 text-purple-600 text-lg font-bold rounded-lg bg-white btn">Entrar</button></Link>
                 </div>
               </div>
             </section>
@@ -94,7 +94,7 @@ const Apresentacao = () => {
                      <p>Se esta é a nossa vontade, então também devemos aplicá-la.</p>
                    </div>
 
-                   <div className='values'>
+                   <div className='values teste1'>
                     <h4>Respeito</h4> 
                     <p>O mundo se tornará melhor apenas se um acordo de respeito for estabelecido entre todas as pessoas.</p>
                    </div>
@@ -171,6 +171,8 @@ const Apresentacao = () => {
             <div className="md:w-2/3 flex items-center justify-between">
               <div className="text-xl">Rodapé</div>
               <div className="text-xl">Rodapé</div>
+
+              
             </div>
           </div>
         </footer>
