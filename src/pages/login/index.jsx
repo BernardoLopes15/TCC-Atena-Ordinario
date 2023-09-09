@@ -18,6 +18,7 @@ const Login = () =>{
             <article>
                 <div class="min-h-screen flex items-center  justify-center container">
                     <div class={`flex items-center justify-center transition-blur duration-300 ${menucadastro && "blur-sm"} rounded-xl login`}>
+
                         <div class="w-96 p-8 hidden md:block text">
                             <h2 class="text-right ">Proteja e Empodere: Encontre os melhores profissionais da saúde.</h2>
                         </div>
@@ -49,18 +50,17 @@ const Login = () =>{
                         </div>
                     </div>
                     {
-                        menucadastro && <div class="fixed inset-0 flex items-center justify-center" onClick={()=>setMenuCadastro(false)}>
-                            <div class="p-4 rounded-lg md:border border-black md:bg-white">
-                                <h2 class="text-xl font-bold text-purple-500">Cadastro</h2>
-                                <h2 class="text-xl">Aperte em sua respectiva função</h2>
-                                <div class="w-96 px-4 flex justify-between mt-8">
-                                    <Link to="/cadastro" class="cursor-pointer hover:text-purple-500">
+                        menucadastro && <div class="fixed inset-0 flex items-center justify-center square" onClick={()=>setMenuCadastro(false)}>
+                            <div class="p-4 md:bg-white type_account">
+                                <h2 class="text-xl font-bold title">Qual é o seu perfil?</h2>
+                                <div class="w-96 px-4 flex justify-between mt-8 options">
+                                    <Link to="/cadastro" class="account_usuario">
                                         <img class="w-32 h-32 rounded-full border border-gray-200" src={imgcliente} alt="client" />
-                                        <h2 class="text-lg">Cliente</h2>
+                                        <h2 class="text-lg">Usuária</h2>
                                     </Link>
-                                    <Link to="/cadastroPsicologo" class="cursor-pointer hover:text-purple-500">
+                                    <Link to="/cadastroPsicologo" class="account_psicologo">
                                         <img class="w-32 h-32 rounded-full border border-gray-200" src={imgpsicologo} alt="client" />
-                                        <h2 class="text-lg">Psicologo</h2>
+                                        <h2 class="text-lg">Psicólogo(a)</h2>
                                     </Link>
                                 </div>
                             </div>
