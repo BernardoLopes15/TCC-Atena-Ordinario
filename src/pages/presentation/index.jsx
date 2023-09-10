@@ -70,7 +70,7 @@ const Apresentacao = () => {
               </div>
             </section>
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffff" fill-opacity="1" d="M0,160L80,149.3C160,139,320,117,480,133.3C640,149,800,203,960,213.3C1120,224,1280,192,1360,176L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className='svg'><path fill="#ffff" fill-opacity="1" d="M0,160L80,149.3C160,139,320,117,480,133.3C640,149,800,203,960,213.3C1120,224,1280,192,1360,176L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
            
             <section id='aboutUs' className='aboutUs'>
               <div className='container' >
@@ -79,11 +79,12 @@ const Apresentacao = () => {
                    <h2 className="text-xl title">The Golden Developers</h2>
                    <div className='content'>
                      <img src={logoEmpresa}/>
-
-                     <p className='text_aboutUs'>
+                    <div className='text_aboutUs'>
+                     <p>
                        A The Golden Developers é uma empresa com uma equipe de 5 integrantes, que mira em um projeto de importância social, a fim de construir uma sociedade mais acolhedora e segura, principalmente para o público feminino.
                         Dessa forma, visamos disponibilizar para mulheres vítimas de situações traumáticas a oportunidade de voltar a se sentirem confortáveis em qualquer tipo de relacionamento.
                      </p>
+                     </div>
                     </div>
 
                   <h3>Nossos valores:</h3>

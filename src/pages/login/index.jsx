@@ -17,7 +17,7 @@ const Login = () =>{
         <main>
             <article>
                 <div class="min-h-screen flex items-center  justify-center container">
-                    <div class={`flex items-center justify-center transition-blur duration-300 ${menucadastro && "blur-sm"} rounded-xl login`}>
+                    <div class={`flex items-center justify-center transition-blur duration-300 ${menucadastro && "blur-sm"}  login`}>
 
                         <div class="w-96 p-8 hidden md:block text">
                             <h2 class="text-right ">Proteja e Empodere: Encontre os melhores profissionais da saúde.</h2>

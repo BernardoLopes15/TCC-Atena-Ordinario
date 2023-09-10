@@ -5,6 +5,7 @@
 
  body{
    font-family: 'Maven Pro', sans-serif;
+   background-color: #fff;
  }
 
 
@@ -98,8 +99,8 @@ font-family: 'Maven Pro', sans-serif;
  .aboutUs{
   display: flex;
   justify-content: center;
+  /* border: red solid 2px; */
  }
-
 
  .content_aboutUs .content{
   display: flex;
@@ -107,12 +108,7 @@ font-family: 'Maven Pro', sans-serif;
  }
 
  .content_aboutUs .text_aboutUs{
-   width: 60vw;
 
-   margin-top: 12rem;
-   padding-left: 5rem;
-   font-size: 23px;
-   
  }
 
 
@@ -128,10 +124,9 @@ font-family: 'Maven Pro', sans-serif;
   height: 350px;
 
   margin-top: 7rem;
-  margin-left: 2rem;
+  margin-left: 4rem;
   border-radius: 10px;
  }
-
 
  .text_content{
   display: flex;
@@ -151,7 +146,7 @@ font-family: 'Maven Pro', sans-serif;
  .content_aboutUs h3{
   font-family: 'Playfair Display', serif;
   font-size: 45px;
-  margin-left: 45rem;
+  text-align: center;
   margin-top: 8rem;
   margin-bottom: 2rem;
   color: white;
@@ -170,6 +165,10 @@ font-family: 'Maven Pro', sans-serif;
 
  #project{
   background-color: white;
+ }
+
+ .svg{
+  background: rgb(164,132,232);
  }
 
  /* .teste1 {
