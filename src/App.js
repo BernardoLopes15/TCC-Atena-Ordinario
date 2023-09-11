@@ -8,6 +8,7 @@ import Perfil from "./pages/profile";
 import CadastroCliente from "./pages/cadastro/cliente";
 import CadastroPsicologo from "./pages/cadastro/psicologo";
 import Consulta from "./pages/consulta";
+import Teste from "./pages/testePHP";
 
 const App = () =>{
   return (
@@ -21,6 +22,7 @@ const App = () =>{
       <Route path="/cadastro" element={<CadastroCliente />}/>
       <Route path="/cadastroPsicologo" element={<CadastroPsicologo />}/>
       <Route path="/consultas" element={<Consulta />}/>
+      <Route path="/testePHP" element={<Teste />}/>
     </Routes>
   </BrowserRouter>
   );

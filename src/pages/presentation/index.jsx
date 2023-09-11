@@ -26,7 +26,8 @@ const Apresentacao = () => {
                <NavLink href="#project"> Projeto </NavLink>
                <NavLink href="#aboutUs"> Quem Somos</NavLink>
                <NavLink href="#team"> Equipe </NavLink>
-               <Link to="/login"><li className=" text-xl text-white enter">Entrar</li></Link>
+               {/*<Link to="/login"><li className=" text-xl text-white enter">Entrar</li></Link>*/}
+               <Link to="/testePHP"><li className=" text-xl text-white enter">Teste</li></Link>
               </ul>
             </div>
           </nav>
