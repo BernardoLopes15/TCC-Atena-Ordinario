@@ -1,4 +1,5 @@
 import imgstar from "../../assets/star.png";
+import { Link } from "react-router-dom";
 
 const BoxPsicologo = ( { nome }) =>{
     return(
@@ -7,7 +8,7 @@ const BoxPsicologo = ( { nome }) =>{
                 <div class="w-20 h-20 bg-purple-500 rounded-full"></div>
                 <div class="flex justify-around flex-col grow">
                     <div class="flex flex-col md:flex-row justify-between">
-                        <h2 class="ml-8 text-lg md:border-b-4 border-purple-400">{nome}</h2>
+                        <Link to="/psicologo"><h2 class="ml-8 text-lg md:border-b-4 border-purple-400">{nome}</h2></Link>
                         <div class="flex flex-col md:flex-row">
                             <h3 class="ml-8 md:ml-16">19 Anos</h3>
                             <h3 class="ml-8 md:ml-16">Psicologo</h3>
