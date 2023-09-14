@@ -6,15 +6,33 @@ body{
     font-family: 'Maven Pro', sans-serif;
 }
 
-.login{ 
-    margin-top: 5rem;
-    width: 60vw;
-    height: 95vh;
+
+.content-login{
     background: rgb(188,173,210);
-   background: linear-gradient(158deg, rgb(206, 186, 238) 2%, rgba(165,106,243,1) 32%, rgba(158,84,254,1) 55%, rgba(151,71,255,1) 82%);
+    background: linear-gradient(158deg, rgb(206, 186, 238) 2%, rgba(165,106,243,1) 32%, rgba(158,84,254,1) 55%, rgba(151,71,255,1) 82%);
+    height: 90vh;
 }
 
-.container .text h2{
+.loge{
+    border: none;
+    width: 28vw;
+    height: 90vh;
+}
+
+.loge .title{
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+}
+
+.content-login .message {
+    width: 23vw;
+}
+
+.loge .logo{
+    width: 16vw;
+}
+
+/* .container .text h2{
     display: flex;
     font-family: 'Playfair Display', serif;
     margin-top: 8rem;
@@ -122,6 +140,6 @@ body{
 
 .type_account .account_usuario h2{
     margin-left: 2rem;
-}
+} */
 
 
