@@ -1,21 +1,21 @@
-import { useEffect,useState } from "react";
-import '../testePHP/styles.css';
-import axios from "axios";
-import "./styles.css";
+// import { useEffect,useState } from "react";
+// import '../testePHP/styles.css';
+// // import axios from "axios";
+// import "./styles.css";
 
 
-const Teste = () => {
-    const [posts, setPosts] = useState([]);
+// const Teste = () => {
+//     const [posts, setPosts] = useState([]);
 
-    useEffect(()=>{
-        axios.get("http://localhost")
-    },[]);
+//     useEffect(()=>{
+//         axios.get("http://localhost")
+//     },[]);
 
-    return (
-        <p>
-          bom dia
-        </p>
-  )
-}
+//     return (
+//         <p>
+//           bom dia
+//         </p>
+//   )
+// }
 
-export default Teste;
+// export default Teste;
