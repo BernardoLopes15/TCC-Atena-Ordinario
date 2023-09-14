@@ -6,6 +6,7 @@
  body{
    font-family: 'Maven Pro', sans-serif;
    background-color: #fff;
+   
  }
 
 
@@ -27,15 +28,25 @@
   background: linear-gradient(20deg, rgba(164,132,232,1) 47%, rgba(189,158,255,1) 86%);
 }
 
-.inicio .text p{
+.inicio .enter p{
   text-align: center;
 }
 
-.inicio button{
+.inicio .btn{
   justify-content: center;
   color: #442980;
   font-family: 'Kumbh Sans', sans-serif;
   font-size: 22px;
+  width: 380px;
+
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-left: 12%;
+  text-align: center;
+}
+
+.inicio .logo{
+  margin-bottom: -7rem;
 }
 
 .inicio button:hover{
@@ -43,165 +54,169 @@
   background-color: #442980;
 }
 
-.objetivo .content{
-  margin-top: 1.5rem;
-}
+
 
 .objetivo h3{
   font-family: 'Playfair Display', serif;
   font-size: 40px;
   color: black;
+  margin-left: 3rem;
 }
 
 .objetivo p{
-  font-size: 25px;
-  margin-top: 2rem;
-}
-
-.saude{
-  background: rgb(164,132,232);
-  background: linear-gradient(20deg, rgba(164,132,232,1) 47%, rgba(189,158,255,1) 86%);
+  font-size: 23px;
+  margin-top: 2.5rem;
+  margin-left: 3.5rem;
+  width: 33vw; 
 }
 
 .saude h3{
   font-family: 'Playfair Display', serif;
   font-size: 40px;
-  color: #fff;
+  color: black;
 }
 
- .content_project, .content_project2, .team {
-  background-color: white;
- }
-
- .content_project .title{
-  font-family: 'Playfair Display', serif;
-  font-size: 45px;
-  font-weight: 600;
-
-  margin-left: 2.8rem;
-  margin-bottom:2.5rem;
- }
-
- .content_project p {
-  font-size: 20px;
-  margin-left: 3.5rem;
-  width: 450px;
- }
-
-
- .content_project2 .title{
-  font-family: 'Playfair Display', serif;
-  font-size: 45px;
-  font-weight: 600;
-
-  margin-bottom:2.5rem;
- }
-
- .content_project2 .p {
-  font-size: 20px;
-  margin-right: 3.5rem;
+.saude p{
+  font-size: 23px;
+  margin-top: 2.5rem;
   margin-left: 0.5rem;
-  width: 472px;
- }
+  width: 35vw; 
+}
 
- .content_project2{
-  margin-top: -5rem;
- }
-
- .container{
+.svg2{
   background: rgb(164,132,232);
-  padding-bottom: 5rem;
-  color: #fff;
- }
+}
 
- .aboutUs{
-  display: flex;
-  justify-content: center;
+.tcc{
+  margin-top: -6rem;
+  background: rgb(164,132,232);
+  background: linear-gradient(210deg, rgba(164,132,232,1) 47%, rgba(189,158,255,1) 86%);
+}
+
+.content-tcc {
   /* border: red solid 2px; */
- }
+}
 
- .content_aboutUs .content{
-  display: flex;
-  justify-content: space-around;
- }
-
-
-
- .content_aboutUs .title {
+.content-tcc .title{
+  font-size: 60px;
+  color: #fff;
   font-family: 'Playfair Display', serif;
-  font-size: 40px;
-  color: white;
+  margin-bottom: 3rem;
+  height: 20vh;
   text-align: center;
- }
+}
 
- .content_aboutUs img{
-  width: 350px;
-  height: 350px;
-
-  margin-top: 7rem;
-  margin-left: 4rem;
-  border-radius: 10px;
- }
-
- .text_content{
+.content-tcc .informations{
   display: flex;
-  justify-content: space-around;
-  margin-top: 5rem;
- }
+}
 
- .text_content .values{
-  margin-left: 3rem;
-  margin-right: 3rem;
- }
+.content-tcc .logoEmpresa{
+  /* border: red solid 2px; */
+  width: 28vw;
+  margin-left: -8rem;
+  margin-right: 4rem;
+  border-radius: 15px;
+}
 
- .content_aboutUs p{
-  font-size: 20px;
- }
+.content-tcc .text{
+  /* border: red solid 2px; */
+  height: 30vh;
+  margin-left: 1rem;
+  margin-top: 3.5rem;
 
- .content_aboutUs h3{
-  font-family: 'Playfair Display', serif;
-  font-size: 45px;
-  text-align: center;
-  margin-top: 8rem;
-  margin-bottom: 2rem;
-  color: white;
-  font-weight: bold;
- }
-
- .content_aboutUs h4 {
-  font-family: 'Playfair Display', serif;
+  color: #fff;
   font-size: 22px;
- }
+}
 
- .team .name{
-  font-weight: bold;
-  font-size: 20px;
- }
 
- #project{
-  background-color: white;
- }
 
- .svg{
-  background: rgb(164,132,232);
- }
-
- .arte{
+ @media screen and (min-width: 300px) and (max-width: 900px) {
  
- }
-
- @media screen and (min-width: 400px) and (max-width: 600px) {
   .objetivo h3{
     font-size: 25px;
   }
 
   .objetivo p{
     font-size: 18px;
+    width: auto;
+    margin-left: 0.3rem;
+    margin-top:0.5rem;
+  }
+
+  .saude{
+    margin-top: -3rem;
   }
 
   .saude h3{
     font-size: 25px;
   }
+
+  .saude p{
+    font-size: 18px;
+    width: auto;
+    margin-left: 0.3rem;
+    margin-top:0.5rem;
+  }
+
+  .inicio .logo{
+    margin-bottom: -4rem;
+  }
+
+  .inicio .btn{
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .inicio .arte{
+    display:none;
+  }
+
+  .objetivo h3{
+    margin-left: 0;
+  }
+
+  .tcc{
+    margin-top: 0rem;
+    background: rgb(164,132,232);
+    background: linear-gradient(295deg, rgba(164,132,232,1) 47%, rgba(189,158,255,1) 86%);
+  }
+
+  .tcc .title{
+    font-size: 30px;
+    margin-bottom: 0;
+  }
+
+  .content-tcc .informations{
+    display: block;
+  }
+
+  .content-tcc .logoEmpresa{
+    /* border: red solid 2px; */
+    width: 90vw;
+    margin-left: 0.5rem;
+    border-radius: 10px;
+    margin-top: -5rem;
+  }
+
+  .content-tcc .text{
+    margin-top: 2rem;
+    height: 50vh;
+    width: 20rem;
+  }
+  
+
+   }
+
+
+ @media screen and (min-width: 1100px) {
+
+  .inicio .content-inicio{
+    width: 35vw;
+    height: 85vh; 
+    /* border: red solid 2px; */
+    margin-right: 40rem;
+  }
+  
  }
 
  /* .teste1 {
