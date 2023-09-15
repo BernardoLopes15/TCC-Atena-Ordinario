@@ -4,7 +4,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
 
  body{
-   font-family: 'Maven Pro', sans-serif;
    background-color: #fff;
  }
 
@@ -106,11 +105,6 @@ font-family: 'Maven Pro', sans-serif;
   display: flex;
   justify-content: space-around;
  }
-
- .content_aboutUs .text_aboutUs{
-
- }
-
 
  .content_aboutUs .title {
   font-family: 'Playfair Display', serif;

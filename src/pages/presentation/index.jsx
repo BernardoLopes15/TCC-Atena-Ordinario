@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 import logoAtena from "../../assets/imgs/logo_atena.png";
 import logoEmpresa from "../../assets/imgs/logo_empresa.png";
-import arte from "../../assets/imgs/arte.png"
-
 
 // import logonNavbar from "../../assets/imgs/logo_navbar.png";
 import perfilRian from "../../assets/imgs/perfil_rian.png";
@@ -12,10 +10,10 @@ import perfilAna from "../../assets/imgs/perfil_ana.png";
 import perfilBernardo from "../../assets/imgs/perfil_bernardo.png";
 import perfilBea from "../../assets/imgs/perfil_bia.png";
 import perfilWelly from "../../assets/imgs/perfil_welly.png";
+import Rodape from '../../components/Rodape';
 // import arte from "../../assets/atena apresenta.png"
 
-import '../presentation/styles.css'
-import { NavLink } from './style';
+import '../presentation/styles.css';
 
 const Apresentacao = () => (
   <>
@@ -176,18 +174,7 @@ const Apresentacao = () => (
         </section>
       </article>
     </main>
-    {/* <footer>
-      <div className="h-32 flex justify-center bg-purple-400">
-        <div className="md:w-2/3 flex items-center justify-between">
-          <div className="text-xl">Rodapé</div>
-          <div className="text-xl">Rodapé</div>
-        </div>
-      </div>
-    </footer> */}
-
-
-
-
+    <Rodape color="bg-white" />
   </>
 )
 

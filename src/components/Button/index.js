@@ -2,7 +2,7 @@ import React from 'react'
 
 import './styles.css'
 
-const Button = ({title, onclick}) => {
+const Button = ({title}) => {
   return (
    <button>{title}</button>
   )

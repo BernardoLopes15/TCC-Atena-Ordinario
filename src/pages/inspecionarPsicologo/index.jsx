@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "../../components/Navbar";
 import imgUser from "../../assets/user.png";
+import Rodape from "../../components/Rodape";
 
 const InspecionarPsicologo = () =>{
     return(
@@ -37,11 +38,11 @@ const InspecionarPsicologo = () =>{
                                     </div>
                                     <div className="font-md pl-8">
                                         <h2>Diploma</h2>
-                                        <a href="#">daw</a>
+                                        <a href="#tralala">daw</a>
                                     </div>
                                     <div className="font-md pl-8">
                                         <h2>Curriculo</h2>
-                                        <a href="#">daw</a>
+                                        <a href="#tralala">daw</a>
                                     </div>
                                 </div>
                             </div>
@@ -49,6 +50,7 @@ const InspecionarPsicologo = () =>{
                     </div>
                 </div>
             </div>
+            <Rodape color="bg-white" />
         </>
     );
 }
