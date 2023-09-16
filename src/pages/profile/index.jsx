@@ -31,7 +31,7 @@ const Perfil = () =>{
                     </div>
                 </article>
             </main>
-            <Rodape entrada="lg:bg-purple-100" />
+            <Rodape estilo="lg:bg-purple-100" />
         </>
     )
 }
