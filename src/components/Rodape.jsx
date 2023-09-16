@@ -17,7 +17,7 @@ const Rodape = (entrada) =>{
                         <button className="px-16 py-6 border-white border-2">Contact US</button>
                     </div>
                     <div className="flex">
-                        <div className="w-64 lg:w-72 mt-16 md:mt-0 text-white border-l-white border-l-4">
+                        <div className="w-48 md:w-64 lg:w-72 mt-16 md:mt-0 text-white border-l-white border-l-4">
                             <h2 className="px-4 py-2">Home</h2>
                             <h2 className="px-4 py-2">Work</h2>
                             <h2 className="px-4 py-2">Blog</h2>

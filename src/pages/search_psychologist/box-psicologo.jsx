@@ -5,7 +5,7 @@ const BoxPsicologo = ( { nome }) =>{
     return(
         <>
             <div className="py-4 px-8 mt-8 flex rounded-lg border-black bg-white">
-                <div className="w-20 h-20 bg-purple-500 rounded-full"></div>
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-purple-500 rounded-full"></div>
                 <div className="flex justify-around flex-col grow">
                     <div className="flex flex-col md:flex-row justify-between">
                         <Link to="/psicologo"><h2 className="ml-8 text-lg md:border-b-4 border-purple-400">{nome}</h2></Link>

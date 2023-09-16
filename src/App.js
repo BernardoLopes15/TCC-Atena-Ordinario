@@ -10,6 +10,7 @@ import CadastroPsicologo from "./pages/cadastro/psicologo";
 import Consulta from "./pages/consulta";
 import Teste from "./pages/testePHP";
 import InspecionarPsicologo from "./pages/inspecionarPsicologo";
+import AgendarConsulta from "./pages/agendarConsulta";
 
 const App = () =>{
   return (
@@ -25,6 +26,7 @@ const App = () =>{
       <Route path="/consultas" element={<Consulta />}/>
       <Route path="/testePHP" element={<Teste />}/>
       <Route path="/psicologo" element={<InspecionarPsicologo />} />
+      <Route path="/agendarConsulta" element={<AgendarConsulta />} />
     </Routes>
   </BrowserRouter>
   );
