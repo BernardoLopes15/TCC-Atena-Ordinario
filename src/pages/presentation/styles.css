@@ -82,11 +82,17 @@
   margin-left: 3.5rem;
   width: 33vw; 
 }
-
+.saude{
+  background-color: #fff;
+}
 .saude h3{
   font-family: 'Playfair Display', serif;
   font-size: 40px;
   color: black;
+}
+
+.svg1{
+  background-color: #fff;
 }
 
 .saude p{
@@ -172,6 +178,10 @@
 
 .text_content .item-value p{
   font-size: 20px;
+}
+
+.team{
+  background-color: #fff;
 }
 
 

@@ -48,7 +48,7 @@ const Apresentacao = () => (
           </div>
         </section>
 
-        <svg className='md:block hidden' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" id='project'>
+        <svg className='md:block hidden svg1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" id='project'>
           <path fill='rgb(164,132,232)' fill-opacity="1" d="M0,160L48,154.7C96,149,192,139,288,138.7C384,139,480,149,576,154.7C672,160,768,160,864,154.7C960,149,1056,139,1152,154.7C1248,171,1344,213,1392,234.7L1440,256L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
         </svg>
 
@@ -127,7 +127,7 @@ const Apresentacao = () => (
 
 
 
-        <section className="min-h-screen px-4 flex items-center justify-center project">
+        <section className="min-h-screen px-4 flex items-center justify-center team">
           <div className="w-full md:w-2/3 flex justify-between py-6">
             <div className="w-full">
               <div className="flex flex-col lg:flex-row md:justify-between">
