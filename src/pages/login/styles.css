@@ -1,132 +1,177 @@
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
 
+main{
+    background-color: #BE9FFF;
+}
+
 .content-login{
+    height: 95vh;
     background: rgb(188,173,210);
     background: linear-gradient(158deg, rgb(206, 186, 238) 2%, rgba(165,106,243,1) 32%, rgba(158,84,254,1) 55%, rgba(151,71,255,1) 82%);
 }
 
-.loge{
-    border: none;
+.content-login .text h2{
+    font-family: 'Playfair Display', serif;
+    font-size: 45px;
+    color: #fff;
+    padding-left: 3rem;
+}
+
+.loge {
+    background-color: white;
+    height: 95vh;
+    color: black;
+    border-radius: 8px;
 }
 
 .loge .title{
     font-family: 'Playfair Display', serif;
-    font-size: 34px;
+    font-size: 30px;
 }
 
 .loge .logo{
-    width: 300px;
+    width: 15vw;
 }
 
-/* .container .text h2{
-    display: flex;
-    font-family: 'Playfair Display', serif;
-    margin-top: 8rem;
-    font-size: 40px;
-}
-
-.content_login {
-    background-color: white;
-    height: 95vh;
-    width: 33vw;
-    color: black;
-
-    border-radius: 8px;
-}
-
-.content_login .title{
-    font-family: 'Playfair Display', serif;
-    font-size: 30px;
-    padding-top: 3rem;
-}
-
-.content_login img{
-    width: 12vw;
-    height: 24vh;
-    margin-top: 1rem;
-}
-
-.content_login .inputs p{
+.loge .content-inputs p{
     font-size: 16px;
 }
 
-.content_login .inputs input{
+.loge .content-inputs input{
     border-radius: 4px;
     width: 280px;
 }
 
-.content_login .inputs{
-    margin-left: 5rem;
-}
 
-.content_login .btn{
+.loge .btn{
     width: 280px;
     background-color: #442980;
     color: #fff;
-    margin-top: 1.5rem;
     border-radius: 5px;
     height: 35px;
 }
 
-.content_login .btn:hover{
+.loge .btn:hover{
     font-size: 17px;
     border:black solid 2px;
 }
 
-.inputs .account{
+.content-inputs .account{
     font-size: 15px;
     text-align: center;
     margin-top: 5px;
 }
 
-.inputs .account button {
+.content-inputs .account button {
     color: #442980;
 }
 
-.inputs .google{
+.content-inputs .google{
     width: 280px;
     height: 40px;
     border: none;
     border-radius: 5px;
 }
 
-.inputs .google svg{
+.content-inputs .google svg{
     position: absolute;
     margin-top: 3px;
     margin-left: 15px;
     color: black;
 }
 
-.type_account{
+.type-account{
     border-radius: 18px;
     border: #442980 solid 3px;
 }
 
-.type_account .title{
+.type-account .title{
     text-align: center;
     color: black;
     font-size: 22px;
     font-family: 'Maven Pro', sans-serif;
 }
 
-.type_account .options h2{
+.type-account .options h2{
     color: #442980;
     margin-left: 1rem;
     margin-top: 1rem;
 }
 
-.type_account .account_usuario:hover{
+.type-account .account-usuario:hover{
     font-weight: bold;
 
 }
 
-.type_account .account_psicologo:hover{
+.type-account .account-psicologo:hover{
     font-weight: bold;
 }
 
-.type_account .account_usuario h2{
+.type-account .account-usuario h2{
     margin-left: 2rem;
-} */
+}
 
+.type-account .account-psicologo h2{
+    margin-left: 1.5rem;
+}
+
+@media screen and (min-width: 300px) and (max-width: 498px){
+
+.loge {
+    width: 95vw;
+}
+
+.loge .title{
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    padding-top: 3rem;
+}
+
+.loge .logo{
+    width: 50vw;
+}
+
+.loge .content-inputs{
+    height: 40vh;
+    width: 73vw;
+    margin: auto;
+}
+
+
+.loge .content-inputs input{
+   width: 70vw;
+}
+
+.loge .btn{
+    width: 70vw;
+}
+
+.content-inputs .google{
+    width: 70vw;
+}
+
+.content-inputs .account{
+    font-size: 15px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+}
+
+
+@media screen and (min-width: 500px) and (max-width: 1000px) {
+    .loge {
+        height: 95vh;
+        width: 95vw;
+    }
+
+    .content-login{
+        display: none;
+    }
+
+    .content-login .logo{
+        width: 30vw;
+    }
+}
 
