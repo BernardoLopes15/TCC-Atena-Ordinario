@@ -174,7 +174,7 @@ const Apresentacao = () => (
         </section>
       </article>
     </main>
-    <Rodape color="bg-white" />
+    <Rodape estilo="bg-white" />
   </>
 )
 

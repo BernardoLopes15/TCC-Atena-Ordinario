@@ -23,7 +23,7 @@ const Rodape = (entrada) =>{
                             <h2 className="px-4 py-2">Blog</h2>
                             <h2 className="px-4 py-2">About</h2>
                         </div>
-                        <div className="md:w-16 lg:w-32 border-l-white border-l-4">
+                        <div className="md:w-16 lg:w-32 mt-16 md:mt-0 border-l-white border-l-4">
                             <FaInstagram className="ml-4 mb-4 text-4xl" color="white" />
                             <FaFacebook className="ml-4 mb-4 text-4xl" color="white" />
                             <FaYoutube className="ml-4 mb-4 text-4xl" color="white" />

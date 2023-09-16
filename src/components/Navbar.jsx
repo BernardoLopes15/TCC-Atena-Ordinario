@@ -30,13 +30,14 @@ const NavBar = () =>{
                             <img src={imgmulher} alt="user" />
                         </div>
                     </div>
-                    <div className={ menu ? `md:hidden` : `hidden` }>
+                    <div className={ menu ? `text-right` : `hidden` }>
                         <ul className="py-4">
                             <li className="py-2"><Link to="/home">Inicio</Link></li>
                             <li className="py-2"><Link to="/buscaPsicologo">Psicologos</Link></li>
                             <li className="py-2"><Link to="/consultas">Consulta</Link></li>
                             <li className="py-2"><Link to="/perfil">Perfil</Link></li>
                             <li className="py-2"><Link>opções</Link></li>
+                            <li className="py-2"><Link to="/">Sair</Link></li>
                         </ul>
                     </div>
                 </div>

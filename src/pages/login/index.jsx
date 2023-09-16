@@ -22,7 +22,7 @@ const Login = () =>{
                                     <input className="w-full px-2 py-1 border border-black my-2" type="text" />
                                     <p>Senha</p>
                                     <input className="w-full px-2 py-1 border border-black mt-2" type="password" />
-                                    <button className="w-full px-2 py-1 mt-4 border border-black bg-purple-500"><Link to="/home">Entrar</Link></button>
+                                    <Link to="/home"><button className="w-full px-2 py-1 mt-4 border border-black bg-purple-500">Entrar</button></Link>
                                     <h2 className="text-lg my-8">Não tem uma Conta ? <Link to="/cadastro" className="text-purple-500 font-bold">Crie uma</Link></h2>
                                     <button className="w-full px-2 py-1 mb-8 border border-black bg-gray-200">Entrar com o Google</button>
                                 </div>
