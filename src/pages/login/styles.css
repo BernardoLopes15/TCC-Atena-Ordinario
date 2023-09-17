@@ -6,7 +6,6 @@ main{
 }
 
 .content-login{
-    height: 95vh;
     background: rgb(188,173,210);
     background: linear-gradient(158deg, rgb(206, 186, 238) 2%, rgba(165,106,243,1) 32%, rgba(158,84,254,1) 55%, rgba(151,71,255,1) 82%);
 }
@@ -20,9 +19,9 @@ main{
 
 .loge {
     background-color: white;
-    height: 95vh;
+    height: 90vh;
     color: black;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 .loge .title{
@@ -32,6 +31,12 @@ main{
 
 .loge .logo{
     width: 15vw;
+    height: 30vh;
+}
+
+.inputs{
+    margin-top: -10%;
+    height: 100%;
 }
 
 .loge .content-inputs p{
@@ -82,8 +87,8 @@ main{
 }
 
 .type-account{
-    border-radius: 18px;
-    border: #442980 solid 3px;
+    border-radius: 25px;
+    border: #442980 solid 5px;
 }
 
 .type-account .title{
@@ -93,19 +98,25 @@ main{
     font-family: 'Maven Pro', sans-serif;
 }
 
-.type-account .options h2{
+.type-account .accounts h2{
     color: #442980;
     margin-left: 1rem;
-    margin-top: 1rem;
 }
 
 .type-account .account-usuario:hover{
     font-weight: bold;
+}
 
+.type-account .account-usuario img:hover{
+    border: #442980 solid 2px;
 }
 
 .type-account .account-psicologo:hover{
     font-weight: bold;
+}
+
+.type-account .account-psicologo img:hover{
+    border: #442980 solid 2px;
 }
 
 .type-account .account-usuario h2{
@@ -113,14 +124,24 @@ main{
 }
 
 .type-account .account-psicologo h2{
-    margin-left: 1.5rem;
+    margin-left: 1.3rem;
 }
 
-@media screen and (min-width: 300px) and (max-width: 498px){
-
-.loge {
-    width: 95vw;
+.exit{
+    position: absolute;
+    margin-left: 23rem;
+    margin-top: -0.5rem;
 }
+
+.exit:hover{
+    cursor: pointer;
+}
+
+@media screen and (min-width: 250px) and (max-width: 499px){
+
+    .loge {
+        height: 95vh;
+    }
 
 .loge .title{
     font-family: 'Playfair Display', serif;
@@ -147,31 +168,65 @@ main{
     width: 70vw;
 }
 
+
 .content-inputs .google{
     width: 70vw;
+    margin-top: -5rem;
 }
 
-.content-inputs .account{
-    font-size: 15px;
-    text-align: center;
-    margin-top: 5px;
+.content-inputs .google svg{
+    margin-top: 3px;
+    margin-left: 2%;
 }
 
+.type-account{
+    border: #442980 solid 3px;
+    width: 90vw;
+    height: 80vh;
+    background-color: #fff;
+}
+
+.type-account .accounts{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5rem;
+    margin-top: 3rem;
+}
+
+
+.type-account .account-psicologo h2{
+    margin-left: 1rem;
+}
+
+.type-account .account-psicologo{
+    margin-top: 3rem;
+}
+
+.exit{
+    position: absolute;
+    margin-left: 17.5rem;
+    margin-top: 0;
+}
+
+.square{
+    /* width: 30vw; */
+}
 }
 
 
 @media screen and (min-width: 500px) and (max-width: 1000px) {
-    .loge {
-        height: 95vh;
-        width: 95vw;
-    }
-
+  
     .content-login{
         display: none;
     }
 
     .content-login .logo{
-        width: 30vw;
+        width: 27vw;
     }
+
+    .type-account{
+        background-color: #fff;
+    }
+    
 }
 
