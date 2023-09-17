@@ -33,17 +33,13 @@ const Apresentacao = () => (
       <article>
         <section className="min-h-screen px-4 flex items-center justify-center inicio">
 
-          <div className="flex justify-center md:w-2/3  container">
+          <div className="flex justify-center md:w-2/3 content-inicio">
 
             <div className='enter'>
               <img src={logoAtena} alt="logo" className='logo' />
               <p className="text-white subtitle text-xl">Você é forte e será capaz de <br /> lutar e conquistar o seu espaço.</p>
               <a><Link to="/login"><button className="w-full md:w-60 py-2 my-4 text-purple-600 text-lg font-bold rounded-lg bg-white btn">Entrar</button></Link></a>
             </div>
-
-            {/* <div className="image">
-            <img src={arte} alt="arte" className='arte' />
-            </div> */}
 
           </div>
         </section>
@@ -179,122 +175,3 @@ const Apresentacao = () => (
 )
 
 export default Apresentacao;
-
-/*
-
-            <section className="min-h-screen px-4 flex items-center justify-center team" id='team'>
-              <div className="w-full md:w-2/3 flex justify-between py-6">
-                <div className="w-full">
-                  <div className="flex flex-col lg:flex-row md:justify-between">
-                    <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                    <img src={perfilAna} className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center" alt="perfil" />
-                      <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
-                        <div className="text-lg name">Ana Beatriz</div>
-                        <div>Designer e Marketing</div>
-                      </div>
-                    </div>
-                    <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                      <img src={perfilRian} className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center" alt="perfil" />
-                      <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
-                        <div className="text-lg name">Rian Vieria</div>
-                        <div>Desenvolvedor Full-Stack</div>
-                      </div>
-                    </div>
-                    <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                     <img src={perfilBernardo} className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center " alt="perfil" />
-                      <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
-                        <div className="text-lg name">Bernardo lopez</div>
-                        <div>Desenvolvedor Back-End</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col lg:flex-row lg:justify-around lg:mt-16">
-                    <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                     <img src={perfilBea} className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center " alt="perfil" />
-                      <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
-                        <div className="text-lg name">Beatriz Bialtas</div>
-                        <div>Designer</div>
-                      </div>
-                    </div>
-                    <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                     <img src={perfilWelly} className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center " alt="perfil" />
-                      <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
-                        <div className="text-lg name">Wellyngton de Souza</div>
-                        <div>Desenvolvedor Front-End</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-
-          </article>
-        </main>
-        <footer>
-          <div className="h-32 flex justify-center bg-purple-400">
-            <div className="md:w-2/3 flex items-center justify-between">
-              <div className="text-xl">Rodapé</div>
-              <div className="text-xl">Rodapé</div>
-
-            </div>
-          </div>
-        </footer>
-      {/*
-      <Nav>
-        <NavMenu>
-          <NavLink href="#project">
-          Projeto
-          </NavLink>
-          <NavLink href='#about'>
-          Quem Somos
-          </NavLink>
-          <NavLink href='#team'>
-          Equipe
-          </NavLink>
-        </NavMenu>
-      </Nav>
-    */
-
-      /*
-      <Div>
-        <CardEntrar>
-          <Logo src="../imgs/Logo.png"/>
-          <Subtitle className="subtitle">Você é forte e será capaz de <br/> lutar e conquistar o seu espaço.</Subtitle>
-          <Button><Link to="/login">Entrar</Link></Button> 
-        </CardEntrar>
-      </Div>
-
-      <Main id="project">
-        <CardAbout>
-          <Title className="title">Nosso objetivo</Title>
-          <TextContent>
-            A plataforma A.T.E.N.A foi criada visando zelar a saúde mental das mulheres vítimas da violência, por meio de orientações de profissionais da área da psicologia em consultas online totalmente gratuitas.
-          </TextContent>
-        </CardAbout>
-      </Main>
-
-      <Main className="main">
-        <CardProject>
-        <Title className="title">Cuidar da sáude mental</Title>
-        <TextContent>
-          A plataforma A.T.E.N.A foi criada visando zelar a saúde mental das mulheres vítimas da violência, por meio de orientações de profissionais da área da psicologia em consultas online totalmente gratuitas.
-        </TextContent>
-          *texto em criação
-        </CardProject>
-      </Main>
-
-      <Section id="about">
-        *texto sobre o tcc
-      </Section>
-
-      <Footer id="team">
-        *Equipe
-      </Footer>
-       
-    </>
-  )
-}
-
-export default Apresentacao;
-*/

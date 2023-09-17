@@ -45,16 +45,10 @@
 }
 
 .enter{
+  margin-top: -5rem;
   height: 60vh;
 }
 
-.container .imagem{
-  margin-left: 5rem;
-}
-
-.container .arte{
-  margin-top: 5rem;
-}
 
 .inicio .logo{
   margin-bottom: -7rem;
@@ -82,9 +76,11 @@
   margin-left: 3.5rem;
   width: 33vw; 
 }
+
 .saude{
   background-color: #fff;
 }
+
 .saude h3{
   font-family: 'Playfair Display', serif;
   font-size: 40px;
@@ -141,7 +137,8 @@
 
 .content-tcc .text{
   /* border: red solid 2px; */
-  height: 30vh;
+  height: 100%;
+  margin-top: 5%;
   margin-left: 1rem;
 
   color: #fff;
@@ -185,7 +182,7 @@
 }
 
 
- @media screen and (min-width: 300px) and (max-width: 750px) {
+ @media screen and (min-width: 250px) and (max-width: 750px) {
  
   .objetivo h3{
     font-size: 25px;
@@ -237,8 +234,7 @@
   }
 
   .tcc .title{
-    font-size: 30px;
-    margin-bottom: 0;
+    font-size: 25px;
   }
 
   .content-tcc .informations{
@@ -246,21 +242,20 @@
   }
 
   .content-tcc .logoEmpresa{
-    /* border: red solid 2px; */
     width: 90vw;
-    margin-left: 0.5rem;
-    border-radius: 10px;
+    margin: 0 auto;
     margin-top: -5rem;
   }
 
   .content-tcc .text{
     margin-top: 2rem;
-    height: 50vh;
-    width: 28rem;
+    margin-bottom: 3rem;
+    height: 100%;
+    width: 85vw;
   }
 
   .values{
-    margin-top: -2rem;
+    margin-top: 2rem;
   }
 
   .values .text_content{
@@ -278,17 +273,17 @@
 
  @media screen and (min-width: 1100px) {
 
-  .inicio .content-inicio{
+  /* .inicio .content-inicio{
     width: 35vw;
     height: 85vh; 
-    /* border: red solid 2px; */
+    border: red solid 2px;
     margin-right: 40rem;
-  }
+  } */
   
  }
 
  @media screen and (min-width: 1900px) {
-  .inicio .container{
+  .inicio .content-inicio{
     margin-top: 5rem;
   }
 
@@ -349,11 +344,11 @@
     height: 60vh;
   }
   
-  .container .imagem{
+  .content-inicio .imagem{
     margin-left: 5rem;
   }
   
-  .container .arte{
+  .content-inicio .arte{
     width: 28vw;
     margin-top: 5rem;
   }
