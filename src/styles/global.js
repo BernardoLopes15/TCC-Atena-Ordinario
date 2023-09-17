@@ -10,5 +10,6 @@ export const GlobalStyle = createGlobalStyle`
     body{
         color: #000;
         background-color: #fff;
+        font-family: 'Maven Pro', sans-serif;
     }
 `
