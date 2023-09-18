@@ -46,7 +46,7 @@ const CadastroCliente = () =>{
                          </div>
 
                          <div className="flex justify-center mt-16">
-                            <Link to="/login"><button className="py-2 text-white btn">Cadastrar</button></Link>
+                            <Link to="/cadastroImagem"><button className="py-2 text-white btn">Cadastrar</button></Link>
                         </div>
 
                         </form>

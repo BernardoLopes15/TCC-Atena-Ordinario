@@ -49,8 +49,17 @@
 }
 
 .exiit{
-    width: 20vw;
     position: absolute;
+    margin-top: -1rem;
+    margin-left: -1rem;
+}
+
+.content-formImage input{
+    margin-top: 5rem;
+    height: 25vh;
+    text-decoration: none;
+    background-color: #281161;
+    border: red solid 1px;
 }
 
 
@@ -69,7 +78,7 @@
 
     .content-cadastro .title{
         font-size: 30px;
-        margin-top: 2rem;
+        margin-top: 4rem;
     }
     
     .content-form input{
@@ -92,6 +101,12 @@
         width: 50vw;
         margin-top: 16rem;
 
+    }
+
+    .exiit{
+        position: absolute;
+        margin-top: 1rem;
+        margin-left: 1rem;
     }
 
 
