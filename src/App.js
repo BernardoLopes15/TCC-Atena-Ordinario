@@ -12,6 +12,8 @@ import Teste from "./pages/testePHP";
 import InspecionarPsicologo from "./pages/inspecionarPsicologo";
 import AgendarConsulta from "./pages/agendarConsulta";
 import CadastrarImagem from "./pages/cadastro/cliente/imagePerfil"
+import CadastrarImagemPsicologo from "./pages/cadastro/psicologo/imagePerfil"
+import CadastrarBioPsicologo from "./pages/cadastro/psicologo/bioPsicologo"
 
 const App = () =>{
   return (
@@ -29,6 +31,8 @@ const App = () =>{
       <Route path="/psicologo" element={<InspecionarPsicologo />} />
       <Route path="/agendarConsulta" element={<AgendarConsulta />} />
       <Route path="/cadastroImagem" element={<CadastrarImagem/>}></Route>
+      <Route path="/imagemPsicologo" element={<CadastrarImagemPsicologo/>} />
+      <Route path="/bioPsicologo" element={<CadastrarBioPsicologo/>} />
     </Routes>
   </BrowserRouter>
   );
