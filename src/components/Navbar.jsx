@@ -20,9 +20,9 @@ const NavBar = () =>{
                             <img className="h-8" src={atenaText} alt="atena-text" />
                             <div className="hidden md:flex ml-8">
                                 <h2 className="ml-8"><Link to="/home">Inicio</Link></h2>
-                                <h2 className="ml-8"><Link to="/buscaPsicologo">Psicologos</Link></h2>
-                                <h2 className="ml-8"><Link to="/consultas">Consulta</Link></h2>
-                                <h2 className="ml-8"><Link to="/perfil">Perfil</Link></h2>
+                                <h2 className="ml-8"><Link to="/buscaPsicologo">Psicólogos</Link></h2>
+                                <h2 className="ml-8"><Link to="/consultas">Consultas</Link></h2>
+                                <h2 className="ml-8"><Link to="/perfilCliente">Perfil</Link></h2>
                             </div>
                         </div>
                         <div className="flex items-center cursor-pointer" onClick={abreMenu}>
@@ -33,9 +33,9 @@ const NavBar = () =>{
                     <div className={ menu ? `text-right` : `hidden` }>
                         <ul className="py-4">
                             <li className="py-2"><Link to="/home">Inicio</Link></li>
-                            <li className="py-2"><Link to="/buscaPsicologo">Psicologos</Link></li>
-                            <li className="py-2"><Link to="/consultas">Consulta</Link></li>
-                            <li className="py-2"><Link to="/perfil">Perfil</Link></li>
+                            <li className="py-2"><Link to="/buscaPsicologo">Psicólogos</Link></li>
+                            <li className="py-2"><Link to="/consultas">Consultas</Link></li>
+                            <li className="py-2"><Link to="/perfilCliente">Perfil</Link></li>
                             <li className="py-2"><Link>opções</Link></li>
                             <li className="py-2"><Link to="/">Sair</Link></li>
                         </ul>

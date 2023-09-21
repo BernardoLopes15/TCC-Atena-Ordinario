@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-import '../cliente/styles.css'
 
 const CadastroImagemCliente = () =>{
     return(

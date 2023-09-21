@@ -4,7 +4,8 @@ import Apresentacao from "./pages/presentation/index";
 import Login from "./pages/login/index";
 import Home from "./pages/home/index";
 import BuscarPsicologo from "./pages/search_psychologist/index";
-import Perfil from "./pages/profile";
+import PerfilCliente from "./pages/profileCliente/index";
+import PerfilPsicologo from "./pages/profilePsicologo/index"
 import CadastroCliente from "./pages/cadastro/cliente";
 import CadastroPsicologo from "./pages/cadastro/psicologo";
 import Consulta from "./pages/consulta";
@@ -23,7 +24,8 @@ const App = () =>{
       <Route path="/login" element={<Login />}/>
       <Route path="/home" element={<Home />}/>
       <Route path="/buscaPsicologo" element={<BuscarPsicologo />}/>
-      <Route path="/perfil" element={<Perfil />}/>
+      <Route path="/perfilCliente" element={<PerfilCliente />}/>
+      <Route path="/perfilPsicologo" element={<PerfilPsicologo />}/>
       <Route path="/cadastro" element={<CadastroCliente />}/>
       <Route path="/cadastroPsicologo" element={<CadastroPsicologo />}/>
       <Route path="/consultas" element={<Consulta />}/>

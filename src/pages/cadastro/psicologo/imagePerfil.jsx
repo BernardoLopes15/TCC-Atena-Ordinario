@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import '../psicologo/styles.css'
+
 
 const CadastroImagemPsicologo = () =>{
     return(
