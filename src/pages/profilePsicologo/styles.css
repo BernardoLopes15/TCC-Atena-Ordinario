@@ -7,13 +7,13 @@ body{
     background-color: #F0EAFF;
 }
 
-.perfilCliente .content-perfilCliente{
+.perfilPsicologo .content-perfilPsicologo{
     height: 100%;
     margin-top: 4rem;
     width: 70vw;
 }
 
-.content-perfilCliente .content-superior{
+.content-perfilPsicologo .content-superior{
     background-color: #A484E8;
     height: 28vh;
     border-top-left-radius: 20px;
@@ -30,12 +30,12 @@ body{
     height: 58vh;
 }
 
-.content-superior .name{
+ .content-superior .name{
     font-family: 'Playfair Display', serif;
     color: #fff;
     margin-bottom: 0.5rem;
-    font-size: 50px;
-    margin-right: 6rem;
+    margin-left: 3rem;
+    font-size: 40px;
 }
 
 .dados .title{
@@ -54,7 +54,7 @@ body{
     font-size: 18px;
 }
 
-.content-perfilCliente .text-right{
+.content-perfilPsicologo .text-right{
     width: 21vw;
     display: flex;
     justify-content: center;
@@ -68,12 +68,12 @@ body{
     border-radius: 10px;
 }
 
-.content-perfilCliente .dividir{
+.content-perfilPsicologo .dividir{
     display: flex;
     justify-content: space-around;
 }
 
-.content-perfilCliente .btn:hover{
+.content-perfilPsicologo .btn:hover{
     border: none;
     background-color: rgb(216, 210, 210);
     color: yellow;
