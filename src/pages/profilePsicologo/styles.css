@@ -34,7 +34,6 @@ body{
     font-family: 'Playfair Display', serif;
     color: #fff;
     margin-bottom: 0.5rem;
-    margin-left: 3rem;
     font-size: 40px;
 }
 
@@ -77,4 +76,146 @@ body{
     border: none;
     background-color: rgb(216, 210, 210);
     color: yellow;
+}
+
+@media screen and (min-width: 250px) and (max-width: 499px) {
+   
+    .perfilPsicologo .content-perfilPsicologo{
+        margin-top: 0;
+        width: 100%;
+    }
+
+    .perfilPsicologo .content-perfilPsicologo{
+        height: 500px;
+    }
+
+    .perfilPsicologo  .content-perfilPsicologo .content-superior .name{
+        margin-bottom: 0.5rem;
+        font-size: 25px;
+        margin-right: 0rem;
+        margin-bottom: 0;
+        margin-left: 7rem;
+        width: 49vw;
+    }
+
+    .perfilPsicologo .content-perfilPsicologo .imagePerfil{
+        width: 25vw;
+        height: 25vw;
+    }
+
+    .perfilPsicologo .content-perfilPsicologo .content-superior{
+        height: 20vh;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .content-inferior {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        height: 100%;
+    }
+
+    .perfilPsicologo .content-perfilPsicologo .dividir{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .perfilPsicologo .content-perfilPsicologo .text-right .btn{
+        background-color: rgb(216, 210, 210);
+        width: 60vw;
+        border-radius: 10px;
+        margin-top: 10rem;
+    }
+
+    .perfilPsicologo  .content-perfilPsicologo .dados .title{
+        font-size: 32px;
+    }
+
+    .dados{
+        margin-top: 1rem;
+    }
+
+    .perfilPsicologo .content-perfilPsicologo .dados li{
+        margin-top: 1rem;
+        font-size: 20px;
+    }
+
+    .perfilPsicologo .content-perfilPsicologo .text-right{
+        height: 8vh;
+        width: 100%;
+        margin-top: 7rem;
+        padding-bottom: 5rem;
+    }
+}
+
+
+@media screen and (min-width: 500px) and (max-width: 750px) {
+   
+    .perfilPsicologo .content-perfilPsicologo{
+        margin-top: 0;
+        width: 100%;
+    }
+
+    .perfilPsicologo{
+        height: 500px;
+    }
+
+    .content-perfilPsicologo .content-superior .name{
+        margin-bottom: 0.5rem;
+        font-size: 24px;
+        margin-right: 0rem;
+        margin-bottom: 0;
+        margin-left: 10rem;
+    }
+
+    .content-perfilPsicologo .imagePerfil{
+        width: 30vw;
+        height: 30vw;
+    }
+
+    .content-perfilPsicologo .content-superior{
+        height: 20vh;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .content-inferior {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        height: 100%;
+    }
+
+    .content-perfilPsicologo .dividir{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content-perfilPsicologo .text-right .btn{
+        background-color: rgb(216, 210, 210);
+        width: 60vw;
+        border-radius: 10px;
+        margin-top: 10rem;
+    }
+
+    .content-perfilPsicologo .dados .title{
+        font-size: 32px;
+    }
+
+    .dados{
+        margin-top: 1rem;
+    }
+
+   .content-perfilPsicologo .dados li{
+        margin-top: 1rem;
+        font-size: 20px;
+    }
+
+    .content-perfilPsicologo .text-right{
+        height: 8vh;
+        width: 100%;
+        margin-top: 7rem;
+        padding-bottom: 5rem;
+    }
 }

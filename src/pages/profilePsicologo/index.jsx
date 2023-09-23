@@ -29,7 +29,7 @@ const PerfilPsicologo = () =>{
                               <div className="h-96 bg-white px-8 content-inferior">
 
                                 <div className="h-0 flex items-center mb-16">
-                                    <div className="w-32 h-32 flex-0 rounded-full bg-purple-200 imagePerfil">
+                                    <div className="w-32 h-32 flex-0 rounded-full imagePerfil">
                                        <img src={ImagePsicologo} alt="foto de perfil"></img>
                                     </div>
                                 </div>

@@ -30,12 +30,12 @@ body{
     height: 58vh;
 }
 
-.content-superior .name{
+.content-perfilCliente .content-superior .name{
     font-family: 'Playfair Display', serif;
     color: #fff;
     margin-bottom: 0.5rem;
     font-size: 50px;
-    margin-right: 6rem;
+    margin-right: 50px;
 }
 
 .dados .title{
@@ -77,4 +77,144 @@ body{
     border: none;
     background-color: rgb(216, 210, 210);
     color: yellow;
+}
+
+@media screen and (min-width: 250px) and (max-width: 499px) {
+   
+    .perfilCliente .content-perfilCliente{
+        margin-top: 0;
+        width: 100%;
+    }
+
+    .perfilCliente{
+        height: 500px;
+    }
+
+    .content-perfilCliente .content-superior .name{
+        margin-bottom: 0.5rem;
+        font-size: 24px;
+        margin-right: 0rem;
+        margin-bottom: 0;
+        margin-left: 5rem;
+    }
+
+    .content-perfilCliente .imagePerfil{
+        width: 25vw;
+        height: 25vw;
+    }
+
+    .content-perfilCliente .content-superior{
+        height: 20vh;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .content-inferior {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        height: 100%;
+    }
+
+    .content-perfilCliente .dividir{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content-perfilCliente .text-right .btn{
+        background-color: rgb(216, 210, 210);
+        width: 60vw;
+        border-radius: 10px;
+        margin-top: 10rem;
+    }
+
+    .content-perfilCliente .dados .title{
+        font-size: 32px;
+    }
+
+    .dados{
+        margin-top: 1rem;
+    }
+
+   .content-perfilCliente .dados li{
+        margin-top: 1rem;
+        font-size: 20px;
+    }
+
+    .content-perfilCliente .text-right{
+        height: 8vh;
+        width: 100%;
+        margin-top: 7rem;
+        padding-bottom: 5rem;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 700px) {
+   
+    .perfilCliente .content-perfilCliente{
+        margin-top: 0;
+        width: 100%;
+    }
+
+    .perfilCliente{
+        height: 500px;
+    }
+
+    .content-perfilCliente .content-superior .name{
+        margin-bottom: 0.5rem;
+        font-size: 24px;
+        margin-right: 0rem;
+        margin-bottom: 0;
+        margin-left: 6rem;
+    }
+
+    .content-perfilCliente .imagePerfil{
+        width: 30vw;
+        height: 30vw;
+    }
+
+    .content-perfilCliente .content-superior{
+        height: 20vh;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .content-inferior {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        height: 100%;
+    }
+
+    .content-perfilCliente .dividir{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content-perfilCliente .text-right .btn{
+        background-color: rgb(216, 210, 210);
+        width: 60vw;
+        border-radius: 10px;
+        margin-top: 10rem;
+    }
+
+    .content-perfilCliente .dados .title{
+        font-size: 32px;
+    }
+
+    .dados{
+        margin-top: 1rem;
+    }
+
+   .content-perfilCliente .dados li{
+        margin-top: 1rem;
+        font-size: 20px;
+    }
+
+    .content-perfilCliente .text-right{
+        height: 8vh;
+        width: 100%;
+        margin-top: 7rem;
+        padding-bottom: 5rem;
+    }
 }
