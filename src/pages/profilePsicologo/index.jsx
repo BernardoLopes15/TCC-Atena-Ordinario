@@ -34,12 +34,14 @@ const PerfilPsicologo = () =>{
                                     </div>
                                 </div>
 
-                                <div className="dividir">
+                                
 
-                                <div className="py-4 flex justify-between dados">
-
-                                    <div>
-                                        <h2 className="title">Dados Pessoais</h2>
+                                <div className="py-4 flex dados">
+                                    
+                                   <h2 className="titlee">Dados Pessoais</h2>
+                                   
+                                  <div className="dividir">
+                                    <div className="content-dados">
                                        <ul>
                                         <li> <label>E-mail:</label> {userEmail}</li>
                                         <li> <label>CPF:</label> {userCPF}</li>
@@ -47,13 +49,20 @@ const PerfilPsicologo = () =>{
                                         <li> <label>Data de nascimento:</label>  {userDate}</li>
                                        </ul>
                                     </div>
-                                </div>
 
-                                <div className="text-right">
-                                <Link><button type="button" className="py-2 btn">Editar Perfil</button></Link>
+                                <div className="apresentation">
+                                    <div className="content-apresentation">
+                                        <h1 className="title">Minha apresentação</h1>
+                                        <p>Sou formada em psicologia pela USP e conduzo palestras sobre a saúde mental feminina, minha atuação inclui a realização de avaliações psicológicas, elaboração de planos de tratamento e a implementação de intervenções adequadas.</p>
+                                    </div>
                                 </div>
+                               </div>
+                           
+                              <div className="center">
+                               <Link><button type="button" className="py-2 btn">Editar Perfil</button></Link>
+                              </div>
 
-                                </div>
+                            </div>
 
                             </div>
                         </div>

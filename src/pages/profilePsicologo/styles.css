@@ -24,10 +24,10 @@ body{
     padding-bottom: 1rem;
 }
 
-.content-inferior {
+.content-perfilPsicologo .content-inferior {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    height: 58vh;
+    height: 60vh;
 }
 
  .content-superior .name{
@@ -37,12 +37,18 @@ body{
     font-size: 40px;
 }
 
-.dados .title{
+.content-perfilPsicologo .dados .titlee{
     font-family: 'Playfair Display', serif;
     color: #281161;
-    font-size: 28px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    font-size: 30px;
+    margin-top: -0.5rem;
+    margin-left: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.dados{
+    display: flex;
+    flex-direction: column;
 }
 
 .dados label{
@@ -51,17 +57,47 @@ body{
 
 .dados li{
     font-size: 18px;
+    padding-top: 5px;
 }
 
-.content-perfilPsicologo .text-right{
-    width: 21vw;
+.dados .content-dados{
+    width: 28vw;
+}
+
+.content-perfilPsicologo .apresentation{
+    margin-top: 0;
+    padding-right: -10rem;
+}
+
+.content-perfilPsicologo .apresentation .content-apresentation .title{
+    color: black;
+    font-size: 18px;
+    font-family: 'Maven Pro', sans-serif;
+    text-align: left;
+    font-weight: bold;
+    margin-top: -0.9rem;
+    margin-bottom: 0;
+    margin-left: 2rem;
+}
+
+.apresentation .content-apresentation p{
+    text-align: left;
+    width: 30vw;
+    margin-left: 2rem;
+}
+
+.center{
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    margin-bottom: 1rem;
+    align-items: center;
+    margin-top: 2.5rem;
 }
 
-.text-right .btn{
+.dados .content-dados{
+    margin-left: 1.5rem;
+}
+
+.center .btn{
     background-color: rgb(216, 210, 210);
     width: 20vw;
     border-radius: 10px;
@@ -69,7 +105,6 @@ body{
 
 .content-perfilPsicologo .dividir{
     display: flex;
-    justify-content: space-around;
 }
 
 .content-perfilPsicologo .btn:hover{
@@ -83,10 +118,7 @@ body{
     .perfilPsicologo .content-perfilPsicologo{
         margin-top: 0;
         width: 100%;
-    }
-
-    .perfilPsicologo .content-perfilPsicologo{
-        height: 500px;
+        height: 115vh;
     }
 
     .perfilPsicologo  .content-perfilPsicologo .content-superior .name{
@@ -112,7 +144,6 @@ body{
     .content-inferior {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
-        height: 100%;
     }
 
     .perfilPsicologo .content-perfilPsicologo .dividir{
@@ -121,11 +152,19 @@ body{
         align-items: center;
     }
 
-    .perfilPsicologo .content-perfilPsicologo .text-right .btn{
+    .content-perfilPsicologo .center{
+        height: 10vh;
+    }
+
+    .perfilPsicologo .content-perfilPsicologo .center .btn{
         background-color: rgb(216, 210, 210);
         width: 60vw;
         border-radius: 10px;
-        margin-top: 10rem;
+    }
+
+    .dados .content-dados{
+        width: 80vw;
+        margin-left: 0;
     }
 
     .perfilPsicologo  .content-perfilPsicologo .dados .title{
@@ -141,12 +180,31 @@ body{
         font-size: 20px;
     }
 
-    .perfilPsicologo .content-perfilPsicologo .text-right{
+    .perfilPsicologo .content-perfilPsicologo .apresentation{
         height: 8vh;
         width: 100%;
         margin-top: 7rem;
         padding-bottom: 5rem;
     }
+
+    .content-perfilPsicologo .apresentation .content-apresentation .title{
+        font-size: 20px;
+        margin-top: -5rem;
+        margin-bottom: 0;
+        margin-left: 0;
+    }
+    
+    .apresentation .content-apresentation p{
+        text-align: left;
+        width:  80vw;
+        margin-left: 0;
+    }
+
+    .apresentation .content-apresentation{
+        margin-left: 0.6rem;
+    }
+
+    
 }
 
 
@@ -192,7 +250,7 @@ body{
         align-items: center;
     }
 
-    .content-perfilPsicologo .text-right .btn{
+    .content-perfilPsicologo .apresentation .btn{
         background-color: rgb(216, 210, 210);
         width: 60vw;
         border-radius: 10px;
@@ -212,7 +270,7 @@ body{
         font-size: 20px;
     }
 
-    .content-perfilPsicologo .text-right{
+    .content-perfilPsicologo .apresentation{
         height: 8vh;
         width: 100%;
         margin-top: 7rem;
