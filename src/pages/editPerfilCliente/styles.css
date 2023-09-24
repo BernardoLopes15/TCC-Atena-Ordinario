@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500&display=swap');
+
+.content-editCadastro{
+    height: 95vh;
+    width: 65vw;
+    border-radius: 30px;
+}
+
+.content-editCadastro .title{
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    color: #281161;
+    margin-top: 1rem;
+}
+
+.content-editCadastro .content-form input{
+  border-radius: 5px;
+  border: black solid 1px;
+}
+
+.content-editCadastro .content-form #nome{
+   width: 57.5vw;
+}
+
+.content-editCadastro .content-form h2{
+    color:#281161;
+}
+
+.content-editCadastro .content-form .content2{
+    margin-top: 6rem;
+    height: 100%;
+    /* border: red solid 2px; */
+}
+
+.content-editCadastro .form .btn{
+    margin-top: -2rem;
+    background-color: #281161;
+    width: 23vw;
+    border-radius: 5px;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.content-editCadastro .btn:hover{
+    background-color: #fff;
+    border: #281161 solid 2px;
+    color: #281161;
+}
+
+.content-editCadastro .exiit{
+    position: absolute;
+    margin-top: -1rem;
+    margin-left: -1rem;
+}
+
+
+@media screen and (min-width: 250px) and (max-width: 650px){
+
+    .content-editCadastro{
+        height: 100%;
+        width: 100%;
+    }
+
+    .content-editCadastro .content-form{
+        flex-wrap: nowrap;
+        flex-direction: column;
+        margin-left: 1rem;
+    }
+
+    .content-editCadastro .title{
+        font-size: 30px;
+        margin-top: 4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .content-editCadastro .content-form input{
+      width: 75vw;
+    }
+    
+    .content-editCadastro .content-form #nome{
+       width: 75vw;
+    }
+
+    .content-editCadastro .content-form .content2{
+        height: 40vh;
+        margin-top: 24rem;
+        margin-left: 0;
+        position: absolute;
+    }
+    
+    .content-editCadastro .form .btn{
+        width: 50vw;
+        margin-top: 16rem;
+        margin-bottom: 2rem;
+    }
+
+    .content-editCadastro .exiit{
+        position: absolute;
+        margin-top: 1.5rem;
+        margin-left: 1rem;
+    }
+
+}
+
+@media screen and (min-width: 651px) and (max-width: 750px){
+    .content-editCadastro{
+        height: 100vh;
+    }
+}
+

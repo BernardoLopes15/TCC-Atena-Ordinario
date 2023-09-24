@@ -9,6 +9,8 @@ import PerfilCliente from "./pages/profileCliente/index";
 import PerfilPsicologo from "./pages/profilePsicologo/index"
 import CadastroCliente from "./pages/cadastro/cliente";
 import CadastroPsicologo from "./pages/cadastro/psicologo";
+import EditCadastroCliente from "./pages/editPerfilCliente/index";
+import EdiiCadastroPsicologo from "./pages/editPerfilPsicologo/index";
 import Consulta from "./pages/consulta";
 import Teste from "./pages/testePHP";
 import InspecionarPsicologo from "./pages/inspecionarPsicologo";
@@ -30,6 +32,8 @@ const App = () =>{
       <Route path="/perfilPsicologo" element={<PerfilPsicologo />}/>
       <Route path="/cadastro" element={<CadastroCliente />}/>
       <Route path="/cadastroPsicologo" element={<CadastroPsicologo />}/>
+      <Route path="/editCliente" element={<EditCadastroCliente/>}/>
+      <Route path="/editPsicologo" element={<EdiiCadastroPsicologo/>}/>
       <Route path="/consultas" element={<Consulta />}/>
       <Route path="/testePHP" element={<Teste />}/>
       <Route path="/psicologo" element={<InspecionarPsicologo />} />
