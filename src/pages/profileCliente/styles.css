@@ -79,6 +79,7 @@ body{
     color: yellow;
 }
 
+
 @media screen and (min-width: 250px) and (max-width: 499px) {
    
     .perfilCliente .content-perfilCliente{

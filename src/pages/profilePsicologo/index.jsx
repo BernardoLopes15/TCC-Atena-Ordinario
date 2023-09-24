@@ -59,7 +59,7 @@ const PerfilPsicologo = () =>{
                                </div>
                            
                               <div className="center">
-                               <Link><button type="button" className="py-2 btn">Editar Perfil</button></Link>
+                               <Link to="/editPsicologo"><button type="button" className="py-2 btn">Editar Perfil</button></Link>
                               </div>
 
                             </div>

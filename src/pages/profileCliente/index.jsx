@@ -30,7 +30,7 @@ const PerfilCliente = () =>{
 
                                 <div className="h-0 flex items-center mb-16">
                                     <div className="w-32 h-32 flex-0 rounded-full  imagePerfil">
-                                       <img src={ImageCliente} alt="foto de perfil"></img>
+                                       <img src={ImageCliente} alt="foto de perfil" ></img>
                                     </div>
                                 </div>
 

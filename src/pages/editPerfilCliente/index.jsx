@@ -50,7 +50,7 @@ const EditCadastroCliente = () =>{
                          </div>
 
                          <div className="flex justify-center mt-16">
-                            <Link to="/perfilCliente"><button className="py-2 text-white btn">Editar</button></Link>
+                            <Link to="/perfilCliente"><button  className="py-2 text-white btn">Editar</button></Link>
                         </div>
 
                         </form>
