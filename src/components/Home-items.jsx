@@ -3,7 +3,7 @@ import imgconsultas from "../assets/consultas_agendadas.svg";
 import imgpsicologo from "../assets/consultar_Psicologo.svg";
 import imgPerfil from "../assets/mellhorarPerfil.svg";
 
-const userName = "Fernanda";
+const userName = "Júlia";
 
 const HomeItems = () =>{
     return(
