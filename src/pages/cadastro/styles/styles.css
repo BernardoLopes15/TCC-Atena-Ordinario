@@ -132,6 +132,7 @@
     margin-top: 4rem;
     height: 30vh;
     resize: none;
+    border-radius: 12px;
   }
 
   .content-formBio{

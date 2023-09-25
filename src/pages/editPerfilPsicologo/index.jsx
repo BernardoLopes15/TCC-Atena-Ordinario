@@ -49,7 +49,7 @@ const EditCadastroPsicologo = () =>{
                          </div>
 
                          <div className="flex justify-center mt-16">
-                            <Link to="/perfilPsicologo"><button className="py-2 text-white btn">Cadastrar</button></Link>
+                            <Link to="/editBio"><button className="py-2 text-white btn">Editar</button></Link>
                         </div>
 
                         </form>

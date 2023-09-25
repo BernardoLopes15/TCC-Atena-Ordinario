@@ -15,9 +15,10 @@ import Consulta from "./pages/consulta";
 import Teste from "./pages/testePHP";
 import InspecionarPsicologo from "./pages/inspecionarPsicologo";
 import AgendarConsulta from "./pages/agendarConsulta";
-import CadastrarImagem from "./pages/cadastro/cliente/imagePerfil"
-import CadastrarImagemPsicologo from "./pages/cadastro/psicologo/imagePerfil"
-import CadastrarBioPsicologo from "./pages/cadastro/psicologo/bioPsicologo"
+import CadastrarImagem from "./pages/cadastro/cliente/imagePerfil";
+import CadastrarImagemPsicologo from "./pages/cadastro/psicologo/imagePerfil";
+import CadastrarBioPsicologo from "./pages/cadastro/psicologo/bioPsicologo";
+import EditBio from "./pages/editPerfilPsicologo/editBio";
 
 const App = () =>{
   return (
@@ -34,6 +35,7 @@ const App = () =>{
       <Route path="/cadastroPsicologo" element={<CadastroPsicologo />}/>
       <Route path="/editCliente" element={<EditCadastroCliente/>}/>
       <Route path="/editPsicologo" element={<EdiiCadastroPsicologo/>}/>
+      <Route path="/editBio" element={<EditBio/>}/>
       <Route path="/consultas" element={<Consulta />}/>
       <Route path="/testePHP" element={<Teste />}/>
       <Route path="/psicologo" element={<InspecionarPsicologo />} />
