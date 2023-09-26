@@ -38,7 +38,7 @@ const Apresentacao = () => (
             <div className='enter'>
               <img src={logoAtena} alt="logo" className='logo' />
               <p className="text-white subtitle text-xl">Você é forte e será capaz de <br /> lutar e conquistar o seu espaço.</p>
-              <a><Link to="/login"><button className="w-full md:w-60 py-2 my-4 text-purple-600 text-lg font-bold rounded-lg bg-white btn">Entrar</button></Link></a>
+              <Link to="/login"><button className="w-full md:w-60 py-2 my-4 text-purple-600 text-lg font-bold rounded-lg bg-white btn">Entrar</button></Link>
             </div>
 
           </div>
@@ -128,21 +128,21 @@ const Apresentacao = () => (
             <div className="w-full">
               <div className="flex flex-col lg:flex-row md:justify-between">
                 <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img src={perfilAna}/></div>
+                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img alt='membros' src={perfilAna}/></div>
                   <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
                         <div className="text-lg name">Ana Beatriz</div>
                         <div>Designer e Marketing</div>
                       </div>
                 </div>
                 <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img src={perfilRian}/></div>
+                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img alt='membros' src={perfilRian}/></div>
                   <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
                         <div className="text-lg name">Rian Vieira</div>
                         <div>Desenvolvedor Full-Stack</div>
                       </div>
                 </div>
                 <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img src={perfilBernardo}/></div>
+                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img alt='membros' src={perfilBernardo}/></div>
                   <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
                         <div className="text-lg name">Bernardo lopez</div>
                         <div>Desenvolvedor Back-End</div>
@@ -151,14 +151,14 @@ const Apresentacao = () => (
               </div>
               <div className="flex flex-col lg:flex-row lg:justify-around lg:mt-16">
                 <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img src={perfilBea}/></div>
+                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img alt='membros' src={perfilBea}/></div>
                   <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
                         <div className="text-lg name">Beatriz Bialtas</div>
                         <div>Designer</div>
                       </div>
                 </div>
                 <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img src={perfilWelly}/></div>
+                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img alt='membros' src={perfilWelly}/></div>
                   <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
                         <div className="text-lg name">Wellyngton de Souza</div>
                         <div>Desenvolvedor Front-End</div>

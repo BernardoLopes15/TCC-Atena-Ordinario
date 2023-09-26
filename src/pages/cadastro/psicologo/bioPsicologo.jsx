@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-
 const CadastroBioPsicologo = () =>{
     return(
         <main>

@@ -28,8 +28,8 @@ const HomeItems = () =>{
                     <img className="w-32" src={imgpsicologo} alt="psicologo_ola" />
                     <div className="w-1 mx-16 border-l border-black"></div>
                     <div className="ml-4 flex justify-center flex-col">
-                        <h2 className="text-xl"><a href="./busca_psicologo.html">Solicitações de Consultas</a></h2>
-                        <h3 className="font-light">Acesse aqui suas solicitações pendentes</h3>
+                        <h2 className="text-xl"><a>Solicitações de Consultas</a></h2>
+                        <h3 className="font-light">Acesse aqui suas solicitações pendentes e possiveis clientes para atendimento</h3>
                     </div>
                 </div>
                 <div className="p-8 flex flex-wrap rounded-lg md:border-l-8 md:border-l-purple-500 my-8 bg-white">

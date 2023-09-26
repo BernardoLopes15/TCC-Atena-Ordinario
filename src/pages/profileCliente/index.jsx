@@ -1,5 +1,58 @@
 import NavBar from "../../components/Navbar";
 import Rodape from "../../components/Rodape";
+import { Link } from "react-router-dom";
+
+import imgusuario from "../../assets/imgs/userExemplo.png";
+
+const PerfilCliente = () =>{
+    return(
+        <>
+            <NavBar />
+            <main>
+                <article>
+                    <div className="min-h-screen lg:flex items-center justify-center bg-white lg:bg-purple-100">
+                        <div className="lg:w-6/12 pt-16 lg:px-4">
+                            <div className="h-64 lg:rounded-t-lg bg-purple-800"></div>
+                            <div className="lg:rounded-b-lg bg-white px-8">
+                                <div className="h-0 flex items-center mb-16">
+                                    <img className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={imgusuario} alt="usuario" />
+                                </div>
+                                <h2 className="text-xl pt-4">Júlia Souza Ferraz</h2>
+                                <div className="py-4 flex justify-between">
+                                    <div className="grid grid-cols-2">
+                                        <p>Gmail</p>
+                                        <input type="text" value="Julia.sousza95@gmail" />
+                                        <p>CPF</p>
+                                        <input type="text" value="560885963-41" />
+                                        <p>Data Nascimento</p>
+                                        <input type="text" value="14/05/1995" />
+                                        <p>Número</p>
+                                        <input type="text" value="(13) 2826-1764" />
+                                    </div>
+                                    <div className="text-right">
+                                        <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 1</p></a>
+                                        <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 2</p></a>
+                                        <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 3</p></a>
+                                        <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 4</p></a>
+                                    </div>
+                                </div>
+                                <div className="py-12 flex justify-center">
+                                    <Link to="/editCliente"><button className="w-96 px-4 py-2 hover:bg-purple-400 hover:text-white rounded-lg border-2 border-purple-400">Editar</button></Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </main>
+            <Rodape estilo="lg:bg-purple-100" />
+        </>
+    )
+}
+
+export default PerfilCliente;
+/*
+import NavBar from "../../components/Navbar";
+import Rodape from "../../components/Rodape";
 import ImageCliente from "../../assets/imgs/userExemplo.png"
 import { Link } from "react-router-dom";
 
@@ -66,3 +119,4 @@ const PerfilCliente = () =>{
 }
 
 export default PerfilCliente;
+*/

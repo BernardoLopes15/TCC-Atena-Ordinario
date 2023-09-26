@@ -19,6 +19,7 @@ import CadastrarImagem from "./pages/cadastro/cliente/imagePerfil";
 import CadastrarImagemPsicologo from "./pages/cadastro/psicologo/imagePerfil";
 import CadastrarBioPsicologo from "./pages/cadastro/psicologo/bioPsicologo";
 import EditBio from "./pages/editPerfilPsicologo/editBio";
+import Calendario from "./pages/calendario";
 
 const App = () =>{
   return (
@@ -26,22 +27,26 @@ const App = () =>{
     <Routes>
       <Route path="/" exact element={<Apresentacao />}/>
       <Route path="/login" element={<Login />}/>
-      <Route path="/homeCliente" element={<HomeCliente />}/>
-      <Route path="/homePsicologo" element={<HomePsicologo />}/>
-      <Route path="/buscaPsicologo" element={<BuscarPsicologo />}/>
-      <Route path="/perfilCliente" element={<PerfilCliente />}/>
-      <Route path="/perfilPsicologo" element={<PerfilPsicologo />}/>
       <Route path="/cadastro" element={<CadastroCliente />}/>
       <Route path="/cadastroPsicologo" element={<CadastroPsicologo />}/>
+
+      { /* Tela Cliente */}
+      <Route path="/homeCliente" element={<HomeCliente />}/>
+      <Route path="/perfilCliente" element={<PerfilCliente />}/>
       <Route path="/editCliente" element={<EditCadastroCliente/>}/>
-      <Route path="/editPsicologo" element={<EdiiCadastroPsicologo/>}/>
-      <Route path="/editBio" element={<EditBio/>}/>
       <Route path="/consultas" element={<Consulta />}/>
-      <Route path="/testePHP" element={<Teste />}/>
+      <Route path="/buscaPsicologo" element={<BuscarPsicologo />}/>
       <Route path="/psicologo" element={<InspecionarPsicologo />} />
       <Route path="/agendarConsulta" element={<AgendarConsulta />} />
       <Route path="/cadastroImagem" element={<CadastrarImagem/>}></Route>
+      
+      { /* Tela Psicologo */}
+      <Route path="/homePsicologo" element={<HomePsicologo />}/>
+      <Route path="/perfilPsicologo" element={<PerfilPsicologo />}/>
+      <Route path="/editPsicologo" element={<EdiiCadastroPsicologo/>}/>
       <Route path="/imagemPsicologo" element={<CadastrarImagemPsicologo/>} />
+      <Route path="/editBio" element={<EditBio/>}/>
+      <Route path="/calendario" element={<Calendario/>}/>
       <Route path="/bioPsicologo" element={<CadastrarBioPsicologo/>} />
     </Routes>
   </BrowserRouter>
