@@ -12,15 +12,29 @@
  .navbar{
   background-color: #442980;
   font-family: 'Kumbh Sans', sans-serif;
+  color: white;
  }
 
- .navbar .enter{
-  margin-left: 200px;
+ .navbar .iconList{
+  display: none;
  }
 
- .navbar li:hover{
-   color:#f2c4f2;;
+ .navbar a{
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding-left:4.5rem;
+  height: 100%;
+  cursor: pointer;
+  font-size:20px;
  }
+
+ .navbar a:hover{
+  color:#f2c4f2;
+  cursor: pointer;
+ }
+
 
  .inicio{
   background: rgb(164,132,232);
@@ -183,6 +197,39 @@
 
 
  @media screen and (min-width: 250px) and (max-width: 750px) {
+
+  .navbar{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar .iconList{
+    align-self: flex-end;
+    display: initial;
+    position: absolute;
+    cursor: pointer;
+    margin-right: 1rem;
+  }
+  .navbar a{
+    display: flex;
+    align-items: center;
+    padding-left:0;
+    height: 100%;
+    cursor: pointer;
+    font-size:20px;
+    display: none;
+   }
+
+   .navbar ul{
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: end;
+   }
+  
+   .navbar a:hover{
+    color:#f2c4f2;
+    cursor: pointer;
+   }
  
   .objetivo h3{
     font-size: 25px;

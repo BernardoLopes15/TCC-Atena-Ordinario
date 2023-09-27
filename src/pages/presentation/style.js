@@ -19,9 +19,9 @@ export const NavLink = styled.a`
   height: 100%;
   cursor: pointer;
   font-size:20px;
-
   &:hover {
     color:#f2c4f2;
+    cursor: pointer;
   }
 `;
 
