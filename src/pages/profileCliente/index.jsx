@@ -10,8 +10,8 @@ const PerfilCliente = () =>{
             <NavBar />
             <main>
                 <article>
-                    <div className="min-h-screen lg:flex items-center justify-center bg-white lg:bg-purple-100">
-                        <div className="lg:w-6/12 pt-16 lg:px-4">
+                    <div className="min-h-screen lg:flex items-center justify-center bg-white lg:bg-purple-100 perfilCliente">
+                        <div className="lg:w-6/12 pt-16 lg:px-4 content-perfilCliente">
                             <div className="h-64 lg:rounded-t-lg bg-purple-800"></div>
                             <div className="lg:rounded-b-lg bg-white px-8">
                                 <div className="h-0 flex items-center mb-16">

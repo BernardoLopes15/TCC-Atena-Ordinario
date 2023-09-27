@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import psicologoola from "../assets/psicologo_ola.svg";
 import imgconsultas from "../assets/consultas_agendadas.svg";
 import imgpsicologo from "../assets/consultar_Psicologo.svg";
@@ -21,7 +23,7 @@ const HomeItems = () =>{
                     <div className="w-1 mx-16 border-l border-black"></div>
                     <div className="ml-4 flex justify-center flex-col">
                         <h2 className="text-xl">Consultas Agendadas</h2>
-                        <h3 className="font-light">Acesse aqui suas consultas agendadas</h3>
+                      <Link to="/consultas"> <h3 className="font-light">Acesse aqui suas consultas agendadas</h3> </Link> 
                     </div>
                 </div>
                 <div className="p-8 flex flex-wrap rounded-lg md:border-l-8 md:border-l-purple-500 mt-8 bg-white">
@@ -29,7 +31,7 @@ const HomeItems = () =>{
                     <div className="w-1 mx-16 border-l border-black"></div>
                     <div className="ml-4 flex justify-center flex-col">
                         <h2 className="text-xl"><a href="./busca_psicologo.html">Consultar Psicólogos(as)</a></h2>
-                        <h3 className="font-light">Acesse aqui para escolher e agendar uma consulta com um profissional qualificado</h3>
+                      <Link to="/buscaPsicologo"> <h3 className="font-light">Acesse aqui para escolher e agendar uma consulta com um profissional qualificado</h3> </Link> 
                     </div>
                 </div>
                 <div className="p-8 flex flex-wrap rounded-lg md:border-l-8 md:border-l-purple-500 my-8 bg-white">
@@ -37,7 +39,7 @@ const HomeItems = () =>{
                     <div className="w-1 mx-16 border-l border-black"></div>
                     <div className="ml-4 flex justify-center flex-col">
                         <h2 className="text-xl">Melhorar Perfil</h2>
-                        <h3 className="font-light">Acesse aqui suas definições de usuária</h3>
+                       <Link to="/perfilCliente"> <h3 className="font-light">Acesse aqui suas definições de usuária</h3> </Link>
                     </div>
                 </div>
             </div>
