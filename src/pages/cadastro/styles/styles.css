@@ -35,7 +35,7 @@
 }
 
 .form .btn{
-    margin-top: -2rem;
+    
     background-color: #281161;
     width: 23vw;
     border-radius: 5px;
@@ -55,17 +55,23 @@
 }
 
 .content-cadastroImage{
-    height: 75vh;
-    width: 40vw;
-    border-radius: 15px;
+    height: 95vh;
+    width: 65vw;
+    border-radius: 30px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .content-cadastroImage .title{
     font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    width: 35vw;
+    font-size: 35px;
+    text-align: center;
     color: #281161;
-    margin-top: 1rem;
+    margin-top: 3rem;
 }
 
 .content-formImage{
@@ -82,13 +88,19 @@
   .picture {
     width: 400px;
     aspect-ratio: 16/9;
-    background: #ddd;
-    color: #aaa;
-    border: 2px dashed currentcolor;
+    background: #ece7e7;
+    color: black;
+    border: solid 2px #281161;
+    border-radius: 10px;
     cursor: pointer;
-    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    transition: color 300ms ease-in-out, background 3000ms ease-in-out;
     outline: none;
     overflow: hidden;
+    margin-top: 5rem;
+    text-align: center;
+  }
+
+  .picture svg{
     margin-top: 3rem;
   }
   
@@ -115,22 +127,21 @@
 
   .content-cadastroBio .title{
     font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    width: 35vw;
+    font-size: 35px;
     color: #281161;
-    margin-top: 1rem;
+    margin-top: 3rem;
   }
 
   .content-cadastroBio{
-    height: 75vh;
-    width: 40vw;
-    border-radius: 15px;
+    height: 95vh;
+    width: 65vw;
+    border-radius: 30px;
   }
 
   .content-cadastroBio textarea{
     border: #281161 solid 1px;
-    margin-top: 4rem;
-    height: 30vh;
+    margin-top: 5rem;
+    height: 33vh;
     resize: none;
     border-radius: 12px;
   }

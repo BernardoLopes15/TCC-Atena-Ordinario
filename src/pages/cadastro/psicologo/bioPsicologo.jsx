@@ -14,8 +14,12 @@ const CadastroBioPsicologo = () =>{
                      </svg>
                     </Link>
 
+                    <div className="center">
+
                         <h2 className="text-center text-xl title">Redija uma curta apresentação para que a sua paciente possa conhecer melhor você </h2>
                         
+                    </div>
+                    
                         <form method="POST" className="form">
                          <div className="flex content-formBio">
                          

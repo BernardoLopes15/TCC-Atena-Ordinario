@@ -15,13 +15,25 @@ const CadastroImagemCliente = () =>{
                      </svg>
                     </Link>
 
-                        <h2 className="text-center text-xl title">Escolha uma foto para o seu perfil</h2>
-                        
+                      <div className="center">
+                        <h2 className="title">Escolha uma foto para o seu perfil</h2>
+                      </div>
+
                         <form method="POST" className="form">
                          <div className="flex justify-between content-formImage">
 
                          <label class="picture" for="picture__input" tabIndex="0">
+                           <div className="center">
+
+                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                              <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                              <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+                             </svg>
+
+                           </div>
+
                           <span class="picture__image">Clique aqui</span>
+
                          </label>
 
                          <input type="file" accept="image/*" name="picture__input" id="picture__input"/> 

@@ -30,7 +30,7 @@ const Login = () =>{
                             <div>
                                 <h2 className="text-xl text-center mt-8 title" >Seja bem vindo(a)</h2>
                                 <div className="flex justify-center">
-                                    <img className="w-72 h-72 logo" src={logoAtena} alt="atena" />
+                                   <Link to="/"> <img className="w-72 h-72 logo" src={logoAtena} alt="atena" /> </Link>
                                 </div>
                                 <div className="flex justify-center inputs">
                                     <div className="w-72 content-inputs">
@@ -63,7 +63,7 @@ const Login = () =>{
                              </svg>
 
                                 <h2 className="text-xl font-bold text-purple-500">Contas</h2>
-                                <h2 className="text-xl">Selecione um tipo de conta</h2>
+                                <h2 className="text-xl">Selecione um tipo de conta:</h2>
 
                                 <div className="w-96 px-4 flex justify-between mt-8 accounts">
                                     <Link to="/cadastro" className="cursor-pointer hover:text-purple-500 account-usuario">
