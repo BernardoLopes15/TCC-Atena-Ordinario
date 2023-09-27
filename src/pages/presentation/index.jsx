@@ -10,7 +10,6 @@ import perfilBea from "../../assets/imgs/perfil_bia.png";
 import perfilWelly from "../../assets/imgs/perfil_welly.png";
 import Rodape from '../../components/Rodape';
 
-import '../presentation/navbar.js'
 import '../presentation/styles.css';
 
 const Apresentacao = () => (
