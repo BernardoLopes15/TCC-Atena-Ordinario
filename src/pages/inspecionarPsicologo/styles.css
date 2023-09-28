@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
+
+.content-apresentationPsicologo{
+    width: 75vw;
+    height: 95vh;
+    border-radius: 30px;
+}
+
+.content-apresentationPsicologo .dados-psicologo{
+    margin-top: 2rem;
+    font-size: 20px;
+}
+
+ .dados-psicologo .content-dados1 .name{
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+}
+
+.dados-psicologo .content-dados2 {
+    margin-left: 5.3rem;
+}
+
+.dados-psicologo .content-dados2 svg{
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.content-apresentationPsicologo .content-dadosPsicologo .title{
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+}
+
+ .formacao a:hover{
+   color: #442980;
+   border-bottom: solid 1px;
+}
+
+.content-dadosPsicologo .agendar label{
+   border-radius: 10px;
+}
+
+.content-dadosPsicologo .agendar{
+    margin-left: 7rem;
+    margin-top: -1rem;
+}
+
+.centro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-dadosPsicologo .btttn{
+    width: 21vw;
+    border-radius: 10px;
+    margin-top: 3rem;
+}
+
+
+@media screen and (min-width: 250px) and (max-width: 750px){
+    .content-apresentationPsicologo{
+        height: 100%;
+    }
+
+    .content-apresentationPsicologo .responsive{
+        margin-left: 0;
+    }
+
+    .content-dadosPsicologo .agendar{
+        margin-left: 0;
+        margin-top: 3rem;
+    }
+
+    .content-dadosPsicologo .btttn{
+        width: 70vw;
+        border-radius: 10px;
+        margin-top: 3rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .dados-psicologo .content-dados1 img{
+        width: 40vw;
+        height: 25vh;
+        margin: 0 auto;
+        margin-bottom: 1rem;
+    }
+
+    .content-dados1{
+        font-size: 18px;
+        flex-direction: column;
+    }
+
+    .content-dados2 h3 {
+        margin: 0;
+    }
+}

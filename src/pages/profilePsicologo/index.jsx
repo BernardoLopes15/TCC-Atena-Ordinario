@@ -2,7 +2,14 @@ import NavBar from "../../components/NavbarPsicologo";
 import Rodape from "../../components/Rodape";
 import { Link } from "react-router-dom";
 
-import imgusuario from "../../assets/imgs/userExemplo.png";
+
+
+// const userName = "Fernanda Sandra Ribeiro";
+// const userEmail = "fernanda_Sandra@artelazer.com";
+// const userCPF = "762476499-75";
+// const userPhone = "(13) 8998-6975";
+// const userDate = "27/07/1998";
+
 
 const PerfilPsicologo = () =>{
     return(
@@ -15,12 +22,12 @@ const PerfilPsicologo = () =>{
                             <div className="h-64 lg:rounded-t-lg bg-purple-800"></div>
                             <div className="lg:rounded-b-lg bg-white px-8">
                                 <div className="h-0 flex items-center mb-16">
-                                    <img className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={imgusuario} alt="usuario" />
+                                    <img className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={''} alt="usuario" />
                                 </div>
-                                <h2 className="text-xl pt-4">Júlia Souza Ferraz</h2>
+                                <h2 className="text-xl pt-4">{''}</h2>
                                 <div className="py-4 flex justify-between">
                                     <div className="grid grid-cols-2">
-                                        <p>Gmail</p>
+                                        <p>E-mail</p>
                                         <input type="text" value="Julia.sousza95@gmail" />
                                         <p>CPF</p>
                                         <input type="text" value="560885963-41" />
@@ -39,7 +46,7 @@ const PerfilPsicologo = () =>{
                                 <div>
                                     <p className="text-lg">bio</p>
                                     <p>
-                                        🧠 Psicóloga Clínica 🌱 | Apaixonada pelo Bem-Estar | Orientando o Caminho para a Felicidade👋 Olá! Sou [Seu Nome], uma psicóloga dedicada a ajudar as pessoas a descobrirem seu potencial máximo e alcançarem uma vida equilibrada e gratificante. Minha paixão é proporcionar apoio, compreensão e orientação a indivíduos que desejam fortalecer sua saúde mental e emocional.
+                                    Sou uma psicóloga dedicada a ajudar as pessoas a descobrirem seu potencial máximo e alcançarem uma vida equilibrada e gratificante. Minha paixão é proporcionar apoio, compreensão e orientação a indivíduos que desejam fortalecer sua saúde mental e emocional. Minha atuação inclui a realização de avaliações psicológicas, elaboração de planos de tratamento.
                                     </p>
                                 </div>
                                 <div className="py-12 flex justify-center">
