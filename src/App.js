@@ -11,8 +11,7 @@ import CadastroCliente from "./pages/cadastro/cliente";
 import CadastroPsicologo from "./pages/cadastro/psicologo";
 import EditCadastroCliente from "./pages/editPerfilCliente/index";
 import EdiiCadastroPsicologo from "./pages/editPerfilPsicologo/index";
-import Consulta from "./pages/consulta";
-import Teste from "./pages/testePHP";
+import Consulta from "./pages/consulta/cliente";
 import InspecionarPsicologo from "./pages/inspecionarPsicologo";
 import AgendarConsulta from "./pages/agendarConsulta";
 import CadastrarImagem from "./pages/cadastro/cliente/imagePerfil";
@@ -20,6 +19,8 @@ import CadastrarImagemPsicologo from "./pages/cadastro/psicologo/imagePerfil";
 import CadastrarBioPsicologo from "./pages/cadastro/psicologo/bioPsicologo";
 import EditBio from "./pages/editPerfilPsicologo/editBio";
 import Calendario from "./pages/calendario";
+import SolicitacaoConsulta from "./pages/solicitacaoConsulta";
+import ConsultaPsicologo from "./pages/consulta/psicologo";
 
 const App = () =>{
   return (
@@ -48,6 +49,8 @@ const App = () =>{
       <Route path="/editBio" element={<EditBio/>}/>
       <Route path="/calendario" element={<Calendario/>}/>
       <Route path="/bioPsicologo" element={<CadastrarBioPsicologo/>} />
+      <Route path="/consultaPsicologo" element={<ConsultaPsicologo/>} />
+      <Route path="/solicitacao" element={<SolicitacaoConsulta/>} />
     </Routes>
   </BrowserRouter>
   );

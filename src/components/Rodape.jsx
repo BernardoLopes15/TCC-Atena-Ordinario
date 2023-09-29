@@ -14,7 +14,7 @@ const Rodape = (entrada) =>{
                             <img className="h-32" src={imgicone} alt="athena" />
                             <h2>Athena</h2>
                         </div>
-                        <button className="px-16 py-6 border-white border-2">Contact US</button>
+                        <button className="px-16 mt-6 py-3 border-white border-2">Contact US</button>
                     </div>
                     <div className="flex">
                         <div className="w-48 md:w-64 lg:w-72 mt-16 md:mt-0 text-white border-l-white border-l-4">

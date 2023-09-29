@@ -5,8 +5,8 @@ const BoxPsicologo = ( { nome, idade, proficao, image, cidade, data }) =>{
     return(
         <>
             <div className="py-4 px-8 mt-8 flex rounded-lg border-black bg-white">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full">
-                    <img src={image} alt="foto psicologo"/>
+                <div>
+                    <img src={image} className="w-16 h-16 md:w-20 md:h-20 rounded-full" alt="foto psicologo"/>
                 </div>
                 <div className="flex justify-around flex-col grow">
                     <div className="flex flex-col md:flex-row justify-between">

@@ -29,12 +29,6 @@ const PerfilCliente = () =>{
                                         <p>Número</p>
                                         <input type="text" value="(13) 2826-1764" />
                                     </div>
-                                    <div className="text-right">
-                                        <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 1</p></a>
-                                        <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 2</p></a>
-                                        <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 3</p></a>
-                                        <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 4</p></a>
-                                    </div>
                                 </div>
                                 <div className="py-12 flex justify-center">
                                     <Link to="/editCliente"><button className="w-96 px-4 py-2 hover:bg-purple-400 hover:text-white rounded-lg border-2 border-purple-400">Editar</button></Link>

@@ -22,9 +22,9 @@ const NavBar = () =>{
                             <img className="h-8" src={atenaText} alt="atena-text" />
                             <div className="hidden md:flex ml-8">
                                 <h2 className="ml-8"><Link to="/homePsicologo">Início</Link></h2>
-                                <h2 className="ml-8"><Link to="">Solicitações</Link></h2>
+                                <h2 className="ml-8"><Link to="/solicitacao">Solicitações</Link></h2>
                                 <h2 className="ml-8"><Link to="/calendario">Agenda</Link></h2>
-                                <h2 className="ml-8"><Link to="">Consultas</Link></h2>
+                                <h2 className="ml-8"><Link to="/consultaPsicologo">Consultas</Link></h2>
                                 <h2 className="ml-8"><Link to="/perfilPsicologo">Perfil</Link></h2>
                             </div>
                         </div>
@@ -36,9 +36,9 @@ const NavBar = () =>{
                     <div className={ menu ? `text-right` : `hidden` }>
                         <ul className="py-4">
                             <li className="py-2"><Link to="/homePsicologo">Início</Link></li>
-                            <li className="py-2"><Link to="">Solicitações</Link></li>
+                            <li className="py-2"><Link to="/solicitacao">Solicitações</Link></li>
                             <li className="py-2"><Link to="/calendario">Agenda</Link></li>
-                            <li className="py-2"><Link to="">Consultas</Link></li>
+                            <li className="py-2"><Link to="/consultaPsicologo">Consultas</Link></li>
                             <li className="py-2"><Link to="/perfilPsicologo">Perfil</Link></li>
                             <li className="py-2"><Link>Opções</Link></li>
                             <li className="py-2"><Link to="/">Sair</Link></li>

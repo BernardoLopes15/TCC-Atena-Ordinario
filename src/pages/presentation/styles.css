@@ -10,9 +10,13 @@
 
 
  .navbar{
-  background-color: #442980;
+  transition: all 1s;
   font-family: 'Kumbh Sans', sans-serif;
   color: white;
+ }
+
+ .fundo-navbar{
+  background-color: #442980;
  }
 
  .navbar .iconList{
@@ -33,6 +37,10 @@
 
  .content-inicio .enter{
   height: 100%;
+ }
+
+ .font-title{
+  font-size: 30px;
  }
 
  .navbar a{

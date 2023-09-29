@@ -2,7 +2,7 @@ import NavBar from "../../components/NavbarPsicologo";
 import Rodape from "../../components/Rodape";
 import { Link } from "react-router-dom";
 
-
+import usuario from "../../assets/imgs/psicologo1.png";
 
 // const userName = "Fernanda Sandra Ribeiro";
 // const userEmail = "fernanda_Sandra@artelazer.com";
@@ -22,9 +22,9 @@ const PerfilPsicologo = () =>{
                             <div className="h-64 lg:rounded-t-lg bg-purple-800"></div>
                             <div className="lg:rounded-b-lg bg-white px-8">
                                 <div className="h-0 flex items-center mb-16">
-                                    <img className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={''} alt="usuario" />
+                                    <img className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={usuario} alt="usuario" />
                                 </div>
-                                <h2 className="text-xl pt-4">{''}</h2>
+                                <h2 className="text-xl pt-4">Fernanda Souza</h2>
                                 <div className="py-4 flex justify-between">
                                     <div className="grid grid-cols-2">
                                         <p>E-mail</p>

@@ -51,10 +51,10 @@ const Calendario = () =>{
             setMesEscolhido(mesEscolhido - 1);
         }
 
-        if(mesEscolhido === 1){
+        if(mesEscolhido === 1 && mudanca === 2){
             setAnoEscolhido(anoEscolhido - 1);
             setMesEscolhido(12);
-        } else if(mesEscolhido === 12){
+        } else if(mesEscolhido === 12 && mudanca === 1){
             setAnoEscolhido(anoEscolhido + 1);
             setMesEscolhido(1);
         }
