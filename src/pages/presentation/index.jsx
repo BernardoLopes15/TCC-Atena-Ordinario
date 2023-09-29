@@ -9,6 +9,7 @@ import perfilBernardo from "../../assets/imgs/perfil_bernardo.png";
 import perfilBea from "../../assets/imgs/perfil_bia.png";
 import perfilWelly from "../../assets/imgs/perfil_welly.png";
 import Rodape from '../../components/Rodape';
+import Img from "../../assets/imgs/imgApresentation.png"
 
 import '../presentation/styles.css';
 
@@ -16,6 +17,7 @@ const Apresentacao = () => (
   <>
     <header>
       <nav className="w-full h-20 flex items-center justify-center fixed navbar">
+      
       <img src={logonNavbar} className='img_navbar'/>
       
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16" className='iconList'>
@@ -27,7 +29,7 @@ const Apresentacao = () => (
              <a href="#project"> Projeto </a>
              <a href="#aboutUs"> Quem Somos</a>
              <a href="#team"> Equipe </a>
-          <Link to="/login"> <a className="entrar"> Entrar </a> </Link>
+               <Link to="/login"> <a href="" className='entrar'>Entrar</a> </Link>
           </ul>
         </div>
       </nav>
@@ -37,7 +39,9 @@ const Apresentacao = () => (
       <article>
         <section className="min-h-screen px-4 flex items-center justify-center inicio">
 
-          <div className="flex justify-center md:w-2/3 content-inicio">
+            <img alt='arte' className='arte' src={Img} ></img>
+
+          <div className="flex content-inicio">
 
             <div className='enter'>
               <img src={logoAtena} alt="logo" className='logo' />

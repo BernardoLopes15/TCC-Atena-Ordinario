@@ -29,7 +29,7 @@ const InspecionarPsicologo = () =>{
                                  </Link>
                             </div>
                        
-                        <div className="ml-10 mt-8 responsive">
+                        <div className="ml-10 mt-14 responsive">
 
                             <div className="dados-psicologo">
 
@@ -96,7 +96,7 @@ const InspecionarPsicologo = () =>{
                                         <FaHome className="mr-4 text-xl" />
                                     </div> */}
                                     <h2 className="mt-4 text-md">Datas disponíveis para consulta:</h2>
-                                    <select className="ml-2 my-2 px-2 py-2 rounded-lg cursor-pointer bg-purple-200" name="" id="">
+                                    <select className="ml-2 my-2 px-2 py-2 rounded-lg cursor-pointer color-fundo" name="" id="">
                                         <option value="">03/10/2023</option>
                                         <option value="">05/10/2023</option>
                                         <option value="">10/10/2023</option>
@@ -104,11 +104,11 @@ const InspecionarPsicologo = () =>{
                                     </select>
                                     <p>Horários disponíveis:</p>
                                     <div className="my-2 mt-3">
-                                        <label className="px-4 py-2 ml-2 cursor-pointer bg-purple-200" for="hora1">8:00</label>
-                                        <label className="px-4 py-2 ml-3 cursor-pointer bg-purple-200" for="hora2">9:30</label>
-                                        <label className="px-4 py-2 ml-3 cursor-pointer bg-purple-200" for="hora3">11:00</label>
+                                        <label className="px-4 py-2 ml-2 cursor-pointer color-fundo" for="hora1">8:00</label>
+                                        <label className="px-4 py-2 ml-3 cursor-pointer color-fundo" for="hora2">9:30</label>
+                                        <label className="px-4 py-2 ml-3 cursor-pointer color-fundo" for="hora3">11:00</label>
                                     </div>
-                                    <Link to="/agendarConsulta"><button className="btttn py-2 cursor-pointer bg-purple-200">Agendar Consulta</button></Link>
+                                    <Link to="/agendarConsulta"><button className="btttn py-2 cursor-pointer color-fundo">Agendar Consulta</button></Link>
                                 </div>
                             </div>
                         </div>
