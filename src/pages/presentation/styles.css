@@ -23,6 +23,14 @@
   display: none;
  }
  
+ .img-size{
+  width: 30vw;
+  margin-left: -8rem;
+ }
+
+ .width-text{
+  width: 45vw;
+ }
  .content-inicio{
   width: 100%;
   height: 80vh;
@@ -31,16 +39,14 @@
   margin-right: 15rem;
  }
 
- .content-inicio .arte{
-  
- }
 
  .content-inicio .enter{
   height: 100%;
  }
 
  .font-title{
-  font-size: 30px;
+  font-size: 35px;
+  font-family: 'Playfair Display', serif;
  }
 
  .navbar a{
@@ -71,7 +77,7 @@
 
  .inicio{
   background: rgb(164,132,232);
-  background: linear-gradient(20deg, rgba(164,132,232,1) 47%, rgba(189,158,255,1) 86%);
+  /* background: linear-gradient(20deg, rgba(164,132,232,1) 47%, rgba(189,158,255,1) 86%); */
 }
 
 .inicio .enter p{
