@@ -8,6 +8,11 @@
     border-radius: 30px;
 }
 
+
+.font-title{
+    font-family: 'Playfair Display', serif;
+}
+
 .content-apresentationPsicologo .dados-psicologo{
     margin-top: 2rem;
     font-size: 20px;

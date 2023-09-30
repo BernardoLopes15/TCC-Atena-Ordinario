@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import imgicone from "../assets/imgs/logo_atena.png";
-import { FaInstagram, FaFacebook, FaHome, FaYoutube } from 'react-icons/fa';
+import { FaInstagram, FaEnvelope, FaHome, FaYoutube } from 'react-icons/fa';
 
 const Rodape = (entrada) =>{
     return(
@@ -12,22 +13,21 @@ const Rodape = (entrada) =>{
                     <div className="text-white mr-8">
                         <div className="flex items-center">
                             <img className="h-32" src={imgicone} alt="athena" />
-                            <h2>Athena</h2>
                         </div>
-                        <button className="px-16 mt-6 py-3 border-white border-2">Contact US</button>
+                        <button className="px-10 mt-6 py-3 border-white border-2">Contacte-nos</button>
                     </div>
-                    <div className="flex">
-                        <div className="w-48 md:w-64 lg:w-72 mt-16 md:mt-0 text-white border-l-white border-l-4">
+                    <div className="flex ">
+                        {/* <div className="w-48 md:w-64 lg:w-72 mt-16 md:mt-0 text-white border-l-white border-l-4">
                             <h2 className="px-4 py-2">Home</h2>
                             <h2 className="px-4 py-2">Work</h2>
                             <h2 className="px-4 py-2">Blog</h2>
                             <h2 className="px-4 py-2">About</h2>
-                        </div>
-                        <div className="md:w-16 lg:w-32 mt-16 md:mt-0 border-l-white border-l-4">
-                            <FaInstagram className="ml-4 mb-4 text-4xl" color="white" />
-                            <FaFacebook className="ml-4 mb-4 text-4xl" color="white" />
+                        </div> */}
+                        <div className="md:w-16 lg:w-48 mt-16 md:mt-0 border-l-white border-l-4 flex-row" >
+                           <a href="https://instagram.com/atena.tcc?igshid=MzRlODBiNWFlZA=="> <FaInstagram className="ml-4 mb-4 text-4xl" color="white" /> </a>
                             <FaYoutube className="ml-4 mb-4 text-4xl" color="white" />
-                            <FaHome className="ml-4 mb-4 text-4xl" color="white" />
+                            <a href="mailto:tccatena@gmail.com"><FaEnvelope className="ml-4 mb-4 text-4xl" color="white" /></a>
+                           <Link to="/"> <FaHome className="ml-4 mb-4 text-4xl" color="white" /> </Link>
                         </div>
                     </div>
                 </div>
