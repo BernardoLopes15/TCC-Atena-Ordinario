@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
+import { Link } from "react-router-dom";
 
 import NavBar from "../../components/NavbarPsicologo";
 import Rodape from "../../components/Rodape";
@@ -72,6 +73,7 @@ const Calendario = () =>{
         <>
             <NavBar />
             <div className="min-h-screen flex items-center justify-center bg-purple-100">
+             <div className="md:px-8 py-4 pb-16 mt-16 md:mt-32 flex rounded-xl bg-white">
                 <CSSTransition
                     in={anima}
                     timeout={1000}
@@ -79,6 +81,7 @@ const Calendario = () =>{
                     unmountOnExit
                 >
                     <div className="pt-16">
+                    <h2 className="mb-12 text-5xl text-center font-style">Calendário</h2>
                         <div className="my-4 flex justify-around text-xl text-fuchsia-950 font-medium ">
                             <p>{todosMeses[mesEscolhido - 1].toUpperCase()}</p>
                             <p>{anoEscolhido}</p>
@@ -90,13 +93,13 @@ const Calendario = () =>{
                             </svg>
                             </button>
                             <div className="grid grid-cols-7 bg-purple-500 rounded-lg">
-                                <h2 className="p-2 lg:p-4 bg-white rounded-s-md">DOM</h2>
-                                <h2 className="p-2 lg:p-4 bg-white ">SEG</h2>
-                                <h2 className="p-2 lg:p-4 bg-white">TER</h2>
-                                <h2 className="p-2 lg:p-4 bg-white">QUA</h2>
-                                <h2 className="p-2 lg:p-4 bg-white">QUI</h2>
-                                <h2 className="p-2 lg:p-4 bg-white">SEX</h2>
-                                <h2 className="p-2 lg:p-4 bg-white rounded-e-md">SAB</h2>
+                                <h2 className="p-2 lg:p-4 bg-slate-200 rounded-s-md">DOM</h2>
+                                <h2 className="p-2 lg:p-4 bg-slate-200">SEG</h2>
+                                <h2 className="p-2 lg:p-4 bg-slate-200">TER</h2>
+                                <h2 className="p-2 lg:p-4 bg-slate-200">QUA</h2>
+                                <h2 className="p-2 lg:p-4 bg-slate-200">QUI</h2>
+                                <h2 className="p-2 lg:p-4 bg-slate-200">SEX</h2>
+                                <h2 className="p-2 lg:p-4 bg-slate-200 rounded-e-md">SAB</h2>
                                 {
                                     inicioMes.map((e)=>(
                                         <h2 key={e}></h2>
@@ -116,9 +119,15 @@ const Calendario = () =>{
                             </button>
 
                         </div>
+
+                        <div className="flex justify-center">
+                                    <Link to="/data"><button className=" text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-purple-950">Datas e Horários</button></Link>
+                                </div>
+                        
                     </div>
                 </CSSTransition>
             </div>
+             </div>
             <Rodape />
         </>
     );
