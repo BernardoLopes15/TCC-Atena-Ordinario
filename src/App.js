@@ -10,7 +10,9 @@ import PerfilPsicologo from "./pages/profilePsicologo/index"
 import CadastroCliente from "./pages/cadastro/cliente";
 import CadastroPsicologo from "./pages/cadastro/psicologo";
 import EditCadastroCliente from "./pages/editPerfilCliente/index";
+import EditImgCliente from "./pages/editPerfilCliente/editImg";
 import EdiiCadastroPsicologo from "./pages/editPerfilPsicologo/index";
+import EditImgPsicologo from "./pages/editPerfilPsicologo/editImg";
 import Consulta from "./pages/consulta/cliente";
 import InspecionarPsicologo from "./pages/inspecionarPsicologo";
 import AgendarConsulta from "./pages/agendarConsulta";
@@ -36,6 +38,7 @@ const App = () =>{
       <Route path="/homeCliente" element={<HomeCliente />}/>
       <Route path="/perfilCliente" element={<PerfilCliente />}/>
       <Route path="/editCliente" element={<EditCadastroCliente/>}/>
+      <Route path="/editImgCliente" element={<EditImgCliente/>}/>
       <Route path="/consultas" element={<Consulta />}/>
       <Route path="/buscaPsicologo" element={<BuscarPsicologo />}/>
       <Route path="/psicologo" element={<InspecionarPsicologo />} />
@@ -46,6 +49,7 @@ const App = () =>{
       <Route path="/homePsicologo" element={<HomePsicologo />}/>
       <Route path="/perfilPsicologo" element={<PerfilPsicologo />}/>
       <Route path="/editPsicologo" element={<EdiiCadastroPsicologo/>}/>
+      <Route path="/editImgPsicologo" element={<EditImgPsicologo/>}/>
       <Route path="/imagemPsicologo" element={<CadastrarImagemPsicologo/>} />
       <Route path="/editBio" element={<EditBio/>}/>
       <Route path="/calendario" element={<Calendario/>}/>

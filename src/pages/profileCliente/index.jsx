@@ -30,7 +30,7 @@ const PerfilCliente = () =>{
                                 <div className="h-56 lg:rounded-t-xl bg-purple-800"></div>
                                 <div className="lg:rounded-b-xl bg-white px-8">
                                     <div className="h-0 flex items-center mb-16">
-                                        <img loading="lazy" className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={imgusuario} alt="usuario" />
+                                      <Link to="/editImgCliente"> <img loading="lazy" className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={imgusuario} alt="usuario" /></Link> 
                                     </div>
                                     <h2 className=" pt-4 font-semibold font-title text-2xl">Júlia Souza Ferraz</h2>
                                     <div className="py-4 flex justify-between">
