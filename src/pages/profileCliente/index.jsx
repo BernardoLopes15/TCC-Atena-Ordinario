@@ -26,27 +26,27 @@ const PerfilCliente = () =>{
                             classNames="page"
                             unmountOnExit
                         >
-                            <div className="lg:w-6/12 pt-16 lg:px-4 content-perfilCliente">
-                                <div className="h-64 lg:rounded-t-lg bg-purple-800"></div>
-                                <div className="lg:rounded-b-lg bg-white px-8">
+                            <div className="lg:w-6/12 pt-16 lg:px-4 content-perfilCliente mt-5">
+                                <div className="h-56 lg:rounded-t-xl bg-purple-800"></div>
+                                <div className="lg:rounded-b-xl bg-white px-8">
                                     <div className="h-0 flex items-center mb-16">
                                         <img loading="lazy" className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={imgusuario} alt="usuario" />
                                     </div>
-                                    <h2 className="text-xl pt-4">Júlia Souza Ferraz</h2>
+                                    <h2 className=" pt-4 font-semibold font-title text-2xl">Júlia Souza Ferraz</h2>
                                     <div className="py-4 flex justify-between">
                                         <div className="grid grid-cols-2">
-                                            <p>Gmail</p>
+                                            <p className="font-medium">E-mail:</p>
                                             <input type="text" value="Julia.sousza95@gmail" />
-                                            <p>CPF</p>
+                                            <p className="font-medium">CPF:</p>
                                             <input type="text" value="560885963-41" />
-                                            <p>Data Nascimento</p>
+                                            <p className="font-medium">Data de nascimento:</p>
                                             <input type="text" value="14/05/1995" />
-                                            <p>Número</p>
+                                            <p className="font-medium">Telefone:</p>
                                             <input type="text" value="(13) 2826-1764" />
                                         </div>
                                     </div>
                                     <div className="py-12 flex justify-center">
-                                        <Link to="/editCliente"><button className="md:w-96 px-4 py-2 hover:bg-purple-400 hover:text-white rounded-lg border-2 border-purple-400">Editar</button></Link>
+                                        <Link to="/editCliente"><button className=" text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-purple-950">Editar</button></Link>
                                     </div>
                                 </div>
                             </div>
