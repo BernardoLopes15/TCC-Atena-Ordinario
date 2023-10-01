@@ -2,40 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
 
-/* 
-.agendarConsulta{
-    width: 60vw;
-    height: 70vh;
-    border-radius: 30px;
-}
-
-.content-agendarConsulta .title{
-    font-family: 'Playfair Display', serif;
-    font-size: 40px;
-    text-align: center;
-    margin-bottom: 3rem;
-    margin-top: -0.3rem;
-}
-
-.agendarConsulta{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-
-.content-agendarConsulta img{
-    width: 7vw;
-    height: 13vh;
-} */
 
 .font-style{
     font-family: 'Playfair Display', serif;
     color: #281161;
 }
 
- textarea{
-    resize: none;
-    height: 20vh;
-}

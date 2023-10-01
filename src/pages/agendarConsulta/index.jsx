@@ -8,6 +8,7 @@ import imguser from "../../assets/imgs/psicologo1.png";
 
 import "../agendarConsulta/styles.css"
 
+
 const AgendarConsulta = () =>{
     const [anima, setAnima] = useState(false);
 
@@ -48,7 +49,7 @@ const AgendarConsulta = () =>{
                                         <p className="mt-2">Telefone</p>
                                         <input className="w-full md:w-10/12 py-1 px-2 rounded-md border border-black" type="text" placeholder="(13) 2826-1764" disabled/>
                                         <h2 className="text-lg my-4">Como você se sente ?</h2>
-                                        <textarea className="w-full md:w-10/12 rounded-lg border border-black" name="" cols="30" rows="10"></textarea>
+                                        <textarea className="resize-none w-full h-40 md:w-10/12 rounded-lg border border-black" name="" cols="30" rows="10" ></textarea>
                                     </div>    
                                     
                                     <div className="xl:ml-16 w-96 mt-2 md:mt-0">
