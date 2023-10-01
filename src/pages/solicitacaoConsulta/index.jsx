@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react";
+import { CSSTransition } from "react-transition-group";
+
 import NavBar from "../../components/NavbarPsicologo";
 import Rodape from "../../components/Rodape";
 
@@ -22,20 +25,33 @@ const BoxSolicitacao = () =>{
 }
 
 const SolicitacaoConsulta = () =>{
+    const [anima, setAnima] = useState(false);
+
+    useEffect(() => {
+        setAnima(true);
+    }, []);
+
     return(
         <>
             <NavBar />
             <div className="min-h-screen flex justify-center md:bg-purple-100">
                 <div className="w-full pt-16 flex items-center justify-center">
-                    <div className="w-full md:w-8/12 lg:w-6/12 p-4 lg:p-8 rounded-lg bg-white">
-                        <h2 className="pb-8 font-bold text-purple-500 text-center text-xl">Solicitações</h2>
-                        <BoxSolicitacao />
-                        <BoxSolicitacao />
-                        <BoxSolicitacao />
-                        <BoxSolicitacao />
-                        <BoxSolicitacao />
-                        <BoxSolicitacao />
-                    </div>
+                    <CSSTransition
+                        in={anima}
+                        timeout={1000}
+                        classNames="page"
+                        unmountOnExit
+                    >
+                        <div className="w-full md:w-8/12 lg:w-6/12 p-4 lg:p-8 rounded-lg bg-white">
+                            <h2 className="pb-8 font-bold text-purple-500 text-center text-xl">Solicitações</h2>
+                            <BoxSolicitacao />
+                            <BoxSolicitacao />
+                            <BoxSolicitacao />
+                            <BoxSolicitacao />
+                            <BoxSolicitacao />
+                            <BoxSolicitacao />
+                        </div>
+                    </CSSTransition>
                 </div>
             </div>
             <Rodape />

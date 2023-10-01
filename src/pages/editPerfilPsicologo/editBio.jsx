@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import '../editPerfilPsicologo/styles.css'
+import '../editPerfilPsicologo/styles.css';
 
 const EditCadastroBioPsicologo = () =>{
     return(

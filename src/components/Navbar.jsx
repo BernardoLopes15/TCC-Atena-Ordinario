@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CSSTransition } from "react-transition-group";
 import { Link } from "react-router-dom";
 
 import atenaText from "../assets/imgs/logo_navbar.png";
@@ -32,7 +33,12 @@ const NavBar = () =>{
                             <img src={imgmulher} alt="user" />
                         </div>
                     </div>
-                    <div className={ menu ? `text-right` : `hidden` }>
+                    <CSSTransition
+                        in={menu}
+                        timeout={300}
+                        classNames="nav"
+                        unmountOnExit
+                    >
                         <ul className="py-4">
                             <li className="py-2"><Link to="/homeCliente">Início</Link></li>
                             <li className="py-2"><Link to="/buscaPsicologo">Psicólogos</Link></li>
@@ -41,7 +47,7 @@ const NavBar = () =>{
                             <li className="py-2"><Link>Opções</Link></li>
                             <li className="py-2"><Link to="/">Sair</Link></li>
                         </ul>
-                    </div>
+                    </CSSTransition>
                 </div>
             </nav>
         </header>

@@ -21,6 +21,7 @@ import EditBio from "./pages/editPerfilPsicologo/editBio";
 import Calendario from "./pages/calendario";
 import SolicitacaoConsulta from "./pages/solicitacaoConsulta";
 import ConsultaPsicologo from "./pages/consulta/psicologo";
+import CadastroData from "./pages/cadastrarData";
 
 const App = () =>{
   return (
@@ -51,6 +52,7 @@ const App = () =>{
       <Route path="/bioPsicologo" element={<CadastrarBioPsicologo/>} />
       <Route path="/consultaPsicologo" element={<ConsultaPsicologo/>} />
       <Route path="/solicitacao" element={<SolicitacaoConsulta/>} />
+      <Route path="/data" element={<CadastroData/>} />
     </Routes>
   </BrowserRouter>
   );

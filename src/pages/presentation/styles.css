@@ -8,7 +8,6 @@
    background-color: #fff;
  }
 
-
  .navbar{
   transition: all 1s;
   font-family: 'Kumbh Sans', sans-serif;
@@ -63,9 +62,6 @@
  .navbar a:hover{
   color:#f2c4f2;
   cursor: pointer;
- }
-
- .Navbar__Items{
  }
 
 

@@ -41,11 +41,10 @@ const CadastroPsicologo = () =>{
                                 <h2 className="mt-8 mb-2">Confirmar senha</h2>
                                 <input className="w-full px-2 py-1 " type="password" name="confirmarSenha"/>
                             </div>
-
                          </div>
 
                          <div className="flex justify-center mt-16">
-                            <Link to="/imagemPsicologo"><button className="py-2 text-white btn">Cadastrar</button></Link>
+                            <Link to="/data"><button className="py-2 text-white btn">Cadastrar</button></Link>
                         </div>
 
                         </form>

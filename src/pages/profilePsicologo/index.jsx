@@ -1,6 +1,9 @@
+import { useState, useEffect } from "react";
+import { CSSTransition } from "react-transition-group";
+import { Link } from "react-router-dom";
+
 import NavBar from "../../components/NavbarPsicologo";
 import Rodape from "../../components/Rodape";
-import { Link } from "react-router-dom";
 
 import usuario from "../../assets/imgs/psicologo1.png";
 
@@ -12,48 +15,61 @@ import usuario from "../../assets/imgs/psicologo1.png";
 
 
 const PerfilPsicologo = () =>{
+    const [anima, setAnima] = useState(false);
+
+    useEffect(() => {
+        setAnima(true);
+    }, []);
+
     return(
         <>
             <NavBar />
             <main>
                 <article>
                     <div className="min-h-screen lg:flex items-center justify-center bg-white lg:bg-purple-100">
-                        <div className="lg:w-6/12 pt-16 lg:px-4">
-                            <div className="h-64 lg:rounded-t-lg bg-purple-800"></div>
-                            <div className="lg:rounded-b-lg bg-white px-8">
-                                <div className="h-0 flex items-center mb-16">
-                                    <img className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={usuario} alt="usuario" />
-                                </div>
-                                <h2 className="text-xl pt-4">Fernanda Souza</h2>
-                                <div className="py-4 flex justify-between">
-                                    <div className="grid grid-cols-2">
-                                        <p>E-mail</p>
-                                        <input type="text" value="Julia.sousza95@gmail" />
-                                        <p>CPF</p>
-                                        <input type="text" value="560885963-41" />
-                                        <p>Data Nascimento</p>
-                                        <input type="text" value="14/05/1995" />
-                                        <p>Número</p>
-                                        <input type="text" value="(13) 2826-1764" />
+                        <CSSTransition
+                            in={anima}
+                            timeout={1000}
+                            classNames="page"
+                            unmountOnExit
+                        >
+                            <div className="lg:w-6/12 pt-16 lg:px-4">
+                                <div className="h-64 lg:rounded-t-lg bg-purple-800"></div>
+                                <div className="lg:rounded-b-lg bg-white px-8">
+                                    <div className="h-0 flex items-center mb-16">
+                                        <img loading="lazy" className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={usuario} alt="usuario" />
                                     </div>
-                                    <div className="text-right">
-                                        <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 1</p></a>
-                                        <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 2</p></a>
-                                        <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 3</p></a>
-                                        <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 4</p></a>
+                                    <h2 className="text-xl pt-4">Fernanda Souza</h2>
+                                    <div className="py-4 flex justify-between">
+                                        <div className="grid grid-cols-2">
+                                            <p>E-mail</p>
+                                            <input type="text" value="Julia.sousza95@gmail" />
+                                            <p>CPF</p>
+                                            <input type="text" value="560885963-41" />
+                                            <p>Data Nascimento</p>
+                                            <input type="text" value="14/05/1995" />
+                                            <p>Número</p>
+                                            <input type="text" value="(13) 2826-1764" />
+                                        </div>
+                                        <div className="text-right">
+                                            <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 1</p></a>
+                                            <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 2</p></a>
+                                            <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 3</p></a>
+                                            <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 4</p></a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <p className="text-lg">bio</p>
-                                    <p>
-                                    Sou uma psicóloga dedicada a ajudar as pessoas a descobrirem seu potencial máximo e alcançarem uma vida equilibrada e gratificante. Minha paixão é proporcionar apoio, compreensão e orientação a indivíduos que desejam fortalecer sua saúde mental e emocional. Minha atuação inclui a realização de avaliações psicológicas, elaboração de planos de tratamento.
-                                    </p>
-                                </div>
-                                <div className="py-12 flex justify-center">
-                                    <Link to="/editPsicologo"><button className="w-96 px-4 py-2 hover:bg-purple-400 hover:text-white rounded-lg border-2 border-purple-400">Editar</button></Link>
+                                    <div>
+                                        <p className="text-lg">bio</p>
+                                        <p>
+                                        Sou uma psicóloga dedicada a ajudar as pessoas a descobrirem seu potencial máximo e alcançarem uma vida equilibrada e gratificante. Minha paixão é proporcionar apoio, compreensão e orientação a indivíduos que desejam fortalecer sua saúde mental e emocional. Minha atuação inclui a realização de avaliações psicológicas, elaboração de planos de tratamento.
+                                        </p>
+                                    </div>
+                                    <div className="py-12 flex justify-center">
+                                        <Link to="/editPsicologo"><button className="w-96 px-4 py-2 hover:bg-purple-400 hover:text-white rounded-lg border-2 border-purple-400">Editar</button></Link>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </CSSTransition>
                     </div>
                 </article>
             </main>
@@ -97,7 +113,7 @@ const PerfilPsicologo = () =>{
 
                                 <div className="h-0 flex items-center mb-16">
                                     <div className="w-32 h-32 flex-0 rounded-full imagePerfil">
-                                       <img src={ImagePsicologo} alt="foto de perfil"></img>
+                                       <img loading="lazy" src={ImagePsicologo} alt="foto de perfil"></img>
                                     </div>
                                 </div>
 

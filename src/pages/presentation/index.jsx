@@ -15,9 +15,11 @@ import iconMuler from "../../assets/undraw_mention_re_k5xc.png";
 import '../presentation/styles.css';
 
 import { useEffect, useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 
 const Apresentacao = () =>{
   const [navAtiva, setNavAtiva] = useState(false);
+  const [anima, setAnima] = useState(false);
 
   useEffect(() => {
     function handleScroll() {
@@ -29,6 +31,7 @@ const Apresentacao = () =>{
     }
 
     window.addEventListener('scroll', handleScroll);
+    setAnima(true);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -39,7 +42,7 @@ const Apresentacao = () =>{
   <>
     <header>
       <nav className={`w-full h-20 flex items-center justify-center fixed navbar ${navAtiva && "fundo-navbar"}`}>
-        <img src={logonNavbar} className='img_navbar'/>
+        <img loading="lazy" src={logonNavbar} className='img_navbar'/>
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16" className='iconList bi bi-list'>
           <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
         </svg>
@@ -57,22 +60,32 @@ const Apresentacao = () =>{
     <main>
       <article>
         <section className="min-h-screen px-4 flex items-center justify-center inicio">
-          <div className="flex items-center justify-between md:w-9/12">
-            <img className='w-5/12 md:block  hidden mr-20' src={iconMuler} alt="mulher icon" />
-
-            <div className='md:mr-48 ml-10'>
-              <img src={logoAtena} alt="logo" className='w-96' />
+          <div className="md:w-10/12 lg:w-9/12 flex items-center justify-between">
+            <CSSTransition
+              in={anima}
+              timeout={1000}
+              classNames="page"
+              unmountOnExit
+            >
+              <img loading="lazy" className='w-5/12 md:block hidden' src={iconMuler} alt="mulher icon" />
+            </CSSTransition>
+            <div className='md:mr-48'>
+              <CSSTransition
+                in={anima}
+                timeout={1000}
+                classNames="nav"
+                unmountOnExit
+              >
+                <img loading="lazy" src={logoAtena} alt="logo" className='w-96' />
+              </CSSTransition>
               <p className="py-6 text-white text-center text-xl">Você é forte, será capaz de <br /> lutar e conquistar o seu espaço.</p>
-              <Link to="/login"><button className="w-96 py-2 my-4 text-purple-800 text-lg font-bold rounded-lg bg-white">Entrar</button></Link>
+              <Link to="/login"><button className="w-full md:w-96 py-2 my-4 text-purple-800 text-lg font-bold rounded-lg bg-white">Entrar</button></Link>
             </div>
-
           </div>
         </section>
-
         <svg className='md:block hidden svg1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" >
           <path fill='rgb(164,132,232)' fill-opacity="1" d="M0,160L48,154.7C96,149,192,139,288,138.7C384,139,480,149,576,154.7C672,160,768,160,864,154.7C960,149,1056,139,1152,154.7C1248,171,1344,213,1392,234.7L1440,256L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z" id='project'></path>
         </svg>
-
         <section className="px-4 py-8 md:pb-32 flex items-center justify-center objetivo " >
           <div className="md:w-2/3 md:flex justify-between py-6 content-objetivo">
             <div className="w-full md:w-96 h-64 flex items-center justify-center text-white bg-black">video aqui</div>
@@ -103,7 +116,7 @@ const Apresentacao = () =>{
             <div className='w-full'>
 
               <div className='flex items-center justify-center flex-wrap'>
-                <img className='md:mr-16 rounded-2xl img-size' src={logoEmpresa} alt="logo empresa" /> 
+                <img loading="lazy" className='md:mr-16 rounded-2xl img-size' src={logoEmpresa} alt="logo empresa" /> 
 
                 <div className='width-text'>
                   <h2 className="py-4 font-title text-5xl font-medium">The Golden Developers</h2>
@@ -134,34 +147,30 @@ const Apresentacao = () =>{
           </div>
         </div>
       </section>
-
-{/* 
+      {/* 
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" id='project' className='md:block hidden'>
           <path fill='' className='svg3' fill-opacity="1" d="M0,160L48,154.7C96,149,192,139,288,138.7C384,139,480,149,576,154.7C672,160,768,160,864,154.7C960,149,1056,139,1152,154.7C1248,171,1344,213,1392,234.7L1440,256L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
       </svg> */}
-
-
-
         <section className="min-h-screen px-4 flex items-center justify-center team" id='team'>
           <div className="w-full md:w-2/3 flex justify-between py-6">
             <div className="w-full">
               <div className="flex flex-col lg:flex-row md:justify-between">
                 <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img alt='membros' src={perfilAna}/></div>
+                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img loading="lazy" alt='membros' src={perfilAna}/></div>
                   <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
                         <div className="text-lg name">Ana Beatriz</div>
                         <div>Designer e Marketing</div>
                       </div>
                 </div>
                 <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img alt='membros' src={perfilRian}/></div>
+                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img loading="lazy" alt='membros' src={perfilRian}/></div>
                   <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
                         <div className="text-lg name">Rian Vieira</div>
                         <div>Desenvolvedor Full-Stack</div>
                       </div>
                 </div>
                 <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img alt='membros' src={perfilBernardo}/></div>
+                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img loading="lazy" alt='membros' src={perfilBernardo}/></div>
                   <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
                         <div className="text-lg name">Bernardo lopez</div>
                         <div>Desenvolvedor Back-End</div>
@@ -170,14 +179,14 @@ const Apresentacao = () =>{
               </div>
               <div className="flex flex-col lg:flex-row lg:justify-around lg:mt-16">
                 <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img alt='membros' src={perfilBea}/></div>
+                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img loading="lazy" alt='membros' src={perfilBea}/></div>
                   <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
                         <div className="text-lg name">Beatriz Bialtas</div>
                         <div>Designer e Marketing</div>
                       </div>
                 </div>
                 <div className="my-8 flex flex-wrap lg:block lg:mt-8">
-                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img className='rounded-lg' alt='membros' src={perfilWelly}/></div>
+                  <div className="w-60 h-60 ml-8 mt-0 lg:mt-2 lg:ml-0 flex items-center justify-center "><img loading="lazy" className='rounded-lg' alt='membros' src={perfilWelly}/></div>
                   <div className="w-60 ml-8 mt-0 lg:mt-2 lg:ml-0">
                     <div className="text-lg name">Wellyngton de Souza</div>
                     <div>Desenvolvedor Front-End</div>

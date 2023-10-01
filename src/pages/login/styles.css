@@ -17,11 +17,22 @@ main{
     padding-left: 3rem;
 }
 
+.loading{
+    animation: animate-loading 0.3s linear infinite;
+}
+
+@keyframes animate-loading {
+    0%{
+        transform: rotate(0deg);
+    } 100%{
+        transform: rotate(360deg);
+    }
+}
+
 .loge {
     background-color: white;
     height: 95vh;
     color: black;
-    border-radius: 10px;
 }
 
 .loge .title{
@@ -137,90 +148,80 @@ main{
     cursor: pointer;
 }
 
-@media screen and (min-width: 250px) and (max-width: 499px){
-
+@media screen and (min-width: 250px) and (max-width: 768px){
     .loge {
-        height: 95vh;
+        height: 100vh;
     }
 
-.loge .title{
-    font-family: 'Playfair Display', serif;
-    font-size: 30px;
-    padding-top: 3rem;
-}
+    .loge .title{
+        font-family: 'Playfair Display', serif;
+        font-size: 30px;
+        padding-top: 3rem;
+    }
 
-.loge .logo{
-    width: 50vw;
-}
+    .loge .logo{
+        width: 50vw;
+    }
 
-.loge .content-inputs{
-    height: 40vh;
-    width: 73vw;
-    margin: auto;
-}
+    .loge .content-inputs{
+        height: 40vh;
+        width: 73vw;
+        margin: auto;
+    }
 
 
-.loge .content-inputs input{
-   width: 70vw;
-}
-
-.loge .btn{
+    .loge .content-inputs input{
     width: 70vw;
-}
+    }
+
+    .loge .btn{
+        width: 70vw;
+    }
 
 
-.content-inputs .google{
-    width: 70vw;
-    margin-top: -5rem;
-}
+    .content-inputs .google{
+        width: 70vw;
+        margin-top: -5rem;
+    }
 
-.content-inputs .google svg{
-    margin-top: 3px;
-    margin-left: 2%;
-}
+    .content-inputs .google svg{
+        margin-top: 3px;
+        margin-left: 2%;
+    }
 
-.type-account{
-    border: #442980 solid 3px;
-    width: 90vw;
-    height: 80vh;
-    background-color: #fff;
-}
+    .type-account{
+        border: #442980 solid 3px;
+        width: 90vw;
+        height: 80vh;
+        background-color: #fff;
+    }
 
-.type-account .accounts{
-    display: flex;
-    flex-direction: column;
-    margin-left: 5rem;
-    margin-top: 3rem;
-}
+    .type-account .accounts{
+        display: flex;
+        flex-direction: column;
+        margin-left: 5rem;
+        margin-top: 3rem;
+    }
 
 
-.type-account .account-psicologo h2{
-    margin-left: 1rem;
-}
+    .type-account .account-psicologo h2{
+        margin-left: 1rem;
+    }
 
-.type-account .account-psicologo{
-    margin-top: 3rem;
-}
+    .type-account .account-psicologo{
+        margin-top: 3rem;
+    }
 
-.exit{
-    position: absolute;
-    margin-left: 17.5rem;
-    margin-top: 0;
-}
+    .exit{
+        position: absolute;
+        margin-left: 17.5rem;
+        margin-top: 0;
+    }
 
 }
 
 
 @media screen and (min-width: 500px) and (max-width: 1000px) {
-  
-    .content-login{
-        display: none;
-    }
-
-    .content-login .logo{
-        width: 27vw;
-    }
-
     .type-account{
         background-color: #fff;
     }
