@@ -36,13 +36,13 @@ const PerfilCliente = () =>{
                                     <div className="py-4 flex justify-between">
                                         <div className="grid grid-cols-2">
                                             <p className="font-medium">E-mail:</p>
-                                            <input type="text" value="Julia.sousza95@gmail" />
+                                            <input type="text" value="Julia.sousza95@gmail" disabled/>
                                             <p className="font-medium">CPF:</p>
-                                            <input type="text" value="560885963-41" />
+                                            <input type="text" value="560885963-41" disabled/>
                                             <p className="font-medium">Data de nascimento:</p>
-                                            <input type="text" value="14/05/1995" />
+                                            <input type="text" value="14/05/1995" disabled/>
                                             <p className="font-medium">Telefone:</p>
-                                            <input type="text" value="(13) 2826-1764" />
+                                            <input type="text" value="(13) 2826-1764" disabled/>
                                         </div>
                                     </div>
                                     <div className="py-12 flex justify-center">
