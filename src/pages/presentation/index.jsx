@@ -130,18 +130,27 @@ const Apresentacao = () =>{
               <div className='w-full'>
                 <h3 className='pt-8 text-center font-title text-5xl'>Nossos valores:</h3>
                 <div className='flex justify-between flex-wrap py-16'>
-                  <div className='w-64 my-10 lg:my-0 md:mr-4'>
+
+                  <div className='w-56 my-10 lg:my-0 md:mr-4'>
+                    <h4 className='text-2xl font-medium'>Prosperidade</h4>
+                    <p className='text-xl'>Se esta é a nossa vontade, então devemos aplicá-la.</p>
+                  </div>
+
+                  <div className='w-56 my-10  lg:my-0 md:mr-4'>
                     <h4 className='text-2xl font-medium'>Respeito</h4> 
                     <p className='text-xl'>O mundo se tornará melhor apenas se um acordo de respeito for estabelecido entre todas as pessoas.</p>
                   </div>
-                  <div className='w-64 my-10 lg:my-0 md:mr-4'>
+
+                  <div className='w-56 my-10 ml-3 lg:my-0 md:mr-4'>
                     <h4 className='text-2xl font-medium'>Altruísmo</h4>
                     <p className='text-xl'>  Não devemos esperar nada em troca ao fazer o que é necessário para o mundo.</p> 
                   </div>
-                <div className='w-64 my-10 lg:my-0 md:mr-4'>
+
+                <div className='w-56 my-10 ml-2 lg:my-0 md:mr-4'>
                   <h4 className='text-2xl font-medium'>Beneficiência</h4>
                   <p className='text-xl'>Não podemos deixar as pessoas mais vulneráveis na mão.</p> 
                 </div>
+
               </div>
             </div>
           </div>

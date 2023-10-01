@@ -86,6 +86,7 @@ const InspecionarPsicologo = () =>{
                                         </div> */}
 
                                     </div>
+
                                     <div className="xl:ml-16 md:w-96 mt-2 md:mt-0">
                                         {/* <p>Meios de contato</p>
                                         <div className="flex mt-1">
@@ -108,6 +109,7 @@ const InspecionarPsicologo = () =>{
                                         </div>
                                         <Link to="/agendarConsulta"><button className="text-white mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400">Agendar Consulta</button></Link>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
 
-
+/* 
 .agendarConsulta{
     width: 60vw;
     height: 70vh;
@@ -28,9 +28,14 @@
 .content-agendarConsulta img{
     width: 7vw;
     height: 13vh;
+} */
+
+.font-style{
+    font-family: 'Playfair Display', serif;
+    color: #281161;
 }
 
-.content-agendarConsulta .agendamento textarea{
+ textarea{
     resize: none;
     height: 20vh;
 }
