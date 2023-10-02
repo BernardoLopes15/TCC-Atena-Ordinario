@@ -36,7 +36,7 @@ const CadastroData = () =>{
                                   <input type="time" value="horarioFinal" name="horarioFinal" className=" rounded-md border-2 border-purple-600"/>
                                 </div>
                                 <div className="flex justify-center mt-16">
-                                    <Link to="/calendario"><button className="text-xl w-auto md:w-80 py-4 hover:bg-purple-700 transition rounded-xl text-white bg-purple-400">Editar</button></Link>
+                                    <Link to="/calendario"><button className="text-xl w-auto md:w-80 py-4 hover:bg-purple-700 transition rounded-xl text-white bg-purple-400">Cadastrar</button></Link>
                                 </div>
                             </form>
                         </div>
