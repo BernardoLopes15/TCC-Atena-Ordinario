@@ -116,7 +116,7 @@ const Apresentacao = () =>{
             <div className='w-full'>
 
               <div className='flex items-center justify-center flex-wrap'>
-                <img loading="lazy" className='md:mr-16 rounded-2xl img-size' src={logoEmpresa} alt="logo empresa" /> 
+                <img loading="lazy" className='md:mr-16 rounded-2xl img-size hidden' src={logoEmpresa} alt="logo empresa" /> 
 
                 <div className='width-text'>
                   <h2 className="py-4 font-title text-5xl font-medium">The Golden Developers</h2>

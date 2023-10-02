@@ -17,7 +17,7 @@ const CadastroData = () =>{
                         <div className="h-full flex items-center justify-center">
                             <form method="POST" className="form">
                                 <h2 className="text-center text-xl title">Cadastrar Datas e Horários</h2>
-                                <h2 className="text-center text-xl py-8">Selecione os dias da semana você estará disponível</h2>
+                                <h2 className="text-center text-xl py-8">Selecione os dias da semana que você estará disponível</h2>
                                 <div className="grid grid-cols-7 grid-flow-row-dense">
                                     <div className="w-full h-20 mx-2 flex items-center justify-center cursor-pointer hover:bg-purple-700 transition rounded-xl text-white bg-purple-400">Dom</div>
                                     <div className="w-full h-20 mx-2 flex items-center justify-center cursor-pointer hover:bg-purple-700 transition rounded-xl text-white bg-purple-400 ml-3">Seg</div>
@@ -27,7 +27,7 @@ const CadastroData = () =>{
                                     <div className="w-full h-20 mx-2 flex items-center justify-center cursor-pointer hover:bg-purple-700 transition rounded-xl text-white bg-purple-400 ml-7">Sex</div>
                                     <div className="w-full h-20 mx-2 flex items-center justify-center cursor-pointer hover:bg-purple-700 transition rounded-xl text-white bg-purple-400 ml-8">Sab</div>
                                 </div>
-                                <h2 className="text-center text-xl py-8">Selecione o período disponível</h2>
+                                <h2 className="text-center text-xl py-8">Selecione o período que estará disponível</h2>
                                 <div className="flex justify-center">
                                   <label className="text-lg mr-2">Dás:</label>
                                   <input type="time" value="horarioInicial" name="horarioInicial" className=" rounded-md border-2 border-purple-600"/>
