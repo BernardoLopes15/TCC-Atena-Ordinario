@@ -1,6 +1,22 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
 
 const CadastroCliente = () =>{
+
+    {//Necessário completar os outros dados
+    }
+    const [nome, setNome] = useState('');
+
+    const enviar = async e => {
+        e.preventDefault();
+        axios.post('http://localhost/TCC-Atena-Ordinario/backend/cadastrarPaciente.php', JSON.stringify({pessoa: nome}))
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => console.error('Erro ao buscar os dados:', error));
+    }
+
     return(
         <main>
             <article>
@@ -16,13 +32,13 @@ const CadastroCliente = () =>{
 
                         <h2 className="text-center text-xl title">Cadastrar Usuária</h2>
                         
-                        <form method="POST" className="form">
+                        <form method="POST" className="form" onSubmit={enviar}>
                             
                         <div className="flex justify-between content-form">
 
                             <div className="w-1/2 flex flex-col justify-end content1">
                                 <h2 className="mt-8 mb-2">Nome completo</h2>
-                                <input className="px-2 py-1" type="text" name="nome" id="nome" />
+                                <input className="px-2 py-1" onChange={(e)=>setNome(e.target.value)} value={nome} type="text" name="nome" id="nome" />
                                 <h2 className="mt-8 mb-2">CPF</h2>
                                 <input className="w-full px-2 py-1 " type="number" name="cpf" />
                                 <h2 className="mt-8 mb-2">Telefone</h2>
@@ -43,7 +59,8 @@ const CadastroCliente = () =>{
                          </div>
 
                          <div className="flex justify-center mt-16">
-                            <Link to="/cadastroImagem"><button className="py-2 text-white btn">Cadastrar</button></Link>
+                            <button className="py-2 text-white btn" type="submit">Cadastrar</button>
+                            {/*<Link to="/cadastroImagem"><button className="py-2 text-white btn" type="submit">Cadastrar</button></Link>*/}
                         </div>
 
                         </form>
