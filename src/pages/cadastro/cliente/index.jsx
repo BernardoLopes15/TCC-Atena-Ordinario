@@ -1,20 +1,40 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const CadastroCliente = () =>{
-
-    {//Necessário completar os outros dados
-    }
     const [nome, setNome] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [senha, setSenha] = useState('');
+    const [dataNascimento, setDataNascimento] = useState('');
+    const [email, setEmail] = useState('');
 
     const enviar = async e => {
         e.preventDefault();
-        axios.post('http://localhost/TCC-Atena-Ordinario/backend/cadastrarPaciente.php', JSON.stringify({pessoa: nome}))
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => console.error('Erro ao buscar os dados:', error));
+
+        localStorage.removeItem('paciente');
+
+        let paciente = JSON.stringify({
+            nome: nome,
+            cpf: cpf,
+            telefone: telefone,
+            senha: senha,
+            dataNascimento: dataNascimento,
+            email: email
+        });
+
+        try{
+            localStorage.setItem('paciente', paciente);
+            document.getElementById("cadastroImagem").click();
+        } catch
+        {
+            console.log("já foi criado um local storage");
+        }
+    }
+
+    const ReceberLocal = async (e) => {
+        
     }
 
     return(
@@ -40,18 +60,18 @@ const CadastroCliente = () =>{
                                 <h2 className="mt-8 mb-2">Nome completo</h2>
                                 <input className="px-2 py-1" onChange={(e)=>setNome(e.target.value)} value={nome} type="text" name="nome" id="nome" />
                                 <h2 className="mt-8 mb-2">CPF</h2>
-                                <input className="w-full px-2 py-1 " type="number" name="cpf" />
+                                <input className="w-full px-2 py-1 " onChange={(e)=>setCpf(e.target.value)} value={cpf} type="number" maxLength="11" name="cpf" />
                                 <h2 className="mt-8 mb-2">Telefone</h2>
-                                <input className="w-full px-2 py-1 " type="number" name="telefone" />
+                                <input className="w-full px-2 py-1 " onChange={(e)=>setTelefone(e.target.value)} value={telefone} type="number" name="telefone" />
                                 <h2 className="mt-8 mb-2">Senha</h2>
-                                <input className="w-full px-2 py-1 " type="password" name="senha" />
+                                <input className="w-full px-2 py-1 " onChange={(e)=>setSenha(e.target.value)} value={senha} type="password" name="senha" />
                             </div>
 
                             <div className="w-1/2 ml-8 content2">
                                 <h2 className="mt-8 mb-2">Data de nascimento</h2>
-                                <input className="w-full px-2 py-1 " type="date" name="dtNascimento" />
+                                <input className="w-full px-2 py-1 " onChange={(e)=>setDataNascimento(e.target.value)} value={dataNascimento} type="date" name="dtNascimento" />
                                 <h2 className="mt-8 mb-2">E-mail</h2>
-                                <input className="w-full px-2 py-1 " type="email" name="email" />
+                                <input className="w-full px-2 py-1 " onChange={(e)=>setEmail(e.target.value)} value={email} type="email" name="email" />
                                 <h2 className="mt-8 mb-2">Confirmar senha</h2>
                                 <input className="w-full px-2 py-1 " type="password" name="confirmarSenha"/>
                             </div>
@@ -59,8 +79,10 @@ const CadastroCliente = () =>{
                          </div>
 
                          <div className="flex justify-center mt-16">
+                            {/*<button className="py-2 text-white btn" type="submit">Próximo</button>*/}
+                            {/*<button className="py-2 text-white btn" type="button" onClick={ReceberLocal}>Local</button>*/}
                             <button className="py-2 text-white btn" type="submit">Cadastrar</button>
-                            {/*<Link to="/cadastroImagem"><button className="py-2 text-white btn" type="submit">Cadastrar</button></Link>*/}
+                            <Link to="/cadastroImagem" id="cadastroImagem"></Link>
                         </div>
 
                         </form>
@@ -72,4 +94,3 @@ const CadastroCliente = () =>{
 }
 
 export default CadastroCliente;
-
