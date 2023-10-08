@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { cpf } from 'cpf-cnpj-validator'; 
+import { InputMask } from 'primereact/inputmask';
+        
 
 
 const CadastroCliente = () =>{
@@ -20,18 +22,13 @@ const CadastroCliente = () =>{
 
     const validarCamposPreenchidos = () =>{
 
-        if(nome == "" || CPF == "" || telefone == "" || senha == "" || dataNascimento == "" || email == "" ){
+        if(nome === "" || CPF === "" || telefone === "" || senha === "" || dataNascimento === "" || email === "" ){
             setMsg("Preencha todos os campos")
             return false
         }
 
         else if(cpf.isValid(CPF) ==! true){
             setMsg("CPF inválido")
-            return false
-        }
-
-        else if (telefone.length !== 11){
-            setMsg("Telefone inválido")
             return false
         }
 
@@ -42,7 +39,6 @@ const CadastroCliente = () =>{
         else{
             setMsg("")
         }
-
 
 
     }
@@ -105,16 +101,19 @@ const CadastroCliente = () =>{
                                 <h2 className="mt-8 mb-2">Nome completo</h2>
                                 <input className="px-2 py-1" onChange={(e)=>setNome(e.target.value)} value={nome} type="text" name="nome" id="nome" />
                                 <h2 className="mt-8 mb-2">CPF</h2>
-                                <input className="w-full px-2 py-1 " onChange={(e)=>setCPF(e.target.value)} value={CPF} type="number" maxLength="11" name="CPF" />
+                                <InputMask className="w-full px-2 py-1 " value={cpf} onChange={(e) => setCPF(e.target.value)} mask="999.999.999-99" />
                                 <h2 className="mt-8 mb-2">Telefone</h2>
-                                <input className="w-full px-2 py-1 " onChange={(e)=>setTelefone(e.target.value)} value={telefone} type="number" name="telefone" />
+                                <InputMask className="w-full px-2 py-1 " value={telefone} onChange={(e) => setTelefone(e.target.value)} mask="(99) 99999-9999" />
                                 <h2 className="mt-8 mb-2">Senha</h2>
                                 <input className="w-full px-2 py-1 " onChange={(e)=>setSenha(e.target.value)} value={senha} type="password" name="senha" />
+                    
+                                
+                           
                             </div>
 
                             <div className="w-1/2 ml-8 content2">
                                 <h2 className="mt-8 mb-2">Data de nascimento</h2>
-                                <input className="w-full px-2 py-1 " onChange={(e)=>setDataNascimento(e.target.value)} value={dataNascimento} type="number" name="dtNascimento"/>
+                                <InputMask className="w-full px-2 py-1 " value={telefone} onChange={(e) => setTelefone(e.target.value)} mask="99/99/9999" />
                                 <h2 className="mt-8 mb-2">E-mail</h2>
                                 <input className="w-full px-2 py-1 " onChange={(e)=>setEmail(e.target.value)} value={email} type="email" name="email" />
                                 <h2 className="mt-8 mb-2">Confirmar senha</h2>
