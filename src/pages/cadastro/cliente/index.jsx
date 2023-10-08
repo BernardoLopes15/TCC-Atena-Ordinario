@@ -1,14 +1,51 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { cpf } from 'cpf-cnpj-validator'; 
+
 
 const CadastroCliente = () =>{
+
+
     const [nome, setNome] = useState('');
-    const [cpf, setCpf] = useState('');
+    const [CPF, setCPF] = useState('');
     const [telefone, setTelefone] = useState('');
     const [senha, setSenha] = useState('');
     const [dataNascimento, setDataNascimento] = useState('');
     const [email, setEmail] = useState('');
+    const [msg, setMsg] = useState('');
+    const[ confirmarSenha, setConfirmarSenha] = useState('');
+
+   
+
+    const validarCamposPreenchidos = () =>{
+
+        if(nome == "" || CPF == "" || telefone == "" || senha == "" || dataNascimento == "" || email == "" ){
+            setMsg("Preencha todos os campos")
+            return false
+        }
+
+        else if(cpf.isValid(CPF) ==! true){
+            setMsg("CPF inválido")
+            return false
+        }
+
+        else if (telefone.length !== 11){
+            setMsg("Telefone inválido")
+            return false
+        }
+
+        else if(senha !== confirmarSenha){
+            setMsg("Campos senha e confirmar senha estão diferentes")
+        }
+
+        else{
+            setMsg("")
+        }
+
+
+
+    }
 
     const enviar = async e => {
         e.preventDefault();
@@ -17,7 +54,7 @@ const CadastroCliente = () =>{
 
         let paciente = JSON.stringify({
             nome: nome,
-            cpf: cpf,
+            CPF: CPF,
             telefone: telefone,
             senha: senha,
             dataNascimento: dataNascimento,
@@ -51,7 +88,15 @@ const CadastroCliente = () =>{
                     </Link>
 
                         <h2 className="text-center text-xl title">Cadastrar Usuária</h2>
-                        
+
+                         <div className="Message">
+                            
+                            <alert className="bg-red-600 text-white">
+                                {msg}
+                            </alert>
+
+                         </div>
+                         
                         <form method="POST" className="form" onSubmit={enviar}>
                             
                         <div className="flex justify-between content-form">
@@ -60,7 +105,7 @@ const CadastroCliente = () =>{
                                 <h2 className="mt-8 mb-2">Nome completo</h2>
                                 <input className="px-2 py-1" onChange={(e)=>setNome(e.target.value)} value={nome} type="text" name="nome" id="nome" />
                                 <h2 className="mt-8 mb-2">CPF</h2>
-                                <input className="w-full px-2 py-1 " onChange={(e)=>setCpf(e.target.value)} value={cpf} type="number" maxLength="11" name="cpf" />
+                                <input className="w-full px-2 py-1 " onChange={(e)=>setCPF(e.target.value)} value={CPF} type="number" maxLength="11" name="CPF" />
                                 <h2 className="mt-8 mb-2">Telefone</h2>
                                 <input className="w-full px-2 py-1 " onChange={(e)=>setTelefone(e.target.value)} value={telefone} type="number" name="telefone" />
                                 <h2 className="mt-8 mb-2">Senha</h2>
@@ -69,11 +114,11 @@ const CadastroCliente = () =>{
 
                             <div className="w-1/2 ml-8 content2">
                                 <h2 className="mt-8 mb-2">Data de nascimento</h2>
-                                <input className="w-full px-2 py-1 " onChange={(e)=>setDataNascimento(e.target.value)} value={dataNascimento} type="date" name="dtNascimento" />
+                                <input className="w-full px-2 py-1 " onChange={(e)=>setDataNascimento(e.target.value)} value={dataNascimento} type="number" name="dtNascimento"/>
                                 <h2 className="mt-8 mb-2">E-mail</h2>
                                 <input className="w-full px-2 py-1 " onChange={(e)=>setEmail(e.target.value)} value={email} type="email" name="email" />
                                 <h2 className="mt-8 mb-2">Confirmar senha</h2>
-                                <input className="w-full px-2 py-1 " type="password" name="confirmarSenha"/>
+                                <input className="w-full px-2 py-1 " type="password" onChange={(e)=>setConfirmarSenha(e.target.value)} value={confirmarSenha} name="confirmarSenha"/>
                             </div>
 
                          </div>
@@ -81,8 +126,9 @@ const CadastroCliente = () =>{
                          <div className="flex justify-center mt-16">
                             {/*<button className="py-2 text-white btn" type="submit">Próximo</button>*/}
                             {/*<button className="py-2 text-white btn" type="button" onClick={ReceberLocal}>Local</button>*/}
-                            <button className="py-2 text-white btn" type="submit">Cadastrar</button>
-                            <Link to="/cadastroImagem" id="cadastroImagem"></Link>
+                            <button className="py-2 text-white btn" type="submit" onClick={validarCamposPreenchidos}>
+                                Cadastrar</button>
+                            {/* <Link to="/cadastroImagem" id="cadastroImagem"></Link> */}
                         </div>
 
                         </form>
