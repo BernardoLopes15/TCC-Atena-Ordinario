@@ -1,8 +1,43 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const CadastroImagemPsicologo = () =>{
+    
+    const [imagem, setImagem] = useState('');
+    const [msg, setMsg] = useState('');
+    let pacienteS = JSON.parse(localStorage.getItem('paciente')) || {};
+
+    const enviar = async e => {
+        e.preventDefault();
+
+        pacienteS.imagem = imagem;
+        localStorage.setItem('paciente', JSON.stringify(pacienteS));
+        document.getElementById("cadastrarImagem").click();
+
+        axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/cadastrarPaciente.php', JSON.stringify(JSON.parse(localStorage.getItem('paciente'))))
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => console.error('Erro ao buscar os dados:', error));
+
+        localStorage.removeItem('paciente');
+    }
+
+    const excluirCookie = async e => {
+        localStorage.removeItem('paciente');
+    }
+
+    const validarImagem = () =>{
+      if (!imagem){
+        setMsg("Insira uma foto")
+      }
+    }
+    
+    
     return(
-        <main>
+       
+       <main>
             <article>
                 <div className="min-h-screen flex items-center justify-center cadastroImage">
                     <div className="md:p-12 bg-white content-cadastroImage">
@@ -16,27 +51,38 @@ const CadastroImagemPsicologo = () =>{
 
                         <h2 className="text-center text-xl title">Escolha uma foto para o seu perfil</h2>
                         
-                        <form method="POST" className="form">
-                         <div className="flex content-formImage">
+                        <div className="Message mt-8 ">
+                            
+                            <alert className="bg-red-600 text-white text-xl rounded">
+                               <alert className="" value={msg} >{msg}</alert>
+                            </alert>
+
+                         </div>
+
+                        <form method="POST" className="form" onSubmit={enviar}>
+                         <div className="flex justify-between content-formImage">
 
                          <label class="picture" for="picture__input" tabIndex="0">
                            <div className="center">
 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
                               <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                               <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
                              </svg>
-                             
+
                            </div>
+
                           <span class="picture__image">Clique aqui</span>
+
                          </label>
 
-                         <input type="file" accept="image/*" name="picture__input" id="picture__input"/> 
+                         <input type="file" accept="image/*" onChange={(e)=>setImagem(e.target.value)} value={imagem} name="picture__input" id="picture__input" /> 
 
                          </div>
 
                          <div className="flex justify-center mt-16">
-                            <Link to="/bioPsicologo"><button className="py-2 text-white btn">Cadastrar</button></Link>
+                            <button className="py-2 text-white btn" onClick={validarImagem}>Cadastrar</button>
+                            <Link to="/bioPsicologo" id="cadastrarImagem"></Link>
                         </div>
 
                         </form>

@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const CadastroBioPsicologo = () =>{
+
+    const [bio, setBio] = useState('');
+    const [msg, setMsg] = useState('');
+
+    const validarBio = () =>{
+        if (!bio){
+          setMsg("Insira a sua apresentação")
+        }
+      }
+
     return(
         <main>
             <article>
@@ -16,19 +28,27 @@ const CadastroBioPsicologo = () =>{
 
                     <div className="center">
 
-                        <h2 className="text-center text-xl title">Redija uma curta apresentação para que a sua paciente possa conhecer melhor você </h2>
+                        <h2 className=" w-9/12 text-center text-4xl title">Redija uma curta apresentação para que a sua paciente possa conhecer você </h2>
                         
                     </div>
+
+                    <div className="Message mt-8 ">
+                            
+                            <alert className="bg-red-600 text-white text-xl rounded">
+                               <alert className="" value={msg} >{msg}</alert>
+                            </alert>
+
+                         </div>
                     
                         <form method="POST" className="form">
                          <div className="flex content-formBio">
                          
-                         <textarea id="msg" name="msg" rows="4" cols="50"></textarea>
+                         <textarea className="px-2 text-xl pt-1" id="bio" name="bio" rows="4" cols="40" onChange={(e)=>setBio(e.target.value)} value={bio} maxLength="400"/>
 
                          </div>
 
                          <div className="flex justify-center mt-16">
-                            <Link to="/login"><button className="py-2 text-white btn">Cadastrar</button></Link>
+                            <Link to=""><button className="py-2 text-white btn" onClick={validarBio}>Cadastrar</button></Link>
                         </div>
 
                         </form>

@@ -18,11 +18,10 @@ const CadastroCliente = () =>{
     const [msg, setMsg] = useState('');
     const[ confirmarSenha, setConfirmarSenha] = useState('');
 
-   
 
     const validarCamposPreenchidos = () =>{
 
-        if(nome === "" || CPF === "" || telefone === "" || senha === "" || dataNascimento === "" || email === "" ){
+        if(!nome || CPF == "" || telefone == "" || senha == "" || email == "" || dataNascimento ==""){
             setMsg("Preencha todos os campos")
             return false
         }
@@ -32,7 +31,7 @@ const CadastroCliente = () =>{
             return false
         }
 
-        else if(senha !== confirmarSenha){
+        else if(senha ==! confirmarSenha){
             setMsg("Campos senha e confirmar senha estão diferentes")
         }
 
@@ -83,12 +82,12 @@ const CadastroCliente = () =>{
                      </svg>
                     </Link>
 
-                        <h2 className="text-center text-xl title">Cadastrar Usuária</h2>
+                        <h2 className="text-center text-5xl title">Cadastrar Usuária</h2>
 
-                         <div className="Message">
+                         <div className="Message mt-8 ">
                             
-                            <alert className="bg-red-600 text-white">
-                                {msg}
+                            <alert className="bg-red-600 text-white text-xl rounded">
+                               <alert className="" value={msg} >{msg}</alert>
                             </alert>
 
                          </div>
@@ -113,7 +112,7 @@ const CadastroCliente = () =>{
 
                             <div className="w-1/2 ml-8 content2">
                                 <h2 className="mt-8 mb-2">Data de nascimento</h2>
-                                <InputMask className="w-full px-2 py-1 " value={telefone} onChange={(e) => setTelefone(e.target.value)} mask="99/99/9999" />
+                                <InputMask className="w-full px-2 py-1 " value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} mask="99/99/9999" />
                                 <h2 className="mt-8 mb-2">E-mail</h2>
                                 <input className="w-full px-2 py-1 " onChange={(e)=>setEmail(e.target.value)} value={email} type="email" name="email" />
                                 <h2 className="mt-8 mb-2">Confirmar senha</h2>

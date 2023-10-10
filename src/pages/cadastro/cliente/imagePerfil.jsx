@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const CadastroImagemCliente = () =>{
 
     const [imagem, setImagem] = useState('');
+    const [msg, setMsg] = useState('');
     let pacienteS = JSON.parse(localStorage.getItem('paciente')) || {};
 
     const enviar = async e => {
@@ -27,6 +28,12 @@ const CadastroImagemCliente = () =>{
         localStorage.removeItem('paciente');
     }
 
+    const validarImagem = () =>{
+      if (!imagem){
+        setMsg("Insira uma foto")
+      }
+    }
+
     return(
         <main>
             <article>
@@ -43,6 +50,14 @@ const CadastroImagemCliente = () =>{
                       <div className="center">
                         <h2 className="title">Escolha uma foto para o seu perfil</h2>
                       </div>
+
+                      <div className="Message mt-8 ">
+                            
+                            <alert className="bg-red-600 text-white text-xl rounded">
+                               <alert className="" value={msg} >{msg}</alert>
+                            </alert>
+
+                         </div>
 
                         <form method="POST" className="form" onSubmit={enviar}>
                          <div className="flex justify-between content-formImage">
@@ -61,12 +76,12 @@ const CadastroImagemCliente = () =>{
 
                          </label>
 
-                         <input type="file" accept="image/*" onChange={(e)=>setImagem(e.target.value)} value={imagem} name="picture__input" id="picture__input"/> 
+                         <input type="file" accept="image/*" onChange={(e)=>setImagem(e.target.value)} value={imagem} name="picture__input" id="picture__input" required/> 
 
                          </div>
 
                          <div className="flex justify-center mt-16">
-                            {<button className="py-2 text-white btn">Cadastrar</button>}
+                            <button className="py-2 text-white btn" onClick={validarImagem}>Cadastrar</button>
                             <Link to="/login" id="cadastrarImagem"></Link>
                         </div>
 
