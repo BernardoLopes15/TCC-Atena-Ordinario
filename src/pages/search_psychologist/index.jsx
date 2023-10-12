@@ -1,4 +1,5 @@
 import BoxPsicologo from "./box-psicologo";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 
@@ -14,9 +15,18 @@ import Psicologo5 from "../../assets/imgs/psicologo5.png"
 
 const BuscarPsicologo = () =>{
     const [anima, setAnima] = useState(false);
+    const [psicologos, setPsicologos] = useState([]);
 
     useEffect(() => {
         setAnima(true);
+        try{
+            axios.get("http://localhost/backend/buscarPsicologos.php")
+            .then((psico)=>
+                setPsicologos(psico.response)
+            );
+        } catch{
+            console.log("não encontrado");
+        }
     }, []);
     
     return(
@@ -45,6 +55,12 @@ const BuscarPsicologo = () =>{
                                         <BoxPsicologo nome="Mirella Sara Galvão"  idade="40" proficao="Psicólogo(a)" image={Psicologo3} cidade="Santos" data="13/05/2023"/>
                                         <BoxPsicologo nome="Sebastiana Lara Eloá" idade="53" proficao="Psicólogo(a)" image={Psicologo4} cidade="Santos" data="05/06/2023"/>
                                         <BoxPsicologo nome="Daniel henrique feirreira" idade="35" proficao="Psicólogo(a)" image={Psicologo5} cidade="São Vicente" data="15/09/2023"/>
+                                        {
+                                            psicologos &&
+                                            psicologos.map((psicologo, index) => (
+                                                <BoxPsicologo key={index} nome={psicologo.nm_psicologo} idade={psicologo.dt_nascimento} proficao="Psicólogo(a)" image={Psicologo1} cidade="Mongaguá" data={psicologo.dt_cadastro} />
+                                            ))                                            
+                                        }
                                     </div>
                                 </CSSTransition>
                             </div>

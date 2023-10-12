@@ -8,5 +8,5 @@
 	$database = "db_psicologia";
 
 	// Create connection
-	$conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+	$conn = new mysqli($servername, $username, $password, $database);
 ?>

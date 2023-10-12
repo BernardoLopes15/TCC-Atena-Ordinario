@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState, useRef } from "react";
 
 const CadastroImagemPsicologo = () =>{
     
     const [imagem, setImagem] = useState('');
     const [msg, setMsg] = useState('');
-    let pacienteS = JSON.parse(localStorage.getItem('paciente')) || {};
+    const clickLink = useRef(null);
 
     const enviar = async e => {
         e.preventDefault();
+
+        clickLink.current.click();
+        /*
 
         pacienteS.imagem = imagem;
         localStorage.setItem('paciente', JSON.stringify(pacienteS));
@@ -31,7 +34,7 @@ const CadastroImagemPsicologo = () =>{
     const validarImagem = () =>{
       if (!imagem){
         setMsg("Insira uma foto")
-      }
+      }*/
     }
     
     
@@ -53,9 +56,9 @@ const CadastroImagemPsicologo = () =>{
                         
                         <div className="Message mt-8 ">
                             
-                            <alert className="bg-red-600 text-white text-xl rounded">
-                               <alert className="" value={msg} >{msg}</alert>
-                            </alert>
+                            <div className="bg-red-600 text-white text-xl rounded">
+                               <div className="" value={msg} >{msg}</div>
+                            </div>
 
                          </div>
 
@@ -81,8 +84,8 @@ const CadastroImagemPsicologo = () =>{
                          </div>
 
                          <div className="flex justify-center mt-16">
-                            <button className="py-2 text-white btn" onClick={validarImagem}>Cadastrar</button>
-                            <Link to="/bioPsicologo" id="cadastrarImagem"></Link>
+                            <button className="py-2 text-white btn" onClick={enviar}>Cadastrar</button>
+                            <Link to="/bioPsicologo" ref={clickLink}></Link>
                         </div>
 
                         </form>
