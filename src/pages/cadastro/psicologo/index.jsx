@@ -119,7 +119,6 @@ const CadastroPsicologo = () =>{
                                 <Link to="/imagemPsicologo" ref={clickLink}></Link>
                                 {/* <Link to="/cadastroImagem" id="cadastroImagem"></Link> */}
                             </div>
-
                         </form>
                     </div>
                 </div>

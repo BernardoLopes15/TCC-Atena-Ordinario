@@ -78,6 +78,7 @@ const Login = () =>{
                                         </div>
                                     </div>
                                 </div>
+                                
                                 {
                                     menucadastro && <div className="fixed inset-0 flex items-center justify-center square" onClick={()=>setMenuCadastro(false)}>
                                         <div className="p-4  md:bg-white type-account">
