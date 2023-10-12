@@ -19,17 +19,17 @@ const CadastroPsicologo = () =>{
 
     const validarCamposPreenchidos = () =>{
 
-        if(!nome || CPF == "" || telefone == "" || senha == "" || email == "" || dataNascimento ==""){
+        if(!nome || !CPF  || !telefone || !senha || !email || !dataNascimento){
             setMsg("Preencha todos os campos")
             return false
         }
 
-        else if(cpf.isValid(CPF) ==! true){
+        else if(cpf.isValid(CPF) ===! true){
             setMsg("CPF inválido")
             return false
         }
 
-        else if(senha ==! confirmarSenha){
+        else if(senha ===! confirmarSenha){
             setMsg("Campos senha e confirmar senha estão diferentes")
         }
 
@@ -119,12 +119,21 @@ const CadastroPsicologo = () =>{
 
                          </div>
 
-                         <div className="flex justify-center mt-16">
+                         <div className="flex justify-center h-28 mt-8">
+                         
+                         <div className="w-auto ">
+
                             {/*<button className="py-2 text-white btn" type="submit">Próximo</button>*/}
+
                             {/*<button className="py-2 text-white btn" type="button" onClick={ReceberLocal}>Local</button>*/}
-                            <button className="py-2 text-white btn" type="submit" onClick={validarCamposPreenchidos}>
+
+                            <button className="py-2 h-10 text-white btn" type="submit" onClick={validarCamposPreenchidos}>
+
                                 Cadastrar</button>
-                            {/* <Link to="/cadastroImagem" id="cadastroImagem"></Link> */}
+
+                            {/* <Link to="/ImagemPsicologo" id="cadastroImagem"></Link> */}
+
+                        </div>
                         </div>
 
                         </form>
