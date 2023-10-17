@@ -36,7 +36,7 @@ const ConsultaCliente = () =>{
                     unmountOnExit
                 >
                     <div className="mt-16 md:w-2/3 lg:w-6/12 rounded-xl p-4 bg-white">
-                        <h2 className="py-4 text-5xl text-center font-style">Histórico de Consultas</h2>
+                        <h2 className="py-4 text-5xl text-center font-style">Proxima Consulta</h2>
                         <div className="md:p-4">
                             <p className="text-gray-600">Filtros de consulta</p>
                             <div className="mb-4 grid grid-cols-3 ">
@@ -46,8 +46,6 @@ const ConsultaCliente = () =>{
                             </div> 
                             <div className="flex flex-col ">
                                 <Psicologo nome="Fernanda Sandra Ribeiro" cor="border-r-yellow-300" imgUser={Psicologo1} />
-                                <Psicologo nome="Ruan Renato Ferreira" cor="border-r-red-300" imgUser={Psicologo2}/>
-                                <Psicologo nome="Mirella Sara Galvão" cor="border-r-green-300" imgUser={Psicologo3}/>
                             </div>
                         </div>
                     </div>

@@ -14,6 +14,10 @@ const NavBar = () =>{
         setMenu(menu ? false : true);
     }
 
+    const irParaOTopo = () => {
+        window.scrollTo(0, 0);
+    }
+
     return(
         <header>
             <nav>
@@ -22,10 +26,10 @@ const NavBar = () =>{
                         <div className="flex items-center">
                             <img className="h-8" src={atenaText} alt="atena-text" />
                             <div className="hidden md:flex ml-8">
-                                <h2 className="ml-8"><Link to="/homeCliente">Início</Link></h2>
-                                <h2 className="ml-8"><Link to="/buscaPsicologo">Psicólogos</Link></h2>
-                                <h2 className="ml-8"><Link to="/consultas">Consultas</Link></h2>
-                                <h2 className="ml-8"><Link to="/perfilCliente">Perfil</Link></h2>
+                                <h2 className="ml-8"><Link onClick={irParaOTopo} to="/homeCliente">Início</Link></h2>
+                                <h2 className="ml-8"><Link onClick={irParaOTopo} to="/buscaPsicologo">Psicólogos</Link></h2>
+                                <h2 className="ml-8"><Link onClick={irParaOTopo} to="/consultas">Consultas</Link></h2>
+                                <h2 className="ml-8"><Link onClick={irParaOTopo} to="/perfilCliente">Perfil</Link></h2>
                             </div>
                         </div>
                         <div className="flex items-center cursor-pointer" onClick={abreMenu}>
@@ -40,12 +44,12 @@ const NavBar = () =>{
                         unmountOnExit
                     >
                         <ul className="py-4">
-                            <li className="py-2"><Link to="/homeCliente">Início</Link></li>
-                            <li className="py-2"><Link to="/buscaPsicologo">Psicólogos</Link></li>
-                            <li className="py-2"><Link to="/consultas">Consultas</Link></li>
-                            <li className="py-2"><Link to="/perfilCliente">Perfil</Link></li>
-                            <li className="py-2"><Link>Opções</Link></li>
-                            <li className="py-2"><Link to="/">Sair</Link></li>
+                            <li className="py-2"><Link onClick={irParaOTopo} to="/homeCliente">Início</Link></li>
+                            <li className="py-2"><Link onClick={irParaOTopo} to="/buscaPsicologo">Psicólogos</Link></li>
+                            <li className="py-2"><Link onClick={irParaOTopo} to="/consultas">Consultas</Link></li>
+                            <li className="py-2"><Link onClick={irParaOTopo} to="/perfilCliente">Perfil</Link></li>
+                            <li className="py-2"><Link onClick={irParaOTopo}>Opções</Link></li>
+                            <li className="py-2"><Link onClick={irParaOTopo} to="/">Sair</Link></li>
                         </ul>
                     </CSSTransition>
                 </div>

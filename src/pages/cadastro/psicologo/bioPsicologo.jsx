@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import MainUrl from "../../../connection config/url";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 
@@ -61,8 +62,7 @@ const CadastroBioPsicologo = () =>{
     },[bio]);
     
     const enviarBio = async () =>{
-        
-        let a = await axios.post("http://localhost/backend/cadastrarPsicologo.php", JSON.stringify(paciente));
+        let a = await axios.post(MainUrl + "cadastrarPsicologo.php", JSON.stringify(paciente));
         
         console.log(a);
     }

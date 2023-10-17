@@ -3,15 +3,27 @@ import { CSSTransition } from "react-transition-group";
 import { Link } from "react-router-dom";
 
 import NavBar from "../../components/Navbar";
+import axios from "axios";
+import MainUrl from "../../connection config/url";
 import Rodape from "../../components/Rodape";
 
 import imgusuario from "../../assets/imgs/userExemplo.png";
 
 const PerfilCliente = () =>{
     const [anima, setAnima] = useState(false);
+    const [paciente, setPaciente] = useState();
 
     useEffect(() => {
         setAnima(true);
+        let nomeBusca = { nome: "Maria Santos"};
+
+        try{
+            axios.get(MainUrl + "perfilCliente.php")
+            .then((e) => setPaciente(e.data?.response[0]))
+            .catch((e) => console.log(e));
+        } catch{
+            console.log("não encontrado");
+        }
     }, []);
 
     return(
@@ -32,17 +44,17 @@ const PerfilCliente = () =>{
                                     <div className="h-0 flex items-center mb-16">
                                       <Link to="/editImgCliente"> <img loading="lazy" className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={imgusuario} alt="usuario" /></Link> 
                                     </div>
-                                    <h2 className=" pt-4 font-semibold font-title text-2xl">Júlia Souza Ferraz</h2>
+                                    <h2 className=" pt-4 font-semibold font-title text-2xl">{paciente?.nm_paciente}</h2>
                                     <div className="py-4 flex justify-between">
                                         <div className="grid grid-cols-2">
                                             <p className="font-medium">E-mail:</p>
-                                            <input type="text" value="Julia.sousza95@gmail" disabled/>
+                                            <input type="text" value={paciente?.nm_email} disabled/>
                                             <p className="font-medium">CPF:</p>
-                                            <input type="text" value="560885963-41" disabled/>
+                                            <input type="text" value={paciente?.nr_cpf} disabled/>
                                             <p className="font-medium">Data de nascimento:</p>
-                                            <input type="text" value="14/05/1995" disabled/>
+                                            <input type="text" value={paciente?.dt_nascimento} disabled/>
                                             <p className="font-medium">Telefone:</p>
-                                            <input type="text" value="(13) 2826-1764" disabled/>
+                                            <input type="text" value={paciente?.nr_telefone} disabled/>
                                         </div>
                                     </div>
                                     <div className="py-12 flex justify-center">

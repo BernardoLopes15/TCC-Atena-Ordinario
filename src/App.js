@@ -41,7 +41,7 @@ const App = () =>{
       <Route path="/editImgCliente" element={<EditImgCliente/>}/>
       <Route path="/consultas" element={<Consulta />}/>
       <Route path="/buscaPsicologo" element={<BuscarPsicologo />}/>
-      <Route path="/psicologo" element={<InspecionarPsicologo />} />
+      <Route path="/psicologo/:nome" element={<InspecionarPsicologo />} />
       <Route path="/agendarConsulta" element={<AgendarConsulta />} />
       <Route path="/cadastroImagem" element={<CadastrarImagem/>}></Route>
       

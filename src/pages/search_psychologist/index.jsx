@@ -7,6 +7,8 @@ import NavBar from "../../components/Navbar";
 import imglupa from "../../assets/Search.svg";
 import Rodape from "../../components/Rodape";
 
+import MainUrl from "../../connection config/url";
+
 import Psicologo1 from "../../assets/imgs/psicologo1.png"
 import Psicologo2 from "../../assets/imgs/psicologo2.png"
 import Psicologo3 from "../../assets/imgs/psicologo3.png"
@@ -17,13 +19,23 @@ const BuscarPsicologo = () =>{
     const [anima, setAnima] = useState(false);
     const [psicologos, setPsicologos] = useState([]);
 
+    useEffect(() =>{
+        
+    }, [psicologos]);
+
+    const mostrarIdade = (dataBr) =>{
+        const dtNascimento = new Date(dataBr);
+        const dtAtual = new Date();
+        const diferencaMilissegundos = dtAtual - dtNascimento;
+        const anos = Math.floor(diferencaMilissegundos / (1000 * 60 * 60 * 24 * 365.25));
+        return anos;
+    }
+
     useEffect(() => {
         setAnima(true);
         try{
-            axios.get("http://localhost/backend/buscarPsicologos.php")
-            .then((psico)=>
-                setPsicologos(psico.response)
-            );
+            axios.get(MainUrl + "buscarPsicologos.php")
+            .then((psico) => setPsicologos(psico.data.response));
         } catch{
             console.log("não encontrado");
         }
@@ -58,7 +70,7 @@ const BuscarPsicologo = () =>{
                                         {
                                             psicologos &&
                                             psicologos.map((psicologo, index) => (
-                                                <BoxPsicologo key={index} nome={psicologo.nm_psicologo} idade={psicologo.dt_nascimento} proficao="Psicólogo(a)" image={Psicologo1} cidade="Mongaguá" data={psicologo.dt_cadastro} />
+                                                <BoxPsicologo key={index} nome={psicologo.nm_psicologo} idade={mostrarIdade(psicologo.dt_nascimento)} proficao="Psicólogo(a)" image={Psicologo1} cidade="Mongaguá" data={psicologo.dt_cadastro} />
                                             ))                                            
                                         }
                                     </div>
