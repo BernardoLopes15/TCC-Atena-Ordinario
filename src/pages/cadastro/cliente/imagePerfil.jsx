@@ -6,26 +6,27 @@ const CadastroImagemCliente = () =>{
 
     const [imagem, setImagem] = useState('');
     const [msg, setMsg] = useState('');
-    let pacienteS = JSON.parse(localStorage.getItem('paciente')) || {};
+    let pacienteS = JSON.parse(sessionStorage.getItem('paciente')) || {};
 
     const enviar = async e => {
         e.preventDefault();
 
         pacienteS.imagem = imagem;
-        localStorage.setItem('paciente', JSON.stringify(pacienteS));
+        sessionStorage.setItem('paciente', JSON.stringify(pacienteS));
         document.getElementById("cadastrarImagem").click();
 
-        axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/cadastrarPaciente.php', JSON.stringify(JSON.parse(localStorage.getItem('paciente'))))
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => console.error('Erro ao buscar os dados:', error));
+          axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/cadastrarPaciente.php', JSON.stringify(JSON.parse(sessionStorage.getItem('paciente'))))
+          .then((response) => {
+            console.log(response);
+            alert(JSON.stringify(response.data));
+          })
+          .catch((error) => console.error('Erro ao buscar os dados:', error));
 
-        localStorage.removeItem('paciente');
+        sessionStorage.removeItem('paciente');
     }
 
-    const excluirCookie = async e => {
-        localStorage.removeItem('paciente');
+    const excluirStorage = async e => {
+        sessionStorage.removeItem('paciente');
     }
 
     const validarImagem = () =>{
@@ -40,7 +41,7 @@ const CadastroImagemCliente = () =>{
                 <div className="min-h-screen flex items-center justify-center cadastroImage">
                     <div className="md:p-12 bg-white content-cadastroImage">
 
-                    <Link to='/cadastro' className="exiit" onClick={excluirCookie}>
+                    <Link to='/cadastro' className="exiit" onClick={excluirStorage}>
                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#281161" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                       <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
                       <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>

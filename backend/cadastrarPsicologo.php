@@ -25,6 +25,8 @@
 
 	$sql = "select * from tb_psicologo where nr_cpf = '" . $cpf . "';";
 	
+	echo json_encode(["response" => [$nomePessoa, $cpf, $telefone, $email, $dtNascimento, $senha, $bio]]);
+	return;
 
 	$result = $conn->query($sql);
 
