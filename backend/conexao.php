@@ -2,9 +2,9 @@
     header('Access-Control-Allow-Origin: *');
     header("Access-Control-Allow-Headers: Content-Type");
 
-    $servername = "localhost:3307";
+    $servername = "localhost:3306";
 	$username = "root";
-	$password = "usbw";
+	$password = "root";
 	$database = "db_psicologia";
 
 	// Create connection

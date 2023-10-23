@@ -103,7 +103,7 @@ const InspecionarPsicologo = () =>{
                                             <label className="px-4 py-2 ml-2 cursor-pointer bg-purple-400 rounded"  for="hora2">10:00</label>
                                             <label className="px-4 py-2 ml-2 cursor-pointer bg-purple-400 rounded" for="hora3">13:00</label>
                                         </div>
-                                        <Link to="/agendarConsulta"><button className="text-white mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400">Agendar Consulta</button></Link>
+                                        <Link to={`/agendarConsulta/${nome}`}><button className="text-white mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400">Agendar Consulta</button></Link>
                                     </div>
                                 </div>
                             </div>

@@ -58,7 +58,7 @@ const CadastroPsicologo = () =>{
         {
             console.log("já foi criado um local storage");
         }
-
+        
         clickLink.current.click();
     }
 
