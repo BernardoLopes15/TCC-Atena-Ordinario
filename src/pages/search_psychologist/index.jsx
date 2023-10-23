@@ -9,19 +9,15 @@ import Rodape from "../../components/Rodape";
 
 import MainUrl from "../../connection config/url";
 
-import Psicologo1 from "../../assets/imgs/psicologo1.png"
-import Psicologo2 from "../../assets/imgs/psicologo2.png"
-import Psicologo3 from "../../assets/imgs/psicologo3.png"
-import Psicologo4 from "../../assets/imgs/psicologo4.png"
-import Psicologo5 from "../../assets/imgs/psicologo5.png"
+import Psicologo1 from "../../assets/imgs/psicologo1.png";
+import Psicologo2 from "../../assets/imgs/psicologo2.png";
+import Psicologo3 from "../../assets/imgs/psicologo3.png";
+import Psicologo4 from "../../assets/imgs/psicologo4.png";
+import Psicologo5 from "../../assets/imgs/psicologo5.png";
 
 const BuscarPsicologo = () =>{
     const [anima, setAnima] = useState(false);
     const [psicologos, setPsicologos] = useState([]);
-
-    useEffect(() =>{
-        
-    }, [psicologos]);
 
     const mostrarIdade = (dataBr) =>{
         const dtNascimento = new Date(dataBr);
@@ -36,6 +32,7 @@ const BuscarPsicologo = () =>{
         try{
             axios.get(MainUrl + "buscarPsicologos.php")
             .then((psico) => setPsicologos(psico.data.response));
+            console.log(psicologos);
         } catch{
             console.log("não encontrado");
         }
@@ -71,7 +68,7 @@ const BuscarPsicologo = () =>{
                                             psicologos &&
                                             psicologos.map((psicologo, index) => (
                                                 <BoxPsicologo key={index} nome={psicologo.nm_psicologo} idade={mostrarIdade(psicologo.dt_nascimento)} proficao="Psicólogo(a)" image={Psicologo1} cidade="Mongaguá" data={psicologo.dt_cadastro} />
-                                            ))                                            
+                                            ))
                                         }
                                     </div>
                                 </CSSTransition>
