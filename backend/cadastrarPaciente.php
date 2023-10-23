@@ -15,10 +15,9 @@
 		$imagem = $dados->imagem;
 	}
 
-	echo json_encode($cpf . " | " . $nome);
-	
+	echo $nome;
 
-	/*$sql = "SELECT * FROM tb_paciente WHERE nr_cpf = '" . $cpf . "';";
+	$sql = "SELECT * FROM tb_paciente WHERE nr_cpf = '" . $cpf . "';";
 
 	$result = $conn->query($sql);
 
@@ -40,7 +39,7 @@
 		} else {
 			echo "Erro ao cadastrar os dados: " . $conn->error;
 		}
-	}*/
+	}
 
 	$conn->close();
 ?>
