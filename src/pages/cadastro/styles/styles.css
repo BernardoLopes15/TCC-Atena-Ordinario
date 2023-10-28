@@ -20,6 +20,10 @@
   border: black solid 1px;
 }
 
+.teste{
+  border: red solid 1px;
+}
+
 .content-form #nome{
    width: 57.5vw;
 }
