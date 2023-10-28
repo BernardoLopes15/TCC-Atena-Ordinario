@@ -70,7 +70,6 @@ const CadastroPsicologo = () =>{
 
         else if(validator.isEmail(email) == false) {
             setMsg("Email incorreto");
-            setReadyToContinue(false);
             return;
         }
 
