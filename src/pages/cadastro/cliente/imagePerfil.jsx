@@ -31,7 +31,11 @@ const CadastroImagemCliente = () =>{
 
     const validarImagem = () =>{
       if (!imagem){
-        setMsg("Insira uma foto")
+        setMsg("Insira uma foto");
+      }
+      else {
+        setMsg("");
+        alert("Cadastrada com sucesso!");
       }
     }
 
