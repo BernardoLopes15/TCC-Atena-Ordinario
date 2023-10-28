@@ -3,6 +3,7 @@ import '../styles/styles.css';
 import { useState, useRef } from "react";
 import { cpf } from 'cpf-cnpj-validator'; 
 import { InputMask } from 'primereact/inputmask';
+import validator from "validator";
 
 const CadastroPsicologo = () =>{
 
@@ -64,6 +65,12 @@ const CadastroPsicologo = () =>{
 
         else if(mesNascimento > 12 || mesNascimento < 0){
             setMsg("Data incorreta");
+            return;
+        }
+
+        else if(validator.isEmail(email) == false) {
+            setMsg("Email incorreto");
+            setReadyToContinue(false);
             return;
         }
 

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { cpf } from 'cpf-cnpj-validator'; 
 import { InputMask } from 'primereact/inputmask';
+import validator from "validator";
         
 
 
@@ -73,6 +74,12 @@ const CadastroCliente = () =>{
 
         else if(mesNascimento > 12 || mesNascimento < 0){
             setMsg("Data incorreta");
+            setReadyToContinue(false);
+            return;
+        }
+
+        else if(validator.isEmail(email) == false) {
+            setMsg("Email incorreto");
             setReadyToContinue(false);
             return;
         }
