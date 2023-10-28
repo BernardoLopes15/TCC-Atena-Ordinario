@@ -12,29 +12,29 @@ const CadastroImagemPsicologo = () =>{
         e.preventDefault();
 
         clickLink.current.click();
-        /*
+        
 
-        pacienteS.imagem = imagem;
-        localStorage.setItem('paciente', JSON.stringify(pacienteS));
-        document.getElementById("cadastrarImagem").click();
+    //     pacienteS.imagem = imagem;
+    //     localStorage.setItem('paciente', JSON.stringify(pacienteS));
+    //     document.getElementById("cadastrarImagem").click();
 
-        axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/cadastrarPaciente.php', JSON.stringify(JSON.parse(localStorage.getItem('paciente'))))
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => console.error('Erro ao buscar os dados:', error));
+    //     axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/cadastrarPaciente.php', JSON.stringify(JSON.parse(localStorage.getItem('paciente'))))
+    //     .then((response) => {
+    //       console.log(response);
+    //     })
+    //     .catch((error) => console.error('Erro ao buscar os dados:', error));
 
-        localStorage.removeItem('paciente');
-    }
+    //     localStorage.removeItem('paciente');
+    // }
 
-    const excluirCookie = async e => {
-        localStorage.removeItem('paciente');
-    }
+    // const excluirCookie = async e => {
+    //     localStorage.removeItem('paciente');
+    // }
 
-    const validarImagem = () =>{
-      if (!imagem){
-        setMsg("Insira uma foto")
-      }*/
+    // const validarImagem = () =>{
+    //   if (!imagem){
+    //     setMsg("Insira uma foto")
+    //   }
     }
     
     

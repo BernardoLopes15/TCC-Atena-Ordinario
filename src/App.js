@@ -24,6 +24,7 @@ import Calendario from "./pages/calendario";
 import SolicitacaoConsulta from "./pages/solicitacaoConsulta";
 import ConsultaPsicologo from "./pages/consulta/psicologo";
 import CadastroData from "./pages/cadastrarData";
+import NotFound from "./pages/notFound/index";
 
 const App = () =>{
   return (
@@ -33,6 +34,7 @@ const App = () =>{
         <Route path="/login" element={<Login />}/>
         <Route path="/cadastro" element={<CadastroCliente />}/>
         <Route path="/cadastroPsicologo" element={<CadastroPsicologo />}/>
+        <Route path="/notFound" element={<NotFound/>}/>
 
         { /* Tela Cliente */}
         <Route path="/homeCliente" element={<HomeCliente />}/>
