@@ -18,6 +18,12 @@ const CadastroPsicologo = () =>{
     const[termosUso, setTermosUso] = useState(false);
     const[informationTermos, setInformationTermos] = useState(false);
 
+    let ano = new Date().getFullYear();
+    let anoNasicmento = dataNascimento.slice(-4);
+    let diaNascimento = dataNascimento.slice(0,2);
+    let mesNascimento = dataNascimento.slice(3,5);
+    const idade = ano - anoNasicmento;
+
     const exibirTermosUso = () =>{
         setInformationTermos(informationTermos ? false : true)
 
@@ -43,6 +49,21 @@ const CadastroPsicologo = () =>{
 
         else if(termosUso == false){
             setMsg("Leia os termos de uso e confirme");
+            return;
+        }
+
+        else if(idade > 120 || idade < 18){
+            setMsg("Idade não compatível");
+            return;
+        }
+
+        else if(diaNascimento > 31 || diaNascimento < 0){
+            setMsg("Data incorreta");
+            return;
+        }
+
+        else if(mesNascimento > 12 || mesNascimento < 0){
+            setMsg("Data incorreta");
             return;
         }
 
