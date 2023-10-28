@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Link, json } from "react-router-dom";
 import axios from "axios";
+import MainUrl from "../../connection config/url";
 
 import imgcliente from "../../assets/client_cadastro.png";
 import imgpsicologo from "../../assets/psicologo_cadastro.png";
@@ -14,8 +15,11 @@ const Login = () =>{
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [menucadastro, setMenuCadastro] = useState(false);
+    let home = useRef();
+    let homePsicologo = useRef();
 
-    const selectCadastro = () =>{
+    const selectCadastro = (e) =>{
+        e.preventDefault();
         setMenuCadastro(menucadastro ? false : true);
     }
 
@@ -25,25 +29,39 @@ const Login = () =>{
         setAnima(true);
     }, []);
 
-    const enviar = async e => {
+    const enviar = (e) => {
         e.preventDefault();
 
-        let login = JSON.stringify({
+        let login = {
             senha: senha,
             email: email
-        });
+        };
 
-        //sessionStorage.setItem('paciente', JSON.stringify());
-        //document.getElementById("cadastrarImagem").click();
+        axios.post(MainUrl + 'validarLogin.php', JSON.stringify(login))
+        .then((response) => {
+            console.log(response.data.response);
+            if(response.data.response[1] === "psicologo"){
+                try{
+                    sessionStorage.setItem('token', JSON.stringify(response.data.response));
+                } catch{
+                    console.log("já foi criado um local storage");
+                }
 
-          axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/validarLogin.php', JSON.stringify(login))
-          .then((response) => {
-            console.log(response);
-            //alert(JSON.stringify(response.data));
-          })
-          .catch((error) => console.error('Erro ao buscar os dados:', error));
+                homePsicologo.current.click();
+            } else{
+                try{
+                    sessionStorage.setItem('token', JSON.stringify(response.data.response));
+                } catch{
+                    console.log("já foi criado um local storage");
+                }
 
-        //sessionStorage.removeItem('paciente');
+                home.current.click();
+            }
+        })
+        .catch((error) => console.error('Erro ao buscar os dados:', error));
+        
+        setSenha("");
+        setEmail("");
     }
 
     return(
@@ -78,7 +96,7 @@ const Login = () =>{
                                         <div>
                                             <h2 className="text-xl text-center mt-8 title" >Seja bem vindo(a)</h2>
                                             <div className="flex justify-center">
-                                            <Link to="/"> <img loading="lazy" className="w-72 h-72" src={logoAtena} alt="atena" /> </Link>
+                                                <Link to="/"> <img loading="lazy" className="w-72 h-72" src={logoAtena} alt="atena" /> </Link>
                                             </div>
                                             <div className="flex justify-center inputs">
                                                 <div className="w-72 content-inputs">
@@ -88,6 +106,8 @@ const Login = () =>{
                                                     <input className="w-full px-2 py-1 border border-black mt-2" onChange={(e)=>setSenha(e.target.value)} value={senha} type="password" placeholder="Digite aqui"/> 
                                                     <button className="w-full px-2 py-1 mt-4 btn" onClick={enviar}>Entrar</button>
                                                     <h2 className="text-lg my-8 account">Não tem uma Conta ? <button className="text-purple-500 font-bold hover:underline underline-offset-2" onClick={selectCadastro}>Crie uma</button></h2>
+                                                    <Link to="/homeCliente" ref={home}></Link>
+                                                    <Link to="/homePsicologo" ref={homePsicologo}></Link>
                                                 </div>
                                             </div>
                                         </div>
