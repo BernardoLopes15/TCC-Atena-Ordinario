@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState,useEffect, useRef } from "react";
 import axios from "axios";
 import MainUrl from "../../connection config/url";
 import { InputMask } from "primereact/inputmask";
@@ -10,7 +10,7 @@ const userCPF = "762476499-75";
 const userPhone = "(13) 8998-6975";
 
 const EditCadastroPsicologo = () =>{
-
+    let editbio = useRef(null);
     const [nome, setNome] = useState('');
     const [CPF, setCPF] = useState('');
     const [telefone, setTelefone] = useState('');
@@ -34,6 +34,26 @@ const EditCadastroPsicologo = () =>{
           .catch((error) => console.error('Erro ao buscar os dados:', error));
     }, []);
 
+    const enviar = async (e) => {
+        let novoForm = {
+            nome: nome,
+            cpf: CPF,
+            email: email,
+            dataNascimento: dataNascimento,
+            telefone: telefone,
+            senha: senha
+        }
+        console.log(novoForm);
+
+        axios.post(MainUrl + 'updatePsicologo.php', JSON.stringify(novoForm))
+        .then((response) => {
+            alert(JSON.stringify(response.data));
+        })
+        .catch((error) => console.error('Erro ao buscar os dados:', error));
+
+        editbio.current.click();
+    }
+
     return(
         <main>
             <article>
@@ -46,32 +66,36 @@ const EditCadastroPsicologo = () =>{
                      </svg>
                     </Link>
                         <h2 className="text-center text-xl title">Editar Dados</h2>
-                        <form method="POST" className="form">
+                        <div className="form">
                             <div className="flex justify-between content-form">
                             <div className="w-1/2 flex flex-col justify-end content1">
                                 <h2 className="mt-8 mb-2">Nome completo</h2>
-                                <input className="px-2 py-1" type="text" name="nome" id="nome" placeholder={nome}/>
+                                <input className="px-2 py-1" type="text" onChange={(e)=> setNome(e.target.value)} name="nome" id="nome" placeholder={nome}/>
                                 <h2 className="mt-8 mb-2">CPF</h2>
                                 <InputMask className="w-full px-2 py-1 " disabled placeholder={CPF} mask="999.999.999-99" />
                                 <h2 className="mt-8 mb-2">Telefone</h2>
-                                <InputMask className="w-full px-2 py-1 " placeholder={telefone} mask="(99) 99999-9999" />
+                                <InputMask className="w-full px-2 py-1 " onChange={(e)=>setTelefone(e.target.value)} placeholder={telefone} mask="(99) 99999-9999" />
                                 <h2 className="mt-8 mb-2">Senha</h2>
-                                <input className="w-full px-2 py-1 " type="password" name="senha" />
+                                <input className="w-full px-2 py-1 " onChange={(e)=> setSenha(e.target.value)} type="password" name="senha" />
                             </div>
 
                             <div className="w-1/2 ml-8 content2">
                                 <h2 className="mt-8 mb-2">Data de nascimento</h2>
-                                <InputMask className="w-full px-2 py-1 " placeholder={dataNascimento} mask="99/99/9999"/>
+                                <InputMask className="w-full px-2 py-1 " onChange={(e)=>{
+                                    setDataNascimento(e.target.value.split('/').reverse().join('-'))
+                                    console.log(e.target.value.split('/').reverse().join('-'));
+                                }} placeholder={dataNascimento} mask="99/99/9999"/>
                                 <h2 className="mt-8 mb-2">E-mail</h2>
-                                <input className="w-full px-2 py-1 " type="email" name="email" placeholder={email}/>
+                                <input className="w-full px-2 py-1 " type="email" onChange={(e)=>setEmail(e.target.value)} name="email" placeholder={email}/>
                                 <h2 className="mt-8 mb-2">Confirmar senha</h2>
                                 <input className="w-full px-2 py-1 " type="password" name="confirmarSenha"/>
                             </div>
                             </div>
                             <div className="flex justify-center mt-16">
-                                <Link to="/editBio"><button className="py-2 text-white btn">Editar</button></Link>
+                                <button className="py-2 text-white btn" onClick={enviar}>Editar</button>
+                                <Link to="/editBio" ref={editbio}></Link>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </article>

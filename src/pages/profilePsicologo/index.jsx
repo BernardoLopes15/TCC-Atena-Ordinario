@@ -8,8 +8,6 @@ import Rodape from "../../components/Rodape";
 import axios from "axios";
 import usuario from "../../assets/imgs/psicologo1.png";
 
-
-
 const PerfilPsicologo = () =>{
     const [anima, setAnima] = useState(false);
 
@@ -53,7 +51,7 @@ const PerfilPsicologo = () =>{
                             classNames="page"
                             unmountOnExit
                         >
-                            <div className="lg:w-6/12 pt-16 lg:px-4 mt-5">
+                            <div className="lg:w-6/12 pt-16 lg:px-4">
                                 <div className="h-56 lg:rounded-t-xl bg-purple-800"></div>
                                 <div className="lg:rounded-b-xl bg-white px-8">
                                     <div className="h-0 flex items-center mb-16">

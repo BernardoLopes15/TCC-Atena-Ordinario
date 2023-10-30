@@ -1,8 +1,37 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
+import MainUrl from "../../connection config/url";
 
 import '../editPerfilPsicologo/styles.css';
+import { useEffect, useState } from "react";
 
 const EditCadastroBioPsicologo = () =>{
+    const [email, setEmail] = useState('');
+    const [bio, setBio] = useState('');
+
+    useEffect(()=>{
+        axios.post(MainUrl + 'updateBio.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
+          .then((response) => {
+            setBio(response.data.response.bio);
+        })
+        .catch((error) => console.error('Erro ao buscar os dados:', error));
+        setEmail(JSON.parse(sessionStorage.getItem('token')).email);
+    },[])
+
+    const enviar = async () => {
+        let BioJson = {
+            bio: bio,
+            email: email
+        }
+        axios.post(MainUrl + 'updateBio.php', JSON.stringify(BioJson))
+        .then((response) => {
+            alert(JSON.stringify(response.data));
+        })
+        .catch((error) => console.error('Erro ao buscar os dados:', error));
+
+        sessionStorage.removeItem('paciente');
+    }
+
     return(
         <main>
             <article>
@@ -18,19 +47,19 @@ const EditCadastroBioPsicologo = () =>{
 
                         <h2 className="text-center text-xl title">Reescreva sua curta apresentação</h2>
                         
-                        <form method="POST" className="form">
+                        <div className="form">
                          <div className="flex content-formBio">
                          
-                         <textarea id="msg" name="msg" rows="4" cols="50"></textarea>
+                         <textarea rows="4" cols="50" onChange={(e)=> {setBio(e.target.value)}}>{bio}</textarea>
 
                          </div>
 
                          <div className="flex justify-center mt-16 btns">
-                            <Link to="/perfilPsicologo"><button className="py-2 text-white btn">Editar</button></Link>
+                            <button className="py-2 text-white btn" onClick={enviar}>Editar</button>
                             <Link to="/perfilPsicologo"><button className="py-2 text-white btn">Pular</button></Link>
                         </div>
 
-                        </form>
+                        </div>
                     </div>
                 </div>
             </article>
