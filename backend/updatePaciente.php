@@ -13,8 +13,6 @@
 		$cpfpaciente = $dados->cpf;
 	}
 
-	echo json_encode($dados);
-
 	$sql = "select * from tb_paciente where nr_cpf = '$cpfpaciente';";
 
 	$result = $conn->query($sql);
@@ -24,8 +22,6 @@
 		WHERE nr_cpf = '$cpfpaciente';";
 
         $conn->query($sqli);
-
-        //Precisa atualizar o token do paciente e formatar a data para o update
 
 		echo json_encode(['response' => "Sucesso"]);
 	} else {
