@@ -3,11 +3,12 @@ import axios from "axios";
 import MainUrl from "../../connection config/url";
 
 import '../editPerfilPsicologo/styles.css';
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const EditCadastroBioPsicologo = () =>{
     const [email, setEmail] = useState('');
     const [bio, setBio] = useState('');
+    let profilepsicolgoo = useRef(null);
 
     useEffect(()=>{
         axios.post(MainUrl + 'updateBio.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
@@ -23,13 +24,14 @@ const EditCadastroBioPsicologo = () =>{
             bio: bio,
             email: email
         }
-        axios.post(MainUrl + 'updateBio.php', JSON.stringify(BioJson))
+        await axios.post(MainUrl + 'updateBio.php', JSON.stringify(BioJson))
         .then((response) => {
             alert(JSON.stringify(response.data));
         })
         .catch((error) => console.error('Erro ao buscar os dados:', error));
 
         sessionStorage.removeItem('paciente');
+        profilepsicolgoo.current.click();
     }
 
     return(
@@ -56,7 +58,7 @@ const EditCadastroBioPsicologo = () =>{
 
                          <div className="flex justify-center mt-16 btns">
                             <button className="py-2 text-white btn" onClick={enviar}>Editar</button>
-                            <Link to="/perfilPsicologo"><button className="py-2 text-white btn">Pular</button></Link>
+                            <Link to="/perfilPsicologo" ref={profilepsicolgoo}><button className="py-2 text-white btn">Pular</button></Link>
                         </div>
 
                         </div>

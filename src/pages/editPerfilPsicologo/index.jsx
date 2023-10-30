@@ -25,11 +25,13 @@ const EditCadastroPsicologo = () =>{
             setNome(response.data.response.nome);
             setEmail(response.data.response.email);
             setCPF(response.data.response.cpf);
-            setDataNascimento(response.data.response.dataNascimento.split('-').reverse().join('/'));
+            setDataNascimento(response.data.response.dataNascimento.split('/').reverse().join('-'));
             setTelefone(response.data.response.telefone);
 
-            console.log(response);
-            //alert(JSON.stringify(response.data));
+            let token = JSON.parse(sessionStorage.getItem('token'));
+            token.nome = response.data.response.nome;
+
+            sessionStorage.setItem('token', JSON.stringify(token));
           })
           .catch((error) => console.error('Erro ao buscar os dados:', error));
     }, []);
@@ -45,7 +47,7 @@ const EditCadastroPsicologo = () =>{
         }
         console.log(novoForm);
 
-        axios.post(MainUrl + 'updatePsicologo.php', JSON.stringify(novoForm))
+        await axios.post(MainUrl + 'updatePsicologo.php', JSON.stringify(novoForm))
         .then((response) => {
             alert(JSON.stringify(response.data));
         })

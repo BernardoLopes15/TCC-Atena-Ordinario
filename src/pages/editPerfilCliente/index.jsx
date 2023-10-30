@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import MainUrl from "../../connection config/url";
 import { InputMask } from "primereact/inputmask";
@@ -8,7 +8,7 @@ import '../editPerfilCliente/styles.css'
 
 
 const EditCadastroCliente = () =>{
-
+    let perfilcliente = useRef(null);
     const [nome, setNome] = useState('');
     const [CPF, setCPF] = useState('');
     const [telefone, setTelefone] = useState('');
@@ -47,6 +47,7 @@ const EditCadastroCliente = () =>{
           axios.post(MainUrl + 'updatePaciente.php', JSON.stringify(novoForm))
           .then((response) => {
             alert(JSON.stringify(response.data));
+            perfilcliente.current.click();
           })
           .catch((error) => console.error('Erro ao buscar os dados:', error));
 
@@ -96,6 +97,7 @@ const EditCadastroCliente = () =>{
 
                          <div className="flex justify-center mt-16">
                             <button className="p-2 px-8 border-box text-white btn" onClick={enviar}>Editar</button>
+                            <Link to="/perfilClient" ref={perfilcliente}></Link>
                         </div>
 
                         </div>

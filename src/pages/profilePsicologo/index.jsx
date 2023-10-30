@@ -31,7 +31,6 @@ const PerfilPsicologo = () =>{
             setBio(response.data.response.bio);
 
             console.log(response);
-            //alert(JSON.stringify(response.data));
           })
           .catch((error) => console.error('Erro ao buscar os dados:', error));
 
