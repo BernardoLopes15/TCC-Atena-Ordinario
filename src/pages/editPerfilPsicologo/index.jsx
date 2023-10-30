@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState,useEffect } from "react";
 import axios from "axios";
+import MainUrl from "../../connection config/url";
 import { InputMask } from "primereact/inputmask";
 
 const userName = "Fernanda Sandra Ribeiro";
@@ -19,7 +20,7 @@ const EditCadastroPsicologo = () =>{
 
     useEffect(() => {
 
-        axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/perfilPsicologo.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
+        axios.post(MainUrl + 'perfilPsicologo.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
           .then((response) => {
             setNome(response.data.response.nome);
             setEmail(response.data.response.email);

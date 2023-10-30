@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import { Link } from "react-router-dom";
+import MainUrl from "../../connection config/url";
 
 import NavBar from "../../components/NavbarPsicologo";
 import Rodape from "../../components/Rodape";
@@ -22,7 +23,7 @@ const PerfilPsicologo = () =>{
     useEffect(() => {
         setAnima(true);
 
-        axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/perfilPsicologo.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
+        axios.post(MainUrl + 'perfilPsicologo.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
           .then((response) => {
             setNome(response.data.response.nome);
             setEmail(response.data.response.email);

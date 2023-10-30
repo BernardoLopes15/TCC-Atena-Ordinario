@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import MainUrl from "../../connection config/url";
 import { InputMask } from "primereact/inputmask";
 
 import '../editPerfilCliente/styles.css'
@@ -19,7 +20,7 @@ const EditCadastroCliente = () =>{
 
     useEffect(() => {
 
-        axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/perfilPaciente.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
+        axios.post(MainUrl + 'perfilPaciente.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
           .then((response) => {
             setNome(response.data.response.nome);
             setEmail(response.data.response.email);
@@ -28,7 +29,6 @@ const EditCadastroCliente = () =>{
             setTelefone(response.data.response.telefone);
             setBio(response.data.response?.bio);
 
-            console.log(response);
             //alert(JSON.stringify(response.data));
           })
           .catch((error) => console.error('Erro ao buscar os dados:', error));
@@ -44,7 +44,7 @@ const EditCadastroCliente = () =>{
             senha: senha,
             bio: bio
         }
-          axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/updatePaciente.php', JSON.stringify(novoForm))
+          axios.post(MainUrl + 'updatePaciente.php', JSON.stringify(novoForm))
           .then((response) => {
             alert(JSON.stringify(response.data));
           })
@@ -85,7 +85,7 @@ const EditCadastroCliente = () =>{
 
                             <div className="w-1/2 ml-8 content2">
                                 <h2 className="mt-8 mb-2">Data de nascimento</h2>
-                                <InputMask className="w-full px-2 py-1 " onChange={(e)=>setDataNascimento(e.target.value)} placeholder={dataNascimento} mask="99/99/9999"/>
+                                <InputMask className="w-full px-2 py-1 " onChange={(e)=>setDataNascimento(e.target.value.split('/').reverse().join('-'))} placeholder={dataNascimento} mask="99/99/9999"/>
                                 <h2 className="mt-8 mb-2">E-mail</h2>
                                 <input className="w-full px-2 py-1 " onChange={(e)=> setEmail(e.target.value)} type="email" name="email" placeholder={email}/>
                                 <h2 className="mt-8 mb-2">Confirmar senha</h2>

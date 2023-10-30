@@ -21,7 +21,7 @@ const PerfilCliente = () =>{
     useEffect(() => {
         setAnima(true);
 
-        axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/perfilPaciente.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
+        axios.post(MainUrl + 'perfilPaciente.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
           .then((response) => {
             setNome(response.data.response.nome);
             setEmail(response.data.response.email);

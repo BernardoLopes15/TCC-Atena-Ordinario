@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import MainUrl from "../../../connection config/url";
 
 const CadastroImagemCliente = () =>{
 
@@ -15,7 +16,7 @@ const CadastroImagemCliente = () =>{
         sessionStorage.setItem('paciente', JSON.stringify(pacienteS));
         document.getElementById("cadastrarImagem").click();
 
-          axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/cadastrarPaciente.php', JSON.stringify(JSON.parse(sessionStorage.getItem('paciente'))))
+          axios.post(MainUrl + 'cadastrarPaciente.php', JSON.stringify(JSON.parse(sessionStorage.getItem('paciente'))))
           .then((response) => {
             console.log(response);
             alert(JSON.stringify(response.data));
