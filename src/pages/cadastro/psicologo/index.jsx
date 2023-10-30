@@ -16,6 +16,7 @@ const CadastroPsicologo = () =>{
     const [email, setEmail] = useState('');
     const [msg, setMsg] = useState('');
     const[ confirmarSenha, setConfirmarSenha] = useState('');
+    const[readyToContinue, setReadyToContinue] = useState(true);
     const[termosUso, setTermosUso] = useState(false);
     const[informationTermos, setInformationTermos] = useState(false);
 
@@ -24,6 +25,8 @@ const CadastroPsicologo = () =>{
     let diaNascimento = dataNascimento.slice(0,2);
     let mesNascimento = dataNascimento.slice(3,5);
     const idade = ano - anoNasicmento;
+
+    const dtNascimento = dataNascimento.split('/').reverse().join('-');
 
     const exibirTermosUso = () =>{
         setInformationTermos(informationTermos ? false : true)
@@ -35,46 +38,55 @@ const CadastroPsicologo = () =>{
 
         if(!nome || !CPF || !telefone || !senha || !email || !dataNascimento ){
             setMsg("Preencha todos os campos");
+            setReadyToContinue(false);
             return;
         }
 
         else if(cpf.isValid(CPF) ==! true){
             setMsg("CPF inválido");
+            setReadyToContinue(false);
             return;
         }
 
         else if(senha ==! confirmarSenha){
             setMsg("Campos senha e confirmar senha estão diferentes");
+            setReadyToContinue(false);
             return;
         }
 
         else if(termosUso == false){
             setMsg("Leia os termos de uso e confirme");
+            setReadyToContinue(false);
             return;
         }
 
         else if(idade > 120 || idade < 18){
             setMsg("Idade não compatível");
+            setReadyToContinue(false);
             return;
         }
 
         else if(diaNascimento > 31 || diaNascimento < 0){
             setMsg("Data incorreta");
+            setReadyToContinue(false);
             return;
         }
 
         else if(mesNascimento > 12 || mesNascimento < 0){
             setMsg("Data incorreta");
+            setReadyToContinue(false);
             return;
         }
 
         else if(validator.isEmail(email) == false) {
             setMsg("Email incorreto");
+            setReadyToContinue(false);
             return;
         }
 
         else{
             setMsg("");
+            setReadyToContinue(true);
             enviar();
         }
     }
@@ -82,12 +94,13 @@ const CadastroPsicologo = () =>{
     const enviar = async () => {
         sessionStorage.removeItem('psicologo');
 
+        if(readyToContinue == true){
         let psicologo = JSON.stringify({
             nome: nome,
             CPF: CPF,
             telefone: telefone,
             senha: senha,
-            dataNascimento: dataNascimento,
+            dataNascimento: dtNascimento,
             email: email
         });
 
@@ -97,7 +110,7 @@ const CadastroPsicologo = () =>{
         {
             console.log("já foi criado um local storage");
         }
-        
+    }
         clickLink.current.click();
     }
 

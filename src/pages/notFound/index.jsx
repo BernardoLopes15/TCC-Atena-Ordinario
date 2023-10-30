@@ -1,6 +1,5 @@
 
 import fundo from "../../assets/imgs/notFound.jpeg";
-import "../notFound/styles.css"
 
 
 ;
@@ -13,7 +12,7 @@ const NotFound = () =>{
             
             <main>
                 <article>
-                    <div className="min-h-screen flex items-center justify-center">
+                    <div className="min-h-screen flex items-center justify-center bg-white">
 
                     <div className="">
 

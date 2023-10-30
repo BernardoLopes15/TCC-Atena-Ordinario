@@ -7,7 +7,7 @@
 
 		$nomePessoa = $dados->nome;
 	}
-	/*
+	
 	$sql = "select * from tb_paciente where nm_paciente = 'Maria Santos';";
 
 	$result = $conn->query($sql);
@@ -21,7 +21,7 @@
 	} else {
 		echo json_encode(['response' => "teste"]);
 	}
-	*/
+	
 
     $conn->close();
 ?>

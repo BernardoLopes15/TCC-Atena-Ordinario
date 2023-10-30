@@ -11,19 +11,28 @@ import imgusuario from "../../assets/imgs/userExemplo.png";
 
 const PerfilCliente = () =>{
     const [anima, setAnima] = useState(false);
-    const [paciente, setPaciente] = useState();
+
+    const [nome, setNome] = useState('');
+    const [CPF, setCPF] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [dataNascimento, setDataNascimento] = useState('');
+    const [email, setEmail] = useState('');
 
     useEffect(() => {
         setAnima(true);
-        let nomeBusca = { nome: "Maria Santos"};
 
-        try{
-            axios.get(MainUrl + "perfilCliente.php")
-            .then((e) => setPaciente(e.data?.response[0]))
-            .catch((e) => console.log(e));
-        } catch{
-            console.log("não encontrado");
-        }
+        axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/perfilPaciente.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
+          .then((response) => {
+            setNome(response.data.response.nome);
+            setEmail(response.data.response.email);
+            setCPF(response.data.response.cpf);
+            setDataNascimento(response.data.response.dataNascimento.split('-').reverse().join('/'));
+            setTelefone(response.data.response.telefone);
+
+            console.log(response);
+            //alert(JSON.stringify(response.data));
+          })
+          .catch((error) => console.error('Erro ao buscar os dados:', error));
     }, []);
 
     return(
@@ -31,30 +40,30 @@ const PerfilCliente = () =>{
             <NavBar />
             <main>
                 <article>
-                    <div className="min-h-screen lg:flex items-center justify-center bg-white lg:bg-purple-100 perfilCliente">
+                    <div className="min-h-screen lg:flex items-center justify-center bg-white lg:bg-purple-100">
                         <CSSTransition
                             in={anima}
                             timeout={1000}
                             classNames="page"
                             unmountOnExit
                         >
-                            <div className="lg:w-6/12 pt-16 lg:px-4 content-perfilCliente mt-5">
+                            <div className="lg:w-6/12 pt-16 lg:px-4">
                                 <div className="h-56 lg:rounded-t-xl bg-purple-800"></div>
                                 <div className="lg:rounded-b-xl bg-white px-8">
                                     <div className="h-0 flex items-center mb-16">
                                       <Link to="/editImgCliente"> <img loading="lazy" className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={imgusuario} alt="usuario" /></Link> 
                                     </div>
-                                    <h2 className=" pt-4 font-semibold font-title text-2xl">{paciente?.nm_paciente}</h2>
+                                    <h2 className=" pt-4 font-semibold font-title text-2xl">{nome}</h2>
                                     <div className="py-4 flex justify-between">
                                         <div className="grid grid-cols-2">
                                             <p className="font-medium">E-mail:</p>
-                                            <input type="text" value={paciente?.nm_email} disabled/>
+                                            <input type="text" value={email} disabled/>
                                             <p className="font-medium">CPF:</p>
-                                            <input type="text" value={paciente?.nr_cpf} disabled/>
+                                            <input type="text" value={CPF} disabled/>
                                             <p className="font-medium">Data de nascimento:</p>
-                                            <input type="text" value={paciente?.dt_nascimento} disabled/>
+                                            <input type="text" value={dataNascimento} disabled/>
                                             <p className="font-medium">Telefone:</p>
-                                            <input type="text" value={paciente?.nr_telefone} disabled/>
+                                            <input type="text" value={telefone} disabled/>
                                         </div>
                                     </div>
                                     <div className="py-12 flex justify-center">
@@ -72,73 +81,3 @@ const PerfilCliente = () =>{
 }
 
 export default PerfilCliente;
-/*
-import NavBar from "../../components/Navbar";
-import Rodape from "../../components/Rodape";
-import ImageCliente from "../../assets/imgs/userExemplo.png"
-import { Link } from "react-router-dom";
-
-import "../profileCliente/styles.css"
-
-const userName = "Júlia Souza Ferraz";
-const userEmail = "Julia.sousza95@gmail";
-const userCPF = "560885963-41";
-const userPhone = "(13) 2826-1764";
-const userDate = "14/05/1995";
-
-const PerfilCliente = () =>{
-    return(
-        <>
-            <NavBar />
-            <main>
-                <article>
-                    <div className="min-h-screen lg:flex items-center justify-center bg-white lg:bg-purple-100 perfilCliente">
-                        <div className="lg:w-6/12 pt-16 lg:px-4 content-perfilCliente">
-
-                            <div className="h-64 content-superior">
-
-                            <h2 className="text-xl pt-4 name" >{userName}</h2>
-
-                            </div>
-
-                              <div className="h-96 bg-white px-8 content-inferior">
-
-                                <div className="h-0 flex items-center mb-16">
-                                    <div className="w-32 h-32 flex-0 rounded-full  imagePerfil">
-                                       <img loading="lazy" src={ImageCliente} alt="foto de perfil" ></img>
-                                    </div>
-                                </div>
-
-                                <div className="dividir">
-
-                                <div className="py-4 flex justify-between dados">
-
-                                    <div>
-                                        <h2 className="title">Dados Pessoais</h2>
-                                       <ul>
-                                        <li> <label>E-mail:</label> {userEmail}</li>
-                                        <li> <label>CPF:</label> {userCPF}</li>
-                                        <li> <label>Telefone:</label>  {userPhone}</li>
-                                        <li> <label>Data de nascimento:</label>  {userDate}</li>
-                                       </ul>
-                                    </div>
-                                </div>
-
-                                <div className="text-right">
-                                <Link to="/editCliente"><button type="button" className="py-2 btn">Editar Perfil</button></Link>
-                                </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </main>
-            <Rodape estilo="lg:bg-purple-100" />
-        </>
-    )
-}
-
-export default PerfilCliente;
-*/

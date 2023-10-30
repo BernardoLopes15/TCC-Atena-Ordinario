@@ -24,9 +24,15 @@ const NavBar = () =>{
     useEffect(()=>{
         let response = JSON.parse(sessionStorage.getItem('token')) || voltarPagina();
         if(response){
-            setUsuario(response[2]);
+            setUsuario(response.nome);
         }
     });
+
+    const excluirToken = () => {
+        irParaOTopo();
+
+        sessionStorage.removeItem('token');
+    }
 
     return(
         <header>
@@ -56,7 +62,7 @@ const NavBar = () =>{
                             <li className="py-2"><Link onClick={irParaOTopo} to="/consultaPsicologo">Consultas</Link></li>
                             <li className="py-2"><Link onClick={irParaOTopo} to="/perfilPsicologo">Perfil</Link></li>
                             <li className="py-2"><Link onClick={irParaOTopo}>Opções</Link></li>
-                            <li className="py-2"><Link onClick={irParaOTopo} to="/" ref={sair}>Sair</Link></li>
+                            <li className="py-2"><Link onClick={excluirToken} to="/" ref={sair}>Sair</Link></li>
                         </ul>
                     </div>
                 </div>

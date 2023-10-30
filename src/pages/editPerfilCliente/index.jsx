@@ -1,13 +1,58 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { InputMask } from "primereact/inputmask";
 
 import '../editPerfilCliente/styles.css'
 
-const userName = "Júlia Souza Ferraz";
-const userEmail = "Julia.sousza95@gmail";
-const userCPF = "560885963-41";
-const userPhone = "(13) 2826-1764";
 
 const EditCadastroCliente = () =>{
+
+    const [nome, setNome] = useState('');
+    const [CPF, setCPF] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [senha, setSenha] = useState('');
+    const [dataNascimento, setDataNascimento] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [bio, setBio] = useState('');
+
+    useEffect(() => {
+
+        axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/perfilPaciente.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
+          .then((response) => {
+            setNome(response.data.response.nome);
+            setEmail(response.data.response.email);
+            setCPF(response.data.response.cpf);
+            setDataNascimento(response.data.response.dataNascimento.split('-').reverse().join('/'));
+            setTelefone(response.data.response.telefone);
+            setBio(response.data.response?.bio);
+
+            console.log(response);
+            //alert(JSON.stringify(response.data));
+          })
+          .catch((error) => console.error('Erro ao buscar os dados:', error));
+    }, []);
+
+    const enviar = async (e) => {
+        let novoForm = {
+            nome: nome,
+            cpf: CPF,
+            email: email,
+            dataNascimento: dataNascimento,
+            telefone: telefone,
+            senha: senha,
+            bio: bio
+        }
+          axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/updatePaciente.php', JSON.stringify(novoForm))
+          .then((response) => {
+            alert(JSON.stringify(response.data));
+          })
+          .catch((error) => console.error('Erro ao buscar os dados:', error));
+
+        sessionStorage.removeItem('paciente');
+    }
+
     return(
         <main>
             <article>
@@ -23,26 +68,26 @@ const EditCadastroCliente = () =>{
 
                         <h2 className="text-center text-xl title">Editar Dados</h2>
                         
-                        <form method="POST" className="form">
+                        <div>
                             
                         <div className="flex justify-between content-form">
 
                             <div className="w-1/2 flex flex-col justify-end content1">
                                 <h2 className="mt-8 mb-2">Nome completo</h2>
-                                <input className="px-2 py-1" type="text" name="nome" id="nome" placeholder={userName}/>
+                                <input className="px-2 py-1" type="text" name="nome" onChange={(e)=>setNome(e.target.value)} id="nome" placeholder={nome}/>
                                 <h2 className="mt-8 mb-2">CPF</h2>
-                                <input className="w-full px-2 py-1 " type="number" name="cpf" disabled placeholder={userCPF}/>
+                                <InputMask className="w-full px-2 py-1 " disabled placeholder={CPF} mask="999.999.999-99" />
                                 <h2 className="mt-8 mb-2">Telefone</h2>
-                                <input className="w-full px-2 py-1 " type="number" name="telefone" placeholder={userPhone}/>
+                                <InputMask className="w-full px-2 py-1 " onChange={(e)=>setTelefone(e.target.value)} placeholder={telefone} mask="(99) 99999-9999" />
                                 <h2 className="mt-8 mb-2">Senha</h2>
-                                <input className="w-full px-2 py-1 " type="password" name="senha" />
+                                <input className="w-full px-2 py-1 " onChange={(e)=>setPassword(e.target.value)} type="password" name="senha" />
                             </div>
 
                             <div className="w-1/2 ml-8 content2">
                                 <h2 className="mt-8 mb-2">Data de nascimento</h2>
-                                <input className="w-full px-2 py-1 " type="date" name="dtNascimento"/>
+                                <InputMask className="w-full px-2 py-1 " onChange={(e)=>setDataNascimento(e.target.value)} placeholder={dataNascimento} mask="99/99/9999"/>
                                 <h2 className="mt-8 mb-2">E-mail</h2>
-                                <input className="w-full px-2 py-1 " type="email" name="email" placeholder={userEmail}/>
+                                <input className="w-full px-2 py-1 " onChange={(e)=> setEmail(e.target.value)} type="email" name="email" placeholder={email}/>
                                 <h2 className="mt-8 mb-2">Confirmar senha</h2>
                                 <input className="w-full px-2 py-1 " type="password" name="confirmarSenha"/>
                             </div>
@@ -50,10 +95,10 @@ const EditCadastroCliente = () =>{
                          </div>
 
                          <div className="flex justify-center mt-16">
-                            <Link to="/perfilCliente"><button  className="py-2 text-white btn">Editar</button></Link>
+                            <button className="p-2 px-8 border-box text-white btn" onClick={enviar}>Editar</button>
                         </div>
 
-                        </form>
+                        </div>
                     </div>
                 </div>
             </article>

@@ -31,7 +31,11 @@ const CadastroCliente = () =>{
     let diaNascimento = dataNascimento.slice(0,2);
     let mesNascimento = dataNascimento.slice(3,5);
     const idade = ano - anoNasicmento;
+
+    const dtNascimento = dataNascimento.split('/').reverse().join('-');
+
     console.log(mesNascimento)
+
 
 
     const validarCamposPreenchidos = () =>{
@@ -114,7 +118,7 @@ const CadastroCliente = () =>{
                 cpf: CPF,
                 telefone: telefone,
                 senha: senha,
-                dataNascimento: dataNascimento,
+                dataNascimento: dtNascimento,
                 email: email
                 
             });

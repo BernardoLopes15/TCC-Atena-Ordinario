@@ -14,13 +14,9 @@
 	try{
 		$result = $conn->query($sql);
 
-		while($row = $result->fetch_assoc()) {
-			$listaDados = array("nome" => $row["nm_psicologo"], "nivelAcesso" => "psicologo", "email" => $row["nm_email"]);
-		}
-
 		if ($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
-				$listaDados[] = $row;
+				$listaDados = array("nome" => $row["nm_psicologo"], "nivelAcesso" => "psicologo", "email" => $row["nm_email"]);
 			}
 
 			echo json_encode(['response' => $listaDados]);

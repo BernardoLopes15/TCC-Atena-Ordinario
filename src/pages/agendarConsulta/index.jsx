@@ -75,9 +75,12 @@ const AgendarConsulta = () =>{
                                         </select>
                                         <p className="text-lg">Horários disponíveis</p>
                                         <div className="my-2 text-white" >
-                                            <label className="px-4 py-2 cursor-pointer bg-purple-400 rounded" for="hora1">8:00</label>
-                                            <label className="px-4 py-2 ml-2 cursor-pointer bg-purple-400 rounded"  for="hora2">10:00</label>
-                                            <label className="px-4 py-2 ml-2 cursor-pointer bg-purple-400 rounded" for="hora3">13:00</label>
+                                            <input type="radio" id="hora" className="hidden peer" />
+                                            <label className="px-4 py-2 cursor-pointer bg-purple-400 peer-checked:bg-red-600 rounded" for="hora">8:00</label>
+                                            <input type="radio" id="hora" className="hidden peer" />
+                                            <label className="px-4 py-2 ml-2 cursor-pointer bg-purple-400 peer-checked:bg-red-600 rounded" for="hora">8:00</label>
+                                            <input type="radio" id="hora" className="hidden peer" />
+                                            <label className="px-4 py-2 ml-2 cursor-pointer bg-purple-400 peer-checked:bg-red-600 rounded" for="hora">8:00</label>
                                         </div>
                                     </div>
                                     

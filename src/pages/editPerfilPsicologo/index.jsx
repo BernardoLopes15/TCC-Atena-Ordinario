@@ -1,12 +1,38 @@
 import { Link } from "react-router-dom";
+import { useState,useEffect } from "react";
+import axios from "axios";
+import { InputMask } from "primereact/inputmask";
 
 const userName = "Fernanda Sandra Ribeiro";
 const userEmail = "fernanda_Sandra@artelazer.com";
 const userCPF = "762476499-75";
 const userPhone = "(13) 8998-6975";
 
-
 const EditCadastroPsicologo = () =>{
+
+    const [nome, setNome] = useState('');
+    const [CPF, setCPF] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [senha, setSenha] = useState('');
+    const [dataNascimento, setDataNascimento] = useState('');
+    const [email, setEmail] = useState('');
+
+    useEffect(() => {
+
+        axios.post('http://localhost:8080/TCC-Atena-Ordinario/backend/perfilPsicologo.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
+          .then((response) => {
+            setNome(response.data.response.nome);
+            setEmail(response.data.response.email);
+            setCPF(response.data.response.cpf);
+            setDataNascimento(response.data.response.dataNascimento.split('-').reverse().join('/'));
+            setTelefone(response.data.response.telefone);
+
+            console.log(response);
+            //alert(JSON.stringify(response.data));
+          })
+          .catch((error) => console.error('Erro ao buscar os dados:', error));
+    }, []);
+
     return(
         <main>
             <article>
@@ -21,25 +47,25 @@ const EditCadastroPsicologo = () =>{
                         <h2 className="text-center text-xl title">Editar Dados</h2>
                         <form method="POST" className="form">
                             <div className="flex justify-between content-form">
+                            <div className="w-1/2 flex flex-col justify-end content1">
+                                <h2 className="mt-8 mb-2">Nome completo</h2>
+                                <input className="px-2 py-1" type="text" name="nome" id="nome" placeholder={nome}/>
+                                <h2 className="mt-8 mb-2">CPF</h2>
+                                <InputMask className="w-full px-2 py-1 " disabled placeholder={CPF} mask="999.999.999-99" />
+                                <h2 className="mt-8 mb-2">Telefone</h2>
+                                <InputMask className="w-full px-2 py-1 " placeholder={telefone} mask="(99) 99999-9999" />
+                                <h2 className="mt-8 mb-2">Senha</h2>
+                                <input className="w-full px-2 py-1 " type="password" name="senha" />
+                            </div>
 
-                                <div className="w-1/2 flex flex-col justify-end content1">
-                                    <h2 className="mt-8 mb-2">Nome completo</h2>
-                                    <input className="px-2 py-1" type="text" name="nome" id="nome" placeholder={userName} />
-                                    <h2 className="mt-8 mb-2">CPF</h2>
-                                    <input className="w-full px-2 py-1 " type="number" name="cpf" disabled placeholder={userCPF} />
-                                    <h2 className="mt-8 mb-2">Telefone</h2>
-                                    <input className="w-full px-2 py-1" type="number" name="telefone" placeholder={userPhone}/>
-                                    <h2 className="mt-8 mb-2">Senha</h2>
-                                    <input className="w-full px-2 py-1 " type="password" name="senha" />
-                                </div>
-                                <div className="w-1/2 ml-8 content2">
-                                    <h2 className="mt-8 mb-2">Data de nascimento</h2>
-                                    <input className="w-full px-2 py-1 " type="date" name="dtNascimento" />
-                                    <h2 className="mt-8 mb-2">E-mail</h2>
-                                    <input className="w-full px-2 py-1 " type="email" name="email" placeholder={userEmail} />
-                                    <h2 className="mt-8 mb-2">Confirmar senha</h2>
-                                    <input className="w-full px-2 py-1 " type="password" name="confirmarSenha"/>
-                                </div>
+                            <div className="w-1/2 ml-8 content2">
+                                <h2 className="mt-8 mb-2">Data de nascimento</h2>
+                                <InputMask className="w-full px-2 py-1 " placeholder={dataNascimento} mask="99/99/9999"/>
+                                <h2 className="mt-8 mb-2">E-mail</h2>
+                                <input className="w-full px-2 py-1 " type="email" name="email" placeholder={email}/>
+                                <h2 className="mt-8 mb-2">Confirmar senha</h2>
+                                <input className="w-full px-2 py-1 " type="password" name="confirmarSenha"/>
+                            </div>
                             </div>
                             <div className="flex justify-center mt-16">
                                 <Link to="/editBio"><button className="py-2 text-white btn">Editar</button></Link>

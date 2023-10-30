@@ -51,6 +51,9 @@ const CadastroBioPsicologo = () =>{
         setPsicologo((prevPsicologo) => {
             return { ...prevPsicologo, telefone: prevPsicologo.telefone.replace(/[\(\)\s-]/g, '') };
         });
+
+        enviarBio();
+        excluirStorage();
     }
     
     useEffect(()=>{
@@ -58,21 +61,17 @@ const CadastroBioPsicologo = () =>{
             return { ...prevPsicologo, bio: bio };
         });
     },[bio]);
-    
-    useEffect(()=>{
-        const enviarBio = async () =>{
-            try{
-                let a = await axios.post(MainUrl + "cadastrarPsicologo.php", JSON.stringify(psicologo));
-            
-                console.log(a);
-                clickLink.current.click();
-            } catch{
-                console.log("error");
-            }
-        }
 
-        enviarBio();
-    }, [psicologo?.telefone]);
+    const enviarBio = async () =>{
+        try{
+            let a = await axios.post(MainUrl + "cadastrarPsicologo.php", JSON.stringify(psicologo));
+        
+            console.log(a);
+            clickLink.current.click();
+        } catch{
+            console.log("error");
+        }
+    }
 
     const excluirStorage = () =>  {
         sessionStorage.removeItem('psicologo');

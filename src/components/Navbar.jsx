@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import { Link } from "react-router-dom";
 
 import atenaText from "../assets/imgs/logo_navbar.png";
 import imgmulher from "../assets/user.png";
 
-const userName = "Júlia";
-
 const NavBar = () =>{
     const [menu, setMenu] = useState(false);
+    const [usuario, setUsuario] = useState();
+    let sair = useRef();
 
     const abreMenu = () =>{
         setMenu(menu ? false : true);
@@ -16,6 +16,23 @@ const NavBar = () =>{
 
     const irParaOTopo = () => {
         window.scrollTo(0, 0);
+    }
+
+    const voltarPagina = () =>{
+        sair.current.click();
+    }
+
+    useEffect(()=>{
+        let response = JSON.parse(sessionStorage.getItem('token')) || voltarPagina();
+        if(response){
+            setUsuario(response.nome);
+        }
+    });
+
+    const excluirToken = () => {
+        irParaOTopo();
+
+        sessionStorage.removeItem('token');
     }
 
     return(
@@ -33,7 +50,7 @@ const NavBar = () =>{
                             </div>
                         </div>
                         <div className="flex items-center cursor-pointer" onClick={abreMenu}>
-                            <p className="mr-4">{userName}</p>
+                            <p className="mr-4">{usuario}</p>
                             <img src={imgmulher} alt="user" />
                         </div>
                     </div>
@@ -49,7 +66,7 @@ const NavBar = () =>{
                             <li className="py-2"><Link onClick={irParaOTopo} to="/consultas">Consultas</Link></li>
                             <li className="py-2"><Link onClick={irParaOTopo} to="/perfilCliente">Perfil</Link></li>
                             <li className="py-2"><Link onClick={irParaOTopo}>Opções</Link></li>
-                            <li className="py-2"><Link onClick={irParaOTopo} to="/">Sair</Link></li>
+                            <li className="py-2"><Link onClick={excluirToken} to="/" ref={sair}>Sair</Link></li>
                         </ul>
                     </CSSTransition>
                 </div>
