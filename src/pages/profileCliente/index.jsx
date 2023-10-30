@@ -6,6 +6,7 @@ import NavBar from "../../components/Navbar";
 import axios from "axios";
 import MainUrl from "../../connection config/url";
 import Rodape from "../../components/Rodape";
+import MainUrl from "../../connection config/url";
 
 import imgusuario from "../../assets/imgs/userExemplo.png";
 
