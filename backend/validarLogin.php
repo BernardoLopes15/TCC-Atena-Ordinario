@@ -14,12 +14,16 @@
 	try{
 		$result = $conn->query($sql);
 
+		while($row = $result->fetch_assoc()) {
+			$listaDados = array("nome" => $row["nm_psicologo"], "nivelAcesso" => "psicologo", "email" => $row["nm_email"]);
+		}
+
 		if ($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
-				$listaProdutos[] = $row;
+				$listaDados[] = $row;
 			}
 
-			echo json_encode(['response' => [$listaProdutos[0]['nm_email'], "psicologo", $listaProdutos[0]['nm_psicologo']]]);
+			echo json_encode(['response' => $listaDados]);
 
 		} else {
 			$sql = "select * from tb_paciente where nm_email = '$email' and nm_senha = '$senha';";
@@ -28,10 +32,10 @@
 
 			if ($result->num_rows > 0) {
 				while($row = $result->fetch_assoc()) {
-					$listaProdutos[] = $row;
+					$listaDados = array("nome" => $row["nm_paciente"], "nivelAcesso" => "paciente", "email" => $row["nm_email"]);
 				}
 
-				echo json_encode(['response' => [$listaProdutos[0]['nm_email'], "paciente", $listaProdutos[0]['nm_paciente']]]);
+				echo json_encode(['response' => $listaDados]);
 			}
 		}
 	} catch (Exception $e){

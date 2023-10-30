@@ -40,7 +40,7 @@ const Login = () =>{
         axios.post(MainUrl + 'validarLogin.php', JSON.stringify(login))
         .then((response) => {
             console.log(response.data.response);
-            if(response.data.response[1] === "psicologo"){
+            if(response.data.response === "psicologo"){
                 try{
                     sessionStorage.setItem('token', JSON.stringify(response.data.response));
                 } catch{
