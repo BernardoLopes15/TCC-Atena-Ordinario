@@ -1,3 +1,3 @@
-const MainUrl = "http://localhost:8080/TCC-Atena-Ordinario/backend/";
+const MainUrl = "../backend/";
 
 export default MainUrl;
