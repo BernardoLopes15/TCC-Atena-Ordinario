@@ -42,11 +42,7 @@ const CadastroPsicologo = () =>{
             return;
         }
 
-        else if(cpf.isValid(CPF) ==! true){
-            setMsg("CPF inválido");
-            setReadyToContinue(false);
-            return;
-        }
+    
 
         else if(senha ==! confirmarSenha){
             setMsg("Campos senha e confirmar senha estão diferentes");
@@ -60,36 +56,14 @@ const CadastroPsicologo = () =>{
             return;
         }
 
-        else if(idade > 120 || idade < 18){
-            setMsg("Idade não compatível");
-            setReadyToContinue(false);
-            return;
-        }
-
-        else if(diaNascimento > 31 || diaNascimento < 0){
-            setMsg("Data incorreta");
-            setReadyToContinue(false);
-            return;
-        }
-
-        else if(mesNascimento > 12 || mesNascimento < 0){
-            setMsg("Data incorreta");
-            setReadyToContinue(false);
-            return;
-        }
-
-        else if(validator.isEmail(email) == false) {
-            setMsg("Email incorreto");
-            setReadyToContinue(false);
-            return;
-        }
-
         else{
             setMsg("");
             setReadyToContinue(true);
             enviar();
         }
     }
+
+    console.log('teste')
 
     const enviar = async () => {
         sessionStorage.removeItem('psicologo');
@@ -148,13 +122,13 @@ const CadastroPsicologo = () =>{
 
                                 <div className="w-1/2 flex flex-col justify-end content1">
                                     <h2 className="mt-8 mb-2">Nome completo</h2>
-                                    <input className="px-2 py-1" onChange={(e)=>setNome(e.target.value)} value={nome} type="text" name="nome" id="nome" />
+                                    <input className="px-2 py-1" onChange={(e)=>setNome(e.target.value)} value={nome} type="text" name="nome" id="nome" maxLength={40} required />
                                     <h2 className="mt-8 mb-2">CPF</h2>
-                                    <InputMask className="w-full px-2 py-1 " value={cpf} onChange={(e) => setCPF(e.target.value)} mask="999.999.999-99" />
+                                    <InputMask className="w-full px-2 py-1 " value={cpf} onChange={(e) => setCPF(e.target.value)} mask="999.999.999-99" onClick={(e) => alert('teste')  }onBlur={(e) => { cpf.isValid(CPF) ===! true ? setMsg("CPF inválido") : setMsg("")} }  required/>
                                     <h2 className="mt-8 mb-2">Telefone</h2>
-                                    <InputMask className="w-full px-2 py-1 " value={telefone} onChange={(e) => setTelefone(e.target.value)} mask="(99) 99999-9999" />
+                                    <InputMask className="w-full px-2 py-1 " value={telefone} onChange={(e) => setTelefone(e.target.value)} mask="(99) 99999-9999" required />
                                     <h2 className="mt-8 mb-2">Senha</h2>
-                                    <input className="w-full px-2 py-1 " onChange={(e)=>setSenha(e.target.value)} value={senha} type="password" name="senha" />
+                                    <input className="w-full px-2 py-1 " onChange={(e)=>setSenha(e.target.value)} value={senha} type="password" name="senha"  required />
                         
                                     
                             
@@ -162,11 +136,11 @@ const CadastroPsicologo = () =>{
 
                                 <div className="w-1/2 ml-8 content2">
                                     <h2 className="mt-8 mb-2">Data de nascimento</h2>
-                                    <InputMask className="w-full px-2 py-1 " value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} mask="99/99/9999" />
+                                    <InputMask className="w-full px-2 py-1 " value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} mask="99/99/9999" onBlur={(e) => { idade > 120 || idade < 18 || diaNascimento > 31 || diaNascimento < 0 || mesNascimento > 12 || mesNascimento < 0 ? setMsg("Idade ou data não compatível") : setMsg(""); setReadyToContinue(false); } } required  />
                                     <h2 className="mt-8 mb-2">E-mail</h2>
-                                    <input className="w-full px-2 py-1 " onChange={(e)=>setEmail(e.target.value)} value={email} type="email" name="email" />
+                                    <input className="w-full px-2 py-1 " onChange={(e)=>setEmail(e.target.value)} value={email} type="text" name="email" onBlur={(e) => { validator.isEmail(email) ===! true ? setMsg("E-mail inválido") : setMsg("")} } required />
                                     <h2 className="mt-8 mb-2">Confirmar senha</h2>
-                                    <input className="w-full px-2 py-1 " type="password" onChange={(e)=>setConfirmarSenha(e.target.value)} value={confirmarSenha} name="confirmarSenha"/>
+                                    <input className="w-full px-2 py-1 " type="password" onChange={(e)=>setConfirmarSenha(e.target.value)} value={confirmarSenha} name="confirmarSenha" required/>
                                 </div>
 
                             </div>
