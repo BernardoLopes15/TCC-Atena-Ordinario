@@ -14,7 +14,7 @@ const BoxPsicologo = ( { nome, idade, proficao, image, cidade, data }) =>{
                 </div>
                 <div className="flex justify-around flex-col grow">
                     <div className="flex flex-col md:flex-row justify-between">
-                        <Link to={`/psicologo/${nome}`} onClick={irParaOTopo}><h2 className="ml-8 text-lg md:border-b-4 border-purple-400">{nome}</h2></Link>
+                        <Link to={`/psicologo/${nome}`} onClick={irParaOTopo}><h2 className="ml-8 text-lg md:border-b-4 hover:border-purple-900 border-purple-400">{nome}</h2></Link>
                         <div className="flex flex-col md:flex-row">
                             <h3 className="ml-8 md:ml-16">{idade} Anos</h3>
                             <h3 className="ml-8 md:ml-16">{proficao}</h3>

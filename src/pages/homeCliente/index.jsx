@@ -4,7 +4,6 @@ import Rodape from "../../components/Rodape";
 import NotFound from "../notFound";
 
 const Home = () =>{
-    if(JSON.parse(sessionStorage.getItem("token")).nivelAcesso = "biscoito"){
     return(
         <>
             <NavBar />
@@ -16,18 +15,6 @@ const Home = () =>{
             <Rodape />
         </>
     )
-    }
-    else{
-        <>
-            <NavBar />
-            <main>
-                <article>
-                    <NotFound/>
-                </article>
-            </main>
-            <Rodape />
-        </>
-    }
 }
 
 export default Home;

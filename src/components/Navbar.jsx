@@ -19,7 +19,7 @@ const NavBar = () =>{
     }
 
     const voltarPagina = () =>{
-        sair.current.click();
+        sair.current?.click();
     }
 
     useEffect(()=>{
@@ -43,10 +43,10 @@ const NavBar = () =>{
                         <div className="flex items-center">
                             <img className="h-8" src={atenaText} alt="atena-text" />
                             <div className="hidden md:flex ml-8">
-                                <h2 className="ml-8"><Link onClick={irParaOTopo} to="/homeCliente">Início</Link></h2>
-                                <h2 className="ml-8"><Link onClick={irParaOTopo} to="/buscaPsicologo">Psicólogos</Link></h2>
-                                <h2 className="ml-8"><Link onClick={irParaOTopo} to="/consultas">Consultas</Link></h2>
-                                <h2 className="ml-8"><Link onClick={irParaOTopo} to="/perfilCliente">Perfil</Link></h2>
+                                <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/homeCliente">Início</Link></h2>
+                                <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/buscaPsicologo">Psicólogos</Link></h2>
+                                <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/consultas">Consultas</Link></h2>
+                                <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/perfilCliente">Perfil</Link></h2>
                             </div>
                         </div>
                         <div className="flex items-center cursor-pointer" onClick={abreMenu}>
@@ -54,6 +54,7 @@ const NavBar = () =>{
                             <img src={imgmulher} alt="user" />
                         </div>
                     </div>
+                    <li className="hidden"><Link onClick={excluirToken} to="/" ref={sair}>Sair</Link></li>
                     <CSSTransition
                         in={menu}
                         timeout={300}
@@ -66,7 +67,7 @@ const NavBar = () =>{
                             <li className="py-2"><Link onClick={irParaOTopo} to="/consultas">Consultas</Link></li>
                             <li className="py-2"><Link onClick={irParaOTopo} to="/perfilCliente">Perfil</Link></li>
                             <li className="py-2"><Link onClick={irParaOTopo}>Opções</Link></li>
-                            <li className="py-2"><Link onClick={excluirToken} to="/" ref={sair}>Sair</Link></li>
+                            <li className="py-2"><Link onClick={excluirToken} to="/">Sair</Link></li>
                         </ul>
                     </CSSTransition>
                 </div>

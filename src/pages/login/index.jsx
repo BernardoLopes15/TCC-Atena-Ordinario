@@ -89,7 +89,7 @@ const Login = () =>{
                             <div>
                                 <div className={`flex items-center justify-center transition-blur duration-300 ${menucadastro && "blur-sm"} rounded-xl bg-purple-500 content-login`}>
                                     <div className="w-96 p-8 hidden md:block text">
-                                        <h2 className="text-right">É o nosso dever tornar este mundo melhor para as mulheres.</h2>
+                                        <h2 className="text-right font-bold">É o nosso dever tornar este mundo melhor para as mulheres.</h2>
                                     </div>
                                     <div className="w-screen md:w-96 md:rounded-xl flex items-center justify-center bg-white loge">
                                         <div>
@@ -97,7 +97,7 @@ const Login = () =>{
                                             <div className="flex justify-center">
                                                 <Link to="/"> <img loading="lazy" className="w-72 h-72" src={logoAtena} alt="atena" /> </Link>
                                             </div>
-                                            <div className="flex justify-center inputs">
+                                            <form className="flex justify-center inputs" onSubmit={enviar}>
                                                 <div className="w-72 content-inputs">
                                                     <p>E-mail</p>
                                                     <input className="w-full px-2 py-1 border border-black my-2" onChange={(e)=>setEmail(e.target.value)} value={email} type="email" placeholder="Digite aqui"/>
@@ -108,7 +108,7 @@ const Login = () =>{
                                                     <Link to="/homeCliente" ref={home}></Link>
                                                     <Link to="/homePsicologo" ref={homePsicologo}></Link>
                                                 </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

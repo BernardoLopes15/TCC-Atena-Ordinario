@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 
 import atenaText from "../assets/imgs/logo_navbar.png";
 import imgmulher from "../assets/iconPsicologo.png";
@@ -18,7 +19,7 @@ const NavBar = () =>{
     }
 
     const voltarPagina = () =>{
-        sair.current.click();
+        sair.current?.click();
     }
 
     useEffect(()=>{
@@ -42,11 +43,11 @@ const NavBar = () =>{
                         <div className="flex items-center">
                             <img className="h-8" src={atenaText} alt="atena-text" />
                             <div className="hidden md:flex ml-8">
-                                <h2 className="ml-8"><Link onClick={irParaOTopo} to="/homePsicologo">Início</Link></h2>
-                                <h2 className="ml-8"><Link onClick={irParaOTopo} to="/solicitacao">Solicitações</Link></h2>
-                                <h2 className="ml-8"><Link onClick={irParaOTopo} to="/calendario">Agenda</Link></h2>
-                                <h2 className="ml-8"><Link onClick={irParaOTopo} to="/consultaPsicologo">Consultas</Link></h2>
-                                <h2 className="ml-8"><Link onClick={irParaOTopo} to="/perfilPsicologo">Perfil</Link></h2>
+                                <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/homePsicologo">Início</Link></h2>
+                                <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/solicitacao">Solicitações</Link></h2>
+                                <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/calendario">Agenda</Link></h2>
+                                <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/consultaPsicologo">Consultas</Link></h2>
+                                <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/perfilPsicologo">Perfil</Link></h2>
                             </div>
                         </div>
                         <div className="flex items-center cursor-pointer" onClick={abreMenu}>
@@ -54,7 +55,13 @@ const NavBar = () =>{
                             <img src={imgmulher} alt="user" />
                         </div>
                     </div>
-                    <div className={ menu ? `text-right` : `hidden` }>
+                    <li className="hidden"><Link onClick={excluirToken} to="/" ref={sair}>Sair</Link></li>
+                    <CSSTransition
+                        in={menu}
+                        timeout={300}
+                        classNames="nav"
+                        unmountOnExit
+                    >
                         <ul className="py-4">
                             <li className="py-2"><Link onClick={irParaOTopo} to="/homePsicologo">Início</Link></li>
                             <li className="py-2"><Link onClick={irParaOTopo} to="/solicitacao">Solicitações</Link></li>
@@ -64,7 +71,7 @@ const NavBar = () =>{
                             <li className="py-2"><Link onClick={irParaOTopo}>Opções</Link></li>
                             <li className="py-2"><Link onClick={excluirToken} to="/" ref={sair}>Sair</Link></li>
                         </ul>
-                    </div>
+                    </CSSTransition>
                 </div>
             </nav>
         </header>
