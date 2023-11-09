@@ -8,7 +8,7 @@ import Rodape from "../../components/Rodape";
 import "../calendario/styles.css"
 
 const Calendario = () =>{
-    const [mesEscolhido, setMesEscolhido] = useState(9);
+    const [mesEscolhido, setMesEscolhido] = useState(new Date().getMonth() + 1);
     const [anoEscolhido, setAnoEscolhido] = useState(2023);
 
     const [meses, setMeses] = useState([]);
@@ -73,60 +73,60 @@ const Calendario = () =>{
         <>
             <NavBar />
             <div className="min-h-screen flex items-center justify-center bg-purple-100">
-             <div className="md:px-8 py-4 pb-16 mt-16 md:mt-32 flex rounded-xl bg-white">
-                <CSSTransition
-                    in={anima}
-                    timeout={1000}
-                    classNames="page"
-                    unmountOnExit
-                >
-                    <div className="pt-16">
-                    <h2 className="mb-12 text-5xl text-center font-style">Calendário</h2>
-                        <div className="my-4 flex justify-around text-xl text-fuchsia-950 font-medium ">
-                            <p>{todosMeses[mesEscolhido - 1].toUpperCase()}</p>
-                            <p>{anoEscolhido}</p>
-                        </div>
-                        <div className="flex flex-wrap">
-                            <button className="mx-6" onClick={()=>mudarMes(2)}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#281161" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-                            </svg>
-                            </button>
-                            <div className="grid grid-cols-7 bg-purple-500 rounded-lg">
-                                <h2 className="p-2 lg:p-4 bg-slate-200 rounded-s-md">DOM</h2>
-                                <h2 className="p-2 lg:p-4 bg-slate-200">SEG</h2>
-                                <h2 className="p-2 lg:p-4 bg-slate-200">TER</h2>
-                                <h2 className="p-2 lg:p-4 bg-slate-200">QUA</h2>
-                                <h2 className="p-2 lg:p-4 bg-slate-200">QUI</h2>
-                                <h2 className="p-2 lg:p-4 bg-slate-200">SEX</h2>
-                                <h2 className="p-2 lg:p-4 bg-slate-200 rounded-e-md">SAB</h2>
-                                {
-                                    inicioMes.map((e)=>(
-                                        <h2 key={e}></h2>
-                                    ))
-                                }
-                                {
-                                    dia.map((dia)=>(
-                                        <h2 key={dia} className="p-4 lg:p-8 flex items-center justify-center hover:bg-purple-300 cursor-pointer text-white bg-purple-500 rounded-md">{dia}</h2>
-                                    ))
-                                }
+                <div className="md:px-8 py-4 pb-16 mt-16 md:mt-32 flex rounded-xl bg-white">
+                    <CSSTransition
+                        in={anima}
+                        timeout={1000}
+                        classNames="page"
+                        unmountOnExit
+                    >
+                        <div className="pt-16">
+                        <h2 className="mb-12 text-5xl text-center font-style">Calendário</h2>
+                            <div className="my-4 flex justify-around text-xl text-fuchsia-950 font-medium ">
+                                <p>{todosMeses[mesEscolhido - 1].toUpperCase()}</p>
+                                <p>{anoEscolhido}</p>
+                            </div>
+                            <div className="flex flex-wrap">
+                                <button className="mx-6" onClick={()=>mudarMes(2)}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#281161" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                                </svg>
+                                </button>
+                                <div className="grid grid-cols-7 bg-purple-500 rounded-lg">
+                                    <h2 className="p-2 lg:p-4 bg-slate-200 rounded-s-md">DOM</h2>
+                                    <h2 className="p-2 lg:p-4 bg-slate-200">SEG</h2>
+                                    <h2 className="p-2 lg:p-4 bg-slate-200">TER</h2>
+                                    <h2 className="p-2 lg:p-4 bg-slate-200">QUA</h2>
+                                    <h2 className="p-2 lg:p-4 bg-slate-200">QUI</h2>
+                                    <h2 className="p-2 lg:p-4 bg-slate-200">SEX</h2>
+                                    <h2 className="p-2 lg:p-4 bg-slate-200 rounded-e-md">SAB</h2>
+                                    {
+                                        inicioMes.map((e)=>(
+                                            <h2 key={e}></h2>
+                                        ))
+                                    }
+                                    {
+                                        dia.map((dia)=>(
+                                            <h2 key={dia} className="p-4 lg:p-8 flex items-center justify-center hover:bg-purple-300 cursor-pointer text-white bg-purple-500 rounded-md">{dia}</h2>
+                                        ))
+                                    }
+                                </div>
+
+                                <button className="mx-6" onClick={()=>mudarMes(1)}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#281161" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                                </svg>
+                                </button>
+
                             </div>
 
-                            <button className="mx-6" onClick={()=>mudarMes(1)}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#281161" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-                            </svg>
-                            </button>
-
+                            <div className="flex justify-center">
+                                        <Link to="/data"><button className=" text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-purple-950">Datas e Horários</button></Link>
+                                    </div>
+                            
                         </div>
-
-                        <div className="flex justify-center">
-                                    <Link to="/data"><button className=" text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-purple-950">Datas e Horários</button></Link>
-                                </div>
-                        
-                    </div>
-                </CSSTransition>
-            </div>
+                    </CSSTransition>
+                </div>
              </div>
             <Rodape />
         </>
