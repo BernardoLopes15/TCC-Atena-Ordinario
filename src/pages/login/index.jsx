@@ -93,7 +93,7 @@ const Login = () =>{
                                     </div>
                                     <div className="w-screen md:w-96 md:rounded-xl flex items-center justify-center bg-white loge">
                                         <div>
-                                            <h2 className="text-xl text-center mt-8 title" >Seja bem vindo(a)</h2>
+                                            <h2 className="text-xl text-center mt-8 title" >Seja bem-vindo(a)</h2>
                                             <div className="flex justify-center">
                                                 <Link to="/"> <img loading="lazy" className="w-72 h-72" src={logoAtena} alt="atena" /> </Link>
                                             </div>
@@ -104,7 +104,7 @@ const Login = () =>{
                                                     <p>Senha</p>
                                                     <input className="w-full px-2 py-1 border border-black mt-2" onChange={(e)=>setSenha(e.target.value)} value={senha} type="password" placeholder="Digite aqui"/> 
                                                     <button className="w-full px-2 py-1 mt-4 btn" onClick={enviar}>Entrar</button>
-                                                    <h2 className="text-lg my-8 account">Não tem uma Conta ? <button className="text-purple-500 font-bold hover:underline underline-offset-2" onClick={selectCadastro}>Crie uma</button></h2>
+                                                    <h2 className="text-lg my-8 account">Não tem uma conta ? <button className="text-purple-500 font-bold hover:underline underline-offset-2" onClick={selectCadastro}>Crie uma</button></h2>
                                                     <Link to="/homeCliente" ref={home}></Link>
                                                     <Link to="/homePsicologo" ref={homePsicologo}></Link>
                                                 </div>

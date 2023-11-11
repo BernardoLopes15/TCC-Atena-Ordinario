@@ -8,6 +8,7 @@ import BuscarPsicologo from "./pages/search_psychologist/index";
 import PerfilCliente from "./pages/profileCliente/index";
 import PerfilPsicologo from "./pages/profilePsicologo/index"
 import CadastroCliente from "./pages/cadastro/cliente";
+import TermosUsoCadCLiente from "./pages/cadastro/cliente/termosUso";
 import CadastroPsicologo from "./pages/cadastro/psicologo";
 import EditCadastroCliente from "./pages/editPerfilCliente/index";
 import EditImgCliente from "./pages/editPerfilCliente/editImg";
@@ -46,6 +47,7 @@ const App = () =>{
         <Route path="/psicologo/:nome" element={<InspecionarPsicologo />} />
         <Route path="/agendarConsulta/:psicologo" element={<AgendarConsulta />} />
         <Route path="/cadastroImagem" element={<CadastrarImagem/>}></Route>
+        <Route path="/termosCliente" element={<TermosUsoCadCLiente/>}></Route>
         
         { /* Tela Psicologo */}
         <Route path="/homePsicologo" element={<HomePsicologo />}/>
