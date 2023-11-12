@@ -10,6 +10,7 @@ import PerfilPsicologo from "./pages/profilePsicologo/index"
 import CadastroCliente from "./pages/cadastro/cliente";
 import TermosUsoCadCLiente from "./pages/cadastro/cliente/termosUso";
 import CadastroPsicologo from "./pages/cadastro/psicologo";
+import TermosUsoCadPsicologo from "./pages/cadastro/psicologo/termosUso";
 import EditCadastroCliente from "./pages/editPerfilCliente/index";
 import EditImgCliente from "./pages/editPerfilCliente/editImg";
 import EdiiCadastroPsicologo from "./pages/editPerfilPsicologo/index";
@@ -46,7 +47,7 @@ const App = () =>{
         <Route path="/buscaPsicologo" element={<BuscarPsicologo />}/>
         <Route path="/psicologo/:nome" element={<InspecionarPsicologo />} />
         <Route path="/agendarConsulta/:psicologo" element={<AgendarConsulta />} />
-        <Route path="/cadastroImagem" element={<CadastrarImagem/>}></Route>
+        <Route path="/imagemCliente" element={<CadastrarImagem/>}></Route>
         <Route path="/termosCliente" element={<TermosUsoCadCLiente/>}></Route>
         
         { /* Tela Psicologo */}
@@ -61,6 +62,7 @@ const App = () =>{
         <Route path="/consultaPsicologo" element={<ConsultaPsicologo/>} />
         <Route path="/solicitacao" element={<SolicitacaoConsulta/>} />
         <Route path="/data" element={<CadastroData/>} />
+        <Route path="/termosPsicologo" element={<TermosUsoCadPsicologo/>}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -125,7 +125,7 @@ const TermosDeUso = () => {
 
                                 <div className="flex items-center justify-center">
 
-                                    <Link to="/imagemCliente"><button className=" px-2 py-1 mt-4 bg-purple-900 text-white rounded-md" type="button" >Concordo com os Termos de Uso</button></Link>
+                                    <Link to="/imagemPsicologo"><button className=" px-2 py-1 mt-4 bg-purple-900 text-white rounded-md" type="button" >Concordo com os Termos de Uso</button></Link>
                                     <button className=" ml-4 px-2 py-1 mt-4 bg-purple-900 text-white rounded-md" type="button" onClick={showSwal} >Discordo com os Termos de Uso</button>
 
                                 </div>

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const CadastroImagemPsicologo = () =>{
     
@@ -39,13 +38,13 @@ const CadastroImagemPsicologo = () =>{
                         
                         <div className="Message mt-8 ">
                             
-                            <div className="bg-red-600 text-white text-xl rounded">
-                               <div className="" value={msg} >{msg}</div>
-                            </div>
+                            <alert className="bg-red-600 text-white text-xl rounded">
+                               <alert className="" value={msg} >{msg}</alert>
+                            </alert>
 
                          </div>
 
-                        <div>
+                        <div className="form">
                          <div className="flex justify-between content-formImage">
 
                          <label class="picture" for="picture__input" tabIndex="0">
@@ -67,8 +66,8 @@ const CadastroImagemPsicologo = () =>{
                          </div>
 
                          <div className="flex justify-center mt-16">
-                            <Link to="/bioPsicologo"><button className="py-2 text-white btn">Cadastrar</button></Link>
-                            {/*<Link to="/bioPsicologo" ref={clickLink}></Link>*/}
+                            <button className="py-2 text-white btn " onClick={validarImagem}>Cadastrar</button>
+                            <Link to="/bioPsicologo" id="cadastrarImagem"></Link>
                         </div>
 
                         </div>
