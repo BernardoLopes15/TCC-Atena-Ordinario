@@ -17,18 +17,24 @@ const CadastroImagemCliente = () =>{
         sessionStorage.setItem('paciente', JSON.stringify(pacienteS));
         document.getElementById("cadastrarImagem").click();
 
+          if(
+          
           axios.post(MainUrl + 'cadastrarPaciente.php', JSON.stringify(JSON.parse(sessionStorage.getItem('paciente'))))
           .then((response) => {
             console.log(response);
-            alert(JSON.stringify(response.data));
-          //   Swal.fire({
-          //     text: "Cadastrada com sucesso!",
-          //     icon:"success"
-          // })
-          
-            
+            //alert(JSON.stringify(response.data));
+            Swal.fire({
+              text: response.data,
+              icon: "success"
           })
-          .catch((error) => console.error('Erro ao buscar os dados:', error));
+          })
+          .catch((error) => console.error('Erro ao buscar os dados:', error)) != true)
+          {
+            Swal.fire({
+              text: "Algo deu errado",
+              icon: "error"
+            })
+          };
 
         sessionStorage.removeItem('paciente');
     }
@@ -42,11 +48,11 @@ const CadastroImagemCliente = () =>{
         setMsg("Insira uma foto");
       }
       else {
-        setMsg("");
-        Swal.fire({
-          text: "Cadastrada com sucesso!",
-          icon:"success"
-      })
+      //   setMsg("");
+      //   Swal.fire({
+      //     text: "Cadastrada com sucesso!",
+      //     icon:"success"
+      // })
       }
     }
 

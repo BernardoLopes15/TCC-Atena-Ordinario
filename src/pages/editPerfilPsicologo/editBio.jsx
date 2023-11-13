@@ -13,7 +13,7 @@ const EditCadastroBioPsicologo = () =>{
     useEffect(()=>{
         axios.post(MainUrl + 'updateBio.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
           .then((response) => {
-            setBio(response.data.response.bio);
+            if(response.data.response.bio != "") setBio(response.data.response.bio);
         })
         .catch((error) => console.error('Erro ao buscar os dados:', error));
         setEmail(JSON.parse(sessionStorage.getItem('token')).email);

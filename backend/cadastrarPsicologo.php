@@ -43,6 +43,7 @@
 		$email = $dados->email;
 		$dtNascimento = $dados->dataNascimento;
 		$senha = $dados->senha;
+		$imagem = $dados->imagem;
 		$bio = $dados->bio;
 	}
 
@@ -54,7 +55,7 @@
 		echo json_encode(['response' => "já existe uma pessoa com este nome"]);
 	} else {
         //Falta completar os outros dados
-		$sqli = "insert into tb_psicologo (nm_psicologo, nr_cpf, nr_telefone, nm_email, dt_cadastro, dt_nascimento, nm_senha, ds_apresentacao, st_e_psi, st_crp) values('$nomePessoa', '$cpf', '$telefone','$email', date(now()), '$dtNascimento', '$senha','$bio',1,1);";
+		$sqli = "insert into tb_psicologo (nm_psicologo, nr_cpf, nr_telefone, nm_email, dt_cadastro, dt_nascimento, nm_foto_perfil, nm_senha, ds_apresentacao, st_e_psi, st_crp) values('$nomePessoa', '$cpf', '$telefone','$email', date(now()), '$dtNascimento', '$imagem', '$senha','$bio',1,1);";
 		$conn->query($sqli);
 		echo json_encode(['response' => "teste"]);
 	}

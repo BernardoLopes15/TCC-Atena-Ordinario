@@ -15,14 +15,11 @@
 		$imagem = $dados->imagem;
 	}
 
-	echo $nome;
-
 	$sql = "SELECT * FROM tb_paciente WHERE nr_cpf = '" . $cpf . "';";
 
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
-		echo "Já existe uma pessoa com este CPF.";
 	} else {
 		$sql = "INSERT INTO tb_paciente (nm_paciente, nr_cpf, dt_cadastro, dt_nascimento, nm_email, nr_telefone, nm_senha, nm_foto_perfil) VALUES (
 			'$nome', 
@@ -35,9 +32,7 @@
 			'$imagem');";
 
 		if ($conn->query($sql) === true) {
-			echo "Dados cadastrados com sucesso";
-		} else {
-			echo "Erro ao cadastrar os dados: " . $conn->error;
+			echo "Cadastrada com sucesso!";
 		}
 	}
 

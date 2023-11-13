@@ -1,18 +1,30 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useRef } from "react";
 
 const CadastroImagemPsicologo = () =>{
     
+    const clickLink = useRef(null);
     const [imagem, setImagem] = useState('');
     const [msg, setMsg] = useState('');
-
-    //let psicologoS = JSON.parse(sessionStorage.getItem('psicologo')) || {};
+    let psicologoS = JSON.parse(sessionStorage.getItem('psicologo')) || {};
 
     const validarImagem = () =>{
       if (!imagem){
         setMsg("Insira uma foto")
       }
+      else{
+        enviar();
+      }
     }
+
+    const enviar = () => {
+
+      psicologoS.imagem = imagem;
+      sessionStorage.setItem('psicologo', JSON.stringify(psicologoS));
+
+      clickLink.current.click();
+  }
 
     //Tirar quando colocar a bio
     const excluirStorage = () =>  {
@@ -67,7 +79,7 @@ const CadastroImagemPsicologo = () =>{
 
                          <div className="flex justify-center mt-16">
                             <button className="py-2 text-white btn " onClick={validarImagem}>Cadastrar</button>
-                            <Link to="/bioPsicologo" id="cadastrarImagem"></Link>
+                            <Link to="/bioPsicologo" ref={clickLink}></Link>
                         </div>
 
                         </div>

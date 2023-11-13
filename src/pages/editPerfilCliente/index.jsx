@@ -17,6 +17,7 @@ const EditCadastroCliente = () =>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [bio, setBio] = useState('');
+    let profilepaciente = useRef(null);
 
     useEffect(() => {
 
@@ -52,6 +53,12 @@ const EditCadastroCliente = () =>{
           .catch((error) => console.error('Erro ao buscar os dados:', error));
 
         sessionStorage.removeItem('paciente');
+        let tokenS = JSON.parse(sessionStorage.getItem('token')) || {};
+        tokenS.email = email;
+        tokenS.nome = nome;
+        sessionStorage.setItem('token', JSON.stringify(tokenS));
+
+        profilepaciente.current.click();
     }
 
     return(
@@ -97,7 +104,7 @@ const EditCadastroCliente = () =>{
 
                          <div className="flex justify-center mt-16">
                             <button className="p-2 px-8 border-box text-white btn" onClick={enviar}>Editar</button>
-                            <Link to="/perfilClient" ref={perfilcliente}></Link>
+                            <Link to="/perfilClient" ref={profilepaciente}></Link>
                         </div>
 
                         </div>

@@ -53,6 +53,10 @@ const EditCadastroPsicologo = () =>{
         })
         .catch((error) => console.error('Erro ao buscar os dados:', error));
 
+        let tokenS = JSON.parse(sessionStorage.getItem('token')) || {};
+        tokenS.email = email;
+        sessionStorage.setItem('token', JSON.stringify(tokenS));
+
         editbio.current.click();
     }
 
