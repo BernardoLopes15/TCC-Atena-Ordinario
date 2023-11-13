@@ -73,7 +73,7 @@ const Calendario = () =>{
         <>
             <NavBar />
             <div className="min-h-screen flex items-center justify-center bg-purple-100">
-                <div className="md:px-8 py-4 pb-16 mt-16 md:mt-32 flex rounded-xl bg-white">
+                <div className="md:px-8 py-4 pb-16 mt-12 md:mt-32 flex rounded-xl bg-white">
                     <CSSTransition
                         in={anima}
                         timeout={1000}

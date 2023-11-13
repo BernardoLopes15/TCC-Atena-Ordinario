@@ -21,7 +21,10 @@ const InspecionarPsicologo = () =>{
         
         try{
             axios.post(MainUrl + "inspecionarPsicologo.php", JSON.stringify(nomeBusca))
-            .then((e) => setPsicologo(e.data.response[0]))
+            .then((e) => {
+                console.log(e.data);
+                setPsicologo(e.data.response[0]);
+            })
             .catch((e) => console.log(e));
         } catch{
             console.log("não encontrado");

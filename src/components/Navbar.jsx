@@ -24,9 +24,9 @@ const NavBar = () =>{
 
     useEffect(()=>{
         let response = JSON.parse(sessionStorage.getItem('token')) || voltarPagina();
-        if(response){
-            setUsuario(response.nome);
-        }
+        if(!JSON.parse(sessionStorage.getItem('token'))) return;
+        response?.nivelAcesso !== "paciente" && voltarPagina();
+        if(response) setUsuario(response.nome);
     });
 
     const excluirToken = () => {
