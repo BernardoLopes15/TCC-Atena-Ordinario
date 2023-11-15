@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const CadastroData = () =>{
     const [dia, setDia] = useState("0");
     const [hrComeco, setHrComeco] = useState("10:42");
     const [hrFim, setHrFim] = useState("20:53");
+    const [indexEditar, setIndexEditar] = useState();
+
+    const [modo, setModo] = useState("Adicionar");
 
     const [consulta, setConsulta] = useState(
         [
@@ -17,13 +20,25 @@ const CadastroData = () =>{
     );
 
     const adicionarData = () => {
-        setConsulta((prevState) => [...prevState, {dia: dia,dtInicio: hrComeco,dtTermino: hrFim}]);
-        verIntervaloData();
+        if(modo === "Adicionar"){
+            setConsulta((prevState) => [...prevState, {dia: dia,dtInicio: hrComeco,dtTermino: hrFim}]);
+            return;
+        }
+
+        let copiaArray = [...consulta];
+        copiaArray[indexEditar].dia = dia;
+        copiaArray[indexEditar].dtInicio = hrComeco;
+        copiaArray[indexEditar].dtTermino = hrFim;
+        setConsulta(copiaArray);
+        setModo("Adicionar");
     };
-    
-    const verIntervaloData = () =>{
-        for(let i = 0; i < consulta.length; i++) console.log(consulta[i]);
-    }
+
+    const editarData = (index) => {
+        setIndexEditar(index);
+        setHrComeco(consulta[index]?.dtInicio);
+        setHrFim(consulta[index]?.dtTermino);
+        setModo("editar");
+    };
 
     const apagarData = (index) => {
         let novaData = [...consulta];
@@ -35,7 +50,7 @@ const CadastroData = () =>{
         <main>
             <article>
                 <div className="min-h-screen flex items-center justify-center">
-                    <div className="w-full my-16 md:w-6/12 lg:w-5/12 md:p-12 p-4 border-box rounded-lg bg-white">
+                    <div className="w-full my-16 md:w-8/12 lg:w-6/12 md:p-12 p-4 border-box rounded-lg bg-white">
                         <div className="mt-2">
                             <Link to='/calendario'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#281161" className="bi bi-box-arrow-left" viewBox="0 0 16 16">
@@ -45,7 +60,7 @@ const CadastroData = () =>{
                             </Link>
                             <div className="mt-8">
                                 <h2 className="text-3xl">Cadastrar Datas e Horarios</h2>
-                                <div className=" my-6 flex justify-between">
+                                <div className={`${modo == "editar" && "border bg-yellow-200"} my-6 flex justify-between`}>
                                     <div>
                                         <h4 className="text-lg text-purple-700">Dia da Semana</h4>
                                         <select onChange={(e)=> setDia(e.target.value)}>
@@ -60,18 +75,18 @@ const CadastroData = () =>{
                                     </div>
                                     <div>
                                         <h4 className="text-lg text-purple-700">Hora de Inicio</h4>
-                                        <input type="time" onChange={(e)=>setHrComeco(e.target.value)} />
+                                        <input type="time" value={hrComeco} onChange={(e)=>setHrComeco(e.target.value)} />
                                     </div>
                                     <div>
                                         <h4 className="text-lg text-purple-700">Hora de Término</h4>
-                                        <input type="time" onChange={(e)=>setHrFim(e.target.value)} />
+                                        <input type="time" value={hrFim} onChange={(e)=>setHrFim(e.target.value)} />
                                     </div>
                                 </div>
-                                <button onClick={adicionarData}>Adicionar</button>
+                                <button className={`${modo == "editar" && "bg-yellow-400 rounded-2xl px-4 py-2"}`} onClick={adicionarData}>{modo == "editar" ? "Confirmar Alteração" : "Adicionar"}</button>
                                 <div className="mt-12 border grid grid-cols-5">
-                                    <div className="px-4 border-box my-2">e.dia</div>
-                                    <div className="my-2">e.dtInicio</div>
-                                    <div className="my-2">e.dtTermino</div>
+                                    <div className="px-4 border-box my-2">Dia</div>
+                                    <div className="my-2">Inicio</div>
+                                    <div className="my-2">Termino</div>
                                     <div className="my-2"></div>
                                     <div className="my-2"></div>
                                 </div>
@@ -102,7 +117,7 @@ const CadastroData = () =>{
                                             }</div>
                                             <div className="my-2">{e.dtInicio}</div>
                                             <div className="my-2">{e.dtTermino}</div>
-                                            <button className="bg-yellow-400">Editar</button>
+                                            <button className="bg-yellow-400" onClick={() => editarData(index)}>Editar</button>
                                             <button className="bg-red-400" onClick={() => apagarData(index)}>Apagar</button>
                                         </>
                                     ))}
