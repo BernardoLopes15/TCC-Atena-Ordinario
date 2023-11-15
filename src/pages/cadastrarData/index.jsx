@@ -37,6 +37,7 @@ const CadastroData = () =>{
         setIndexEditar(index);
         setHrComeco(consulta[index]?.dtInicio);
         setHrFim(consulta[index]?.dtTermino);
+        setDia(consulta[index]?.dia);
         setModo("editar");
     };
 
@@ -60,6 +61,7 @@ const CadastroData = () =>{
                             </Link>
                             <div className="mt-8">
                                 <h2 className="text-3xl">Cadastrar Datas e Horarios</h2>
+                                <p>As datas listadas abaixo são os horários nos quais podem ser marcadas consultas, de acordo com a preferência do usuário.</p>
                                 <div className={`${modo == "editar" && "border bg-yellow-200"} my-6 flex justify-between`}>
                                     <div>
                                         <h4 className="text-lg text-purple-700">Dia da Semana</h4>
@@ -91,7 +93,9 @@ const CadastroData = () =>{
                                     <div className="my-2"></div>
                                 </div>
                                 <div className="border grid grid-cols-5">
-                                    {consulta.map((e, index)=>(
+                                    {consulta
+                                        .slice().sort((a, b) => a.dia - b.dia)
+                                        .map((e, index)=>(
                                         <>
                                             <div key={e.dtInicio} className="px-4 border-box my-2">{
                                                 (()=>{

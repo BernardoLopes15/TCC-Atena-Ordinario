@@ -8,7 +8,7 @@
 		$nomePessoa = $dados->nome;
 	}
 
-	$sql = "select * from tb_paciente where nm_paciente = 'Maria Santos';";
+	$sql = "";
 
 	$result = $conn->query($sql);
 

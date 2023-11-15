@@ -16,7 +16,7 @@
 
 		if ($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
-				$listaDados = array("nome" => $row["nm_psicologo"], "nivelAcesso" => "psicologo", "email" => $row["nm_email"]);
+				$listaDados = array("id" => $row["cd_psicologo"], "nome" => $row["nm_psicologo"], "nivelAcesso" => "psicologo", "email" => $row["nm_email"]);
 			}
 
 			echo json_encode(['response' => $listaDados]);
@@ -28,7 +28,7 @@
 
 			if ($result->num_rows > 0) {
 				while($row = $result->fetch_assoc()) {
-					$listaDados = array("nome" => $row["nm_paciente"], "nivelAcesso" => "paciente", "email" => $row["nm_email"]);
+					$listaDados = array("id" => $row["cd_psicologo"], "nome" => $row["nm_paciente"], "nivelAcesso" => "paciente", "email" => $row["nm_email"]);
 				}
 
 				echo json_encode(['response' => $listaDados]);
