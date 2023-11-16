@@ -4,23 +4,30 @@
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$valorRecebido = file_get_contents("php://input");
 		$dados = json_decode($valorRecebido);
-
-		$nomePessoa = $dados->nome;
+		$idPessoa = $dados->cd_psicologo;
 	}
 
-	$sql = "";
+	$sqli = "DELETE FROM tb_disponibilidade WHERE fk_cd_psicologo = '$idPessoa';";
+	$conn->query($sql);
 
-	$result = $conn->query($sql);
+	/*
+	try{
+		$sqli = "DELETE FROM tb_disponibilidade WHERE fk_cd_psicologo = '$idPessoa'";
+		$conn->query($sql);
+		
+		$sql = "insert into";
 
-	if ($result->num_rows > 0) {
-		foreach ($conn->query($sql) as $row) {
-			$resposta[] = $row;
+		try{
+			
+		} catch (Exception $e){
+			echo json_encode(['response' => false]);
 		}
-
-		echo json_encode(['response' => $resposta]);
-	} else {
-		echo json_encode(['response' => "teste"]);
+	} catch (Exception $e){
+		echo json_encode(['response' => false]);
 	}
+	*/
+
+	echo json_encode("da");
 
     $conn->close();
 ?>

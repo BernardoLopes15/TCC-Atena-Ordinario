@@ -1,11 +1,14 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import MainUrl from "../../connection config/url";
 
 const CadastroData = () =>{
     const [dia, setDia] = useState("0");
     const [hrComeco, setHrComeco] = useState("10:42");
     const [hrFim, setHrFim] = useState("20:53");
     const [indexEditar, setIndexEditar] = useState();
+    const [executouEfeito, setExecutouEfeito] = useState(false);
 
     const [modo, setModo] = useState("Adicionar");
 
@@ -18,6 +21,19 @@ const CadastroData = () =>{
             }
         ]
     );
+
+    const buscarDatas = () =>{
+        axios.post(MainUrl + "buscarHorario.php", sessionStorage.getItem("token"))
+        .then((e) => setConsulta(e.data?.response));
+    }
+
+    useEffect(() => {
+        if (executouEfeito) {
+            buscarDatas();
+        } else{
+            setExecutouEfeito(true);
+        }
+    }, [executouEfeito]);
 
     const adicionarData = () => {
         if(modo === "Adicionar"){
@@ -40,6 +56,12 @@ const CadastroData = () =>{
         setDia(consulta[index]?.dia);
         setModo("editar");
     };
+
+    const confirmarAlteracao = () =>{
+        let cd_psicologo = JSON.parse(sessionStorage.getItem("token"));
+        axios.post(MainUrl + "cadastrarHorario.php", JSON.stringify({ cd_psicologo: cd_psicologo.id, consulta: consulta }))
+        .then((e)=>console.log(e));
+    }
 
     const apagarData = (index) => {
         let novaData = [...consulta];
@@ -65,7 +87,7 @@ const CadastroData = () =>{
                                 <div className={`${modo == "editar" && "border bg-yellow-200"} my-6 flex justify-between`}>
                                     <div>
                                         <h4 className="text-lg text-purple-700">Dia da Semana</h4>
-                                        <select onChange={(e)=> setDia(e.target.value)}>
+                                        <select value={dia} onChange={(e)=> setDia(e.target.value)}>
                                             <option value="0">domingo</option>
                                             <option value="1">segunda</option>
                                             <option value="2">terça</option>
@@ -85,6 +107,7 @@ const CadastroData = () =>{
                                     </div>
                                 </div>
                                 <button className={`${modo == "editar" && "bg-yellow-400 rounded-2xl px-4 py-2"}`} onClick={adicionarData}>{modo == "editar" ? "Confirmar Alteração" : "Adicionar"}</button>
+                                {modo == "editar" ? <button className="rounded-2xl px-4 py-2" onClick={() => setModo("Adicionar")}>Cancelar</button> : ""}
                                 <div className="mt-12 border grid grid-cols-5">
                                     <div className="px-4 border-box my-2">Dia</div>
                                     <div className="my-2">Inicio</div>
@@ -94,7 +117,7 @@ const CadastroData = () =>{
                                 </div>
                                 <div className="border grid grid-cols-5">
                                     {consulta
-                                        .slice().sort((a, b) => a.dia - b.dia)
+                                        //.slice().sort((a, b) => a.dia - b.dia)
                                         .map((e, index)=>(
                                         <>
                                             <div key={e.dtInicio} className="px-4 border-box my-2">{
@@ -113,20 +136,20 @@ const CadastroData = () =>{
                                                         case "5":
                                                             return "sexta";
                                                         case "6":
-                                                            return "sexta";
+                                                            return "sábado";
                                                         default:
                                                             return "inválido";
                                                     }
                                                 })()
                                             }</div>
-                                            <div className="my-2">{e.dtInicio}</div>
-                                            <div className="my-2">{e.dtTermino}</div>
+                                            <div className="my-2">{e.dtInicio.substring(0, 5)}</div>
+                                            <div className="my-2">{e.dtTermino.substring(0, 5)}</div>
                                             <button className="bg-yellow-400" onClick={() => editarData(index)}>Editar</button>
                                             <button className="bg-red-400" onClick={() => apagarData(index)}>Apagar</button>
                                         </>
                                     ))}
                                 </div>
-                                <button className="w-full mt-12 py-3 rounded-3xl bg-purple-400">Confirmar</button>
+                                <button className="w-full mt-12 py-3 rounded-3xl bg-purple-400" onClick={confirmarAlteracao}>Confirmar</button>
                             </div>
                         </div>
                     </div>
