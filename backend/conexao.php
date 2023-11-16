@@ -4,7 +4,7 @@
 
     $servername = "localhost:3306";
 	$username = "root";
-	$password = "admin";
+	$password = "root";
 	$database = "db_psicologia";
 
 	// Create connection

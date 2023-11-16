@@ -37,7 +37,11 @@ const CadastroData = () =>{
 
     const adicionarData = () => {
         if(modo === "Adicionar"){
-            setConsulta((prevState) => [...prevState, {dia: dia,dtInicio: hrComeco,dtTermino: hrFim}]);
+            if(consulta){
+                setConsulta((prevState) => [...prevState, {dia: dia,dtInicio: hrComeco,dtTermino: hrFim}]);
+            } else{
+                setConsulta([{dia: dia,dtInicio: hrComeco,dtTermino: hrFim}]);
+            }
             return;
         }
 
@@ -116,7 +120,9 @@ const CadastroData = () =>{
                                     <div className="my-2"></div>
                                 </div>
                                 <div className="border grid grid-cols-5">
-                                    {consulta
+                                    {
+                                        consulta &&
+                                        consulta
                                         //.slice().sort((a, b) => a.dia - b.dia)
                                         .map((e, index)=>(
                                         <>

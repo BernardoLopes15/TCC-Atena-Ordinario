@@ -6,6 +6,8 @@ import NavBar from "../../components/NavbarPsicologo";
 import Rodape from "../../components/Rodape";
 
 import "../calendario/styles.css"
+import axios from "axios";
+import MainUrl from "../../connection config/url";
 
 const Calendario = () =>{
     const [mesEscolhido, setMesEscolhido] = useState(new Date().getMonth() + 1);
@@ -19,19 +21,17 @@ const Calendario = () =>{
 
     useEffect(()=>{
         const numMeses = [];
-
         const daysInMonth = new Date(anoEscolhido, mesEscolhido, 0).getDate();
         numMeses.push(daysInMonth);
-        
         setMeses(numMeses);
+
+        buscarDias();
     },[mesEscolhido]);
 
     useEffect(()=>{
         let dias = [];
 
-        for(let i = 1; i <= meses; i++){
-            dias.push(i);
-        }
+        for(let i = 1; i <= meses; i++) dias.push(i);
 
         setDias(dias);
 
@@ -46,6 +46,12 @@ const Calendario = () =>{
         
         setInicio(diaSemana);
     },[meses]);
+
+    const buscarDias = async () =>{
+        let response = await axios.post(MainUrl + "buscarDia.php", JSON.stringify(sessionStorage.getItem("token")));
+
+        console.log(response);
+    }
 
     const mudarMes = (mudanca) =>{
         if(mudanca === 1){
@@ -111,19 +117,15 @@ const Calendario = () =>{
                                         ))
                                     }
                                 </div>
-
                                 <button className="mx-6" onClick={()=>mudarMes(1)}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#281161" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-                                </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#281161" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                                    </svg>
                                 </button>
-
                             </div>
-
                             <div className="flex justify-center">
-                                        <Link to="/data"><button className=" text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-purple-950">Datas e Horários</button></Link>
-                                    </div>
-                            
+                                <Link to="/data"><button className=" text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-purple-950">Datas e Horários</button></Link>
+                            </div>
                         </div>
                     </CSSTransition>
                 </div>

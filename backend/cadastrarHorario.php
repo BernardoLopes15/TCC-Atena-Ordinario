@@ -6,28 +6,28 @@
 		$dados = json_decode($valorRecebido);
 		$idPessoa = $dados->cd_psicologo;
 	}
+	
+	$sql = "select * FROM tb_disponibilidade WHERE fk_cd_psicologo = '$idPessoa';";
 
-	$sqli = "DELETE FROM tb_disponibilidade WHERE fk_cd_psicologo = '$idPessoa';";
-	$conn->query($sql);
-
-	/*
 	try{
-		$sqli = "DELETE FROM tb_disponibilidade WHERE fk_cd_psicologo = '$idPessoa'";
-		$conn->query($sql);
-		
-		$sql = "insert into";
+		$result = $conn->query($sql);
+		if($result->num_rows > 0){
+			$sql = "DELETE FROM tb_disponibilidade WHERE fk_cd_psicologo = '$idPessoa';";
+			$conn->query($sql);
 
-		try{
-			
-		} catch (Exception $e){
-			echo json_encode(['response' => false]);
+			foreach ($dados->consulta as $arr) {
+				$sql = "insert into tb_disponibilidade (id_dia, hr_inicio, hr_termino, fk_cd_psicologo) values('$arr->dia', '$arr->dtInicio', '$arr->dtTermino', '$idPessoa');";
+				$conn->query($sql);
+			}
+		} else{
+			foreach ($arr as &$dados->consulta) {
+				$sql = "insert into tb_disponibilidade (id_dia, hr_inicio, hr_termino, fk_cd_psicologo) values('$arr->dia', '$arr->dtInicio', '$arr->dtTermino', '$idPessoa');";
+				$conn->query($sql);
+			}
 		}
-	} catch (Exception $e){
+	} catch (Exception $e) {
 		echo json_encode(['response' => false]);
 	}
-	*/
-
-	echo json_encode("da");
 
     $conn->close();
 ?>

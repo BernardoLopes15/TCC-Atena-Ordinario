@@ -65,8 +65,6 @@ const CadastroBioPsicologo = () =>{
     const enviarBio = async () =>{
         try{
             let a = await axios.post(MainUrl + "cadastrarPsicologo.php", JSON.stringify(psicologo));
-        
-            console.log(a);
             clickLink.current.click();
         } catch{
             console.log("error");
