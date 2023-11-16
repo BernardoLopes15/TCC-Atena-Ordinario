@@ -4,9 +4,7 @@ import { CSSTransition } from "react-transition-group";
 import NavBar from "../../../components/Navbar";
 import Rodape from "../../../components/Rodape";
 
-import Psicologo1 from "../../../assets/imgs/psicologo1.png"
-import Psicologo2 from "../../../assets/imgs/psicologo2.png"
-import Psicologo3 from "../../../assets/imgs/psicologo3.png"
+import Psicologo1 from "../../../assets/imgs/psicologo1.png";
 
 
 const Psicologo = ({ nome, cor, imgUser }) =>{

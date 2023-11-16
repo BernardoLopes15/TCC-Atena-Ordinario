@@ -44,9 +44,9 @@ const NavBar = () =>{
                             <img className="h-8" src={atenaText} alt="atena-text" />
                             <div className="hidden md:flex ml-8">
                                 <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/homePsicologo">Início</Link></h2>
-                                <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/solicitacao">Solicitações</Link></h2>
-                                <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/calendario">Agenda</Link></h2>
                                 <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/consultaPsicologo">Consultas</Link></h2>
+                                <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/calendario">Agenda</Link></h2>
+                                <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/solicitacao">Solicitações</Link></h2>
                                 <h2 className="ml-8 hover:text-gray-300"><Link onClick={irParaOTopo} to="/perfilPsicologo">Perfil</Link></h2>
                             </div>
                         </div>
@@ -64,9 +64,9 @@ const NavBar = () =>{
                     >
                         <ul className="py-4">
                             <li className="py-2"><Link onClick={irParaOTopo} to="/homePsicologo">Início</Link></li>
-                            <li className="py-2"><Link onClick={irParaOTopo} to="/solicitacao">Solicitações</Link></li>
-                            <li className="py-2"><Link onClick={irParaOTopo} to="/calendario">Agenda</Link></li>
                             <li className="py-2"><Link onClick={irParaOTopo} to="/consultaPsicologo">Consultas</Link></li>
+                            <li className="py-2"><Link onClick={irParaOTopo} to="/calendario">Agenda</Link></li>
+                            <li className="py-2"><Link onClick={irParaOTopo} to="/solicitacao">Solicitações</Link></li>
                             <li className="py-2"><Link onClick={irParaOTopo} to="/perfilPsicologo">Perfil</Link></li>
                             <li className="py-2"><Link onClick={irParaOTopo}>Opções</Link></li>
                             <li className="py-2"><Link onClick={excluirToken} to="/" ref={sair}>Sair</Link></li>

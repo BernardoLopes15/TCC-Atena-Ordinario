@@ -10,10 +10,6 @@ import Rodape from "../../components/Rodape";
 import MainUrl from "../../connection config/url";
 
 import Psicologo1 from "../../assets/imgs/psicologo1.png";
-import Psicologo2 from "../../assets/imgs/psicologo2.png";
-import Psicologo3 from "../../assets/imgs/psicologo3.png";
-import Psicologo4 from "../../assets/imgs/psicologo4.png";
-import Psicologo5 from "../../assets/imgs/psicologo5.png";
 
 const BuscarPsicologo = () =>{
     const [anima, setAnima] = useState(false);

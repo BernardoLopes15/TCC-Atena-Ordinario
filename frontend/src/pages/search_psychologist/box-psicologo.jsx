@@ -1,4 +1,3 @@
-import imgstar from "../../assets/star.png";
 import { Link } from "react-router-dom";
 
 const BoxPsicologo = ( { nome, idade, proficao, image, cidade, data }) =>{
