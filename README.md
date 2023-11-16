@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./src/assets/readme/atena-Readme.png" alt="atena" />
+  <img src="./frontend/src/assets/imgs/logo_purple.png" alt="atena" />
 </p>
 
 # Projeto Atena
