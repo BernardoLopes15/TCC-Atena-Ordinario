@@ -48,7 +48,7 @@ const CadastroImagemCliente = () =>{
         setMsg("Insira uma foto");
       }
       else {
-      //   setMsg("");
+        setMsg("");
       //   Swal.fire({
       //     text: "Cadastrada com sucesso!",
       //     icon:"success"
