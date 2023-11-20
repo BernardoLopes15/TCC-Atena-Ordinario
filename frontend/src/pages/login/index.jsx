@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, json } from "react-router-dom";
 import axios from "axios";
 import MainUrl from "../../connection config/url";
+import  Swal from 'sweetalert2'
 
 import imgcliente from "../../assets/client_cadastro.png";
 import imgpsicologo from "../../assets/psicologo_cadastro.png";
@@ -47,7 +48,7 @@ const Login = () =>{
                 }
 
                 homePsicologo.current.click();
-            } else{
+            } else {
                 try{
                     sessionStorage.setItem('token', JSON.stringify(response.data.response));
                 } catch{
@@ -57,11 +58,19 @@ const Login = () =>{
                 home.current.click();
             }
         })
-        .catch((error) => console.error('Erro ao buscar os dados:', error));
+        .catch((error) => console.error('Erro ao buscar os dados:', error) || showSwal());
         
         setSenha("");
         setEmail("");
     }
+
+    const showSwal = () => {
+        Swal.fire({
+            text: "E-mail ou senha incorreto.",
+            icon:"error"
+        })
+    }
+
 
     return(
         <>

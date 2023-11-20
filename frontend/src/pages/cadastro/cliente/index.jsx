@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
-import '../styles/styles.css';
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import { cpf } from 'cpf-cnpj-validator';
 import { InputMask } from 'primereact/inputmask';
 import validator from "validator";
-import Swal from 'sweetalert2'
+import { FaEye } from "react-icons/fa";
 
-const CadastroPsicologo = () => {
 
-    const clickLink = useRef(null);
+const CadastroCliente = () => {
+
     const [nome, setNome] = useState('');
     const [CPF, setCPF] = useState('');
     const [telefone, setTelefone] = useState('');
@@ -17,7 +16,9 @@ const CadastroPsicologo = () => {
     const [email, setEmail] = useState('');
     const [msg, setMsg] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
-    const [readyToContinue, setReadyToContinue] = useState(true);
+    const [readyToContinue, setReadyToContinue] = useState(false);
+    const [type, setType] = useState('password');
+
 
     let ano = new Date().getFullYear();
     let anoNasicmento = dataNascimento.slice(-4);
@@ -27,17 +28,19 @@ const CadastroPsicologo = () => {
 
     const dtNascimento = dataNascimento.split('/').reverse().join('-');
 
-    const showSwal = () => {
-        Swal.fire({
-            text: "Atenção, o CPF será utilizado para validar a situação do seu CRP e-PSI",
-            icon:"warning"
-        })
-    }
+    // console.log(mesNascimento)
+
 
 
     const validarCamposPreenchidos = () => {
 
-        if (senha ==! confirmarSenha) {
+        if (!nome || !CPF || !telefone || !senha || !email || !dataNascimento) {
+            setMsg("Preencha todos os campos");
+            setReadyToContinue(false);
+            return;
+        }
+
+       else if (senha === !confirmarSenha) {
             setMsg("Campos senha e confirmar senha estão diferentes");
             setReadyToContinue(false);
             return;
@@ -45,7 +48,7 @@ const CadastroPsicologo = () => {
 
         else if (cpf.isValid(CPF) === ! true) setMsg("CPF inválido")
 
-        else if (validator.isStrongPassword(senha,{ minUppercase: 1, minLength: 8, minLowercase:1, minNumbers: 1, minSymbols: 0}) === ! true ) setMsg("Senha fraca")
+        else if (validator.isStrongPassword(senha, { minUppercase: 1, minLength: 8, minLowercase: 1, minNumbers: 1, minSymbols: 0 }) === ! true) setMsg("Senha fraca")
 
         else if (idade > 120 || idade < 18 || diaNascimento > 31 || diaNascimento < 0 || mesNascimento > 12 || mesNascimento < 0) setMsg("Idade ou data não compatível")
 
@@ -58,39 +61,54 @@ const CadastroPsicologo = () => {
 
 
 
+
     }
 
-    const enviar = async () => {
-        sessionStorage.removeItem('psicologo');
 
-        if (!readyToContinue) return;
+    useEffect(() => {
+        setCPF(CPF.replace(/[\(\).\s-]/g, ''));
+        setTelefone(telefone.replace(/[\(\).\s-]/g, ''));
+    }, []);
 
-        let psicologo = JSON.stringify({
-            nome: nome,
-            CPF: CPF,
-            telefone: telefone,
-            senha: senha,
-            dataNascimento: dtNascimento,
-            email: email
-        });
+    const enviar = async e => {
 
-        try {
-            sessionStorage.setItem('psicologo', psicologo);
-        } catch {
-            console.log("já foi criado um local storage");
+
+        e.preventDefault();
+
+        sessionStorage.removeItem('paciente');
+
+
+
+        if (readyToContinue == true) {
+            
+            let paciente = JSON.stringify({
+                nome: nome,
+                cpf: CPF,
+                telefone: telefone,
+                senha: senha,
+                dataNascimento: dtNascimento,
+                email: email
+
+            });
+
+            try {
+                sessionStorage.setItem('paciente', paciente);
+                document.getElementById("cadastroImagem").click();
+            } catch {
+                console.log("já foi criado um local storage");
+            }
         }
-
-        clickLink.current.click();
     }
 
     const excluirStorage = () => {
-        sessionStorage.removeItem('psicologo');
+        sessionStorage.removeItem('paciente');
     }
 
     return (
         <main>
             <article>
                 <div className="min-h-screen flex items-center justify-center cadastro">
+
                     <div className="md:p-12 bg-white rounded-3xl w-2/3 content-cadastro">
 
                         <div className="some transition-blur duration-300">
@@ -101,7 +119,7 @@ const CadastroPsicologo = () => {
                                 </svg>
                             </Link>
 
-                            <h2 className="text-center text-5xl title">Cadastrar Psicólogo(a)</h2>
+                            <h2 className="text-center text-5xl title">Cadastrar Usuária</h2>
 
                             <div className="Message mt-8 ">
 
@@ -111,7 +129,7 @@ const CadastroPsicologo = () => {
 
                             </div>
 
-                            <form method="POST" className="form">
+                            <form method="POST" className="form" onSubmit={enviar}>
 
                                 <div className="flex justify-between content-form">
 
@@ -119,20 +137,22 @@ const CadastroPsicologo = () => {
                                         <h2 className="mt-8 mb-2">Nome completo</h2>
                                         <input className="px-2 py-1" onChange={(e) => setNome(e.target.value)} value={nome} type="text" name="nome" id="nome" maxLength={40} required />
                                         <h2 className="mt-8 mb-2">CPF</h2>
-                                        <InputMask className="w-full px-2 py-1 " value={cpf} onChange={(e) => setCPF(e.target.value)} mask="999.999.999-99" onBlur={(e) => { cpf.isValid(CPF) === ! true ? setMsg("CPF inválido") : setMsg("") }} onClick={showSwal} required />
+                                        <InputMask className="w-full px-2 py-1 " value={cpf} onChange={(e) => setCPF(e.target.value)} mask="999.999.999-99" onBlur={(e) => { cpf.isValid(CPF) === ! true ? setMsg("CPF inválido") : setMsg(null) }} required />
                                         <h2 className="mt-8 mb-2">Telefone</h2>
                                         <InputMask className="w-full px-2 py-1 " value={telefone} onChange={(e) => setTelefone(e.target.value)} mask="(99) 99999-9999" required />
                                         <h2 className="mt-8 mb-2">Senha</h2>
-                                        <input className="w-full px-2 py-1 " onChange={(e) => setSenha(e.target.value)} value={senha} type="password" name="senha" onBlur={(e) => {  validator.isStrongPassword(senha,{ minUppercase: 1, minLength: 8, minLowercase:1, minNumbers: 1, minSymbols: 0}) === ! true ? setMsg("Senha fraca") : setMsg("") }  } required />
+                                        <input className="w-full px-2 py-1 " onChange={(e) => setSenha(e.target.value)} value={senha} type={type} name="senha" onBlur={(e) => { validator.isStrongPassword(senha, { minUppercase: 1, minLength: 8, minLowercase: 1, minNumbers: 1, minSymbols: 0 }) === ! true ? setMsg("Senha fraca") : setMsg(null) }} required />
                                         <label className="text-sm">*A senha precisar ter no mínimo 8 caracteres, entre eles uma letra maiúscula, uma letra minúscula e um algorismo.</label>
+
+
 
                                     </div>
 
                                     <div className="w-1/2 ml-8 content2">
                                         <h2 className="mt-8 mb-2">Data de nascimento</h2>
-                                        <InputMask className="w-full px-2 py-1 " value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} mask="99/99/9999" onBlur={(e) => { idade > 120 || idade < 18 || diaNascimento > 31 || diaNascimento < 0 || mesNascimento > 12 || mesNascimento < 0 ? setMsg("Idade ou data não compatível") : setMsg(""); setReadyToContinue(false); }} required />
+                                        <InputMask className="w-full px-2 py-1 " value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} mask="99/99/9999" onBlur={(e) => { idade > 120 || idade < 18 || diaNascimento > 31 || diaNascimento < 0 || mesNascimento > 12 || mesNascimento < 0 ? setMsg("Idade ou data não compatível") : setMsg(null) }} required />
                                         <h2 className="mt-8 mb-2">E-mail</h2>
-                                        <input className="w-full px-2 py-1 " onChange={(e) => setEmail(e.target.value)} value={email} type="text" name="email" onBlur={(e) => { validator.isEmail(email) === ! true ? setMsg("E-mail inválido") : setMsg("") }} required />
+                                        <input className="w-full px-2 py-1 " onChange={(e) => setEmail(e.target.value)} value={email} type="text" name="email" onBlur={(e) => { validator.isEmail(email) === ! true ? setMsg("E-mail inválido") : setMsg(null) }} required />
                                         <h2 className="mt-8 mb-2">Confirmar senha</h2>
                                         <input className="w-full px-2 py-1 " type="password" onChange={(e) => setConfirmarSenha(e.target.value)} value={confirmarSenha} name="confirmarSenha" onKeyDown={validarCamposPreenchidos} required />
                                     </div>
@@ -140,15 +160,18 @@ const CadastroPsicologo = () => {
                                 </div>
 
                                 <div className="flex justify-center h-28 my-20">
+
                                     <div className="w-auto ">
+
+                                        <button className="py-2 h-10 text-white btn" type="submit" onClick={validarCamposPreenchidos} >Cadastrar</button>
+                                        {<Link to="/termosCliente" id="cadastroImagem"></Link>}
+
 
                                         {/*<button className="py-2 text-white btn" type="submit">Próximo</button>*/}
                                         {/*<button className="py-2 text-white btn" type="button" onClick={ReceberLocal}>Local</button>*/}
-                                        <button className="py-2 text-white btn" type="submit" onClick={validarCamposPreenchidos}>Cadastrar</button>
-                                        <Link to="/termosPsicologo" ref={clickLink}></Link>
-                                        {/* <Link to="/cadastroImagem" id="cadastroImagem"></Link> */}
                                     </div>
                                 </div>
+
                             </form>
                         </div>
 
@@ -159,4 +182,4 @@ const CadastroPsicologo = () => {
     )
 }
 
-export default CadastroPsicologo;
+export default CadastroCliente;

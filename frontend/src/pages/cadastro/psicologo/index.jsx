@@ -122,7 +122,6 @@ const CadastroPsicologo = () => {
                                         <h2 className="mt-8 mb-2">Senha</h2>
                                         <input className="w-full px-2 py-1 " onChange={(e) => setSenha(e.target.value)} value={senha} type="password" name="senha" onBlur={(e) => {  validator.isStrongPassword(senha,{ minUppercase: 1, minLength: 8, minLowercase:1, minNumbers: 1, minSymbols: 0}) === ! true ? setMsg("Senha fraca") : setMsg("") }  } required />
                                         <label className="text-sm">*A senha precisar ter no mínimo 8 caracteres, entre eles uma letra maiúscula, uma letra minúscula e um algorismo.</label>
-teste
 
                                     </div>
 
