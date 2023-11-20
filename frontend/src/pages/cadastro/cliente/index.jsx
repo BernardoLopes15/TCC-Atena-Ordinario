@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { cpf } from 'cpf-cnpj-validator';
 import { InputMask } from 'primereact/inputmask';
 import validator from "validator";
-
+import { FaEye } from "react-icons/fa";
 
 
 const CadastroCliente = () => {
@@ -17,7 +17,7 @@ const CadastroCliente = () => {
     const [msg, setMsg] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
     const [readyToContinue, setReadyToContinue] = useState(true);
-
+    const [type, setType] = useState('password');
 
 
     let ano = new Date().getFullYear();
@@ -133,7 +133,9 @@ const CadastroCliente = () => {
                                         <h2 className="mt-8 mb-2">Telefone</h2>
                                         <InputMask className="w-full px-2 py-1 " value={telefone} onChange={(e) => setTelefone(e.target.value)} mask="(99) 99999-9999" required />
                                         <h2 className="mt-8 mb-2">Senha</h2>
-                                        <input className="w-full px-2 py-1 " onChange={(e) => setSenha(e.target.value)} value={senha} type="password" name="senha" required />
+                                        <input className="w-full px-2 py-1 " onChange={(e) => setSenha(e.target.value) } value={senha} type={type} name="senha" onBlur={(e) => {  validator.isStrongPassword(senha,{ minUppercase: 1, minLength: 8, minLowercase:1, minNumbers: 1, minSymbols: 0}) === ! true ? setMsg("Senha fraca") : setMsg("") }  } required />
+                                        <label className="text-sm">*A senha precisar ter no mínimo 8 caracteres, entre eles uma letra maiúscula, uma letra minúscula e um algorismo.</label>
+
 
 
                                     </div>
