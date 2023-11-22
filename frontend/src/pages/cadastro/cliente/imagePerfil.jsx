@@ -24,16 +24,16 @@ const CadastroImagemCliente = () =>{
             console.log(response);
             //alert(JSON.stringify(response.data));
             Swal.fire({
-              text: response.data,
+              text: "Cadastrada com sucesso!",
               icon: "success"
           })
           })
           .catch((error) => console.error('Erro ao buscar os dados:', error)) != true)
           {
-            Swal.fire({
-              text: "Algo deu errado",
-              icon: "error"
-            })
+            // Swal.fire({
+            //   text: "Algo deu errado",
+            //   icon: "error"
+            // })
           };
 
         sessionStorage.removeItem('paciente');
