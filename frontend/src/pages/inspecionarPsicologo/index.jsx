@@ -35,10 +35,13 @@ const InspecionarPsicologo = () =>{
                     .then((e) => {
                         if(e.data.response){
                             for(let item of e.data.response){
+                                console.log(item);
                                 setHora((prevState) => [...prevState, item]);
                             }
                             
                             setDiasUnicos([...new Set(e.data.response.map((h) => h.dia))]);
+                        } else{
+                            setHora("");
                         }
                     })
                 })
@@ -107,17 +110,12 @@ const InspecionarPsicologo = () =>{
                                         </div>
                                     </div>
                                     <div className="xl:ml-16 md:w-96 mt-2 md:mt-0">
-                                        {/* <p>Meios de contato</p>
-                                        <div className="flex mt-1">
-                                            <FaInstagram className="mr-4 text-xl" />
-                                            <FaFacebook className="mr-4 text-xl" />
-                                            <FaYoutube className="mr-4 text-xl" />
-                                        </div> */}
                                         <h2 className="mt-4 text-md">Datas disponíveis para consulta</h2>
                                         <div className="flex flex-wrap">
                                             {
+                                                hora ?
                                                 diasUnicos.map((hora, index) =>(
-                                                    <div key={index} onClick={() => handleClick(index)} className={`w-32 my-2 ${corFundo === index ? 'bg-violet-800' : 'bg-purple-400'} mr-4 px-2 py-2 rounded-lg text-center cursor-pointer text-white`}>{
+                                                    <div key={index} onClick={() => handleClick(hora)} className={`w-32 my-2 ${corFundo === hora ? 'bg-violet-800' : 'bg-purple-400'} mr-4 px-2 py-2 rounded-lg text-center cursor-pointer text-white`}>{
                                                         (() => {
                                                             switch (hora) {
                                                                 case "0":
@@ -135,18 +133,24 @@ const InspecionarPsicologo = () =>{
                                                                 case "6":
                                                                     return "Sábado";
                                                                 default:
-                                                                    return "";
+                                                                    return "a";
                                                             }
                                                         })()
                                                     }</div>
                                                 ))
+                                                :
+                                                <div className="w-32 my-2 bg-red-600 mr-4 px-2 py-2 rounded-lg text-center cursor-pointer text-white">Indisponivel</div>
                                             }
                                         </div>
                                         <p>Horários disponíveis</p>
                                         <div className="my-2 text-white" >
-                                            <label className="px-4 py-2 cursor-pointer bg-purple-400 rounded" for="hora1">8:00</label>
-                                            <label className="px-4 py-2 ml-2 cursor-pointer bg-purple-400 rounded"  for="hora2">10:00</label>
-                                            <label className="px-4 py-2 ml-2 cursor-pointer bg-purple-400 rounded" for="hora3">13:00</label>
+                                            {
+                                                hora.map((hora, index)=>{
+                                                    if(hora.dia == corFundo){
+                                                        return <label key={index} className="px-4 py-2 mr-2 cursor-pointer bg-purple-400 rounded" for={`hora${index}`}>{hora.dtInicio.slice(0, 5)}</label>;
+                                                    }
+                                                })
+                                            }
                                         </div>
                                         <Link to={`/agendarConsulta/${nome}`}><button className="text-white mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400">Agendar Consulta</button></Link>
                                     </div>

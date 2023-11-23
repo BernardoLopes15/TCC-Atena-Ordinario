@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, json } from "react-router-dom";
 import axios from "axios";
 import MainUrl from "../../connection config/url";
-import  Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 import imgcliente from "../../assets/client_cadastro.png";
 import imgpsicologo from "../../assets/psicologo_cadastro.png";
