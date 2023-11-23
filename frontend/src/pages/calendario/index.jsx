@@ -150,7 +150,6 @@ const Calendario = () =>{
                             <div className="flex justify-center">
                                 <Link to="/data"><button className=" text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-purple-950">Datas e Horários</button></Link>
                             </div>
-                            teste
                         </div>
                     </CSSTransition>
                 </div>

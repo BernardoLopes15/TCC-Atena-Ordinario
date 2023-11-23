@@ -38,7 +38,7 @@ const NavBar = () =>{
     return(
         <header>
             <nav>
-                <div className="w-full px-12 md:shadow-md z-10 fixed text-white bg-purple-900">
+                <div className="w-full px-12 md:shadow-md z-10 fixed text-white bg-violet-800">
                     <div className="w-full h-16 flex items-center justify-between">
                         <div className="flex items-center">
                             <img className="h-8" src={atenaText} alt="atena-text" />

@@ -20,7 +20,7 @@
 		
 		echo json_encode(['response' => $psicologos]);
 	} else {
-		echo json_encode(['response' => "teste"]);
+		echo json_encode(['response' => false]);
 	}
 
     $conn->close();

@@ -14,8 +14,12 @@ const InspecionarPsicologo = () =>{
     const { nome } = useParams();
     const [inicio, setInicio] = useState(false);
     const [anima, setAnima] = useState(false);
+    const [corFundo, setCorFundo] = useState();
     const [psicologo, setPsicologo] = useState();
-    const [hora, setHora] = useState();
+    const [hora, setHora] = useState([]);
+    const [diasUnicos, setDiasUnicos] = useState([]);
+
+    const handleClick = (dia) => setCorFundo(dia);
 
     useEffect(() => {
         setAnima(true);
@@ -29,8 +33,12 @@ const InspecionarPsicologo = () =>{
                     setPsicologo(e.data.response[0]);
                     axios.post(MainUrl + "buscarHorario.php", JSON.stringify({ id : e.data.response[0]?.cd_psicologo }))
                     .then((e) => {
-                        for(let item of e.data.response){
-                            console.log(item);
+                        if(e.data.response){
+                            for(let item of e.data.response){
+                                setHora((prevState) => [...prevState, item]);
+                            }
+                            
+                            setDiasUnicos([...new Set(e.data.response.map((h) => h.dia))]);
                         }
                     })
                 })
@@ -106,12 +114,34 @@ const InspecionarPsicologo = () =>{
                                             <FaYoutube className="mr-4 text-xl" />
                                         </div> */}
                                         <h2 className="mt-4 text-md">Datas disponíveis para consulta</h2>
-                                        <select className="my-2 px-2 py-2 rounded-lg cursor-pointer bg-purple-400 text-white" name="" id="">
-                                            <option value="">13/10/2023</option>
-                                            <option value="">14/10/2023</option>
-                                            <option value="">20/10/2023</option>
-                                            <option value="">21/10/2023</option>
-                                        </select>
+                                        <div className="flex flex-wrap">
+                                            {
+                                                diasUnicos.map((hora, index) =>(
+                                                    <div key={index} onClick={() => handleClick(index)} className={`w-32 my-2 ${corFundo === index ? 'bg-violet-800' : 'bg-purple-400'} mr-4 px-2 py-2 rounded-lg text-center cursor-pointer text-white`}>{
+                                                        (() => {
+                                                            switch (hora) {
+                                                                case "0":
+                                                                    return "Domingo";
+                                                                case "1":
+                                                                    return "Segunda";
+                                                                case "2":
+                                                                    return "Terça";
+                                                                case "3":
+                                                                    return "Quarta";
+                                                                case "4":
+                                                                    return "Quinta";
+                                                                case "5":
+                                                                    return "Sexta";
+                                                                case "6":
+                                                                    return "Sábado";
+                                                                default:
+                                                                    return "";
+                                                            }
+                                                        })()
+                                                    }</div>
+                                                ))
+                                            }
+                                        </div>
                                         <p>Horários disponíveis</p>
                                         <div className="my-2 text-white" >
                                             <label className="px-4 py-2 cursor-pointer bg-purple-400 rounded" for="hora1">8:00</label>

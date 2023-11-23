@@ -67,10 +67,12 @@ const BuscarPsicologo = () =>{
                                 >
                                     <div className="flex justify-center flex-col flex-wrap">
                                         {
-                                            psicologos &&
+                                            psicologos ?
                                             psicologos.map((psicologo, index) => (
                                                 <BoxPsicologo key={index} nome={psicologo.nm_psicologo} idade={mostrarIdade(psicologo.dt_nascimento.split('-').reverse().join('/'))} proficao="Psicólogo(a)" image={Psicologo1} cidade="Mongaguá" data={psicologo.dt_cadastro.split('-').reverse().join('/')} />
                                             ))
+                                            :
+                                            <h2 className="w-96 box-content p-8 text-3xl">Usuario não encontrado</h2>
                                         }
                                     </div>
                                 </CSSTransition>
