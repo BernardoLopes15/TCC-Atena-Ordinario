@@ -15,8 +15,12 @@ const EditCadastroCliente = () =>{
     const [senha, setSenha] = useState('');
     const [dataNascimento, setDataNascimento] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [bio, setBio] = useState('');
+
+    const [oldNome, setOldNome] = useState('');
+    const [oldTelefone, setOldTelefone] = useState('');
+    const [oldSenha, setOldSenha] = useState('');
+    const [oldDataNascimento, setOldDataNascimento] = useState('');
+    const [oldEmail, setOldEmail] = useState('');
     let profilepaciente = useRef(null);
 
     useEffect(() => {
@@ -24,11 +28,21 @@ const EditCadastroCliente = () =>{
         axios.post(MainUrl + 'perfilPaciente.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
           .then((response) => {
             setNome(response.data.response.nome);
+            setOldNome(response.data.response.nome);
+
             setEmail(response.data.response.email);
+            setOldEmail(response.data.response.email);
+
             setCPF(response.data.response.cpf);
+
             setDataNascimento(response.data.response.dataNascimento.split('-').reverse().join('/'));
+            setOldDataNascimento(response.data.response.dataNascimento.split('-').reverse().join('/'));
+
             setTelefone(response.data.response.telefone);
-            setBio(response.data.response?.bio);
+            setOldTelefone(response.data.response.telefone);
+
+            setSenha(response.data.response.senha);
+            setOldSenha(response.data.response.senha);
 
             //alert(JSON.stringify(response.data));
           })
@@ -36,18 +50,24 @@ const EditCadastroCliente = () =>{
     }, []);
 
     const enviar = async (e) => {
+
+        if(nome != "" && nome != null) setNome(oldNome);
+	    if(email != "" && email != null) setEmail(oldEmail);
+	    if(telefone != "" && telefone != null) setTelefone(oldTelefone);
+	    if(dataNascimento != "" && dataNascimento != null) setDataNascimento(oldDataNascimento);
+	    if(senha != "" && senha != null) setSenha(oldSenha);
+
         let novoForm = {
             nome: nome,
             cpf: CPF,
             email: email,
             dataNascimento: dataNascimento,
             telefone: telefone,
-            senha: senha,
-            bio: bio
+            senha: senha
         }
           axios.post(MainUrl + 'updatePaciente.php', JSON.stringify(novoForm))
           .then((response) => {
-            alert(JSON.stringify(response.data));
+            //alert(JSON.stringify(response.data));
             perfilcliente.current.click();
           })
           .catch((error) => console.error('Erro ao buscar os dados:', error));
@@ -88,7 +108,7 @@ const EditCadastroCliente = () =>{
                                 <h2 className="mt-8 mb-2">Telefone</h2>
                                 <InputMask className="w-full px-2 py-1 " onChange={(e)=>setTelefone(e.target.value)} placeholder={telefone} mask="(99) 99999-9999" />
                                 <h2 className="mt-8 mb-2">Senha</h2>
-                                <input className="w-full px-2 py-1 " onChange={(e)=>setPassword(e.target.value)} type="password" name="senha" />
+                                <input className="w-full px-2 py-1 " onChange={(e)=>setSenha(e.target.value)} type="password" name="senha" />
                             </div>
 
                             <div className="w-1/2 ml-8 content2">
@@ -104,7 +124,7 @@ const EditCadastroCliente = () =>{
 
                          <div className="flex justify-center mt-16">
                             <button className="p-2 px-8 border-box text-white btn" onClick={enviar}>Editar</button>
-                            <Link to="/perfilClient" ref={profilepaciente}></Link>
+                            <Link to="/perfilCliente" ref={profilepaciente}></Link>
                         </div>
 
                         </div>

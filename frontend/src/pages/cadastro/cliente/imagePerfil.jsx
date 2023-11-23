@@ -24,7 +24,7 @@ const CadastroImagemCliente = () =>{
             console.log(response);
             //alert(JSON.stringify(response.data));
             Swal.fire({
-              text: "Cadastrada com sucesso!",
+              text: response.data,
               icon: "success"
           })
           })
@@ -104,7 +104,7 @@ const CadastroImagemCliente = () =>{
 
                          <div className="flex justify-center mt-16">
                             <button className="py-2 text-white btn" onClick={validarImagem}>Cadastrar</button>
-                            <Link to="/" id="cadastrarImagem"></Link>
+                            <Link to="/login" id="cadastrarImagem"></Link>
                         </div>
 
                         </form>

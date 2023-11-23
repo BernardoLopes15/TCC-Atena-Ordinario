@@ -100,7 +100,7 @@ const CadastroBioPsicologo = () =>{
                             </div>
                             <div className="flex justify-center mt-16">
                                 <Link to=""><button className="py-2 text-white btn" onClick={validarBio}>Cadastrar</button></Link>
-                                <Link to="/" ref={clickLink}></Link>
+                                <Link to="/login" ref={clickLink}></Link>
                                 <Link to="/cadastroPsicologo" ref={voltarTela}></Link>
                             </div>
                         </form>

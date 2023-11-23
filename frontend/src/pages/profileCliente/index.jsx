@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
+import Swal from 'sweetalert2'
 
 import NavBar from "../../components/Navbar";
 import axios from "axios";
@@ -17,6 +19,7 @@ const PerfilCliente = () =>{
     const [telefone, setTelefone] = useState('');
     const [dataNascimento, setDataNascimento] = useState('');
     const [email, setEmail] = useState('');
+    let loginScreen = useRef(null);
 
     useEffect(() => {
         setAnima(true);
@@ -34,6 +37,44 @@ const PerfilCliente = () =>{
           })
           .catch((error) => console.error('Erro ao buscar os dados:', error));
     }, []);
+
+    const enviar = async (e) => {
+
+        let novoForm = {
+            cpf: CPF,
+        }
+
+
+    
+          axios.post(MainUrl + 'excluirPaciente.php', JSON.stringify(novoForm))
+          .then((response) => {
+            //alert(JSON.stringify(response.data));
+            
+          })
+          .catch((error) => console.error('Erro ao buscar os dados:', error));
+
+
+        sessionStorage.removeItem('token');
+        loginScreen.current.click();
+    }
+
+    const exibirMensagem = () => {
+
+        Swal.fire({
+            title: "Excluir perfil",
+            showDenyButton: true,
+            confirmButtonText: "Excluir",
+            denyButtonText: `Cancelar`
+          }).then((result) => {
+            if (result.isConfirmed) {
+                
+              enviar();
+            } else if (result.isDenied) {
+              Swal.fire("Cancelado");
+            }
+          });
+    }
+
 
     return(
         <>
@@ -66,8 +107,11 @@ const PerfilCliente = () =>{
                                             <input type="text" value={telefone} disabled/>
                                         </div>
                                     </div>
-                                    <div className="py-12 flex justify-center">
+                                    <div className="py-12 flex justify-center flex-col items-center">
                                         <Link to="/editCliente"><button className=" text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-purple-950">Editar</button></Link>
+                                        <button className=" text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-red-950" onClick={exibirMensagem}>Excluir</button>
+
+                                        <Link to="/login" ref={loginScreen}></Link>
                                     </div>
                                 </div>
                             </div>

@@ -13,12 +13,18 @@
 		$cpfpaciente = $dados->cpf;
 	}
 
+	if($nomepaciente != "" && $nomepaciente != null) $nome = $nomepaciente;
+	if($emailpaciente != "" && $emailpaciente != null) $email = $emailpaciente;
+	if($telefonepaciente != "" && $telefonepaciente != null) $telefone = $telefonepaciente;
+	if($dataNascimentopaciente != "" && $dataNascimentopaciente != null) $dataNascimento = $dataNascimentopaciente;
+	if($senhapaciente != "" && $senhapaciente != null) $senha = $senhapaciente;
+
 	$sql = "select * from tb_paciente where nr_cpf = '$cpfpaciente';";
 
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
-        $sqli = "update tb_paciente SET nm_paciente = '" . $nomepaciente . "', nm_email = '" . $emailpaciente . "', dt_nascimento = '" . $dataNascimentopaciente . "', nr_telefone = '" . $telefonepaciente . "' ,nm_email = '$emailpaciente'
+        $sqli = "update tb_paciente SET nm_paciente = '" . $nome . "', nm_email = '" . $email . "', dt_nascimento = '" . $dataNascimento . "', nr_telefone = '" . $telefone . "' ,nm_email = '$email'
 		WHERE nr_cpf = '$cpfpaciente';";
 
         $conn->query($sqli);
