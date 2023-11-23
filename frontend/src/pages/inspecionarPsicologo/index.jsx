@@ -145,14 +145,22 @@ const InspecionarPsicologo = () =>{
                                         <p>Horários disponíveis</p>
                                         <div className="my-2 text-white" >
                                             {
+                                                hora ?
                                                 hora.map((hora, index)=>{
                                                     if(hora.dia == corFundo){
                                                         return <label key={index} className="px-4 py-2 mr-2 cursor-pointer bg-purple-400 rounded" for={`hora${index}`}>{hora.dtInicio.slice(0, 5)}</label>;
                                                     }
                                                 })
+                                                :
+                                                <div className="w-32 my-2 bg-red-600 mr-4 px-2 py-2 rounded-lg text-center cursor-pointer text-white">Indisponivel</div>
                                             }
                                         </div>
-                                        <Link to={`/agendarConsulta/${nome}`}><button className="text-white mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400">Agendar Consulta</button></Link>
+                                        {
+                                            hora ?
+                                            <Link to={`/agendarConsulta/${nome}`}><button className="text-white mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400">Agendar Consulta</button></Link>
+                                            :
+                                            <Link><button className="text-white mt-8 px-4 py-2 rounded-lg cursor-pointer bg-gray-400">Bloqueado</button></Link>
+                                        }
                                     </div>
                                 </div>
                             </div>
