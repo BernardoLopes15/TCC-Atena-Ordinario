@@ -12,24 +12,36 @@ import MainUrl from "../../connection config/url";
 
 const InspecionarPsicologo = () =>{
     const { nome } = useParams();
+    const [inicio, setInicio] = useState(false);
     const [anima, setAnima] = useState(false);
     const [psicologo, setPsicologo] = useState();
+    const [hora, setHora] = useState();
 
     useEffect(() => {
         setAnima(true);
         let nomeBusca = { nome: nome};
-        
-        try{
-            axios.post(MainUrl + "inspecionarPsicologo.php", JSON.stringify(nomeBusca))
-            .then((e) => {
-                console.log(e.data);
-                setPsicologo(e.data.response[0]);
-            })
-            .catch((e) => console.log(e));
-        } catch{
-            console.log("não encontrado");
+
+        if(inicio){
+            try{
+                axios.post(MainUrl + "inspecionarPsicologo.php", JSON.stringify(nomeBusca))
+                .then((e) => {
+                    console.log(e.data.response[0]?.cd_psicologo);
+                    setPsicologo(e.data.response[0]);
+                    axios.post(MainUrl + "buscarHorario.php", JSON.stringify({ id : e.data.response[0]?.cd_psicologo }))
+                    .then((e) => {
+                        for(let item of e.data.response){
+                            console.log(item);
+                        }
+                    })
+                })
+                .catch((e) => console.log(e));
+            } catch{
+                console.log("não encontrado");
+            }
+        } else{
+            setInicio(true);
         }
-    }, []);
+    }, [inicio]);
 
     const mostrarIdade = (dataBr) =>{
         const dtNascimento = new Date(dataBr);
