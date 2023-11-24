@@ -104,7 +104,7 @@ const CadastroImagemCliente = () =>{
 
                          <div className="flex justify-center mt-16">
                             <button className="py-2 text-white btn" onClick={validarImagem}>Cadastrar</button>
-                            <Link to="/login" id="cadastrarImagem"></Link>
+                            <Link to="/" id="cadastrarImagem"></Link>
                         </div>
 
                         </form>
