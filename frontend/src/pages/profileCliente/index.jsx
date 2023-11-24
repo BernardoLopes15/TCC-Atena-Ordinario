@@ -111,7 +111,7 @@ const PerfilCliente = () =>{
                                         <Link to="/editCliente"><button className=" text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-purple-950">Editar</button></Link>
                                         <button className=" text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-red-950" onClick={exibirMensagem}>Excluir</button>
 
-                                        <Link to="/login" ref={loginScreen}></Link>
+                                        <Link to="/" ref={loginScreen}></Link>
                                     </div>
                                 </div>
                             </div>
