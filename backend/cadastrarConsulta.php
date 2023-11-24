@@ -5,23 +5,21 @@
 		$valorRecebido = file_get_contents("php://input");
 		$dados = json_decode($valorRecebido);
 
-		$nomePessoa = $dados->nome;
+		$cd_cliente = $dados->id;
+		$descricao = $dados->ds_descricao;
+		$cd_psicologo = $dados->id_psicologo;
 	}
-	
-	$sql = "select * from tb_paciente where nm_paciente = 'Maria Santos';";
 
-	$result = $conn->query($sql);
+	try{
+		$sqli = "insert into tb_consulta (ds_consulta, dt_consulta, hr_consulta, fk_cd_paciente, fk_cd_psicologo)
+					values ('$descricao', '$diaConsulta', '$hrconsulta', '$cd_cliente', '$cd_psicologo');";
 
-	if ($result->num_rows > 0) {
-		foreach ($conn->query($sql) as $row) {
-			$resposta[] = $row;
-		}
+		$result = $conn->query($sqli);
 
-		echo json_encode(['response' => $resposta]);
-	} else {
-		echo json_encode(['response' => "teste"]);
+		echo json_encode(['response' => true]);
+	} catch (Exception $e){
+		echo json_encode(['response' => false]);
 	}
-	
 
     $conn->close();
 ?>
