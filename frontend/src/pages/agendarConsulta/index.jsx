@@ -30,6 +30,10 @@ const AgendarConsulta = () =>{
         return `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
     };
 
+    const enviarConsulta = () =>{
+
+    }
+
     useEffect(() => {
         setAnima(true);
 
@@ -148,10 +152,10 @@ const AgendarConsulta = () =>{
                                             }
                                         </div>
                                     </div>
-                                    
                                 </div>
                                 <div className="flex justify-center">
-                                    <Link to="/consultas"><button className=" text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-purple-950">Agendar</button></Link>
+                                    <button className="text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-purple-950">Agendar</button>
+                                    <Link to="/consultas"></Link>
                                 </div>
                             </div>
                         </div>
