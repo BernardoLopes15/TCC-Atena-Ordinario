@@ -2,15 +2,15 @@
 
 
 
-// use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\SMTP;
-// use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 include('./conexao.php');
 
-// require 'vendor/phpmailer/phpmailer/src/Exception.php';
-// require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
-// require 'vendor/phpmailer/phpmailer/src/SMTP.php';
+require 'vendor/phpmailer/phpmailer/src/Exception.php';
+require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 
 
 
@@ -29,35 +29,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$telefone = $dados->telefone;
 	$senha = $dados->senha;
 	$imagem = $dados->imagem;
+	$chave = uniqid(rand(), true);
 
-	// $mail = new PHPMailer(true);
+	$mail = new PHPMailer(true);
 
-	// try {
-	// 	//Server settings
-	// 	$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-	// 	$mail->isSMTP();                                            //Send using SMTP
-	// 	$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-	// 	$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-	// 	$mail->Username   = 'rianestudos770@gmail.com';                     //SMTP username
-	// 	$mail->Password   = 'vnmu zpyc bcal upyf';                               //SMTP password
-	// 	$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-	// 	$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+	try {
+		//Server settings
+		$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+		$mail->isSMTP();                                            //Send using SMTP
+		$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+		$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+		$mail->Username   = 'tccatena729@gmail.com';                     //SMTP username
+		$mail->Password   = 'uamo hove xphi rzmu';                               //SMTP password
+		$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+		$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-	// 	//Recipients
-	// 	$mail->setFrom('tccatena@gmail.com', 'Atena');
-	// 	$mail->addAddress($email);     //Add a recipient
+		//Recipients
+		$mail->setFrom('tccatena@gmail.com', 'Atena');
+		$mail->addAddress($email);     //Add a recipient
 
-	// 	//Content
-	// 	$mail->isHTML(true);                                  //Set email format to HTML
-	// 	$mail->Subject = 'Confirmar E-mail';
-	// 	$mail->Body    = "<b> Prezada paciente, por favor confirme seu E-mail clicando no link para continuar o cadastro.</b> <br/> <a href='https://github.com/'> Clique aqui!</a>";
-	// 	$mail->AltBody = "Prezada paciente, por favor confirme seu E-mail clicando no link para continuar o cadastro. \n\n https://github.com/ Clique aqui!";
+		//Content
+		$mail->isHTML(true);                                  //Set email format to HTML
+		$mail->Subject = 'Confirmar E-mail';
+		$mail->Body    = "<b> Prezada paciente, por favor confirme seu E-mail clicando no link para continuar o cadastro.</b> <br/> <a href='http://localhost/backend/validarEmail.php?chave=$chave'> Clique aqui!</a>";
+		$mail->AltBody = "Prezada paciente, por favor confirme seu E-mail clicando no link para continuar o cadastro. \n\n http://localhost/backend/validarEmail.php?chave=$chave Clique aqui!";
 
-	// 	$mail->send();
-	// 	// echo 'Message has been sent';
-	// } catch (Exception $e) {
-	// 	// echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-	// }
+		$mail->send();
+		echo 'Message has been sent';
+	} catch (Exception $e) {
+		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+	}
 
 
 }
@@ -67,11 +68,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $sql = "SELECT * FROM tb_paciente WHERE nr_cpf = '" . $cpf . "';";
 
+
+
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 } else {
-	$sql = "INSERT INTO tb_paciente (nm_paciente, nr_cpf, dt_cadastro, dt_nascimento, nm_email, nr_telefone, nm_senha, nm_foto_perfil) VALUES (
+	$sql = "INSERT INTO tb_paciente (nm_paciente, nr_cpf, dt_cadastro, dt_nascimento, nm_email, nr_telefone, nm_senha, nm_foto_perfil, cd_id, acesso) VALUES (
 			'$nome', 
 			'$cpf', 
 			date(NOW()),
@@ -79,11 +83,14 @@ if ($result->num_rows > 0) {
 			'$email', 
 			'$telefone', 
 			'$senha', 
-			'$imagem');";
+			'$imagem',
+			'$chave',
+			0);";
 
 	if ($conn->query($sql) === true) {
-		echo "Cadastrada com sucesso!";
+		echo " Cadastrada com sucesso! ";
 	} else echo "Não cadastrado";
 }
 
 $conn->close();
+

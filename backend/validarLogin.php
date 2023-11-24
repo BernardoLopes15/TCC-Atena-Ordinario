@@ -22,7 +22,7 @@
 			echo json_encode(['response' => $listaDados]);
 
 		} else {
-			$sql = "select * from tb_paciente where nm_email = '$email' and nm_senha = '$senha';";
+			$sql = "select * from tb_paciente where nm_email = '$email' and nm_senha = '$senha' and acesso = '1';";
 
 			$result = $conn->query($sql);
 
