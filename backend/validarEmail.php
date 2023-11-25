@@ -17,12 +17,14 @@ if(!empty($chave)){
     $conn->query($sql);
 
     if($conn->query($sql)){
-    echo " <script> alert('E-mail validado'); </script>";
- }
-    // header('http://localhost/login');
-
-}else {
-    echo " <script> alert('E-mail inválido, tente outro'); </script>"; 
-    header('http://localhost/login');
-}
+        echo "Cadastro feito com sucesso";
+    
+     }
+    
+     header('Location: http://localhost:3000/');
+     die();
+    
+    } else {
+        echo " <script> alert('E-mail inválido, tente outro'); </script>"; 
+    }
 ?> 

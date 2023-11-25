@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import MainUrl from "../../../connection config/url";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
+import Swal from 'sweetalert2'
 
 const CadastroBioPsicologo = () =>{
 
@@ -66,6 +67,12 @@ const CadastroBioPsicologo = () =>{
         try{
             let a = await axios.post(MainUrl + "cadastrarPsicologo.php", JSON.stringify(psicologo));
             clickLink.current.click();
+
+            Swal.fire({
+                title: 'Validar E-mail',
+                text: 'Dados salvos, confira seu e-mail para continuar o cadastro!',
+                icon: "success"
+            })
         } catch{
             console.log("error");
         }

@@ -9,7 +9,7 @@
 		$senha = $dados->senha;
 	}
 
-    $sql = "select * from tb_psicologo where nm_email = '$email' and nm_senha = '$senha';";
+    $sql = "select * from tb_psicologo where nm_email = '$email' and nm_senha = '$senha' and acesso = '1';";
 
 	try{
 		$result = $conn->query($sql);
