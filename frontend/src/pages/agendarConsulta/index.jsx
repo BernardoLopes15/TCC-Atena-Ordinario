@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
@@ -25,6 +25,8 @@ const AgendarConsulta = () =>{
     const [diaAno, setDiaAno] = useState();
     const [horaSelecionada, setHoraSelecionada] = useState();
 
+    let voltarConsulta = useRef();
+
     const formatDate = (date) => {
         const day = date.getDate();
         const month = date.getMonth() + 1;
@@ -39,6 +41,7 @@ const AgendarConsulta = () =>{
         axios.post(MainUrl + "cadastrarConsulta.php", JSON.stringify(form))
         .then((e) => {
             console.log(e);
+            voltarConsulta?.current.click();
         });
     }
 
@@ -79,6 +82,7 @@ const AgendarConsulta = () =>{
                 }
                 
                 setDiaSemana([...new Set(arraySemana)]);
+                setDataSelecionada([...new Set(arraySemana)][0]);
 
                 setHorariosDisponiveis(e.data?.response);
             })
@@ -165,7 +169,7 @@ const AgendarConsulta = () =>{
                                 </div>
                                 <div className="flex justify-center">
                                     <button className="text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-purple-950" onClick={enviarConsulta}>Agendar</button>
-                                    <Link to="/consultas"></Link>
+                                    <Link to="/consultas" ref={voltarConsulta}></Link>
                                 </div>
                             </div>
                         </div>

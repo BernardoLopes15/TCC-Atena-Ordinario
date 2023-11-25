@@ -17,7 +17,7 @@ const CadastroPsicologo = () => {
     const [email, setEmail] = useState('');
     const [msg, setMsg] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
-    const [readyToContinue, setReadyToContinue] = useState(true);
+    const [readyToContinue, setReadyToContinue] = useState(false);
 
     let ano = new Date().getFullYear();
     let anoNasicmento = dataNascimento.slice(-4);
@@ -35,17 +35,27 @@ const CadastroPsicologo = () => {
     }
 
 
-    const validarCamposPreenchidos = (e) => {
-        e.preventDefault();
-
+    const validarCamposPreenchidos = () => {
         if (!nome || !CPF || !telefone || !senha || !email || !dataNascimento) {
             setMsg("Preencha todos os campos");
             setReadyToContinue(false);
             return;
         }
 
-        else if (senha !== confirmarSenha) {
+        else if (senha && confirmarSenha && senha !== confirmarSenha) {
             setMsg("Campos senha e confirmar senha estão diferentes");
+            setReadyToContinue(false);
+            return;
+        }
+
+         else if(confirmarSenha !== senha){
+            setMsg("Campos senha e confirmar senha estão diferentes");
+            setReadyToContinue(false);
+            return;
+         }
+
+        else if(!validator.isStrongPassword(senha,{ minUppercase: 1, minLength: 8, minLowercase:1, minNumbers: 1, minSymbols: 0})){
+            setMsg("Senha fraca");
             setReadyToContinue(false);
             return;
         }
@@ -53,14 +63,14 @@ const CadastroPsicologo = () => {
         else {
             setMsg("");
             setReadyToContinue(true);
-            enviar();
         }
     }
 
-    const enviar = async () => {
-        sessionStorage.removeItem('psicologo');
-
+    const enviar = async (e) => {
+        e.preventDefault();
+        validarCamposPreenchidos();
         if (!readyToContinue) return;
+        sessionStorage.removeItem('psicologo');
 
         let psicologo = JSON.stringify({
             nome: nome,
@@ -99,19 +109,13 @@ const CadastroPsicologo = () => {
                             </Link>
 
                             <h2 className="text-center text-5xl title">Cadastrar Psicólogo(a)</h2>
-
                             <div className="Message mt-8 ">
-
                                 <alert className="bg-red-600 text-white text-xl rounded">
                                     <alert className="" value={msg} >{msg}</alert>
                                 </alert>
-
                             </div>
-
                             <form method="POST" className="form">
-
                                 <div className="flex justify-between content-form">
-
                                     <div className="w-1/2 flex flex-col justify-end content1">
                                         <h2 className="mt-8 mb-2">Nome completo</h2>
                                         <input className="px-2 py-1" onChange={(e) => setNome(e.target.value)} value={nome} type="text" name="nome" id="nome" maxLength={40} required />
@@ -120,7 +124,7 @@ const CadastroPsicologo = () => {
                                         <h2 className="mt-8 mb-2">Telefone</h2>
                                         <InputMask className="w-full px-2 py-1 " value={telefone} onChange={(e) => setTelefone(e.target.value)} mask="(99) 99999-9999" required />
                                         <h2 className="mt-8 mb-2">Senha</h2>
-                                        <input className="w-full px-2 py-1 " onChange={(e) => setSenha(e.target.value)} value={senha} type="password" name="senha" onBlur={(e) => {  validator.isStrongPassword(senha,{ minUppercase: 1, minLength: 8, minLowercase:1, minNumbers: 1, minSymbols: 0}) === ! true ? setMsg("Senha fraca") : setMsg("") }  } required />
+                                        <input className="w-full px-2 py-1 " onChange={(e) => setSenha(e.target.value)} value={senha} type="password" name="senha" onBlur={(e) => { validarCamposPreenchidos() }  } required />
                                         <label className="text-sm">*A senha precisar ter no mínimo 8 caracteres, entre eles uma letra maiúscula, uma letra minúscula e um algorismo.</label>
 
                                     </div>
@@ -131,7 +135,7 @@ const CadastroPsicologo = () => {
                                         <h2 className="mt-8 mb-2">E-mail</h2>
                                         <input className="w-full px-2 py-1 " onChange={(e) => setEmail(e.target.value)} value={email} type="text" name="email" onBlur={(e) => { validator.isEmail(email) === ! true ? setMsg("E-mail inválido") : setMsg("") }} required />
                                         <h2 className="mt-8 mb-2">Confirmar senha</h2>
-                                        <input className="w-full px-2 py-1 " type="password" onChange={(e) => setConfirmarSenha(e.target.value)} value={confirmarSenha} name="confirmarSenha" onKeyDown={validarCamposPreenchidos} onBlur={(e) => { confirmarSenha == senha ? setMsg(null) : setMsg("Campos senha e confirmar senha estão diferentes") }} required />
+                                        <input className="w-full px-2 py-1 " type="password" onChange={(e) => setConfirmarSenha(e.target.value)} value={confirmarSenha} name="confirmarSenha" onKeyDown={validarCamposPreenchidos} onBlur={() => { confirmarSenha === senha ? setMsg(null) : setMsg("Campos senha e confirmar senha estão diferentes") }} required />
                                     </div>
 
                                 </div>
@@ -141,7 +145,7 @@ const CadastroPsicologo = () => {
 
                                         {/*<button className="py-2 text-white btn" type="submit">Próximo</button>*/}
                                         {/*<button className="py-2 text-white btn" type="button" onClick={ReceberLocal}>Local</button>*/}
-                                        <button className="py-2 text-white btn" type="submit" onClick={validarCamposPreenchidos}>Cadastrar</button>
+                                        <button className="py-2 text-white btn" type="submit" onClick={enviar}>Cadastrar</button>
                                         <Link to="/termosPsicologo" ref={clickLink}></Link>
                                         {/* <Link to="/cadastroImagem" id="cadastroImagem"></Link> */}
                                     </div>
