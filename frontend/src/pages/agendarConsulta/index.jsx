@@ -22,6 +22,8 @@ const AgendarConsulta = () =>{
 
     const [descricaoConsulta, setDescricaoConsulta] = useState();
     const [dataSelecionada, setDataSelecionada] = useState(diaSemana[0]);
+    const [diaAno, setDiaAno] = useState();
+    const [horaSelecionada, setHoraSelecionada] = useState();
 
     const formatDate = (date) => {
         const day = date.getDate();
@@ -31,7 +33,13 @@ const AgendarConsulta = () =>{
     };
 
     const enviarConsulta = () =>{
+        let paciente = JSON.parse(sessionStorage.getItem("token"));
+        let form = { psicologo: psicologoData, dataSelecionada: diaAno, horaSelecionada: horaSelecionada, descricaoConsulta: descricaoConsulta, id: paciente.id };
 
+        axios.post(MainUrl + "cadastrarConsulta.php", JSON.stringify(form))
+        .then((e) => {
+            console.log(e);
+        });
     }
 
     useEffect(() => {
@@ -41,16 +49,15 @@ const AgendarConsulta = () =>{
             const currentDate = new Date();
             const endOfYear = new Date(currentDate.getFullYear(), 11, 31);
             const todosDias = [];
-
-            for (let i = 0; i < diaSemana.length; i++) {
-                const currentLoopDate = new Date(currentDate);
-                while (currentLoopDate < endOfYear) {
-                    const dayOfWeek = diaSemana[i];
-                    const daysToAdd = (dayOfWeek + 7 - currentLoopDate.getDay()) % 7;
-                    currentLoopDate.setDate(currentLoopDate.getDate() + daysToAdd);
-                    todosDias.push(new Date(currentLoopDate)); // Cria uma nova instância de data
-                    currentLoopDate.setDate(currentLoopDate.getDate() + 7);
+            
+            while (currentDate <= endOfYear) {
+                for(let item of diaSemana){
+                    if(item == new Date(currentDate).getDay()){
+                        todosDias.push(new Date(currentDate));
+                    }   
                 }
+
+                currentDate.setDate(currentDate.getDate() + 1); // Avança para o próximo dia
             }
             
             setWednesdays(todosDias.sort((a, b) => a - b));
@@ -74,7 +81,6 @@ const AgendarConsulta = () =>{
                 setDiaSemana([...new Set(arraySemana)]);
 
                 setHorariosDisponiveis(e.data?.response);
-                console.log(e.data?.response);
             })
         });
     }, []);
@@ -125,8 +131,12 @@ const AgendarConsulta = () =>{
                                         <h2 className="mt-4 text-md text-lg">Datas disponíveis para consulta</h2>
                                         <select className="overflow-y-auto my-2 px-2 py-2 rounded-md outline-none cursor-pointer bg-purple-400 text-white"
                                             onChange={(e) => {
-                                                const dateObj = new Date(e.target.value);
+                                                let dateObj = new Date(e.target.value);
                                                 setDataSelecionada(dateObj.getDay());
+
+                                                let parts = dateObj.toLocaleDateString().split('/');
+                                                dateObj = `${parts[2]}-${parts[1]}-${parts[0]}`;
+                                                setDiaAno(dateObj);
                                             }
                                         }>
                                             {wednesdays.map((wednesday, index) => (
@@ -139,13 +149,13 @@ const AgendarConsulta = () =>{
                                         <div className="flex flex-wrap my-2 text-white" >
                                             {
                                                 horariosDisponiveis &&
-                                                horariosDisponiveis.map((hora) => {
+                                                horariosDisponiveis.map((hora, index) => {
                                                     if(hora.dia == dataSelecionada){
                                                         return(
-                                                            <>
-                                                                <input type="radio" id="hora" className="hidden peer" />
-                                                                <label className="mr-2 mb-2 px-4 py-2 cursor-pointer bg-purple-400 peer-checked:bg-red-600 rounded" for="hora">{hora.dtInicio}</label>           
-                                                            </>
+                                                            <div>
+                                                                <input type="radio" name="horario" value={hora.dtInicio} onChange={(e) => setHoraSelecionada(e.target.value)} id={`hora${index}`} className="hidden peer" />
+                                                                <label className="mr-2 mb-2 px-4 py-2 cursor-pointer bg-purple-400 peer-checked:bg-red-600 rounded" htmlFor={`hora${index}`}>{hora.dtInicio}</label>           
+                                                            </div>
                                                         );
                                                     }
                                                 })
@@ -154,7 +164,7 @@ const AgendarConsulta = () =>{
                                     </div>
                                 </div>
                                 <div className="flex justify-center">
-                                    <button className="text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-purple-950">Agendar</button>
+                                    <button className="text-lg w-60 md:w-96 mt-8 px-4 py-2 rounded-lg cursor-pointer bg-purple-400 text-white hover:bg-purple-950" onClick={enviarConsulta}>Agendar</button>
                                     <Link to="/consultas"></Link>
                                 </div>
                             </div>

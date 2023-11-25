@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import MainUrl from "../../connection config/url";
 
@@ -10,6 +10,7 @@ const CadastroData = () =>{
     const [indexEditar, setIndexEditar] = useState();
     const [executouEfeito, setExecutouEfeito] = useState(false);
 
+    let calendario = useRef();
     const [modo, setModo] = useState("Adicionar");
 
     const [consulta, setConsulta] = useState(
@@ -64,7 +65,10 @@ const CadastroData = () =>{
     const confirmarAlteracao = () =>{
         let cd_psicologo = JSON.parse(sessionStorage.getItem("token"));
         axios.post(MainUrl + "cadastrarHorario.php", JSON.stringify({ cd_psicologo: cd_psicologo.id, consulta: consulta }))
-        .then((e)=>console.log(e));
+        .then((e) => {
+            console.log(e);
+            calendario.current.click();
+        });
     }
 
     const apagarData = (index) => {
@@ -156,6 +160,7 @@ const CadastroData = () =>{
                                     ))}
                                 </div>
                                 <button className="w-full mt-12 py-3 rounded-3xl bg-purple-400" onClick={confirmarAlteracao}>Confirmar</button>
+                                <Link to="/calendario" ref={calendario}></Link>
                             </div>
                         </div>
                     </div>

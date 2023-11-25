@@ -5,9 +5,11 @@
 		$valorRecebido = file_get_contents("php://input");
 		$dados = json_decode($valorRecebido);
 
+		$descricao = $dados->descricaoConsulta;
 		$cd_cliente = $dados->id;
-		$descricao = $dados->ds_descricao;
-		$cd_psicologo = $dados->id_psicologo;
+		$cd_psicologo = $dados->psicologo->cd_psicologo;
+		$diaConsulta = $dados->dataSelecionada;
+		$hrconsulta = $dados->horaSelecionada;
 	}
 
 	try{
@@ -16,9 +18,9 @@
 
 		$result = $conn->query($sqli);
 
-		echo json_encode(['response' => true]);
+		echo json_encode(['response' => "FUNCIONO"]);
 	} catch (Exception $e){
-		echo json_encode(['response' => false]);
+		echo json_encode(['response' => $e]);
 	}
 
     $conn->close();
