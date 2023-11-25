@@ -40,13 +40,13 @@ const CadastroCliente = () => {
             return;
         }
 
-       else if (senha === !confirmarSenha) {
+       else if (senha !== confirmarSenha) {
             setMsg("Campos senha e confirmar senha estão diferentes");
             setReadyToContinue(false);
             return;
         }
 
-        else if (cpf.isValid(CPF) === ! true) setMsg("CPF inválido")
+        else if (cpf.isValid(CPF) == ! true) setMsg("CPF inválido")
 
         else if (validator.isStrongPassword(senha, { minUppercase: 1, minLength: 8, minLowercase: 1, minNumbers: 1, minSymbols: 0 }) === ! true) setMsg("Senha fraca")
 
@@ -104,6 +104,8 @@ const CadastroCliente = () => {
         sessionStorage.removeItem('paciente');
     }
 
+    console.log(confirmarSenha)
+
     return (
         <main>
             <article>
@@ -154,7 +156,7 @@ const CadastroCliente = () => {
                                         <h2 className="mt-8 mb-2">E-mail</h2>
                                         <input className="w-full px-2 py-1 " onChange={(e) => setEmail(e.target.value)} value={email} type="text" name="email" onBlur={(e) => { validator.isEmail(email) === ! true ? setMsg("E-mail inválido") : setMsg(null) }} required />
                                         <h2 className="mt-8 mb-2">Confirmar senha</h2>
-                                        <input className="w-full px-2 py-1 " type="password" onChange={(e) => setConfirmarSenha(e.target.value)} value={confirmarSenha} name="confirmarSenha" onKeyDown={validarCamposPreenchidos} required />
+                                        <input className="w-full px-2 py-1 " type="password" onChange={(e) => setConfirmarSenha(e.target.value)} value={confirmarSenha} name="confirmarSenha" onKeyDown={validarCamposPreenchidos} onBlur={(e) => { confirmarSenha == senha ? setMsg(null) : setMsg("Campos senha e confirmar senha estão diferentes") }} required />
                                     </div>
 
                                 </div>

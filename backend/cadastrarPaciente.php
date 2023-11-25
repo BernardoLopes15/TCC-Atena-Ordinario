@@ -29,8 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$telefone = $dados->telefone;
 	$senha = $dados->senha;
 	$imagem = $dados->imagem;
-	$chave = uniqid(rand(), true);
 
+	$chave = uniqid(rand(), true);
 	$mail = new PHPMailer(true);
 
 	try {
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//Content
 		$mail->isHTML(true);                                  //Set email format to HTML
 		$mail->Subject = 'Confirmar E-mail';
-		$mail->Body    = "<b> Prezada paciente, por favor confirme seu E-mail clicando no link para continuar o cadastro.</b> <br/> <a href='http://localhost/backend/validarEmail.php?chave=$chave'> Clique aqui!</a>";
+		$mail->Body    = "<b> Prezada paciente, por favor confirme seu e-mail clicando no link abaixo para continuar o cadastro.</b> <br/> <a href='http://localhost/backend/validarEmail.php?chave=$chave'> Clique aqui!</a>";
 		$mail->AltBody = "Prezada paciente, por favor confirme seu E-mail clicando no link para continuar o cadastro. \n\n http://localhost/backend/validarEmail.php?chave=$chave Clique aqui!";
 
 		$mail->send();
@@ -59,6 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	} catch (Exception $e) {
 		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 	}
+
+	
 
 
 }

@@ -96,15 +96,15 @@ const PerfilCliente = () =>{
                                     </div>
                                     <h2 className=" pt-4 font-semibold font-title text-2xl">{nome}</h2>
                                     <div className="py-4 flex justify-between">
-                                        <div className="grid grid-cols-2">
+                                        <div className="grid grid-cols-2 ">
                                             <p className="font-medium">E-mail:</p>
-                                            <input type="text" value={email} disabled/>
+                                            <input className="w-96" type="text" value={email} disabled/>
                                             <p className="font-medium">CPF:</p>
-                                            <input type="text" value={CPF} disabled/>
+                                            <input className="w-96" type="text" value={CPF} disabled/>
                                             <p className="font-medium">Data de nascimento:</p>
-                                            <input type="text" value={dataNascimento} disabled/>
+                                            <input className="w-96" type="text" value={dataNascimento} disabled/>
                                             <p className="font-medium">Telefone:</p>
-                                            <input type="text" value={telefone} disabled/>
+                                            <input className="w-96" type="text" value={telefone} disabled/>
                                         </div>
                                     </div>
                                     <div className="py-12 flex justify-center flex-col items-center">

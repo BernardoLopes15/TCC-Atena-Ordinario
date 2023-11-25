@@ -24,7 +24,8 @@ const CadastroImagemCliente = () =>{
             console.log(response);
             //alert(JSON.stringify(response.data));
             Swal.fire({
-              text: response.data,
+              title: 'Validar E-mail',
+              text: 'Dados salvos, confira seu e-mail para continuar o cadastro!',
               icon: "success"
           })
           })
