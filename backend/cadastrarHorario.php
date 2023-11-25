@@ -20,11 +20,13 @@
 				$conn->query($sql);
 			}
 		} else{
-			foreach ($arr as &$dados->consulta) {
+			foreach ($dados->consulta as $arr) {
 				$sql = "insert into tb_disponibilidade (id_dia, hr_inicio, hr_termino, fk_cd_psicologo) values('$arr->dia', '$arr->dtInicio', '$arr->dtTermino', '$idPessoa');";
 				$conn->query($sql);
 			}
 		}
+
+		echo json_encode(['response' => "funciono"]);
 	} catch (Exception $e) {
 		echo json_encode(['response' => false]);
 	}
