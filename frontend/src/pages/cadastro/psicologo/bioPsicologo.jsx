@@ -65,7 +65,7 @@ const CadastroBioPsicologo = () =>{
 
     const enviarBio = async () =>{
         try{
-            let a = await axios.post(MainUrl + "cadastrarPsicologo.php", JSON.stringify(psicologo));
+            await axios.post(MainUrl + "cadastrarPsicologo.php", JSON.stringify(psicologo));
             clickLink.current.click();
 
             Swal.fire({
@@ -106,7 +106,7 @@ const CadastroBioPsicologo = () =>{
                                 <textarea className="px-2 text-xl pt-1" id="bio" name="bio" rows="4" cols="40" onChange={(e)=>setBio(e.target.value)} value={bio} maxLength="400"/>
                             </div>
                             <div className="flex justify-center mt-16">
-                                <Link to=""><button className="py-2 text-white btn" onClick={validarBio}>Cadastrar</button></Link>
+                                <button className="py-2 text-white btn" onClick={validarBio}>Cadastrar</button>
                                 <Link to="/" ref={clickLink}></Link>
                                 <Link to="/cadastroPsicologo" ref={voltarTela}></Link>
                             </div>

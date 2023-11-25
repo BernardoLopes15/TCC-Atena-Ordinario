@@ -18,6 +18,8 @@ const CadastroPsicologo = () => {
     const [msg, setMsg] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
     const [readyToContinue, setReadyToContinue] = useState(false);
+    const [areaAtuacao, setAreaAtuacao] = useState('');
+    const [localizacao, setLocalizacao] = useState('');
 
     let ano = new Date().getFullYear();
     let anoNasicmento = dataNascimento.slice(-4);
@@ -78,7 +80,9 @@ const CadastroPsicologo = () => {
             telefone: telefone,
             senha: senha,
             dataNascimento: dtNascimento,
-            email: email
+            email: email,
+            areaAtuacao: areaAtuacao,
+            localizacao: localizacao
         });
 
         try {
@@ -123,17 +127,19 @@ const CadastroPsicologo = () => {
                                         <InputMask className="w-full px-2 py-1 " value={cpf} onChange={(e) => setCPF(e.target.value)} mask="999.999.999-99" onBlur={(e) => { cpf.isValid(CPF) === ! true ? setMsg("CPF inválido") : setMsg("") }} onClick={showSwal} required />
                                         <h2 className="mt-8 mb-2">Telefone</h2>
                                         <InputMask className="w-full px-2 py-1 " value={telefone} onChange={(e) => setTelefone(e.target.value)} mask="(99) 99999-9999" required />
+                                        <h2 className="mt-8 mb-2">Área de Atuação</h2>
+                                        <input className="w-full px-2 py-1" value={areaAtuacao} onChange={(e) => setAreaAtuacao(e.target.value)} onBlur={() => validarCamposPreenchidos()} required />
                                         <h2 className="mt-8 mb-2">Senha</h2>
-                                        <input className="w-full px-2 py-1 " onChange={(e) => setSenha(e.target.value)} value={senha} type="password" name="senha" onBlur={(e) => { validarCamposPreenchidos() }  } required />
+                                        <input className="w-full px-2 py-1 " onChange={(e) => setSenha(e.target.value)} value={senha} type="password" name="senha" onBlur={() => validarCamposPreenchidos()} required />
                                         <label className="text-sm">*A senha precisar ter no mínimo 8 caracteres, entre eles uma letra maiúscula, uma letra minúscula e um algorismo.</label>
-
                                     </div>
-
                                     <div className="w-1/2 ml-8 content2">
                                         <h2 className="mt-8 mb-2">Data de nascimento</h2>
                                         <InputMask className="w-full px-2 py-1 " value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} mask="99/99/9999" onBlur={(e) => { idade > 120 || idade < 18 || diaNascimento > 31 || diaNascimento < 0 || mesNascimento > 12 || mesNascimento < 0 ? setMsg("Idade ou data não compatível") : setMsg(""); setReadyToContinue(false); }} required />
                                         <h2 className="mt-8 mb-2">E-mail</h2>
                                         <input className="w-full px-2 py-1 " onChange={(e) => setEmail(e.target.value)} value={email} type="text" name="email" onBlur={(e) => { validator.isEmail(email) === ! true ? setMsg("E-mail inválido") : setMsg("") }} required />
+                                        <h2 className="mt-8 mb-2">Localização</h2>
+                                        <input className="w-full px-2 py-1 " onChange={(e) => setLocalizacao(e.target.value)} value={localizacao} type="text" name="email" onBlur={() => validarCamposPreenchidos()} required />
                                         <h2 className="mt-8 mb-2">Confirmar senha</h2>
                                         <input className="w-full px-2 py-1 " type="password" onChange={(e) => setConfirmarSenha(e.target.value)} value={confirmarSenha} name="confirmarSenha" onKeyDown={validarCamposPreenchidos} onBlur={() => { confirmarSenha === senha ? setMsg(null) : setMsg("Campos senha e confirmar senha estão diferentes") }} required />
                                     </div>

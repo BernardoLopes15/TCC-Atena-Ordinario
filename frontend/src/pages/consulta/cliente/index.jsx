@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
+import MainUrl from "../../../connection config/url";
 import { CSSTransition } from "react-transition-group";
 
 import NavBar from "../../../components/Navbar";
@@ -6,12 +8,17 @@ import Rodape from "../../../components/Rodape";
 
 import Psicologo1 from "../../../assets/imgs/psicologo1.png";
 
-
-const Psicologo = ({ nome, cor, imgUser }) =>{
+const Psicologo = ({ nome, cor, imgUser, dia, hora }) =>{
     return(
-        <div className={`w-full px-4 py-2 my-3 flex items-center border border-black flex rounded-md border-r-8  ${cor}`}>
+        <div className={`w-full px-4 py-2 my-3 flex items-center border border-black flex rounded-md border-r-8 ${cor === "p" ? "border-r-yellow-500" : cor === "r" ? "border-r-green-500" : cor === "c" && "border-r-red-500"}`}>
             <img src={imgUser} className="md:w-12 md:h-12 rounded-full" alt="imagem_usuario" />
-            <h2 className="ml-4">{nome}</h2>
+            <div className="ml-4 flex justify-between grow">
+                <h2>{nome}</h2>
+                <div>
+                    <h2>{hora}</h2>
+                    <h2>{dia}</h2>
+                </div>
+            </div>
         </div>
     );
 }
@@ -19,8 +26,18 @@ const Psicologo = ({ nome, cor, imgUser }) =>{
 const ConsultaCliente = () =>{
     const [anima, setAnima] = useState(false);
 
+    const [consultas, setConsultas] = useState([]);
+
     useEffect(() => {
         setAnima(true);
+
+        let paciente = JSON.parse(sessionStorage.getItem("token"));
+        console.log(paciente.id);
+        axios.post(MainUrl + "buscarConsultas.php", JSON.stringify({ id: paciente.id }))
+        .then((e) => {
+            console.log(e);
+            setConsultas(e.data.response);
+        });
     }, []);
 
     return(
@@ -43,7 +60,12 @@ const ConsultaCliente = () =>{
                                 <div className="p-2 cursor-pointer bg-red-400 border border-red-400 rounded-md">Consulta Cancelada</div>
                             </div> 
                             <div className="flex flex-col ">
-                                <Psicologo nome="Fernanda Sandra Ribeiro" cor="border-r-yellow-300" imgUser={Psicologo1} />
+                                {
+                                    consultas &&
+                                    consultas.map((consulta) => (
+                                        <Psicologo nome={consulta.ds_consulta} cor={consulta.id_realizada} imgUser={Psicologo1} dia={consulta.dt_consulta} hora={consulta.hr_consulta} />
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>

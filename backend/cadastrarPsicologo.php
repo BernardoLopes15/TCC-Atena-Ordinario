@@ -19,7 +19,8 @@ require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 	$senha = "";
 	$sql = "";
 	$bio = "";
-
+	$areaAtuacao = "";
+	$localizacao = "";
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$valorRecebido = file_get_contents("php://input");
@@ -32,6 +33,8 @@ require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 		$dtNascimento = $dados->dataNascimento;
 		$senha = $dados->senha;
 		$imagem = $dados->imagem;
+		$localizacao = $dados->localizacao;
+		$areaAtuacao = $dados->areaAtuacao;
 		$bio = $dados->bio;
 
 		$chave = uniqid(rand(), true);
@@ -101,8 +104,8 @@ require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 		echo json_encode(['response' => "já existe uma pessoa com este nome"]);
 	}  else {
 
-		$sqli = "insert into tb_psicologo (nm_psicologo, nr_cpf, nr_telefone, nm_email, dt_cadastro, dt_nascimento, nm_foto_perfil, nm_senha, ds_apresentacao, st_e_psi, st_crp, cd_id, acesso)
-		 values('$nomePessoa', '$cpf', '$telefone','$email', date(now()), '$dtNascimento', '$imagem', '$senha','$bio', 0 , 0 , '$chave', 0);";
+		$sqli = "insert into tb_psicologo (nm_psicologo, nr_cpf, nr_telefone, nm_email, dt_cadastro, dt_nascimento, nm_foto_perfil, nm_area_atuacao, nm_localizacao, nm_senha, ds_apresentacao, st_e_psi, st_crp, cd_id, acesso)
+		 values('$nomePessoa', '$cpf', '$telefone','$email', date(now()), '$dtNascimento', '$imagem', '$areaAtuacao', '$localizacao', '$senha','$bio', 0 , 0 , '$chave', 0);";
 		$conn->query($sqli);
 		echo json_encode(['response' => "Cadastrado"]);
 	}
