@@ -137,7 +137,7 @@ const CadastroCliente = () => {
 
                                     <div className="w-1/2 flex flex-col justify-end content1">
                                         <h2 className="mt-8 mb-2">Nome completo</h2>
-                                        <input className="px-2 py-1" onChange={(e) => setNome(e.target.value)} value={nome} type="text" name="nome" id="nome" maxLength={40} required />
+                                        <input className="px-2 py-1 size_nome" onChange={(e) => setNome(e.target.value)} value={nome} type="text" name="nome" id="nome " maxLength={40} required />
                                         <h2 className="mt-8 mb-2">CPF</h2>
                                         <InputMask className="w-full px-2 py-1 " value={cpf} onChange={(e) => setCPF(e.target.value)} mask="999.999.999-99" onBlur={(e) => { cpf.isValid(CPF) === ! true ? setMsg("CPF inválido") : setMsg(null) }} required />
                                         <h2 className="mt-8 mb-2">Telefone</h2>
@@ -150,7 +150,7 @@ const CadastroCliente = () => {
 
                                     </div>
 
-                                    <div className="w-1/2 ml-8 content2">
+                                    <div className="w-1/2 ml-8 content2 position">
                                         <h2 className="mt-8 mb-2">Data de nascimento</h2>
                                         <InputMask className="w-full px-2 py-1 " value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} mask="99/99/9999" onBlur={(e) => { idade > 120 || idade < 18 || diaNascimento > 31 || diaNascimento < 0 || mesNascimento > 12 || mesNascimento < 0 ? setMsg("Idade ou data não compatível") : setMsg(null) }} required />
                                         <h2 className="mt-8 mb-2">E-mail</h2>

@@ -11,12 +11,14 @@ const EditCadastroBioPsicologo = () =>{
     let profilepsicolgoo = useRef(null);
 
     useEffect(()=>{
-        axios.post(MainUrl + 'updateBio.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
+        axios.post(MainUrl + 'perfilPsicologo.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
           .then((response) => {
+            setBio(response.data.response.bio)
             if(response.data.response.bio != "") setBio(response.data.response.bio);
         })
         .catch((error) => console.error('Erro ao buscar os dados:', error));
         setEmail(JSON.parse(sessionStorage.getItem('token')).email);
+        
     },[])
 
     const enviar = async () => {
@@ -31,6 +33,10 @@ const EditCadastroBioPsicologo = () =>{
         .catch((error) => console.error('Erro ao buscar os dados:', error));
 
         sessionStorage.removeItem('paciente');
+        profilepsicolgoo.current.click();
+    }
+
+    const pular = async () => {
         profilepsicolgoo.current.click();
     }
 
@@ -52,13 +58,14 @@ const EditCadastroBioPsicologo = () =>{
                         <div className="form">
                          <div className="flex content-formBio">
                          
-                         <textarea rows="4" cols="50" onChange={(e)=> {setBio(e.target.value)}}>{bio}</textarea>
+                         <textarea className="py-2 px-2" rows="4" cols="50" onChange={(e)=> {setBio(e.target.value)}} placeholder={bio}>{bio}</textarea>
 
                          </div>
 
                          <div className="flex justify-center mt-16 btns">
                             <button className="py-2 text-white btn" onClick={enviar}>Editar</button>
-                            <Link to="/perfilPsicologo" ref={profilepsicolgoo}><button className="py-2 text-white btn">Pular</button></Link>
+                            <button className="py-2 text-white btn ml-5" onClick={pular}>Pular</button>
+                            <Link to="/perfilPsicologo" ref={profilepsicolgoo}></Link>
                         </div>
 
                         </div>

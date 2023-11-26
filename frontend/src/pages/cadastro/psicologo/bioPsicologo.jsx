@@ -67,12 +67,14 @@ const CadastroBioPsicologo = () =>{
         try{
             await axios.post(MainUrl + "cadastrarPsicologo.php", JSON.stringify(psicologo));
             clickLink.current.click();
-
+            console.log('cadastro feito');
             Swal.fire({
                 title: 'Validar E-mail',
                 text: 'Dados salvos, confira seu e-mail para continuar o cadastro!',
                 icon: "success"
-            })
+            });
+
+            
         } catch{
             console.log("error");
         }
@@ -107,8 +109,9 @@ const CadastroBioPsicologo = () =>{
                             </div>
                             <div className="flex justify-center mt-16">
                                 <button className="py-2 text-white btn" onClick={validarBio}>Cadastrar</button>
-                                <Link to="/" ref={clickLink}></Link>
                                 <Link to="/cadastroPsicologo" ref={voltarTela}></Link>
+                                <Link to="/" ref={clickLink}></Link>
+                                
                             </div>
                         </form>
                     </div>

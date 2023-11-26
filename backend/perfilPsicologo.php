@@ -15,7 +15,7 @@
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
 			$resposta = array("nome" => $row["nm_psicologo"], "email" => $row["nm_email"], "cpf" => $row["nr_cpf"], 
-			"dataNascimento" => $row["dt_nascimento"], "telefone" => $row["nr_telefone"], "bio" => $row["ds_apresentacao"]);
+			"dataNascimento" => $row["dt_nascimento"], "telefone" => $row["nr_telefone"], "bio" => $row["ds_apresentacao"],"especialidade" => $row["nm_area_atuacao"], "localizacao" => $row["nm_localizacao"] );
 		}
 
 		echo json_encode(['response' => $resposta]);

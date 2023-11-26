@@ -108,6 +108,10 @@ const InspecionarPsicologo = () =>{
                                         <div>
                                             <p className="md:w-96">{psicologo?.ds_apresentacao}</p>
                                         </div>
+                                        <h2 className="text-xl mb-4 mt-4 font-title">Especialidade</h2>
+                                        <div>
+                                            <p className="md:w-96">{psicologo?.nm_area_atuacao}</p>
+                                        </div>
                                     </div>
                                     <div className="xl:ml-16 md:w-96 mt-2 md:mt-0">
                                         <h2 className="mt-4 text-md">Datas disponíveis para consulta</h2>

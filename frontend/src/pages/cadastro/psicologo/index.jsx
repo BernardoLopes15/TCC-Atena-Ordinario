@@ -31,8 +31,8 @@ const CadastroPsicologo = () => {
 
     const showSwal = () => {
         Swal.fire({
-            text: "Atenção, o CPF será utilizado para validar a situação do seu CRP e-PSI",
-            icon:"warning"
+            text: "Atenção, o CPF será utilizado para validar a situação do seu CRP e e-PSI",
+            icon: "warning"
         })
     }
 
@@ -50,13 +50,13 @@ const CadastroPsicologo = () => {
             return;
         }
 
-         else if(confirmarSenha !== senha){
+        else if (confirmarSenha !== senha) {
             setMsg("Campos senha e confirmar senha estão diferentes");
             setReadyToContinue(false);
             return;
-         }
+        }
 
-        else if(!validator.isStrongPassword(senha,{ minUppercase: 1, minLength: 8, minLowercase:1, minNumbers: 1, minSymbols: 0})){
+        else if (!validator.isStrongPassword(senha, { minUppercase: 1, minLength: 8, minLowercase: 1, minNumbers: 1, minSymbols: 0 })) {
             setMsg("Senha fraca");
             setReadyToContinue(false);
             return;
@@ -113,7 +113,7 @@ const CadastroPsicologo = () => {
                             </Link>
 
                             <h2 className="text-center text-5xl title">Cadastrar Psicólogo(a)</h2>
-                            <div className="Message mt-8 ">
+                            <div className="Message mt-4 ">
                                 <alert className="bg-red-600 text-white text-xl rounded">
                                     <alert className="" value={msg} >{msg}</alert>
                                 </alert>
@@ -121,27 +121,39 @@ const CadastroPsicologo = () => {
                             <form method="POST" className="form">
                                 <div className="flex justify-between content-form">
                                     <div className="w-1/2 flex flex-col justify-end content1">
-                                        <h2 className="mt-8 mb-2">Nome completo</h2>
+                                        <h2 className=" mt-5 mb-2">Nome completo</h2>
                                         <input className="px-2 py-1" onChange={(e) => setNome(e.target.value)} value={nome} type="text" name="nome" id="nome" maxLength={40} required />
-                                        <h2 className="mt-8 mb-2">CPF</h2>
-                                        <InputMask className="w-full px-2 py-1 " value={cpf} onChange={(e) => setCPF(e.target.value)} mask="999.999.999-99" onBlur={(e) => { cpf.isValid(CPF) === ! true ? setMsg("CPF inválido") : setMsg("") }} onClick={showSwal} required />
-                                        <h2 className="mt-8 mb-2">Telefone</h2>
-                                        <InputMask className="w-full px-2 py-1 " value={telefone} onChange={(e) => setTelefone(e.target.value)} mask="(99) 99999-9999" required />
-                                        <h2 className="mt-8 mb-2">Área de Atuação</h2>
+                                        
+                                        <h2 className="mt-5 mb-2">Especialidade</h2>
                                         <input className="w-full px-2 py-1" value={areaAtuacao} onChange={(e) => setAreaAtuacao(e.target.value)} onBlur={() => validarCamposPreenchidos()} required />
-                                        <h2 className="mt-8 mb-2">Senha</h2>
+
+                                        <h2 className="mt-5 mb-2">Telefone</h2>
+                                        <InputMask className="w-full px-2 py-1 " value={telefone} onChange={(e) => setTelefone(e.target.value)} mask="(99) 99999-9999" required />
+                                       
+                                        <h2 className="mt-5 mb-2">E-mail</h2>
+                                        <input className="w-full px-2 py-1 " onChange={(e) => setEmail(e.target.value)} value={email} type="text" name="email" onBlur={(e) => { validator.isEmail(email) === ! true ? setMsg("E-mail inválido") : setMsg("") }} required />
+                                        
+                                        <h2 className="mt-5 mb-2">Confirmar senha</h2>
+                                        <input className="w-full px-2 py-1 " type="password" onChange={(e) => setConfirmarSenha(e.target.value)} value={confirmarSenha} name="confirmarSenha" onKeyDown={validarCamposPreenchidos} onBlur={() => { confirmarSenha === senha ? setMsg(null) : setMsg("Campos senha e confirmar senha estão diferentes") }} required />
+                                    </div>
+
+                                    <div className="w-1/2 ml-8 content2">
+                                        
+                                        <h2 className="mt-5 mb-2">CPF</h2>
+                                        <InputMask className="w-full px-2 py-1 " value={cpf} onChange={(e) => setCPF(e.target.value)} mask="999.999.999-99" onBlur={(e) => { cpf.isValid(CPF) === ! true ? setMsg("CPF inválido") : setMsg("") }} onClick={showSwal} required />
+                                        
+                                        <h2 className="mt-5 mb-2">Data de nascimento</h2>
+                                        <InputMask className="w-full px-2 py-1 " value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} mask="99/99/9999" onBlur={(e) => { idade > 120 || idade < 18 || diaNascimento > 31 || diaNascimento < 0 || mesNascimento > 12 || mesNascimento < 0 ? setMsg("Idade ou data não compatível") : setMsg(""); setReadyToContinue(false); }} required />
+                                       
+                                        <h2 className="mt-5 mb-2">Cidade onde mora</h2>
+                                        <input className="w-full px-2 py-1 " onChange={(e) => setLocalizacao(e.target.value)} value={localizacao} type="text" name="email" onBlur={() => validarCamposPreenchidos()} required />
+                                        
+                                        <h2 className="mt-5 mb-2">Senha</h2>
                                         <input className="w-full px-2 py-1 " onChange={(e) => setSenha(e.target.value)} value={senha} type="password" name="senha" onBlur={() => validarCamposPreenchidos()} required />
                                         <label className="text-sm">*A senha precisar ter no mínimo 8 caracteres, entre eles uma letra maiúscula, uma letra minúscula e um algorismo.</label>
-                                    </div>
-                                    <div className="w-1/2 ml-8 content2">
-                                        <h2 className="mt-8 mb-2">Data de nascimento</h2>
-                                        <InputMask className="w-full px-2 py-1 " value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} mask="99/99/9999" onBlur={(e) => { idade > 120 || idade < 18 || diaNascimento > 31 || diaNascimento < 0 || mesNascimento > 12 || mesNascimento < 0 ? setMsg("Idade ou data não compatível") : setMsg(""); setReadyToContinue(false); }} required />
-                                        <h2 className="mt-8 mb-2">E-mail</h2>
-                                        <input className="w-full px-2 py-1 " onChange={(e) => setEmail(e.target.value)} value={email} type="text" name="email" onBlur={(e) => { validator.isEmail(email) === ! true ? setMsg("E-mail inválido") : setMsg("") }} required />
-                                        <h2 className="mt-8 mb-2">Localização</h2>
-                                        <input className="w-full px-2 py-1 " onChange={(e) => setLocalizacao(e.target.value)} value={localizacao} type="text" name="email" onBlur={() => validarCamposPreenchidos()} required />
-                                        <h2 className="mt-8 mb-2">Confirmar senha</h2>
-                                        <input className="w-full px-2 py-1 " type="password" onChange={(e) => setConfirmarSenha(e.target.value)} value={confirmarSenha} name="confirmarSenha" onKeyDown={validarCamposPreenchidos} onBlur={() => { confirmarSenha === senha ? setMsg(null) : setMsg("Campos senha e confirmar senha estão diferentes") }} required />
+
+
+
                                     </div>
 
                                 </div>

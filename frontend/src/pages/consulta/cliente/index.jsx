@@ -51,7 +51,7 @@ const ConsultaCliente = () =>{
                     unmountOnExit
                 >
                     <div className="mt-16 md:w-2/3 lg:w-6/12 rounded-xl p-4 bg-white">
-                        <h2 className="py-4 text-5xl text-center font-style">Proxima Consulta</h2>
+                        <h2 className="py-4 text-5xl text-center font-style">Histórico de Consultas</h2>
                         <div className="md:p-4">
                             <p className="text-gray-600">Filtros de consulta</p>
                             <div className="mb-4 grid grid-cols-3 ">

@@ -23,8 +23,8 @@
   border: red solid 1px;
 }
 
-.content-form #nome{
-   width: 57.5vw;
+.content-form .size_nome{
+   width: 59.5vw;
 }
 
 .content-form h2{
@@ -32,9 +32,12 @@
 }
 
 .content-form .content2{
-    margin-top: 6rem;
+    /* margin-top: 6rem; */
     height: 100%;
-    /* border: red solid 2px; */
+}
+
+.content-form .position{
+  margin-top: 6rem;
 }
 
 .form .btn{

@@ -20,6 +20,8 @@ const PerfilPsicologo = () =>{
     const [dataNascimento, setDataNascimento] = useState('');
     const [email, setEmail] = useState('');
     const [bio, setBio] = useState('');
+    const [areaAtuacao, setAreaAtuacao] = useState('');
+    const [localizacao, setLocalizacao] = useState('');
     let loginScreen = useRef(null);
 
     useEffect(() => {
@@ -30,9 +32,11 @@ const PerfilPsicologo = () =>{
             setNome(response.data.response.nome);
             setEmail(response.data.response.email);
             setCPF(response.data.response.cpf);
-            setDataNascimento(response.data.response.dataNascimento.split('-').reverse().join('/'));
+            setDataNascimento(response.data.response.dataNascimento.split('/').reverse().join('-'));
             setTelefone(response.data.response.telefone);
-            setBio(response.data.response.bio);
+            setAreaAtuacao(response.data.response.especialidade)
+            setLocalizacao(response.data.response.localizacao)
+            setBio(response.data.response.bio)
 
             console.log(response);
           })
@@ -100,6 +104,10 @@ const PerfilPsicologo = () =>{
                                             <input className="w-96" type="text" value={email} disabled/>
                                             <p className="font-medium">CPF:</p>
                                             <input className="w-96" type="text" value={CPF} disabled/>
+                                            <p className="font-medium">Cidade:</p>
+                                            <input className="w-96" type="text" value={localizacao} disabled/>
+                                            <p className="font-medium">Especialidade:</p>
+                                            <input className="w-96" type="text" value={areaAtuacao} disabled/>
                                             <p className="font-medium">Data de nascimento:</p>
                                             <input className="w-96" type="text" value={dataNascimento} disabled />
                                             <p className="font-medium">Telefone:</p>
