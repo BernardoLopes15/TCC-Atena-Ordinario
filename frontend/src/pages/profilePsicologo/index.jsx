@@ -14,6 +14,7 @@ import usuario from "../../assets/imgs/psicologo1.png";
 const PerfilPsicologo = () =>{
     const [anima, setAnima] = useState(false);
 
+
     const [nome, setNome] = useState('');
     const [CPF, setCPF] = useState('');
     const [telefone, setTelefone] = useState('');
@@ -22,10 +23,12 @@ const PerfilPsicologo = () =>{
     const [bio, setBio] = useState('');
     const [areaAtuacao, setAreaAtuacao] = useState('');
     const [localizacao, setLocalizacao] = useState('');
+
     let loginScreen = useRef(null);
 
     useEffect(() => {
         setAnima(true);
+
 
         axios.post(MainUrl + 'perfilPsicologo.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
           .then((response) => {
@@ -44,18 +47,19 @@ const PerfilPsicologo = () =>{
 
     }, []);
 
-    const enviar = async (e) => {
+    const enviar = async () => {
 
         let novoForm = {
             cpf: CPF,
         }
     
-          axios.post(MainUrl + 'excluirPsicologo.php', JSON.stringify(novoForm))
-          .then((response) => {
+        axios.post(MainUrl + 'excluirPsicologo.php', JSON.stringify(novoForm))
+        .then((e) => {
+            console.log(e);
             //alert(JSON.stringify(response.data));
-            
-          })
-          .catch((error) => console.error('Erro ao buscar os dados:', error));
+        
+        })
+        .catch((error) => console.error('Erro ao buscar os dados:', error));
 
 
         sessionStorage.removeItem('token');
@@ -100,20 +104,19 @@ const PerfilPsicologo = () =>{
                                     <h2 className="pt-4 font-semibold font-title text-2xl">{nome}</h2>
                                     <div className="py-4 flex justify-between">
                                         <div className="grid grid-cols-2">
-                                            <p className="font-medium">E-mail:</p>
+                                        <p className="font-medium">E-mail:</p>
                                             <input className="w-96" type="text" value={email} disabled/>
                                             <p className="font-medium">CPF:</p>
                                             <input className="w-96" type="text" value={CPF} disabled/>
+                                            <p className="font-medium">Epecialidade:</p>
+                                            <input className="w-96" type="text" value={areaAtuacao} disabled/>
                                             <p className="font-medium">Cidade:</p>
                                             <input className="w-96" type="text" value={localizacao} disabled/>
-                                            <p className="font-medium">Especialidade:</p>
-                                            <input className="w-96" type="text" value={areaAtuacao} disabled/>
                                             <p className="font-medium">Data de nascimento:</p>
                                             <input className="w-96" type="text" value={dataNascimento} disabled />
                                             <p className="font-medium">Telefone:</p>
                                             <input className="w-96" type="text" value={telefone} disabled/>
                                         </div>
-
                                         {/* <div className="text-right">
                                             <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 1</p></a>
                                             <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 2</p></a>
