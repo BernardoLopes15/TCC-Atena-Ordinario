@@ -55,7 +55,7 @@ const InspecionarPsicologo = () =>{
 
                 axios.post(MainUrl + "validarAcessoConsultas.php", JSON.stringify({ id: pacienteSession.id}))
                 .then((e) => {
-                    if (e.response.data) setConsultas(true);
+                    if (e.data.response) setConsultas(true);
                 })
                 .catch(() => setConsultas(false));
             } catch{

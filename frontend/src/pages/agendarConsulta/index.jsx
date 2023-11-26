@@ -96,9 +96,9 @@ const AgendarConsulta = () =>{
 
         let pacienteSession = JSON.parse(sessionStorage.getItem("token"));
 
-        axios.post(MainUrl + "buscarConsultas.php", JSON.stringify({ id: pacienteSession.id}))
-        .then(() => {
-            voltarConsulta?.current?.click();
+        axios.post(MainUrl + "validarAcessoConsultas.php", JSON.stringify({ id: pacienteSession.id}))
+        .then((e) => {
+            if (e?.data?.response) voltarConsulta?.current?.click();
         });
     }, []);
 
