@@ -8,8 +8,15 @@ import Rodape from "../../../components/Rodape";
 
 import Psicologo1 from "../../../assets/imgs/psicologo1.png";
 
-const Psicologo = ({ nome, cor, imgUser, dia, hora }) =>{
+const Psicologo = ({ id, nome, cor, imgUser, dia, hora }) =>{
     const [aberta, setAberta] = useState(false);
+
+    const cancelarConsulta = () =>{
+        axios.post(MainUrl + "cancelarConsulta.php", JSON.stringify({ id: id }))
+        .then((e) => {
+            console.log(e);
+        });
+    }
 
     return(
         aberta
@@ -24,12 +31,17 @@ const Psicologo = ({ nome, cor, imgUser, dia, hora }) =>{
                 </div>
                 <div className="mx-6">
                     <h2 className={`underline ${cor == "p" ? "decoration-yellow-500" : cor == "r" ? "decoration-green-500" : "decoration-red-500"}`}>{
-                        cor == "p" ? "Pendente: Esperando a data da consulta" : "Concluida: Realizada com sucesso"
+                        cor == "p" ? "Pendente: Esperando a data da consulta" : ( cor == "r" ? "Concluida: Realizada com sucesso" : "Cancelada: consulta não executada")
                     }</h2>
                 </div>
                 <div>
-                    <p><button className="px-2 rounded-md bg-orange-200">Reagendar</button></p>
-                    <p><button className="px-2 mt-2 rounded-md bg-red-200">Cancelar</button></p>
+                    {
+                        cor == "p" && 
+                        <>
+                            <p><button className="px-2 rounded-md bg-orange-200">Reagendar</button></p>
+                            <p><button className="px-2 mt-2 rounded-md bg-red-200" onClick={() => cancelarConsulta(id)}>Cancelar</button></p>
+                        </>
+                    }
                 </div>
             </div>
         </div>
@@ -64,16 +76,17 @@ const ConsultaCliente = () =>{
         if(inicio){
             const fetchData = async () => {
                 if (inicio) {
-                  let paciente = JSON.parse(sessionStorage.getItem("token"));
-                  const consultasResponse = await axios.post(MainUrl + "buscarConsultas.php", JSON.stringify({ id: paciente.id }));
-                  setConsultas(consultasResponse.data.response);
-            
-                  for (let consulta of consultasResponse.data.response) {
-                    const psicologoResponse = await axios.post(MainUrl + "buscarPsicologoConsulta.php", JSON.stringify({ id: consulta.fk_cd_psicologo }));
-                    setPsicologos(prevPsicologos => [...prevPsicologos, psicologoResponse.data.response.nome]);
-                  }
+                    let paciente = JSON.parse(sessionStorage.getItem("token"));
+                    const consultasResponse = await axios.post(MainUrl + "buscarConsultas.php", JSON.stringify({ id: paciente.id }));
+                    setConsultas(consultasResponse.data.response);
+                    console.log(consultasResponse.data.response);
+                
+                    for (let consulta of consultasResponse.data.response) {
+                        const psicologoResponse = await axios.post(MainUrl + "buscarPsicologoConsulta.php", JSON.stringify({ id: consulta.fk_cd_psicologo }));
+                        setPsicologos(prevPsicologos => [...prevPsicologos, psicologoResponse.data.response.nome]);
+                    }
                 } else {
-                  setInicio(true);
+                    setInicio(true);
                 }
             };
         
@@ -110,6 +123,7 @@ const ConsultaCliente = () =>{
                                         if(filtro === consulta.id_realizada){
                                             return(
                                                 <Psicologo
+                                                    id={consulta.id}
                                                     nome={psicologos[index]}
                                                     cor={consulta.id_realizada}
                                                     imgUser={Psicologo1}
@@ -126,6 +140,7 @@ const ConsultaCliente = () =>{
                                         return -1;
                                     }).map((consulta, index) => (
                                         <Psicologo
+                                            id={consulta.cd_consulta}
                                             nome={psicologos[index]}
                                             cor={consulta.id_realizada}
                                             imgUser={Psicologo1}

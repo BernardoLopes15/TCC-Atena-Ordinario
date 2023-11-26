@@ -50,12 +50,12 @@ const InspecionarPsicologo = () =>{
                     })
                 })
                 .catch((e) => console.log(e));
-                
+
                 let pacienteSession = JSON.parse(sessionStorage.getItem("token"));
 
-                axios.post(MainUrl + "buscarConsultas.php", JSON.stringify({ id: pacienteSession.id}))
-                .then(() => {
-                    setConsultas(true);
+                axios.post(MainUrl + "validarAcessoConsultas.php", JSON.stringify({ id: pacienteSession.id}))
+                .then((e) => {
+                    if (e.response.data) setConsultas(true);
                 })
                 .catch(() => setConsultas(false));
             } catch{
@@ -175,7 +175,7 @@ const InspecionarPsicologo = () =>{
                                             {
                                                 consulta ? (
                                                     <div>
-                                                        <button className="text-white mt-8 px-4 py-2 rounded-lg cursor-pointer bg-red-500">Não Permitido</button>
+                                                        <button className="text-white mt-8 px-4 py-2 rounded-lg cursor-pointer bg-gray-500">Agendar Consulta</button>
                                                         <p>Você já possui consultas pendentes</p>
                                                     </div>
                                                 ) : (
