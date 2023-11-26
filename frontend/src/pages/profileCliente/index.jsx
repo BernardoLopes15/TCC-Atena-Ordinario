@@ -89,7 +89,7 @@ const PerfilCliente = () =>{
                             unmountOnExit
                         >
                             <div className="lg:w-6/12 pt-16 lg:px-4">
-                                <div className="h-56 lg:rounded-t-xl bg-purple-800"></div>
+                                <div className="h-56 lg:rounded-t-xl bg-purple-600"></div>
                                 <div className="lg:rounded-b-xl bg-white px-8">
                                     <div className="h-0 flex items-center mb-16">
                                       <Link to="/editImgCliente"> <img loading="lazy" className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={imgusuario} alt="usuario" /></Link> 

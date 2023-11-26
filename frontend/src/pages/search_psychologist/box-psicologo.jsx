@@ -7,7 +7,7 @@ const BoxPsicologo = ( { nome, idade, proficao, image, cidade, data }) =>{
 
     return(
         <>
-            <div className="py-4 px-8 mt-8 flex rounded-lg border-black bg-white">
+            <div className="py-4 px-8 mt-8 flex rounded-lg border-b-2 border-violet-500 bg-white">
                 <div>
                     <img src={image} className="w-16 h-16 md:w-20 md:h-20 rounded-full" alt="foto psicologo"/>
                 </div>
