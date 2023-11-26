@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import { Link, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import axios from "axios";
 
 import NavBar from "../../components/Navbar";
@@ -42,6 +43,11 @@ const AgendarConsulta = () =>{
         .then((e) => {
             console.log(e);
             voltarConsulta?.current.click();
+            Swal.fire({
+                title: 'Consulta Agendada',
+                text: 'Dados salvos, aguarde até a data marcada para a consulta',
+                icon: "success"
+            })
         });
     }
 

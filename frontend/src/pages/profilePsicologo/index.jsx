@@ -14,44 +14,34 @@ import usuario from "../../assets/imgs/psicologo1.png";
 const PerfilPsicologo = () =>{
     const [anima, setAnima] = useState(false);
 
-    const [nome, setNome] = useState('');
-    const [CPF, setCPF] = useState('');
-    const [telefone, setTelefone] = useState('');
-    const [dataNascimento, setDataNascimento] = useState('');
-    const [email, setEmail] = useState('');
-    const [bio, setBio] = useState('');
+    const [psicologo, setPsicologo] = useState();
     let loginScreen = useRef(null);
 
     useEffect(() => {
         setAnima(true);
 
-        axios.post(MainUrl + 'perfilPsicologo.php', JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
-          .then((response) => {
-            setNome(response.data.response.nome);
-            setEmail(response.data.response.email);
-            setCPF(response.data.response.cpf);
-            setDataNascimento(response.data.response.dataNascimento.split('-').reverse().join('/'));
-            setTelefone(response.data.response.telefone);
-            setBio(response.data.response.bio);
-
-            console.log(response);
+        axios.post(MainUrl + "perfilPsicologo.php", JSON.stringify(JSON.parse(sessionStorage.getItem('token'))))
+          .then((e) => {
+            console.log(e.data.response);
+            setPsicologo(e.data.response);
           })
           .catch((error) => console.error('Erro ao buscar os dados:', error));
 
     }, []);
 
-    const enviar = async (e) => {
+    const enviar = async () => {
 
         let novoForm = {
-            cpf: CPF,
+            cpf: psicologo.CPF,
         }
     
-          axios.post(MainUrl + 'excluirPsicologo.php', JSON.stringify(novoForm))
-          .then((response) => {
+        axios.post(MainUrl + 'excluirPsicologo.php', JSON.stringify(novoForm))
+        .then((e) => {
+            console.log(e);
             //alert(JSON.stringify(response.data));
-            
-          })
-          .catch((error) => console.error('Erro ao buscar os dados:', error));
+        
+        })
+        .catch((error) => console.error('Erro ao buscar os dados:', error));
 
 
         sessionStorage.removeItem('token');
@@ -93,19 +83,18 @@ const PerfilPsicologo = () =>{
                                     <div className="h-0 flex items-center mb-16">
                                       <Link to="/editImgPsicologo">  <img loading="lazy" className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={usuario} alt="usuario" /></Link>
                                     </div>
-                                    <h2 className="pt-4 font-semibold font-title text-2xl">{nome}</h2>
+                                    <h2 className="pt-4 font-semibold font-title text-2xl">{psicologo?.nome}</h2>
                                     <div className="py-4 flex justify-between">
                                         <div className="grid grid-cols-2">
                                             <p className="font-medium">E-mail:</p>
-                                            <input className="w-96" type="text" value={email} disabled/>
+                                            <h3 className="px-2 ml-4 break-words bg-gray-100">{psicologo?.email}</h3>
                                             <p className="font-medium">CPF:</p>
-                                            <input className="w-96" type="text" value={CPF} disabled/>
+                                            <h3 className="px-2 ml-4 bg-gray-100">{psicologo?.cpf}</h3>
                                             <p className="font-medium">Data de nascimento:</p>
-                                            <input className="w-96" type="text" value={dataNascimento} disabled />
+                                            <h3 className="px-2 ml-4 bg-gray-100">{psicologo?.dataNascimento}</h3>
                                             <p className="font-medium">Telefone:</p>
-                                            <input className="w-96" type="text" value={telefone} disabled/>
+                                            <h3 className="px-2 ml-4 bg-gray-100">{psicologo?.telefone}</h3>
                                         </div>
-
                                         {/* <div className="text-right">
                                             <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 1</p></a>
                                             <a href="#a" className="hover:underline hover:text-purple-500"><p>Rede Social 2</p></a>
@@ -116,7 +105,7 @@ const PerfilPsicologo = () =>{
                                     <div>
                                         <p className="text-lg font-medium">Apresentação</p>
                                         <p>
-                                        {bio}
+                                        {psicologo?.bio}
                                         </p>
                                     </div>
                                     <div className="py-12 flex justify-center flex-col items-center">

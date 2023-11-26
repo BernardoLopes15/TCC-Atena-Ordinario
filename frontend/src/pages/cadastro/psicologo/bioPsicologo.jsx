@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import MainUrl from "../../../connection config/url";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 const CadastroBioPsicologo = () =>{
 
