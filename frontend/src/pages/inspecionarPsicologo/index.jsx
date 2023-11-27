@@ -98,7 +98,7 @@ const InspecionarPsicologo = () =>{
                                 <div className="md:px-8">
                                     <div className="mt-10 ml-8">
                                         <div className="flex mt-1">
-                                            <img loading="lazy" className="w-24 h-24 rounded-full" src={imgUser} alt="user" />
+                                            <img loading="lazy" className="w-24 h-24 rounded-full" src={psicologo?.nm_foto_perfil} alt="user" />
                                             <div className="flex flex-wrap items-center">
                                                 <h3 className="px-4 text-2xl font-title">{nome}</h3>
                                                 <h4 className="ml-4 text-2xl font-title">{mostrarIdade(psicologo?.dt_nascimento)} anos</h4>
