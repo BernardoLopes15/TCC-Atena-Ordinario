@@ -1,21 +1,49 @@
 import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
+import MainUrl from "../../../connection config/url";
+import axios from "axios";
 
 const CadastroImagemPsicologo = () =>{
-    const [imagem, setImagem] = useState('');
+    const [selectedFile, setSelectedFile] = useState('');
     const [msg, setMsg] = useState('');
     let cadastrarImagem = useRef();
 
 
     let psicologoS = JSON.parse(sessionStorage.getItem('psicologo')) || {};
 
+    const onFileChange = (event) => {
+      setSelectedFile(event.target.files[0]);
+      //console.log(selectedFile.name);
+    };
+
+
+  const onFileUpload = () => {
+      const formData = new FormData();
+
+      formData.append(
+          "image",
+          selectedFile,
+          selectedFile.name
+      );
+
+      //console.log(selectedFile);
+
+      axios.post(MainUrl + 'uploadImagem.php', formData).then((response) => {
+        console.log(response.data.imagePath);
+        psicologoS.imagePath = response.data.imagePath;
+        sessionStorage.setItem('psicologo', JSON.stringify(psicologoS));
+    });
+  };
+
     const validarImagem = () =>{
-      if (!imagem){
+      if (selectedFile === "" || selectedFile === null){
         setMsg("Insira uma foto");
         return;
       }
-
-      cadastrarImagem.current.click();
+      else{
+        onFileUpload();
+        cadastrarImagem.current.click();
+      }
     }
 
     //Tirar quando colocar a bio
@@ -65,7 +93,7 @@ const CadastroImagemPsicologo = () =>{
 
                          </label>
 
-                         <input type="file" accept="image/*" onChange={(e) => setImagem(e.target.value)} value={imagem} name="picture__input" id="picture__input" /> 
+                         <input type="file" accept="image/*" onChange={onFileChange} name="picture__input" id="picture__input" /> 
 
                          </div>
 

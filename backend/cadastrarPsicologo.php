@@ -32,10 +32,13 @@ require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 		$email = $dados->email;
 		$dtNascimento = $dados->dataNascimento;
 		$senha = $dados->senha;
-		$imagem = $dados->imagem;
+		$imagem = $dados->imagePath;
 		$localizacao = $dados->localizacao;
 		$areaAtuacao = $dados->areaAtuacao;
 		$bio = $dados->bio;
+
+		echo $imagem;
+		echo $nomePessoa;
 
 		$chave = uniqid(rand(), true);
 		$mail = new PHPMailer(true);

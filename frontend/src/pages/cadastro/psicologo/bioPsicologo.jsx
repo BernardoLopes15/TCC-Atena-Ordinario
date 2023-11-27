@@ -22,7 +22,7 @@ const CadastroBioPsicologo = () =>{
             voltarTela.current.click();
         }
     },[]);
-
+    
     const converterBr = (dataBr) =>{
         var partes = dataBr.split('/');
 
@@ -32,7 +32,7 @@ const CadastroBioPsicologo = () =>{
 
         return partes[2] + '-' + partes[1] + '-' + partes[0];
     }
-
+    
     const validarBio = (e) =>{
         e.preventDefault();
 
@@ -53,6 +53,11 @@ const CadastroBioPsicologo = () =>{
             return { ...prevPsicologo, telefone: prevPsicologo.telefone.replace(/[\(\)\s-]/g, '') };
         });
 
+        let psicologoImage = JSON.parse(sessionStorage.getItem('psicologo')) || {};
+        setPsicologo((prevPsicologo) => {
+            return { ...prevPsicologo, imagePath:  psicologoImage.imagePath};
+        });
+
         enviarBio();
         excluirStorage();
     }
@@ -65,15 +70,17 @@ const CadastroBioPsicologo = () =>{
 
     const enviarBio = async () =>{
         try{
-            await axios.post(MainUrl + "cadastrarPsicologo.php", JSON.stringify(psicologo));
+            await axios.post(MainUrl + "cadastrarPsicologo.php",JSON.stringify(JSON.parse(sessionStorage.getItem('psicologo')))).then((response) => {
+                console.log('cadastro feito');
+                console.log(response);
+                console.log(psicologo);
+            });
             clickLink.current.click();
-            console.log('cadastro feito');
             Swal.fire({
                 title: 'Validar E-mail',
                 text: 'Dados salvos, confira seu e-mail para continuar o cadastro!',
                 icon: "success"
             });
-
             
         } catch{
             console.log("error");

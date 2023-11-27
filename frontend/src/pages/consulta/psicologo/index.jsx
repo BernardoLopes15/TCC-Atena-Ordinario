@@ -16,7 +16,16 @@ const Psicologo = ({ index, alterarValor, id, nome, cor, imgUser, dia, hora }) =
         axios.post(MainUrl + "cancelarConsulta.php", JSON.stringify({ id: id }))
         .then((e) => {
             if(e?.data?.response){
-                alterarValor(index);
+                alterarValor(index, "c");
+            };
+        });
+    }
+
+    const realizarConsulta = () =>{
+        axios.post(MainUrl + "realizarConsulta.php", JSON.stringify({ id: id }))
+        .then((e) => {
+            if(e?.data?.response){
+                alterarValor(index, "r");
             };
         });
     }
@@ -57,6 +66,10 @@ const Psicologo = ({ index, alterarValor, id, nome, cor, imgUser, dia, hora }) =
                     {
                         cor == "p" && 
                         <>
+                            {
+                                dia.split("-")[2] == new Date().getDate() &&
+                                <p><a href="https://meet.google.com/" target="_blank"><button className="px-2 mb-2 rounded-md bg-green-200" onClick={() => realizarConsulta()}>Realizar Consulta</button></a></p>
+                            }
                             <p><button className="px-2 rounded-md bg-orange-200">Reagendar</button></p>
                             <p><button className="px-2 mt-2 rounded-md bg-red-200" onClick={() => exibirMensagem(id)}>Cancelar</button></p>
                         </>
@@ -89,9 +102,9 @@ const ConsultaCliente = () =>{
 
     const [filtro, setFiltro] = useState();
 
-    const alterarValor = (i) => {
+    const alterarValor = (i, tipo) => {
         let copiaConsultas = [...consultas];
-        copiaConsultas[i].id_realizada = "c";
+        copiaConsultas[i].id_realizada = tipo;
         setConsultas(copiaConsultas);
     }
 
