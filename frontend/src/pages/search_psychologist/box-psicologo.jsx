@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { useRef, useEffect, useState } from "react";
 
-const BoxPsicologo = ( { nome, idade, proficao, image, cidade, data }) =>{
+const BoxPsicologo = ( { nome, idade, proficao, image, cidade, data, imagePath }) =>{
     const irParaOTopo = () => {
         window.scrollTo(0, 0);
     }
@@ -9,7 +10,7 @@ const BoxPsicologo = ( { nome, idade, proficao, image, cidade, data }) =>{
         <>
             <div className="py-4 px-8 mt-8 flex rounded-lg border-b-2 border-violet-500 bg-white">
                 <div>
-                    <img src={image} className="w-16 h-16 md:w-20 md:h-20 rounded-full" alt="foto psicologo"/>
+                    <img src={imagePath} className="w-16 h-16 md:w-20 md:h-20 rounded-full" alt="foto psicologo"/>
                 </div>
                 <div className="flex justify-around flex-col grow">
                     <div className="flex flex-col md:flex-row justify-between">

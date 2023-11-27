@@ -56,7 +56,7 @@ const NavBar = () =>{
                         </div>
                         <div className="flex items-center cursor-pointer" onClick={abreMenu}>
                             <p className="mr-4">{usuario}</p>
-                            <img src={imagem} alt="user" height="50px" width="50px" style={{borderRadius: "50%"}}/>
+                            <img src={imagem} alt="user" className="w-12 h-12 flex-0 rounded-full bg-purple-200" style={{borderRadius: "50%"}}/>
                         </div>
                     </div>
                     <li className="hidden"><Link onClick={excluirToken} to="/" ref={sair}>Sair</Link></li>

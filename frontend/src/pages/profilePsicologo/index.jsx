@@ -13,8 +13,8 @@ import usuario from "../../assets/imgs/psicologo1.png";
 
 const PerfilPsicologo = () =>{
     const [anima, setAnima] = useState(false);
-
-
+    const [imagem, setImagem] = useState('');
+    
     const [nome, setNome] = useState('');
     const [CPF, setCPF] = useState('');
     const [telefone, setTelefone] = useState('');
@@ -25,6 +25,21 @@ const PerfilPsicologo = () =>{
     const [localizacao, setLocalizacao] = useState('');
 
     let loginScreen = useRef(null);
+    let sair = useRef();
+
+    const voltarPagina = () =>{
+        sair.current?.click();
+    }
+
+    useEffect(()=>{
+        let response = JSON.parse(sessionStorage.getItem('token')) || voltarPagina();
+        if(!JSON.parse(sessionStorage.getItem('token'))) return;
+        response?.nivelAcesso !== "psicologo" && voltarPagina();
+        if(response){
+            setImagem(response.imagem);
+            console.log(imagem);
+        } 
+    });
 
     useEffect(() => {
         setAnima(true);
@@ -99,7 +114,7 @@ const PerfilPsicologo = () =>{
                                 <div className="h-56 lg:rounded-t-xl bg-purple-800"></div>
                                 <div className="lg:rounded-b-xl bg-white px-8">
                                     <div className="h-0 flex items-center mb-16">
-                                      <Link to="/editImgPsicologo">  <img loading="lazy" className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={usuario} alt="usuario" /></Link>
+                                      <Link to="/editImgPsicologo">  <img loading="lazy" className="w-32 h-32 flex-0 rounded-full bg-purple-200" src={imagem} alt="usuario" /></Link>
                                     </div>
                                     <h2 className="pt-4 font-semibold font-title text-2xl">{nome}</h2>
                                     <div className="py-4 flex justify-between">

@@ -58,6 +58,10 @@ const CadastroBioPsicologo = () =>{
             return { ...prevPsicologo, imagePath:  psicologoImage.imagePath};
         });
 
+        setPsicologo((prevPsicologo) => {
+            return { ...prevPsicologo, bio:  bio};
+        });
+
         enviarBio();
         excluirStorage();
     }

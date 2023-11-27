@@ -70,7 +70,7 @@ const BuscarPsicologo = () =>{
                                             psicologos ?
                                             psicologos.map((psicologo, index) => (
 
-                                                <BoxPsicologo key={index} nome={psicologo.nm_psicologo} idade={mostrarIdade(psicologo.dt_nascimento)} proficao="Psicólogo(a)" image={Psicologo1} cidade={psicologo.nm_localizacao} data={psicologo.dt_cadastro.split('-').reverse().join('/')} />
+                                                <BoxPsicologo key={index} nome={psicologo.nm_psicologo} idade={mostrarIdade(psicologo.dt_nascimento)} proficao="Psicólogo(a)" image={Psicologo1} cidade={psicologo.nm_localizacao} data={psicologo.dt_cadastro.split('-').reverse().join('/') } imagePath={psicologo.nm_foto_perfil} />
 
                                             ))
                                             :
