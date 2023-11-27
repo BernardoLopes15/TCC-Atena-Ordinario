@@ -2,22 +2,21 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import MainUrl from "../../../connection config/url";
 import { CSSTransition } from "react-transition-group";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 import NavBar from "../../../components/Navbar";
 import Rodape from "../../../components/Rodape";
 
 import Psicologo1 from "../../../assets/imgs/psicologo1.png";
 
-const Psicologo = ({ id, nome, cora, imgUser, dia, hora }) =>{
+const Psicologo = ({ index, alterarValor, id, nome, cor, imgUser, dia, hora }) =>{
     const [aberta, setAberta] = useState(false);
-    const [cor, setCor] = useState(cora);
 
     const cancelarConsulta = () =>{
         axios.post(MainUrl + "cancelarConsulta.php", JSON.stringify({ id: id }))
         .then((e) => {
             if(e?.data?.response){
-                setCor("c");
+                alterarValor(index);
             };
         });
     }
@@ -90,6 +89,12 @@ const ConsultaCliente = () =>{
 
     const [filtro, setFiltro] = useState();
 
+    const alterarValor = (i) => {
+        let copiaConsultas = [...consultas];
+        copiaConsultas[i].id_realizada = "c";
+        setConsultas(copiaConsultas);
+    }
+
     useEffect(() => {
         setAnima(true);
 
@@ -98,12 +103,13 @@ const ConsultaCliente = () =>{
                 if (inicio) {
                     let paciente = JSON.parse(sessionStorage.getItem("token"));
                     const consultasResponse = await axios.post(MainUrl + "buscarConsultas.php", JSON.stringify({ id: paciente.id }));
-                    setConsultas(consultasResponse.data.response);
-                    console.log(consultasResponse.data.response);
+                    setConsultas(consultasResponse?.data?.response);
                 
-                    for (let consulta of consultasResponse.data.response) {
-                        const psicologoResponse = await axios.post(MainUrl + "buscarPsicologoConsulta.php", JSON.stringify({ id: consulta.fk_cd_psicologo }));
-                        setPsicologos(prevPsicologos => [...prevPsicologos, psicologoResponse.data.response.nome]);
+                    if(consultasResponse.data.response){
+                        for (let consulta of consultasResponse.data.response) {
+                            const psicologoResponse = await axios.post(MainUrl + "buscarPsicologoConsulta.php", JSON.stringify({ id: consulta.fk_cd_psicologo }));
+                            setPsicologos(prevPsicologos => [...prevPsicologos, psicologoResponse.data.response.nome]);
+                        }
                     }
                 } else {
                     setInicio(true);
@@ -160,39 +166,45 @@ const ConsultaCliente = () =>{
                                 }>Consulta Cancelada</div>
                             </div> 
                             <div className="flex flex-col ">
-                                {
-                                    consultas &&
-                                    filtro ?
-                                    consultas.map((consulta, index) => {
-                                        if(filtro === consulta.id_realizada){
-                                            return(
-                                                <Psicologo
-                                                    id={consulta.id}
-                                                    nome={psicologos[index]}
-                                                    cora={consulta.id_realizada}
-                                                    imgUser={Psicologo1}
-                                                    dia={consulta.dt_consulta}
-                                                    hora={consulta.hr_consulta}
-                                                />
-                                            );
-                                        }
-                                    })
-                                    :
-                                    consultas.sort((consultaA, consultaB) => {
-                                        if (consultaA.id_realizada === "c") return 1;
-                                        if (consultaA.id_realizada === "r" && consultaB.id_realizada !== "r") return 1;
-                                        return -1;
-                                    }).map((consulta, index) => (
-                                        <Psicologo
-                                            id={consulta.cd_consulta}
-                                            nome={psicologos[index]}
-                                            cora={consulta.id_realizada}
-                                            imgUser={Psicologo1}
-                                            dia={consulta.dt_consulta}
-                                            hora={consulta.hr_consulta}
-                                        />
-                                    ))
-                                }
+                            {
+                                consultas && (
+                                    filtro ? (
+                                        consultas.map((consulta, index) => {
+                                            if (filtro === consulta.id_realizada) {
+                                                return (
+                                                    <Psicologo
+                                                        key={index}
+                                                        index={index}
+                                                        alterarValor={alterarValor}
+                                                        id={consulta.id}
+                                                        nome={psicologos[index]}
+                                                        cor={consulta.id_realizada}
+                                                        imgUser={Psicologo1}
+                                                        dia={consulta.dt_consulta}
+                                                        hora={consulta.hr_consulta}
+                                                    />
+                                                );
+                                            }
+                                        })
+                                    ) : (
+                                        consultas.map((consulta, index) => (
+                                            <Psicologo
+                                                key={index}
+                                                index={index}
+                                                alterarValor={alterarValor}
+                                                id={consulta.cd_consulta}
+                                                nome={psicologos[index]}
+                                                cor={consulta.id_realizada}
+                                                imgUser={Psicologo1}
+                                                dia={consulta.dt_consulta}
+                                                hora={consulta.hr_consulta}
+                                            />
+                                        ))
+                                    )
+                                )
+                                ||
+                                (<div></div>)
+                            }
                             </div>
                         </div>
                     </div>

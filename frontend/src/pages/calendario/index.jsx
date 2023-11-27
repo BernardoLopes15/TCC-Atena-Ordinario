@@ -137,7 +137,7 @@ const Calendario = () =>{
                                     }
                                     {
                                         dia.map((dia, index)=>(
-                                            <h2 key={dia} className={`p-4 lg:p-8 flex items-center justify-center ${diaDaSemana[index] == 2 || diaDaSemana[index] == 0 ? "bg-red-500" : "bg-purple-500"} hover:bg-purple-300 cursor-pointer text-white rounded-md`}>{dia}</h2>
+                                            <h2 key={dia} className={`p-4 lg:p-8 flex items-center justify-center ${diaDaSemana[index] == 7 ? "bg-red-500" : "bg-purple-500"} hover:bg-purple-300 cursor-pointer text-white rounded-md`}>{dia}</h2>
                                         ))
                                     }
                                 </div>

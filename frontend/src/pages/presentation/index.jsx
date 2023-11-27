@@ -51,7 +51,7 @@ const Apresentacao = () =>{
              <a href="#project"> Projeto </a>
              <a href="#aboutUs"> Quem Somos</a>
              <a href="#team"> Equipe </a>
-            <Link to="/login"><a>Entrar</a></Link>
+            <Link to="/"><a>Entrar</a></Link>
           </ul>
         </div>
       </nav>
@@ -79,7 +79,7 @@ const Apresentacao = () =>{
                 <img loading="lazy" src={logoAtena} alt="logo" className='w-96' />
               </CSSTransition>
               <p className="py-6 text-white text-center text-xl">Você é forte, será capaz de <br /> lutar e conquistar o seu espaço.</p>
-              <Link to="/login"><button className="w-full md:w-96 py-2 my-4 transition-all duration-300 text-purple-800 text-lg font-bold rounded-lg bg-white">Entrar</button></Link>
+              <Link to="/"><button className="w-full md:w-96 py-2 my-4 transition-all duration-300 text-purple-800 text-lg font-bold rounded-lg bg-white">Entrar</button></Link>
             </div>
           </div>
         </section>
