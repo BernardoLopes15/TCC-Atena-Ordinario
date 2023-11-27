@@ -21,7 +21,7 @@ if(!empty($chave)){
 
  }
 
- header('Location: http://localhost:3000/');
+ header('Location: https://tccatena.com/');
 //  die();
 
 } else {

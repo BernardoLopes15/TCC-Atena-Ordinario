@@ -12,6 +12,8 @@ export const GlobalStyle = createGlobalStyle`
         color: #000;
         background-color: #fff;
         font-family: 'Maven Pro', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
     
     /* Animação aparecer TELA */
