@@ -88,7 +88,6 @@ const CadastroCliente = () => {
                 senha: senha,
                 dataNascimento: dtNascimento,
                 email: email
-
             });
 
             try {

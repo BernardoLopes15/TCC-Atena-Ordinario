@@ -1,24 +1,64 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MainUrl from "../../../connection config/url";
 import Swal from 'sweetalert2'
 
 const CadastroImagemCliente = () =>{
 
-    const [imagem, setImagem] = useState('');
+    const [selectedFile, setSelectedFile] = useState('');
+    const [imagePath, setImagePath] = useState('');
+    const [readyToContinue, setReadyToContinue] = useState(false);
     const [msg, setMsg] = useState('');
     let pacienteS = JSON.parse(sessionStorage.getItem('paciente')) || {};
 
-    const enviar = async e => {
+    //Começo dos upload de imagem
+    const onFileChange = (event) => {
+        setSelectedFile(event.target.files[0]);
+        //console.log(selectedFile.name);
+    };
+ 
+
+    const onFileUpload = async e => {
         e.preventDefault();
+        const formData = new FormData();
+ 
+        formData.append(
+            "image",
+            selectedFile,
+            selectedFile.name
+        );
+ 
+        //console.log(selectedFile);
+ 
+        axios.post(MainUrl + 'uploadImagem.php', formData).then((response) => {
+          console.log(response.data.imagePath);
+          setImagePath(response.data.imagePath);
+          pacienteS.imagePath = response.data.imagePath;
+          sessionStorage.setItem('paciente', JSON.stringify(pacienteS));
+      });
+    };
 
-        pacienteS.imagem = imagem;
-        sessionStorage.setItem('paciente', JSON.stringify(pacienteS));
-        document.getElementById("cadastrarImagem").click();
+    /*const onFileDownload = async e => {
+      e.preventDefault();
+ 
+        axios.post(MainUrl + 'downloadImagem.php', {path: imagePath}).then((response) => {
+          console.log(response.data)
 
-          if(
-          
+      });
+    };*/
+    //Fim dos upload de imagem
+
+    const enviar = async e => {
+          e.preventDefault();
+
+          if(readyToContinue === false) return;
+
+          onFileUpload(e);
+
+          if(imagePath === "" || imagePath === null) return;
+
+          if( 
           axios.post(MainUrl + 'cadastrarPaciente.php', JSON.stringify(JSON.parse(sessionStorage.getItem('paciente'))))
           .then((response) => {
             console.log(response);
@@ -37,24 +77,29 @@ const CadastroImagemCliente = () =>{
             // })
           };
 
-        sessionStorage.removeItem('paciente');
-    }
-
-    const excluirStorage = async e => {
+          
+        document.getElementById("cadastrarImagem").click();
         sessionStorage.removeItem('paciente');
     }
 
     const validarImagem = () =>{
-      if (!imagem){
+
+      if (selectedFile === "" || selectedFile === null){
         setMsg("Insira uma foto");
+        setReadyToContinue(false);
       }
       else {
         setMsg("");
+        setReadyToContinue(true);
       //   Swal.fire({
       //     text: "Cadastrada com sucesso!",
       //     icon:"success"
       // })
       }
+    }
+
+    const excluirStorage = async e => {
+        sessionStorage.removeItem('paciente');
     }
 
     return(
@@ -82,7 +127,8 @@ const CadastroImagemCliente = () =>{
 
                          </div>
 
-                        <form method="POST" className="form" onSubmit={enviar}>
+                        <form method="POST" className="form" onSubmit={enviar}
+                        >
                          <div className="flex justify-between content-formImage">
 
                          <label class="picture" for="picture__input" tabIndex="0">
@@ -99,12 +145,14 @@ const CadastroImagemCliente = () =>{
 
                          </label>
 
-                         <input type="file" accept="image/*" onChange={(e)=>setImagem(e.target.value)} value={imagem} name="picture__input" id="picture__input" required/> 
+                         <input type="file" accept="image/*" onChange={onFileChange} name="picture__input" id="picture__input" required/> 
 
                          </div>
 
                          <div className="flex justify-center mt-16">
-                            <button className="py-2 text-white btn" onClick={validarImagem}>Cadastrar</button>
+                            {/*<button className="py-2 text-white btn" onClick={onFileUpload}>Atualizar</button>*/}
+                            {/*<button className="py-2 text-white btn" onClick={onFileDownload}>Resgatar</button>*/}
+                            {<button className="py-2 text-white btn" onClick={validarImagem}>Cadastrar</button>}
                             <Link to="/" id="cadastrarImagem"></Link>
                         </div>
 

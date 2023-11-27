@@ -28,7 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$email = $dados->email;
 	$telefone = $dados->telefone;
 	$senha = $dados->senha;
-	$imagem = $dados->imagem;
+	$imagem = $dados->imagePath;
+
+
 
 	$chave = uniqid(rand(), true);
 	$mail = new PHPMailer(true);
@@ -51,8 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//Content
 		$mail->isHTML(true);                                  //Set email format to HTML
 		$mail->Subject = 'Confirmar E-mail';
-		$mail->Body    = "<b> Prezada paciente, por favor confirme seu e-mail clicando no link abaixo para continuar o cadastro.</b> <br/> <a href='http://localhost/backend/validarEmail.php?chave=$chave'> Clique aqui!</a>";
-		$mail->AltBody = "Prezada paciente, por favor confirme seu E-mail clicando no link para continuar o cadastro. \n\n http://localhost/backend/validarEmail.php?chave=$chave Clique aqui!";
+		$mail->Body    = "<b> Prezada paciente, por favor confirme seu e-mail clicando no link abaixo para continuar o cadastro.</b> <br/> <a href='http://localhost:8080/TCC-Atena-Ordinario/backend/validarEmail.php?chave=$chave'> Clique aqui!</a>";
+		$mail->AltBody = "Prezada paciente, por favor confirme seu E-mail clicando no link para continuar o cadastro. \n\n http://localhost:8080/TCC-Atena-Ordinario/backend/validarEmail.php?chave=$chave Clique aqui!";
 
 		$mail->send();
 		echo 'Message has been sent';
@@ -91,6 +93,7 @@ if ($result->num_rows > 0) {
 
 	if ($conn->query($sql) === true) {
 		echo " Cadastrada com sucesso! ";
+		echo $imagem;
 	} else echo "Não cadastrado";
 }
 

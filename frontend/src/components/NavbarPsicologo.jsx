@@ -8,6 +8,7 @@ import imgmulher from "../assets/iconPsicologo.png";
 const NavBar = () =>{
     const [menu, setMenu] = useState(false);
     const [usuario, setUsuario] = useState();
+    const [imagem, setImagem] = useState();
     let sair = useRef();
 
     const abreMenu = () =>{
@@ -26,7 +27,8 @@ const NavBar = () =>{
         let response = JSON.parse(sessionStorage.getItem('token')) || voltarPagina();
         if(response){
             setUsuario(response.nome);
-        }
+            setImagem(response.imagem);
+        } 
     });
 
     const excluirToken = () => {
@@ -52,7 +54,7 @@ const NavBar = () =>{
                         </div>
                         <div className="flex items-center cursor-pointer" onClick={abreMenu}>
                             <p className="mr-4">{usuario}</p>
-                            <img src={imgmulher} alt="user" />
+                            <img src={imagem} alt="user" height="50px" width="50px" style={{borderRadius: "50%"}}/>
                         </div>
                     </div>
                     <li className="hidden"><Link onClick={excluirToken} to="/" ref={sair}>Sair</Link></li>

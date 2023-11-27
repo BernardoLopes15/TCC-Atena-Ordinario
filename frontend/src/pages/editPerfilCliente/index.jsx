@@ -53,8 +53,8 @@ const EditCadastroCliente = () =>{
 
         if(nome != "" && nome != null) setNome(oldNome);
 	    if(email != "" && email != null) setEmail(oldEmail);
-	    if(telefone != "" && telefone != null) setTelefone(oldTelefone);
-	    if(dataNascimento != "" && dataNascimento != null) setDataNascimento(oldDataNascimento);
+	    if(telefone != "" && telefone != null && telefone !="(  )      -    " && telefone !="(__) _____-____") setTelefone(oldTelefone);
+	    if(dataNascimento != "" && dataNascimento != null && dataNascimento != "  /  /    " && dataNascimento != "__/__/____") setDataNascimento(oldDataNascimento);
 	    if(senha != "" && senha != null) setSenha(oldSenha);
 
         let novoForm = {

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 
 import psicologoola from "../assets/psicologo_ola.svg";
@@ -7,14 +7,27 @@ import imgconsultas from "../assets/consultas_agendadas.svg";
 import imgpsicologo from "../assets/consultar_Psicologo.svg";
 import imgPerfil from "../assets/mellhorarPerfil.svg";
 
-const userName = "Júlia";
 
 const HomeItems = () =>{
     const [anima, setAnima] = useState(false);
+    const [usuario, setUsuario] = useState();
 
     useEffect(() => {
         setAnima(true);
     }, []);
+
+    let sair = useRef();
+
+    const voltarPagina = () =>{
+        sair.current?.click();
+    }
+
+    useEffect(()=>{
+        let response = JSON.parse(sessionStorage.getItem('token')) || voltarPagina();
+        if(!JSON.parse(sessionStorage.getItem('token'))) return;
+        response?.nivelAcesso !== "paciente" && voltarPagina();
+        if(response) setUsuario(response.nome);
+    });
 
     return(
         <>
@@ -29,7 +42,7 @@ const HomeItems = () =>{
                     <div className="p-8 flex rounded-lg md:border-l-8 md:border-l-purple-500 mt-8 bg-purple-300">
                         <img loading="lazy" src={psicologoola} alt="psicologo_ola" />
                         <div className="ml-4 flex justify-center flex-col">
-                            <h2 className="text-xl">Olá {userName}! Seja bem vinda</h2>
+                            <h2 className="text-xl">Olá {usuario}! Seja bem vinda</h2>
                             <h3 className="font-light">Que bom ter você por aqui</h3>
                         </div>
                     </div>

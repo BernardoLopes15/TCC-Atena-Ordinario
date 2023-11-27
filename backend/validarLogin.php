@@ -16,19 +16,19 @@
 
 		if ($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
-				$listaDados = array("id" => $row["cd_psicologo"], "nome" => $row["nm_psicologo"], "nivelAcesso" => "psicologo", "email" => $row["nm_email"]);
+				$listaDados = array("id" => $row["cd_psicologo"], "nome" => $row["nm_psicologo"], "nivelAcesso" => "psicologo", "email" => $row["nm_email"], "imagem" => $row["nm_foto_perfil"]);
 			}
 
 			echo json_encode(['response' => $listaDados]);
 
 		} else {
-			$sql = "select * from tb_paciente where nm_email = '$email' and nm_senha = '$senha' and acesso = '1';";
+			$sqli = "select * from tb_paciente where nm_email = '$email' and nm_senha = '$senha' and acesso = '1';";
 
-			$result = $conn->query($sql);
+			$resulti = $conn->query($sqli);
 
-			if ($result->num_rows > 0) {
-				while($row = $result->fetch_assoc()) {
-					$listaDados = array("id" => $row["cd_paciente"], "nome" => $row["nm_paciente"], "nivelAcesso" => "paciente", "email" => $row["nm_email"]);
+			if ($resulti->num_rows > 0) {
+				while($row = $resulti->fetch_assoc()) {
+					$listaDados = array("id" => $row["cd_paciente"], "nome" => $row["nm_paciente"], "nivelAcesso" => "paciente", "email" => $row["nm_email"], "imagem" => $row["nm_foto_perfil"]);
 				}
 
 				echo json_encode(['response' => $listaDados]);

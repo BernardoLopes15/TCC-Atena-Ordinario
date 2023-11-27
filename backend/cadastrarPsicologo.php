@@ -58,8 +58,8 @@ require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 		//Content
 		$mail->isHTML(true);                                  //Set email format to HTML
 		$mail->Subject = 'Confirmar E-mail';
-		$mail->Body    = "<b> Primeiramente obrigado por nos ajudar a melhorar o nosso mundo, por favor confirme seu e-mail clicando no link abaixo para continuar o cadastro.</b> <br/> <a href='http://localhost/backend/validarEmailPsicologo.php?chave=$chave'> Clique aqui!</a>";
-		$mail->AltBody = "Primeiramente obrigado por nos ajudar a melhorar o nosso mundo, por favor confirme seu e-mail clicando no link abaixo para continuar o cadastro. \n\n http://localhost/backend/validarEmailPsicologo.php?chave=$chave Clique aqui!";
+		$mail->Body    = "<b> Primeiramente obrigado por nos ajudar a melhorar o nosso mundo, por favor confirme seu e-mail clicando no link abaixo para continuar o cadastro.</b> <br/> <a href='http://localhost:8080/TCC-Atena-Ordinario/backend/validarEmailPsicologo.php?chave=$chave'> Clique aqui!</a>";
+		$mail->AltBody = "Primeiramente obrigado por nos ajudar a melhorar o nosso mundo, por favor confirme seu e-mail clicando no link abaixo para continuar o cadastro. \n\n http://localhost:8080/TCC-Atena-Ordinario/backend/validarEmailPsicologo.php?chave=$chave Clique aqui!";
 
 		$mail->send();
 		// echo 'Message has been sent';
