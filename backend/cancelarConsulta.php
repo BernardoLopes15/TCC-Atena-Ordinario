@@ -15,7 +15,7 @@
 
 		echo json_encode(['response' => true]);
 	} catch (Exception $e) {
-		echo json_encode(['response' => "Algo deu errado"]);
+		echo json_encode(['response' => false]);
 	}
 	
     $conn->close();

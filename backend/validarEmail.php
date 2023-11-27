@@ -2,10 +2,10 @@
 
 include("./conexao.php");
 
-echo "<h1> Teste <h1/>";
+// echo "<h1> Teste <h1/>";
 
 $chave = filter_input(INPUT_GET, "chave", FILTER_SANITIZE_STRING);
-echo $chave;
+// echo $chave;
 
 
 
@@ -21,7 +21,7 @@ if(!empty($chave)){
     
      }
     
-     header('Location: http://localhost:3000/');
+     header('Location: https://tccatena.com/');
      die();
     
     } else {

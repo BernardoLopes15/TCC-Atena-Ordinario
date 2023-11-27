@@ -2,21 +2,41 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import MainUrl from "../../../connection config/url";
 import { CSSTransition } from "react-transition-group";
+import Swal from 'sweetalert2'
 
 import NavBar from "../../../components/Navbar";
 import Rodape from "../../../components/Rodape";
 
 import Psicologo1 from "../../../assets/imgs/psicologo1.png";
 
-const Psicologo = ({ id, nome, cor, imgUser, dia, hora }) =>{
+const Psicologo = ({ id, nome, cora, imgUser, dia, hora }) =>{
     const [aberta, setAberta] = useState(false);
+    const [cor, setCor] = useState(cora);
 
     const cancelarConsulta = () =>{
         axios.post(MainUrl + "cancelarConsulta.php", JSON.stringify({ id: id }))
         .then((e) => {
-            console.log(e);
+            if(e?.data?.response){
+                setCor("c");
+            };
         });
     }
+
+    const exibirMensagem = (id) => {
+        Swal.fire({
+            title: "Cancelar Consulta",
+            showDenyButton: true,
+            confirmButtonText: "Cancelar consulta",
+            denyButtonText: `Não cancelar`
+        }).then((result) => {
+            if (result.isConfirmed) {
+              cancelarConsulta(id);
+            } else if (result.isDenied) {
+              Swal.fire("Consulta não cancelada");
+            }
+        });
+    }
+
 
     return(
         aberta
@@ -39,7 +59,7 @@ const Psicologo = ({ id, nome, cor, imgUser, dia, hora }) =>{
                         cor == "p" && 
                         <>
                             <p><button className="px-2 rounded-md bg-orange-200">Reagendar</button></p>
-                            <p><button className="px-2 mt-2 rounded-md bg-red-200" onClick={() => cancelarConsulta(id)}>Cancelar</button></p>
+                            <p><button className="px-2 mt-2 rounded-md bg-red-200" onClick={() => exibirMensagem(id)}>Cancelar</button></p>
                         </>
                     }
                 </div>
@@ -54,7 +74,7 @@ const Psicologo = ({ id, nome, cor, imgUser, dia, hora }) =>{
                 </div>
                 <div>
                     <h2>{hora}</h2>
-                    <h2>{dia}</h2>
+                    <h2>{dia.split("-")[2] + "/" + dia.split("-")[1] + "/" + dia.split("-")[0]}</h2>
                 </div>
             </div>
         </div>
@@ -111,9 +131,33 @@ const ConsultaCliente = () =>{
                         <div className="md:p-4">
                             <p className="text-gray-600">Filtros de consulta</p>
                             <div className="mb-4 grid grid-cols-3 ">
-                                <div className={`p-2 cursor-pointer border border-yellow-400 rounded-md ${filtro == "p" && "bg-yellow-400"}`} onClick={() => setFiltro("p")}>Consulta Pendente</div>
-                                <div className={`p-2 cursor-pointer border mx-2 border-green-400 rounded-md ${filtro == "r" && "bg-green-400"}`} onClick={() => setFiltro("r")}>Consulta Realizada</div>
-                                <div className={`p-2 cursor-pointer border border-red-400 rounded-md ${filtro == "c" && "bg-red-400"}`} onClick={() => setFiltro("c")}>Consulta Cancelada</div>
+                                <div className={`p-2 cursor-pointer border border-yellow-400 rounded-md ${filtro == "p" && "bg-yellow-400"}`}
+                                    onClick={() => {
+                                        if(filtro == "p"){
+                                            setFiltro();
+                                        } else{
+                                            setFiltro("p");
+                                        }
+                                    }
+                                }>Consulta Pendente</div>
+                                <div className={`p-2 cursor-pointer border mx-2 border-green-400 rounded-md ${filtro == "r" && "bg-green-400"}`}
+                                    onClick={() => {
+                                        if(filtro == "r"){
+                                            setFiltro();
+                                        } else{
+                                            setFiltro("r");
+                                        }
+                                    }
+                                }>Consulta Realizada</div>
+                                <div className={`p-2 cursor-pointer border border-red-400 rounded-md ${filtro == "c" && "bg-red-400"}`}
+                                    onClick={() => {
+                                        if(filtro == "c"){
+                                            setFiltro();
+                                        } else{
+                                            setFiltro("c");
+                                        }
+                                    }
+                                }>Consulta Cancelada</div>
                             </div> 
                             <div className="flex flex-col ">
                                 {
@@ -125,7 +169,7 @@ const ConsultaCliente = () =>{
                                                 <Psicologo
                                                     id={consulta.id}
                                                     nome={psicologos[index]}
-                                                    cor={consulta.id_realizada}
+                                                    cora={consulta.id_realizada}
                                                     imgUser={Psicologo1}
                                                     dia={consulta.dt_consulta}
                                                     hora={consulta.hr_consulta}
@@ -135,14 +179,14 @@ const ConsultaCliente = () =>{
                                     })
                                     :
                                     consultas.sort((consultaA, consultaB) => {
-                                        if (consultaA.id_realizada === "c" && consultaB.id_realizada === "r") return 1;
-                                        if (consultaA.id_realizada === "r" && consultaB.id_realizada !== "r") return 0;
+                                        if (consultaA.id_realizada === "c") return 1;
+                                        if (consultaA.id_realizada === "r" && consultaB.id_realizada !== "r") return 1;
                                         return -1;
                                     }).map((consulta, index) => (
                                         <Psicologo
                                             id={consulta.cd_consulta}
                                             nome={psicologos[index]}
-                                            cor={consulta.id_realizada}
+                                            cora={consulta.id_realizada}
                                             imgUser={Psicologo1}
                                             dia={consulta.dt_consulta}
                                             hora={consulta.hr_consulta}
