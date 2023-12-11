@@ -107,6 +107,7 @@ const SolicitacaoConsulta = () =>{
                         <div className={`w-full md:w-8/12 lg:w-6/12 p-4 lg:p-8 rounded-xl border-b-4 border-b-violet-400 bg-white transition-blur duration-300 ${negarConsulta && "blur-sm"}`}>
                             <h2 className="mb-8 text-5xl text-center font-style">Solicitações</h2>
                             {
+                                consultas &&
                                 consultas.map((consulta, index) => {
                                     if ("p" === consulta?.id_realizada) {
                                         return (
